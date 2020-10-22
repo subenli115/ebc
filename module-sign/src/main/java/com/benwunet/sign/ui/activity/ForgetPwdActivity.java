@@ -6,11 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
 import com.benwunet.base.global.IConstants;
-import com.benwunet.base.wdiget.SmsCodeView;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.ActivityForgetPwdBinding;
 import com.benwunet.sign.ui.viewmodel.LoginViewModel;
+import com.benwunet.sign.ui.wdiget.SmsCodeView;
 
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class ForgetPwdActivity extends BaseActivity<ActivityForgetPwdBinding, Lo
                 viewModel.getCode(IConstants.REG);
             }
         });
-        viewModel.verifyCode.observe(this, new Observer<Boolean>() {
+        viewModel.isSend.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean code) {
                 binding.smsCodeView.startDjs();

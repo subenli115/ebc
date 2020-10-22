@@ -75,7 +75,7 @@
 
             </LinearLayout>
 
-            <com.benwunet.base.wdiget.SmsCodeView
+            <com.benwunet.sign.ui.wdiget.SmsCodeView
                 android:id="@+id/smsCodeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

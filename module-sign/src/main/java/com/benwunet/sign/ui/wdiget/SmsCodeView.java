@@ -1,12 +1,12 @@
-package com.benwunet.base.wdiget;
+package com.benwunet.sign.ui.wdiget;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +21,9 @@ import com.benwunet.base.R;
 import com.benwunet.base.sms.SmsObserver;
 import com.benwunet.base.utils.EmptyUtils;
 import com.benwunet.base.utils.MapUtils;
+import com.benwunet.base.wdiget.KeyBordUtil;
+import com.benwunet.base.wdiget.OnNoDoubleClickListener;
+import com.benwunet.base.wdiget.SimpleTextWatcher;
 
 import java.util.Map;
 
@@ -126,38 +129,51 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
 
     }
 
+    // SET 方法
     @BindingAdapter("y_change_content")
-    public static void setStr(SmsCodeView view, String content) {
-        if (view != null) {
-            String mCurrentStr = view.etSmsCode.getText().toString().trim();
+    public static void setStr(SmsCodeView cetv, String content) {
+        if (cetv != null) {
+            String mCurrentStr = cetv.etSmsCode.getText().toString().trim();
             if (!TextUtils.isEmpty(content)) {
                 if (!content.equalsIgnoreCase(mCurrentStr)) {
-                    view.etSmsCode.setText(content);
+                    cetv.etSmsCode.setText(content);
                     // 设置光标位置
-                    view.etSmsCode.setSelection(content.length());
+                    cetv.etSmsCode.setSelection(content.length());
                 }
             }
         }
     }
 
+    // GET 方法
     @InverseBindingAdapter(attribute = "y_change_content", event = "contentAttrChanged")
-    public static String getStr(SmsCodeView view) {
-        return view.etSmsCode.getText().toString();
+    public static String getStr(SmsCodeView cetv) {
+        return cetv.etSmsCode.getText().toString().trim();
     }
 
+    // 监听,如果有变动就调用listener中的onChange方法
     @BindingAdapter(value = "contentAttrChanged", requireAll = false)
-    public static void setChangeListener(SmsCodeView view, InverseBindingListener listener) {
-           view.etSmsCode.addTextChangedListener(new SimpleTextWatcher() {
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    listener.onChange();
-                }
-            });
+    public static void setChangeListener(SmsCodeView cetv, final InverseBindingListener listener) {
+        cetv.etSmsCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                listener.onChange();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
-    /**
-     * 初始化控件
-     */
+
+        /**
+         * 初始化控件
+         */
     private void initView() {
         rootView = LayoutInflater.from(getContext()).inflate(R.layout.include_sms_code, this, true);
         etSmsCode = (EditText) findViewById(R.id.et_sms_code);

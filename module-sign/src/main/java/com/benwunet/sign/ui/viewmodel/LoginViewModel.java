@@ -3,6 +3,8 @@ package com.benwunet.sign.ui.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 import android.text.TextUtils;
 
@@ -34,12 +36,10 @@ public class LoginViewModel extends BaseViewModel {
     public SingleLiveEvent<String> userName = new SingleLiveEvent<>();
     //密码的绑定
     public SingleLiveEvent<String> password = new SingleLiveEvent<>();
-
-
-    //密码的绑定
+    public SingleLiveEvent<String> verifyCode = new SingleLiveEvent<>();
     public SingleLiveEvent<String> confirm = new SingleLiveEvent<>();
     public SingleLiveEvent<Boolean> registerResult = new SingleLiveEvent<>();
-    public SingleLiveEvent<Boolean> verifyCode = new SingleLiveEvent<>();
+    public SingleLiveEvent<Boolean> isSend = new SingleLiveEvent<>();
     public SingleLiveEvent<Boolean> privacyCheck = new SingleLiveEvent<>();
     public SingleLiveEvent<String> phone = new SingleLiveEvent<>();
     public SingleLiveEvent<UserBean> user = new SingleLiveEvent<>();
@@ -54,9 +54,9 @@ public class LoginViewModel extends BaseViewModel {
         if (phone != null && phone.getValue().length() == 0) {
             ToastUtils.showLong("请输入手机号");
         } else {
-            verifyCode = signRepository.getVerifyCode(phone.getValue(), verifyCode, type);
+            isSend = signRepository.getVerifyCode(phone.getValue(), isSend, type);
         }
-        return verifyCode;
+        return isSend;
     }
 
     //关闭页面按钮

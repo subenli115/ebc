@@ -28,10 +28,15 @@ import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
+
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
 
 import com.benwunet.base.R;
 
@@ -363,6 +368,22 @@ public class SmoothCheckBox extends View implements Checkable {
         floorAnimator.start();
 
         drawTickDelayed();
+    }
+
+
+    @BindingAdapter("y_change_content")
+    public static void setStr(SmoothCheckBox view, String content) {
+
+    }
+
+    @InverseBindingAdapter(attribute = "y_change_content", event = "contentAttrChanged")
+    public static String getStr(SmoothCheckBox view) {
+        return "";
+    }
+
+    @BindingAdapter(value = "contentAttrChanged", requireAll = false)
+    public static void setChangeListener(SmoothCheckBox view, InverseBindingListener listener) {
+
     }
 
     private void startUnCheckedAnimation() {
