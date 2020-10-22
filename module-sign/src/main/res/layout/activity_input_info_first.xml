@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.sign.ui.viewmodel.InfoViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ResourceName">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16.5dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/sign_info_back"
+            android:textColor="@color/gray65"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_skip"
+            android:layout_width="45dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25.5dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/normal_bg_gray"
+            android:gravity="center"
+            android:text="@string/sign_skip"
+            android:textColor="@color/gray_f7"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_skip"
+            android:layout_marginTop="39dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/sign_photo"
+                android:textColor="@color/black_222"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8.5dp"
+                android:text="@string/sign_photo_hint" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_add"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@+id/tv_hint"
+                android:layout_marginTop="28dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="2dp"
+                binding:onClickCommand="@{viewModel.closeOnClickCommand}">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/iv_sign_add" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52.5dp"
+                android:text="@string/name"
+                android:textColor="@color/black_222"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/sign_name_hint" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

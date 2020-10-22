@@ -1,19 +1,17 @@
 package com.benwunet.sign.ui.bean;
 
-import com.google.gson.annotations.SerializedName;
-import com.zhouyou.http.model.ApiResult;
 
 /**
  * @Package: com.benwunet.sign.ui.bean
  * @ClassName: codeResult
- * @Description: java类作用描述
+ * @Description: String
  * @Author: feng
  * @CreateDate: 2020/10/20 0020 18:05
  * @Version: 1.0
  */
 
 
-public class VerifyCodeBean {
+public class StringDataBean {
 
     public int getCode() {
         return code;

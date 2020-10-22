@@ -3,6 +3,8 @@ package com.benwunet.base.wdiget;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,11 +13,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
+
 import com.benwunet.base.R;
 import com.benwunet.base.sms.SmsObserver;
 import com.benwunet.base.utils.EmptyUtils;
 import com.benwunet.base.utils.MapUtils;
-import com.benwunet.base.utils.ToastUtil;
 
 import java.util.Map;
 
@@ -103,6 +108,51 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
     public void setTextSize(float size) {
         etSmsCode.setTextSize(size);
 
+    }
+
+    // 双向绑定 输入框内容
+    public void setText(String text) {
+        if (!getText().equals(text)) {
+            etSmsCode.setText(text);
+        }
+    }
+    private String getText() {
+        Editable text = etSmsCode.getText();
+        if (text != null) {
+            return text.toString();
+        } else {
+            return "";
+        }
+
+    }
+
+    @BindingAdapter("y_change_content")
+    public static void setStr(SmsCodeView view, String content) {
+        if (view != null) {
+            String mCurrentStr = view.etSmsCode.getText().toString().trim();
+            if (!TextUtils.isEmpty(content)) {
+                if (!content.equalsIgnoreCase(mCurrentStr)) {
+                    view.etSmsCode.setText(content);
+                    // 设置光标位置
+                    view.etSmsCode.setSelection(content.length());
+                }
+            }
+        }
+    }
+
+    @InverseBindingAdapter(attribute = "y_change_content", event = "contentAttrChanged")
+    public static String getStr(SmsCodeView view) {
+        return view.etSmsCode.getText().toString();
+    }
+
+    @BindingAdapter(value = "contentAttrChanged", requireAll = false)
+    public static void setChangeListener(SmsCodeView view, InverseBindingListener listener) {
+           view.etSmsCode.addTextChangedListener(new SimpleTextWatcher() {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    listener.onChange();
+                }
+            });
     }
 
     /**

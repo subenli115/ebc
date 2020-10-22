@@ -1,32 +1,20 @@
 package com.benwunet.sign.ui.activity;
 
-import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 
-import com.benwunet.base.utils.RSAUtil;
-import com.benwunet.base.utils.RSAUtils;
+import com.benwunet.base.global.IConstants;
 import com.benwunet.base.wdiget.SmsCodeView;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
-import com.benwunet.sign.databinding.ActivityLoginBinding;
 import com.benwunet.sign.databinding.ActivityRegisterBinding;
-import com.benwunet.sign.ui.LoginActivity;
-import com.benwunet.sign.ui.LoginViewModel;
-import com.benwunet.sign.ui.adapter.TabPagerAdapter;
-import com.google.android.material.tabs.TabLayout;
+import com.benwunet.sign.ui.viewmodel.LoginViewModel;
 
 import java.util.Map;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
-import me.goldze.mvvmhabit.base.BaseViewModel;
 
 /**
  * @Package: com.benwunet.sign.ui.activity
@@ -62,7 +50,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Logi
         binding.smsCodeView.setOnSmsCallBack(new SmsCodeView.OnSmsCallBack() {
             @Override
             public void call(int type, Map<String, String> map) {
-                viewModel.getCode("REG");
+                viewModel.getCode(IConstants.REG);
             }
         });
         viewModel.verifyCode.observe(this, new Observer<Boolean>() {

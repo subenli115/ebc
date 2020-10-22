@@ -25,4 +25,5 @@
     <string name="res_getcode">重获验证码</string>
     <string name="phone_code_intput">验证码</string>
     <string name="sign_get_code">获取验证码</string>
+    <string name="name">姓名</string>
 </resources>

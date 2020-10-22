@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.FragmentSignFaceBinding;
-import com.benwunet.sign.ui.LoginViewModel;
+import com.benwunet.sign.ui.viewmodel.LoginViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
-import me.goldze.mvvmhabit.base.BaseViewModel;
 
 /**
  * @Package: com.benwunet.sign.ui.fragment

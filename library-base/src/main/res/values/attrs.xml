@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NormalTitleBar">
+        <attr name="ntb_bg" format="reference"/>
+        <attr name="ntb_right_img1" format="reference" />
+        <attr name="ntb_right_img2" format="reference" />
+        <attr name="ntb_right_img3" format="reference" />
+        <attr name="ntb_right_text" format="string" />
+        <attr name="ntb_title_text" format="string" />
+        <attr name="ntb_right_text_color" format="color" />
+        <attr name="ntb_right_text_size" format="float" />
+        <attr name="ntb_right_img_size" format="dimension" />
+        <attr name="ntb_img_padding" format="dimension" />
+        <attr name="ntb_tv_left" format="enum" >
+            <enum name="show" value="0" />
+            <enum name="showAndFinish" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="duration" format="integer"/>
+        <attr name="stroke_width" format="dimension"/>
+        <attr name="color_tick" format="color"/>
+        <attr name="color_checked" format="color"/>
+        <attr name="color_unchecked" format="color"/>
+        <attr name="checked" format="boolean"/>
+        <attr name="color_unchecked_stroke" format="color"/>
+    </declare-styleable>
+</resources>

@@ -16,4 +16,9 @@
     <color name="sign_textColor_normal">#BCBECC</color>
     <color name="textColor_b2">#B2B2B2</color>
     <color name="textColor_333">#333333</color>
+    <color name="gray70">#7bF0F0F0</color>
+    <color name="gray65">#656566</color>
+    <color name="gray_c8">#C8CCD4</color>
+    <color name="gray_f7">#F7F8FA</color>
+    <color name="black_222">#222329</color>
 </resources>

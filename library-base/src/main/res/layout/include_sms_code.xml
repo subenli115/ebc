@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@null"
-
         android:layout_centerVertical="true"
         android:textColorHint="@color/textColor_b2"
         android:paddingLeft="41dp"
@@ -23,8 +22,8 @@
         android:singleLine="true"
         android:inputType="number"
         android:layout_toLeftOf="@+id/tv_sms_getcode"
-        android:maxLength="4"
-        android:textColor="@color/textColor_333"
+        android:maxLength="6"
+        android:textColor="@color/white"
         android:textSize="16sp"
         />
 

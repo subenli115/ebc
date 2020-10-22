@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.benwunet.sign.ui.LoginViewModel" />
+            type="com.benwunet.sign.ui.viewmodel.LoginViewModel" />
     </data>
 
     <RelativeLayout

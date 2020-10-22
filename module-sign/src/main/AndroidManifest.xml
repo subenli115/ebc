@@ -4,5 +4,7 @@
     <application>
         <activity android:name="com.benwunet.sign.ui.LoginActivity"></activity>
         <activity android:name="com.benwunet.sign.ui.activity.RegisterActivity"></activity>
+        <activity android:name="com.benwunet.sign.ui.activity.ForgetPwdActivity"></activity>
+        <activity android:name="com.benwunet.sign.ui.activity.InputInfoFirstActivity"></activity>
     </application>
 </manifest>

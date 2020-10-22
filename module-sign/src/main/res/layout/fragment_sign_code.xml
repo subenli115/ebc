@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.benwunet.sign.ui.LoginViewModel" />
+            type="com.benwunet.sign.ui.viewmodel.LoginViewModel" />
     </data>
 
     <RelativeLayout
@@ -76,7 +76,7 @@
                     android:textColor="@color/white"
                     android:textColorHint="@color/textColorHint"
                     android:textSize="16sp"
-                    binding:onFocusChangeCommand="@{viewModel.onFocusChangeCommand}" />
+                    />
 
             </LinearLayout>
 
@@ -98,9 +98,10 @@
                     android:layout_height="48dp"
                     android:background="?selectableItemBackground"
                     android:text="登录"
-                    android:textColor="@color/white"
+                    binding:onClickCommand="@{viewModel.codeLoginOnClickCommand}"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
-                    binding:onClickCommand="@{viewModel.loginOnClickCommand}" />
+                    />
             </LinearLayout>
 
             <RelativeLayout
@@ -130,6 +131,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="8dp"
+                    binding:onClickCommand="@{viewModel.getPwdOnClickCommand}"
                     android:text="忘记密码"
                     android:textColor="@color/textColorYellow"
                     android:textSize="14sp" />
