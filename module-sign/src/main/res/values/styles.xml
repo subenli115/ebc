@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light" tools:ignore="ResourceName">
+        <item name="colorControlNormal">#F4DE9C</item>
+        <item name="colorControlActivated">#F4DE9C</item>
+    </style>
+</resources>

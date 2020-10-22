@@ -1,0 +1,43 @@
+ext {
+    //android开发版本配置
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "29.0.2",
+            applicationId    : "com.benwunet.ebc",
+            minSdkVersion    : 23,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+    //version配置
+    versions = [
+            "support-version": "29.0.2",
+            "junit-version"  : "4.12",
+    ]
+    //support配置
+    support = [
+            "constraint-layout"       : "1.0.0-beta2",
+            'support-v4'              : "com.android.support:support-v4:${versions["support-version"]}",
+            'appcompat-v7'            : 'androidx.appcompat:appcompat:1.0.2',
+            'recyclerview-v7'         : "com.android.support:recyclerview-v7:${versions["support-version"]}",
+            'support-v13'             : "com.android.support:support-v13:${versions["support-version"]}",
+            'support-fragment'        : "com.android.support:support-fragment:${versions["support-version"]}",
+            'design'                  : 'com.google.android.material:material:1.0.0',
+            'animated-vector-drawable': "com.android.support:animated-vector-drawable:${versions["support-version"]}",
+            'junit'                   : "junit:junit:${versions["junit-version"]}",
+    ]
+    //依赖第三方配置
+    dependencies = [
+            "MVVMHabit"                            : "com.github.goldze:MVVMHabit:3.1.0",
+            //阿里路由框架
+            "arouter-api"                          : "com.alibaba:arouter-api:1.4.1",
+            "arouter-compiler"                     : "com.alibaba:arouter-compiler:1.2.2",
+            okhttp3logging                         : 'com.squareup.okhttp3:logging-interceptor:3.12.2',
+            disklrucache                           : 'com.jakewharton:disklrucache:2.0.2',
+            autosize                               : 'me.jessyan:autosize:1.2.1',
+            "loadsir"                      : "com.kingja.loadsir:loadsir:1.3.6"
+
+    ]
+}
+
+

@@ -1,0 +1,6 @@
+<resources>
+    <string name="sign_name">登录组件</string>
+    <string name="sign_pwd_hint">登录密码</string>
+    <string name="sign_confirm_pwd_hint">确认登录密码</string>
+    <string name="sign_number_hint">手机号码</string>
+</resources>

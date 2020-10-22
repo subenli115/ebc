@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/normal_bg_black">
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_centerVertical="true"
+        android:layout_height="16dp"
+        android:src="@mipmap/iv_sign_code_input" />
+    <EditText
+        android:id="@+id/et_sms_code"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@null"
+
+        android:layout_centerVertical="true"
+        android:textColorHint="@color/textColor_b2"
+        android:paddingLeft="41dp"
+        android:gravity="center_vertical"
+        android:hint="@string/phone_code_intput"
+        android:singleLine="true"
+        android:inputType="number"
+        android:layout_toLeftOf="@+id/tv_sms_getcode"
+        android:maxLength="4"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_sms_getcode"
+        android:layout_width="105dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/normal_half_yellow"
+        android:gravity="center"
+
+        android:layout_centerVertical="true"
+        android:text="@string/sign_get_code"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+</RelativeLayout>

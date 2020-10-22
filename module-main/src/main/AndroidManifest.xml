@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.benwunet.main">
+
+    <application>
+        <!--在自己组件中注册Activity-->
+        <activity android:name="com.benwunet.main.ui.MainActivity"></activity>
+    </application>
+</manifest>

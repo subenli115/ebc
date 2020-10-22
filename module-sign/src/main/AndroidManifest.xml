@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.benwunet.sign">
+
+    <application>
+        <activity android:name="com.benwunet.sign.ui.LoginActivity"></activity>
+        <activity android:name="com.benwunet.sign.ui.activity.RegisterActivity"></activity>
+    </application>
+</manifest>

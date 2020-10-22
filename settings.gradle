@@ -1,0 +1,3 @@
+include ':library-network'
+include ':app', ':library-base', ':library-network', ':module-main',':module-sign', ':module-home', ':module-user', ':library-res', ':module-cards', ':module-msg', ':module-find'
+

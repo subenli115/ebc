@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sign_tabs">
+        <item>人脸登录</item>
+        <item>账户登录</item>
+        <item>短信登录</item>
+    </string-array>
+</resources>
