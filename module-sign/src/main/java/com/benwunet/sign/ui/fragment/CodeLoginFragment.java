@@ -35,6 +35,22 @@ public class CodeLoginFragment extends BaseFragment<FragmentSignCodeBinding, Log
     }
 
     @Override
+    public void initViewObservable() {
+        binding.smsCodeView.setOnSmsCallBack(new SmsCodeView.OnSmsCallBack() {
+            @Override
+            public void call(int type) {
+                viewModel.getCode(IConstants.LOGIN);
+            }
+        });
+        viewModel.isSend.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean code) {
+                binding.smsCodeView.startDjs();
+            }
+        });
+    }
+
+    @Override
     public int initVariableId() {
         return BR.viewModel;
     }
@@ -42,18 +58,6 @@ public class CodeLoginFragment extends BaseFragment<FragmentSignCodeBinding, Log
     @Override
     public void initData() {
         binding.smsCodeView.setTvPhone(binding.etPhone);
-        binding.smsCodeView.setOnSmsCallBack(new SmsCodeView.OnSmsCallBack() {
-            @Override
-            public void call(int type, Map<String, String> map) {
-                viewModel.getCode(IConstants.LOGIN);
-            }
-        });
-        viewModel.isSend.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean code) {
-                    binding.smsCodeView.startDjs();
-            }
-        });
     }
 
 }

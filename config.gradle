@@ -28,15 +28,15 @@ ext {
     ]
     //依赖第三方配置
     dependencies = [
-            "MVVMHabit"                            : "com.github.goldze:MVVMHabit:3.1.0",
+            "MVVMHabit"       : "com.github.goldze:MVVMHabit:3.1.0",
             //阿里路由框架
-            "arouter-api"                          : "com.alibaba:arouter-api:1.4.1",
-            "arouter-compiler"                     : "com.alibaba:arouter-compiler:1.2.2",
-            okhttp3logging                         : 'com.squareup.okhttp3:logging-interceptor:3.12.2',
-            disklrucache                           : 'com.jakewharton:disklrucache:2.0.2',
-            autosize                               : 'me.jessyan:autosize:1.2.1',
-            "loadsir"                      : "com.kingja.loadsir:loadsir:1.3.6"
-
+            "arouter-api"     : "com.alibaba:arouter-api:1.4.1",
+            "arouter-compiler": "com.alibaba:arouter-compiler:1.2.2",
+            okhttp3logging    : 'com.squareup.okhttp3:logging-interceptor:3.12.2',
+            disklrucache      : 'com.jakewharton:disklrucache:2.0.2',
+            autosize          : 'me.jessyan:autosize:1.2.1',
+            "loadsir"         : "com.kingja.loadsir:loadsir:1.3.6",
+            xxpermissions    : 'com.hjq:xxpermissions:8.8'
     ]
 }
 

@@ -71,7 +71,7 @@
                     android:maxLines="12"
                     android:paddingLeft="11dp"
                     android:paddingRight="11dp"
-                    android:text="@={viewModel.userName}"
+                    android:text="@={viewModel.phone}"
                     android:textColor="@color/white"
                     android:textColorHint="@color/textColorHint"
                     android:textSize="16sp"
@@ -138,7 +138,7 @@
                     android:id="@+id/checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
+                    android:checked="true"
                     android:theme="@style/MyCheckBox"></CheckBox>
 
                 <TextView

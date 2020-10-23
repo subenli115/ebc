@@ -24,4 +24,6 @@ public interface LocalDataSource {
      * 获取用户密码
      */
     String getPassword();
+
+
 }

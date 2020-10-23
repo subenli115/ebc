@@ -189,13 +189,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
                         phone=mPhone;
                     }
                     if (mOnSmsCallBack != null) {
-//                        registerSms();
-                        if(phone.length()>0){
-                            codeMap = MapUtils.getCodeMap("", phone, "false");
-                        }else{
-                             codeMap = MapUtils.getCodeMap("", phone, "false");
-                        }
-                        mOnSmsCallBack.call(TYPE_POST, codeMap);
+                        mOnSmsCallBack.call(TYPE_POST);
                     }
                 }
             }
@@ -314,7 +308,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
      * 自动填写短信的回调
      */
     public interface OnSmsCallBack {
-        void call(int type, Map<String, String> codeMap);
+        void call(int type);
     }
 
     /**

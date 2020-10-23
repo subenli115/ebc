@@ -18,9 +18,24 @@ android {
         }
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file("signature/benwumingpian.jks")
+            storePassword 'bwmp123456'
+            keyAlias 'bwmpKey'
+            keyPassword 'bwmp123456'
         }
     }
     sourceSets {

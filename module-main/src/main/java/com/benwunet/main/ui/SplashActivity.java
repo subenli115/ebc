@@ -22,10 +22,16 @@ import com.benwunet.base.contract._Login;
 import com.benwunet.base.global.SPKeyGlobal;
 import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.main.R;
+import com.hjq.permissions.OnPermission;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
+
+import java.util.List;
 
 import io.reactivex.functions.Consumer;
 import me.goldze.mvvmhabit.bus.RxBus;
 import me.goldze.mvvmhabit.bus.RxSubscriptions;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * Created by feng on 2020/10/15.
@@ -59,6 +65,24 @@ public class SplashActivity extends Activity {
                 inMain();
             }
         }, 3 * 1000);
+        XXPermissions.with(this)
+                .permission(Permission.RECORD_AUDIO)
+                .permission(Permission.READ_PHONE_STATE)
+                .permission(Permission.CAMERA)
+                .permission(Permission.WRITE_EXTERNAL_STORAGE)
+                .permission(Permission.WRITE_SETTINGS)
+                // 申请多个权限
+                .permission(Permission.Group.STORAGE)
+                .request(new OnPermission() {
+
+                    @Override
+                    public void hasPermission(List<String> granted, boolean all) {
+                    }
+
+                    @Override
+                    public void noPermission(List<String> denied, boolean never) {
+                    }
+                });
     }
 
     /**

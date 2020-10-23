@@ -8,4 +8,7 @@ public class SPKeyGlobal {
     public static final String USER_INFO = "user_info";
     public static final String USE_FIRST = "isFirstUse";
     public static final String TOKEN = "accessToken";
+    public static final String USERNAME = "userName";
+    public static final String PASSWORD = "password";
+    public static final String REMEMBER = "remember";
 }

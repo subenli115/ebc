@@ -2,9 +2,23 @@
     package="com.benwunet.sign">
 
     <application>
-        <activity android:name="com.benwunet.sign.ui.LoginActivity"></activity>
-        <activity android:name="com.benwunet.sign.ui.activity.RegisterActivity"></activity>
-        <activity android:name="com.benwunet.sign.ui.activity.ForgetPwdActivity"></activity>
-        <activity android:name="com.benwunet.sign.ui.activity.InputInfoFirstActivity"></activity>
+        <activity
+            android:name="com.benwunet.sign.ui.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.sign.ui.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.sign.ui.activity.ForgetPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.sign.ui.activity.InputInfoFirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.baidu.idl.face.platform.ui.FaceDetectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.sign.ui.activity.FaceDetectExpActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

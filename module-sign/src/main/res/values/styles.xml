@@ -1,6 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="MyCheckBox" parent="Theme.AppCompat.Light" tools:ignore="ResourceName">
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName"
+    >
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light" >
         <item name="colorControlNormal">#F4DE9C</item>
         <item name="colorControlActivated">#F4DE9C</item>
+    </style>
+    <style name="DefaultDialog" parent="android:style/Theme.Dialog" >
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
     </style>
 </resources>

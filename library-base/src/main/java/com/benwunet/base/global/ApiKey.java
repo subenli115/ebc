@@ -26,4 +26,10 @@ public interface ApiKey {
      */
     String MEMBER_REG = "member/reg";
 
+    /**
+     * 密码登录
+     */
+    String OAUTH_PASS = "oauth/pass";
+
+
 }

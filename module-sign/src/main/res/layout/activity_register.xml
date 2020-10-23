@@ -83,7 +83,8 @@
             <com.benwunet.sign.ui.wdiget.SmsCodeView
                 android:id="@+id/smsCodeView"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
                 app:y_change_content="@={viewModel.verifyCode}"
                 />
 
@@ -190,6 +191,7 @@
         android:layout_marginLeft="5.5dp"
         android:textSize="12sp"
         />
+
 
 
 </LinearLayout>

@@ -1,8 +1,6 @@
 package com.benwunet.ebc;
 
 import com.benwunet.base.config.ModuleLifecycleConfig;
-import com.benwunet.base.global.SPKeyGlobal;
-import com.benwunet.base.utils.SPUtils;
 
 import me.goldze.mvvmhabit.base.BaseApplication;
 
@@ -21,16 +19,5 @@ public class MyAPP extends BaseApplication {
         //....
         //初始化组件(靠后)
         ModuleLifecycleConfig.getInstance().initModuleLow(this);
-    }
-    public static void setAccessToken(String accessToken) {
-        MyAPP.accessToken = accessToken;
-    }
-
-
-    public static String getAccessToken() {
-        if(accessToken==null||accessToken.length()==0){
-            accessToken = SPUtils.getString(SPKeyGlobal.TOKEN);
-        }
-        return accessToken;
     }
 }

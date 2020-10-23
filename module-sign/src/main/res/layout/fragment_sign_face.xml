@@ -50,6 +50,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                binding:onClickCommand="@{viewModel.faceOnClickCommand}"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="116dp"
                 android:src="@mipmap/iv_sign_face" />
