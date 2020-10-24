@@ -1,37 +1,20 @@
 package com.benwunet.main.ui;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowInsets;
-import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.benwunet.base.contract._Login;
 import com.benwunet.base.global.SPKeyGlobal;
 import com.benwunet.base.router.RouterActivityPath;
-import com.benwunet.main.R;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 
 import java.util.List;
-
-import io.reactivex.functions.Consumer;
-import me.goldze.mvvmhabit.bus.RxBus;
-import me.goldze.mvvmhabit.bus.RxSubscriptions;
-import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * Created by feng on 2020/10/15.
@@ -70,7 +53,6 @@ public class SplashActivity extends Activity {
                 .permission(Permission.READ_PHONE_STATE)
                 .permission(Permission.CAMERA)
                 .permission(Permission.WRITE_EXTERNAL_STORAGE)
-                .permission(Permission.WRITE_SETTINGS)
                 // 申请多个权限
                 .permission(Permission.Group.STORAGE)
                 .request(new OnPermission() {

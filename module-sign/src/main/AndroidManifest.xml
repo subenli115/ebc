@@ -13,12 +13,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.benwunet.sign.ui.activity.InputInfoFirstActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.baidu.idl.face.platform.ui.FaceDetectActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.benwunet.sign.ui.activity.FaceDetectExpActivity"
             android:screenOrientation="portrait" />
+
     </application>
 </manifest>

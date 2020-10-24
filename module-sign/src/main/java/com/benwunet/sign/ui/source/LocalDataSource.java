@@ -16,6 +16,18 @@ public interface LocalDataSource {
     void savePassword(String password);
 
     /**
+     * 保存token
+     */
+
+    void saveToken(String token);
+
+    /**
+     * 保存token
+     */
+
+    void saveRefreshToken(String reToken);
+
+    /**
      * 获取用户名
      */
     String getUserName();
@@ -24,6 +36,12 @@ public interface LocalDataSource {
      * 获取用户密码
      */
     String getPassword();
+
+    /**
+     * 获取token
+     */
+    String getToken();
+
 
 
 }

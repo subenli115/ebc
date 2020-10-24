@@ -9,8 +9,6 @@ import me.goldze.mvvmhabit.base.BaseApplication;
  */
 
 public class MyAPP extends BaseApplication {
-    //用户token
-    private static String accessToken;
     @Override
     public void onCreate() {
         super.onCreate();

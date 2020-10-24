@@ -31,5 +31,22 @@ public interface ApiKey {
      */
     String OAUTH_PASS = "oauth/pass";
 
+    /**
+     *  人脸token
+     */
+    String OAUTH_FACE_TOKEN = "oauth/face/token";
+
+    /**
+     *  人脸登录
+     */
+    String OAUTH_FACE = "oauth/face";
+
+    /**
+     *  找回密码
+     */
+    String MEMBER_RES = "member/res";
+
+
+
 
 }

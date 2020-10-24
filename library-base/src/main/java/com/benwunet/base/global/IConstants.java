@@ -10,5 +10,7 @@ package com.benwunet.base.global;
 public interface IConstants {
 
 	String REG	= "REG";
+	String RES	= "RES";
 	String LOGIN = "LOGIN";
+	String FORGET = "FORGET";
 }

@@ -11,4 +11,5 @@ public class SPKeyGlobal {
     public static final String USERNAME = "userName";
     public static final String PASSWORD = "password";
     public static final String REMEMBER = "remember";
+    public static final String R_TOKEN = "r_accessToken";
 }

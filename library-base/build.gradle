@@ -42,7 +42,6 @@ dependencies {
     api project(':library-res')
     api project(':library-network')
     api project(':faceplatform-ui')
-    api project(':faceplatform-release')
     //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
     api rootProject.ext.dependencies.MVVMHabit
     api rootProject.ext.dependencies.autosize
@@ -50,5 +49,5 @@ dependencies {
     api rootProject.ext.dependencies["arouter-api"]
     api rootProject.ext.dependencies["loadsir"]
     api rootProject.ext.dependencies.xxpermissions
-
+    api rootProject.ext.dependencies.AndroidPicker
 }

@@ -14,7 +14,6 @@ import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.FragmentSignCodeBinding;
 import com.benwunet.sign.ui.viewmodel.LoginViewModel;
 
-import java.util.Map;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 

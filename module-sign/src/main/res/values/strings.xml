@@ -5,8 +5,20 @@
     <string name="sign_confirm_pwd_hint">确认登录密码</string>
     <string name="sign_number_hint">手机号码</string>
     <string name="sign_info_back">上一步</string>
+    <string name="sign_info_next">下一步</string>
     <string name="sign_skip">跳过</string>
     <string name="sign_name_hint">请填写您的真实姓名</string>
     <string name="sign_photo">个人形象照</string>
+    <string name="sign_sex">你的性别</string>
+    <string name="sign_sex_hint">本无依据性别设计偏好内容</string>
+    <string name="sign_info_name">输入姓名</string>
+    <string name="sign_info_company">公司/单位</string>
+    <string name="sign_info_job">职务</string>
+    <string name="sign_info_industry">行业</string>
+    <string name="sign_info_birthday">您的出生年月</string>
+    <string name="sign_info_city">所在城市</string>
+    <string name="sign_info_job_hint">开启职业信息，将更好的展示自己</string>
+    <string name="sign_info_birthday_hint">仅用做推荐和偏好的依据，本无会帮您保密</string>
+    <string name="sign_info_city_hint">默认定位城市，点击选择其他城市</string>
     <string name="sign_photo_hint">添加个性化的个人形象照，更能展现自我</string>
 </resources>

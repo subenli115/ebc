@@ -1,21 +1,16 @@
 package com.benwunet.sign.ui.viewmodel;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.Application;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
-import android.text.TextUtils;
-
-import com.baidu.idl.face.platform.ui.FaceDetectActivity;
+import com.benwunet.base.global.IConstants;
 import com.benwunet.sign.ui.activity.FaceDetectExpActivity;
 import com.benwunet.sign.ui.activity.ForgetPwdActivity;
-import com.benwunet.sign.ui.activity.RegisterActivity;
-import com.benwunet.sign.ui.bean.UserBean;
+import com.benwunet.sign.ui.activity.InputInfoFirstActivity;
 import com.benwunet.sign.ui.respository.SignRepository;
 import com.benwunet.sign.ui.source.local.LocalDataSourceImpl;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -34,20 +29,20 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  */
 
 public class LoginViewModel extends BaseViewModel {
-    private SignRepository signRepository = SignRepository.getInstance(LocalDataSourceImpl.getInstance(),this);
+
+    private SignRepository signRepository = SignRepository.getInstance(LocalDataSourceImpl.getInstance(), this);
     //密码的绑定
     public SingleLiveEvent<String> password = new SingleLiveEvent<>();
     public SingleLiveEvent<Boolean> isRemember = new SingleLiveEvent<>();
+    public SingleLiveEvent<Boolean> privacyCheck = new SingleLiveEvent<>();
     public SingleLiveEvent<String> verifyCode = new SingleLiveEvent<>();
     public SingleLiveEvent<String> confirm = new SingleLiveEvent<>();
     public SingleLiveEvent<Boolean> isSend = new SingleLiveEvent<>();
-    public SingleLiveEvent<Boolean> privacyCheck = new SingleLiveEvent<>();
     public SingleLiveEvent<String> phone = new SingleLiveEvent<>();
-    public SingleLiveEvent<UserBean> user = new SingleLiveEvent<>();
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
-            phone.setValue(signRepository.getUserName());
+        phone.setValue(signRepository.getUserName());
     }
 
 
@@ -65,14 +60,14 @@ public class LoginViewModel extends BaseViewModel {
     public BindingCommand register = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            register();
+            register(IConstants.REG);
         }
     });
-    //注册页面的点击事件
+    //人脸页面的点击事件
     public BindingCommand faceOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(FaceDetectActivity.class);
+            startActivity(FaceDetectExpActivity.class);
         }
     });
 
@@ -88,11 +83,11 @@ public class LoginViewModel extends BaseViewModel {
     public BindingCommand registerOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(RegisterActivity.class);
+            startActivity(InputInfoFirstActivity.class);
         }
     });
 
-    //注册页面的点击事件
+    //找回密码的点击事件
     public BindingCommand getPwdOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
@@ -116,6 +111,16 @@ public class LoginViewModel extends BaseViewModel {
         }
     });
 
+    //找回密码的点击事件
+    public BindingCommand forgetOnClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            register(IConstants.RES);
+        }
+    });
+
+
+
     /**
      * 登录操作
      **/
@@ -128,7 +133,7 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入密码！");
             return;
         }
-         signRepository.login(phone.getValue(), password.getValue());
+        signRepository.login(phone.getValue(), password.getValue());
 
     }
 
@@ -144,15 +149,18 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入验证码！");
             return;
         }
-        signRepository.codeLogin(phone.getValue(), user,verifyCode.getValue());
+        signRepository.codeLogin(phone.getValue(), verifyCode.getValue());
     }
 
     /**
-     * 注册操作
-     **/
-    private void register() {
+     * 注册或找回操作
+     *
+     * @param type 类型
+     *
+     * */
+    private void register(String type) {
         String phoneValue = phone.getValue();
-        if (StringUtils.isEmpty(phoneValue)|| phoneValue.length()!=11) {
+        if (StringUtils.isEmpty(phoneValue) || phoneValue.length() != 11) {
             ToastUtils.showLong("手机不正确");
             return;
         }
@@ -160,7 +168,7 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入验证码！");
             return;
         }
-        if(StringUtils.isEmpty(password.getValue())){
+        if (StringUtils.isEmpty(password.getValue())) {
             ToastUtils.showLong("密码不能为空");
             return;
         }
@@ -168,8 +176,14 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showLong("密码不一致");
             return;
         }
-        signRepository.register(phoneValue, password.getValue(), confirm.getValue(),verifyCode.getValue());
+        signRepository.register(phoneValue, password.getValue(), confirm.getValue(), verifyCode.getValue(),type);
     }
+
+
+
+
+
+
 
 
 }

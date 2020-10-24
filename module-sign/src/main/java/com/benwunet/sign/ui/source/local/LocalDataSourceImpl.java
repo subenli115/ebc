@@ -43,6 +43,16 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public void saveToken(String token) {
+        SPUtils.getInstance().put(SPKeyGlobal.PASSWORD, token);
+    }
+
+    @Override
+    public void saveRefreshToken(String reToken) {
+        SPUtils.getInstance().put(SPKeyGlobal.PASSWORD, reToken);
+    }
+
+    @Override
     public String getUserName() {
         return SPUtils.getInstance().getString(SPKeyGlobal.USERNAME);
     }
@@ -52,9 +62,10 @@ public class LocalDataSourceImpl implements LocalDataSource {
         return SPUtils.getInstance().getString(SPKeyGlobal.PASSWORD);
     }
 
-
-
-
+    @Override
+    public String getToken() {
+        return null;
+    }
 
 
 }

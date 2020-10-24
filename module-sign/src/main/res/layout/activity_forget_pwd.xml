@@ -64,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:hint="@string/sign_number_hint"
-                    android:maxLines="12"
+                    android:maxLines="1"
+                    android:inputType="phone"
                     android:paddingLeft="11dp"
                     android:paddingRight="11dp"
                     android:text="@={viewModel.phone}"
@@ -79,6 +80,7 @@
                 android:id="@+id/smsCodeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:y_change_content="@={viewModel.verifyCode}"
                 android:layout_marginTop="20dp" />
 
             <LinearLayout
@@ -103,7 +105,7 @@
                     android:background="@null"
                     android:hint="@string/sign_new_pwd_hint"
                     android:inputType="textPassword"
-                    android:maxLines="12"
+                    android:maxLines="1"
                     android:paddingLeft="11dp"
                     android:paddingRight="11dp"
                     android:text="@={viewModel.password}"
@@ -134,7 +136,7 @@
                     android:background="@null"
                     android:hint="@string/sign_confirm_pwd_hint"
                     android:inputType="textPassword"
-                    android:maxLines="12"
+                    android:maxLines="1"
                     android:paddingLeft="11dp"
                     android:paddingRight="11dp"
                     android:text="@={viewModel.confirm}"
@@ -154,10 +156,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="?selectableItemBackground"
-                    android:text="注册"
+                    android:text="确认"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    binding:onClickCommand="@{viewModel.register}" />
+                    binding:onClickCommand="@{viewModel.forgetOnClickCommand}" />
             </LinearLayout>
 
 

@@ -36,7 +36,8 @@ ext {
             disklrucache      : 'com.jakewharton:disklrucache:2.0.2',
             autosize          : 'me.jessyan:autosize:1.2.1',
             "loadsir"         : "com.kingja.loadsir:loadsir:1.3.6",
-            xxpermissions    : 'com.hjq:xxpermissions:8.8'
+            xxpermissions     : 'com.hjq:xxpermissions:8.8',
+            AndroidPicker     : 'com.contrarywind:Android-PickerView:4.1.9'
     ]
 }
 

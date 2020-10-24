@@ -12,8 +12,6 @@ import com.benwunet.sign.databinding.ActivityForgetPwdBinding;
 import com.benwunet.sign.ui.viewmodel.LoginViewModel;
 import com.benwunet.sign.ui.wdiget.SmsCodeView;
 
-import java.util.Map;
-
 import me.goldze.mvvmhabit.base.BaseActivity;
 
 /**
@@ -28,7 +26,6 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 
 public class ForgetPwdActivity extends BaseActivity<ActivityForgetPwdBinding, LoginViewModel> {
 
-    //ActivityLoginBinding类是databinding框架自定生成的,对应activity_login.xml
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_forget_pwd;
@@ -50,7 +47,7 @@ public class ForgetPwdActivity extends BaseActivity<ActivityForgetPwdBinding, Lo
         binding.smsCodeView.setOnSmsCallBack(new SmsCodeView.OnSmsCallBack() {
             @Override
             public void call(int type) {
-                viewModel.getCode(IConstants.REG);
+                viewModel.getCode(IConstants.RES);
             }
         });
     }
