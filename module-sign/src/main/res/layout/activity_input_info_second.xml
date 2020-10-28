@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="ResourceName">
@@ -9,13 +8,15 @@
 
         <variable
             name="viewModel"
-            type="com.benwunet.sign.ui.viewmodel.InfoViewModel" />
+            type="com.benwunet.sign.ui.viewmodel.InfoViewModel"/>
+
+        <import type="android.view.View" />
+
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,9 +24,9 @@
             android:layout_marginLeft="16.5dp"
             android:layout_marginTop="30dp"
             android:text="@string/sign_info_back"
-            binding:onClickCommand="@{viewModel.closeOnClickCommand}"
             android:textColor="@color/gray65"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            binding:onClickCommand="@{viewModel.closeOnClickCommand}" />
 
 
         <TextView
@@ -37,10 +38,10 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/normal_bg_gray"
             android:gravity="center"
-            binding:onClickCommand="@{viewModel.skipOnClickCommand}"
             android:text="@string/sign_skip"
             android:textColor="@color/gray_f7"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            binding:onClickCommand="@{viewModel.skipOnClickCommand}" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,96 +70,101 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8.5dp"
                 android:text="@string/sign_sex_hint" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-            
-            <RelativeLayout
-                android:layout_marginTop="28dp"
-                android:layout_marginRight="44dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                
-                <ImageView
-                    android:id="@+id/iv_man"
-                    android:layout_width="80.5dp"
-                    android:layout_height="80.5dp"
-                    android:src="@mipmap/icon_sex_man"
-                    />
-                <LinearLayout
-                    android:layout_width="20dp"
-                    android:gravity="center"
-                    android:layout_alignRight="@+id/iv_man"
-                    android:layout_alignBottom="@+id/iv_man"
-                    android:background="@drawable/shape_dot_yellow"
-                    android:layout_height="20dp">
-                    <ImageView
-                        android:layout_width="11dp"
-                        android:layout_height="8dp"
-                        android:src="@mipmap/icon_sign_select"
-                        />
-                </LinearLayout>
+                android:orientation="horizontal">
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/iv_man"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="12dp"
-                    android:text="男"
-                    android:textColor="@color/black_222"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    android:layout_marginTop="28dp"
+                    android:layout_marginRight="44dp">
 
-            <RelativeLayout
-                android:layout_marginTop="28dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/iv_woman"
-                    android:layout_width="80.5dp"
-                    android:layout_height="80.5dp"
-                    android:src="@mipmap/icon_sex_woman"
-                    />
-                <LinearLayout
-                    android:layout_width="20dp"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    android:layout_alignRight="@+id/iv_woman"
-                    android:layout_alignBottom="@+id/iv_woman"
-                    android:background="@drawable/shape_dot_yellow"
-                    android:layout_height="20dp">
                     <ImageView
-                        android:layout_width="11dp"
-                        android:layout_height="8dp"
-                        android:src="@mipmap/icon_sign_select"
-                        />
-                </LinearLayout>
+                        android:id="@+id/iv_man"
+                        android:layout_width="80.5dp"
+                        android:layout_height="80.5dp"
+                        android:src="@mipmap/icon_sex_man"
+                        binding:onClickCommand="@{viewModel.manOnClickCommand}" />
 
-                <TextView
+                    <LinearLayout
+                        android:id="@+id/ll_man"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignRight="@+id/iv_man"
+                        android:layout_alignBottom="@+id/iv_man"
+                        android:background="@drawable/shape_dot_yellow"
+                        android:gravity="center"
+                        android:visibility="@{viewModel.selectType}">
+
+                        <ImageView
+                            android:layout_width="11dp"
+                            android:layout_height="8dp"
+                            android:src="@mipmap/icon_sign_select" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_man"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="12dp"
+                        android:text="男"
+                        android:textColor="@color/black_222"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="女"
-                    android:layout_marginTop="11.5dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/iv_woman"
-                    android:textSize="16sp"
-                    android:textColor="@color/gray_97"
-                    />
-            </RelativeLayout>
+                    android:layout_marginTop="28dp">
+
+                    <ImageView
+                        android:id="@+id/iv_woman"
+                        android:layout_width="80.5dp"
+                        android:layout_height="80.5dp"
+                        android:src="@mipmap/icon_sex_woman"
+                        binding:onClickCommand="@{viewModel.womanOnClickCommand}" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_woman"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignRight="@+id/iv_woman"
+                        android:layout_alignBottom="@+id/iv_woman"
+                        android:background="@drawable/shape_dot_yellow"
+                        android:gravity="center"
+                        android:visibility="@{viewModel.selectType == View.GONE ? View.VISIBLE : View.GONE}">
+
+                        <ImageView
+                            android:layout_width="11dp"
+                            android:layout_height="8dp"
+                            android:src="@mipmap/icon_sign_select" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_woman"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="11.5dp"
+                        android:text="女"
+                        android:textColor="@color/gray_97"
+                        android:textSize="16sp" />
+                </RelativeLayout>
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginTop="52.5dp"
                 android:text="@string/sign_info_birthday"
                 android:textColor="@color/black_222"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -168,23 +174,22 @@
 
 
             <TextView
-                android:layout_marginTop="28dp"
+                android:id="@+id/tim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1990年6月1日"
+                android:layout_marginTop="28dp"
+                android:background="@color/transparent"
+                android:text="@={viewModel.time}"
+                android:textColor="@color/gray_66"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:background="@color/transparent"
-                android:textColor="@color/gray_66"
-                binding:onClickCommand="@{viewModel.timeOnClickCommand}"
-                />
+                binding:onClickCommand="@{viewModel.timeOnClickCommand}" />
 
             <View
-                android:layout_marginTop="4dp"
                 android:layout_width="159dp"
                 android:layout_height="2dp"
-                android:background="@color/gray_b6"
-                />
+                android:layout_marginTop="4dp"
+                android:background="@color/gray_b6" />
 
 
         </LinearLayout>
@@ -192,8 +197,8 @@
         <LinearLayout
             android:layout_width="247dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="31dp"
             android:background="@drawable/normal_bg_yellow"
             android:orientation="vertical">

@@ -23,6 +23,14 @@ import java.util.Map;
 
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
+/**
+ * @Package: com.benwunet.sign.ui.activity
+ * @ClassName: FaceDetectExpActivity
+ * @Description: 人脸扫描页面
+ * @Author: feng
+ * @CreateDate: 2020/10/22 0022 15:13
+ * @Version: 1.0
+ */
 public class FaceDetectExpActivity extends FaceDetectActivity implements
         TimeoutDialog.OnTimeoutDialogClickListener {
 

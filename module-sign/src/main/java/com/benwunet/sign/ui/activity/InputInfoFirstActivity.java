@@ -2,10 +2,20 @@ package com.benwunet.sign.ui.activity;
 
 import android.os.Bundle;
 
+import androidx.lifecycle.Observer;
+
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
-import com.benwunet.sign.databinding.ActivityRegisterBinding;
+import com.benwunet.sign.databinding.ActivityInputInfoFirstBinding;
+import com.benwunet.sign.ui.config.GlideEngine;
 import com.benwunet.sign.ui.viewmodel.InfoViewModel;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
+
+import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 
@@ -19,7 +29,7 @@ import me.goldze.mvvmhabit.base.BaseActivity;
  */
 
 
-public class InputInfoFirstActivity extends BaseActivity<ActivityRegisterBinding, InfoViewModel> {
+public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstBinding, InfoViewModel> {
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -33,10 +43,35 @@ public class InputInfoFirstActivity extends BaseActivity<ActivityRegisterBinding
 
     @Override
     public void initViewObservable() {
+        viewModel.isSelectPhoto.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                PictureSelector.create(InputInfoFirstActivity.this)
+                        .openGallery(PictureMimeType.ofImage())
+                        .loadImageEngine(GlideEngine.createGlideEngine())
+                        .maxSelectNum(1)
+                        .selectionMode(PictureConfig.SINGLE)
+                        .isEnableCrop(true)
+                        .withAspectRatio(1,1)
+                        .forResult(new OnResultCallbackListener<LocalMedia>() {
+                            @Override
+                            public void onResult(List<LocalMedia> result) {
+                                viewModel.imgUrl.setValue(result.get(0).getPath());
+                            }
+
+                            @Override
+                            public void onCancel() {
+
+                            }
+                        });
+
+            }
+        });
     }
 
     @Override
     public void initData() {
+        binding.setLifecycleOwner(this);
     }
 
 }

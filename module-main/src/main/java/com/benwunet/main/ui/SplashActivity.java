@@ -3,7 +3,6 @@ package com.benwunet.main.ui;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
@@ -42,16 +41,19 @@ public class SplashActivity extends Activity {
         editor.putBoolean(SPKeyGlobal.USE_FIRST, false);
         //提交修改
         editor.commit();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                inMain();
-            }
-        }, 3 * 1000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                inMain();
+//            }
+//        }, 3 * 1000);
+        inMain();
         XXPermissions.with(this)
                 .permission(Permission.RECORD_AUDIO)
                 .permission(Permission.READ_PHONE_STATE)
                 .permission(Permission.CAMERA)
+                .permission(Permission.ACCESS_FINE_LOCATION)
+                .permission(Permission.ACCESS_COARSE_LOCATION)
                 .permission(Permission.WRITE_EXTERNAL_STORAGE)
                 // 申请多个权限
                 .permission(Permission.Group.STORAGE)

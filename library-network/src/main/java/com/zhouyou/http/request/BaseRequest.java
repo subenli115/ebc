@@ -355,10 +355,11 @@ public abstract class BaseRequest<R extends BaseRequest> {
         return (R) this;
     }
 
-    public R accessToken(boolean accessToken) {
-        this.accessToken = accessToken;
+    public R accessToken() {
+        this.headers.put("Authorization","Bearer f59eab2b-34c4-4d87-bd53-4cc69cac0196");
         return (R) this;
     }
+
 
     public R syncRequest(boolean syncRequest) {
         this.isSyncRequest = syncRequest;

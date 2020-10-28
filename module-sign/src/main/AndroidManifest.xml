@@ -9,6 +9,9 @@
             android:name="com.benwunet.sign.ui.activity.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.benwunet.sign.ui.activity.FaceDetectExpActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.benwunet.sign.ui.activity.ForgetPwdActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -16,8 +19,14 @@
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.benwunet.sign.ui.activity.FaceDetectExpActivity"
+            android:name="com.benwunet.sign.ui.activity.InputInfoSecondActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name="com.benwunet.sign.ui.activity.InputInfoThirdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.sign.ui.activity.InputInfoFourthActivity"
+            android:screenOrientation="portrait" />
+        <service android:name="com.amap.api.location.APSService"/>
     </application>
 </manifest>

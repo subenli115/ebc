@@ -47,6 +47,26 @@ public interface ApiKey {
     String MEMBER_RES = "member/res";
 
 
+    /**
+     *  职称数据
+     */
+    String SYS_POSITION = "sys/position";
+
+    /**
+     *  行业数据
+     */
+    String SYS_INDUSTRY = "sys/industry";
+
+    /**
+     *  热门话题
+     */
+    String CIRCLE_TOPIC_HOT = "circle/topic/hot";
+
+
+    /**
+     *  最新话题
+     */
+    String CIRCLE_TOPIC_NEW = "circle/topic/new";
 
 
 }

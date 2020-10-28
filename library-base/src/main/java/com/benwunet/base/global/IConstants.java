@@ -13,4 +13,6 @@ public interface IConstants {
 	String RES	= "RES";
 	String LOGIN = "LOGIN";
 	String FORGET = "FORGET";
+	String HOTTOPIC = "HOTTOPIC";
+	String NEWTOPIC = "NEWTOPIC";
 }

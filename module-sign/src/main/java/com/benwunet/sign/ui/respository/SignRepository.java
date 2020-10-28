@@ -107,7 +107,7 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
         HttpManager.post(ApiKey.OAUTH_SMS)
                 .headers("client_id","app")
                 .headers("client_secret","123456")
-                .accessToken(true)
+                .accessToken()
                 .upJson(GsonUtils.toJson(MapUtils.getCodeMap(verifyCode,phone)))
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<UserLoginBean>() {

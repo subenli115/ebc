@@ -50,4 +50,7 @@ dependencies {
     api rootProject.ext.dependencies["loadsir"]
     api rootProject.ext.dependencies.xxpermissions
     api rootProject.ext.dependencies.AndroidPicker
+    api rootProject.ext.dependencies.PictureSelector
+    api rootProject.ext.dependencies.citypickerview
+    api rootProject.ext.dependencies.flowlayout
 }

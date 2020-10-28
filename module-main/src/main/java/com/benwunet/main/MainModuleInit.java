@@ -1,7 +1,6 @@
 package com.benwunet.main;
 
 import android.app.Application;
-import android.os.Build;
 
 import com.benwunet.base.base.IModuleInit;
 import com.benwunet.base.base.loadsir.EmptyCallback;
@@ -10,6 +9,7 @@ import com.benwunet.base.base.loadsir.LoadingCallback;
 import com.benwunet.base.base.loadsir.TimeoutCallback;
 import com.benwunet.base.global.SPKeyGlobal;
 import com.kingja.loadsir.core.LoadSir;
+import com.lljjcoder.style.citylist.utils.CityListLoader;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.GsonDiskConverter;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -38,6 +38,10 @@ public class MainModuleInit implements IModuleInit {
     @Override
     public boolean onInitAhead(Application application) {
         KLog.e("主业务模块初始化 -- onInitAhead");
+        /**
+         * 预先加载一级列表显示 全国所有城市市的数据
+         */
+        CityListLoader.getInstance().loadCityData(application.getApplicationContext());
         EasyHttp.init(application);
         if (BuildConfig.DEBUG) {
             EasyHttp.getInstance().debug("easyhttp", true);

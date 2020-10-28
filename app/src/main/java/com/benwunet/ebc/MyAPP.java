@@ -17,5 +17,6 @@ public class MyAPP extends BaseApplication {
         //....
         //初始化组件(靠后)
         ModuleLifecycleConfig.getInstance().initModuleLow(this);
+
     }
 }
