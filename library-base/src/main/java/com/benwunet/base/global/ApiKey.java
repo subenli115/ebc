@@ -66,7 +66,23 @@ public interface ApiKey {
     /**
      *  最新话题
      */
-    String CIRCLE_TOPIC_NEW = "circle/topic/new";
+    String CIRCLE_TOPIC = "circle/topic";
+
+
+    /**
+     *  完善信息
+     */
+    String MEMBER_COMPLETE_INFORMATION = "member/complete/information";
+
+    /**
+     *  上传文件
+     */
+    String OSS_FILE_ANON = "oss/file-anon";
+
+    /**
+     *  获取用户信息
+     */
+    String MEMBER_CURRENT = "member/current";
 
 
 }

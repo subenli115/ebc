@@ -1,16 +1,15 @@
 package com.benwunet.main.ui;
 
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.core.content.ContextCompat;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.router.RouterFragmentPath;
-import com.benwunet.main.R;
 import com.benwunet.main.BR;
+import com.benwunet.main.R;
 import com.benwunet.main.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 /**
  * Created by feng on 2020/10/15
  */
-@Route(path = RouterActivityPath.Main.PAGER_MAIN)
+//@Route(path = RouterActivityPath.Main.PAGER_MAIN)
 public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewModel> {
     private List<Fragment> mFragments;
 

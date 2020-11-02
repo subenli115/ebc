@@ -4,7 +4,7 @@ package com.benwunet.sign.ui.bean;
 /**
  * @Package: com.benwunet.sign.ui.bean
  * @ClassName: codeResult
- * @Description: String
+ * @Description: String返回格式
  * @Author: feng
  * @CreateDate: 2020/10/20 0020 18:05
  * @Version: 1.0

@@ -1,6 +1,7 @@
 package com.benwunet.sign.ui.viewmodel;
 
 import android.app.Application;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -12,12 +13,16 @@ import com.benwunet.sign.ui.activity.InputInfoFirstActivity;
 import com.benwunet.sign.ui.activity.InputInfoFourthActivity;
 import com.benwunet.sign.ui.activity.InputInfoSecondActivity;
 import com.benwunet.sign.ui.activity.InputInfoThirdActivity;
+import com.benwunet.sign.ui.bean.CompleteInfoBean;
 import com.benwunet.sign.ui.bean.IndustryListBean;
 import com.benwunet.sign.ui.bean.TopicBean;
 import com.benwunet.sign.ui.bean.jobListBean;
 import com.benwunet.sign.ui.respository.InfoRepository;
 import com.trello.rxlifecycle2.LifecycleProvider;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
@@ -37,6 +42,14 @@ import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 
 public class InfoViewModel extends BaseViewModel {
 
+    private Date date;
+    private CompleteInfoBean entity;
+    private String cityId;
+
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
+    SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
+
+    public SingleLiveEvent<Boolean> complete = new SingleLiveEvent<>();
     private InfoRepository infoRepository = InfoRepository.getInstance(this);
     public SingleLiveEvent<String> imgUrl = new SingleLiveEvent<>();
     public SingleLiveEvent<String> name = new SingleLiveEvent<>();
@@ -81,16 +94,58 @@ public class InfoViewModel extends BaseViewModel {
         public void call() {
             Class<? extends LifecycleProvider> aClass = getLifecycleProvider().getClass();
             if (aClass.equals(InputInfoFirstActivity.class)) {
-                startActivity(InputInfoSecondActivity.class);
+                entity = new CompleteInfoBean();
+                entity.setAvatar(imgUrl.getValue());
+                entity.setRealName(name.getValue());
+                startAction(InputInfoSecondActivity.class);
             } else if (aClass.equals(InputInfoSecondActivity.class)) {
-                startActivity(InputInfoThirdActivity.class);
-            }else if(aClass.equals(InputInfoThirdActivity.class)){
-                startActivity(InputInfoFourthActivity.class);
-            }else {
-                ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+                if (selectType.getValue() == View.VISIBLE) {
+                    entity.setGender("1");
+                } else {
+                    entity.setGender("0");
+                }
+                try {
+                    date = formatter.parse(time.getValue());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String birthday = formatter1.format(date);
+                entity.setBirthday(birthday);
+                startAction(InputInfoThirdActivity.class);
+            } else if (aClass.equals(InputInfoThirdActivity.class)) {
+                entity.setCompany(company.getValue());
+                entity.setProvince(cityId);
+                entity.setIndustry(selectIndustry.getValue());
+                entity.setPosition(selectJob.getValue());
+                startAction(InputInfoFourthActivity.class);
+            } else {
+                if(entity.getAvatar()!=null&&entity.getAvatar().length()>0){
+                    infoRepository.uploadFile(entity, complete);
+                }else {
+                    infoRepository.completeInfo(entity,complete);
+                }
             }
         }
     });
+
+    private void startAction(Class<? extends LifecycleProvider> aClass) {
+        Bundle mBundle = new Bundle();
+        mBundle.putParcelable("entity", entity);
+        startActivity(aClass, mBundle);
+    }
+
+
+    public void setInfoEntity(CompleteInfoBean entity) {
+        if (this.entity == null) {
+            this.entity = entity;
+        }
+    }
+
+    public void setCityId(String id) {
+        cityId = id;
+
+    }
+
 
     //时间选择按钮
     public BindingCommand timeOnClickCommand = new BindingCommand(new BindingAction() {
@@ -147,7 +202,6 @@ public class InfoViewModel extends BaseViewModel {
             selectType.setValue(View.GONE);
         }
     });
-    private SingleLiveEvent<List<IndustryListBean>> data;
 
 
     public InfoViewModel(@NonNull Application application) {
@@ -156,14 +210,14 @@ public class InfoViewModel extends BaseViewModel {
         selectType.setValue(View.VISIBLE);
     }
 
-    public void  initListData() {
+    public void initListData() {
         infoRepository.getPosition(job);
         infoRepository.getIndustry(industry);
     }
 
-    public void  initTagData() {
+    public void initTagData() {
         infoRepository.getTopic(hotTag, IConstants.HOTTOPIC);
-        infoRepository.getTopic(newTag,IConstants.NEWTOPIC);
+        infoRepository.getTopic(newTag, IConstants.NEWTOPIC);
     }
 
 

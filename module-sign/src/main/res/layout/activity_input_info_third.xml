@@ -76,6 +76,7 @@
                 android:layout_marginTop="28dp"
                 android:textSize="14sp"
                 android:maxLength="11"
+                android:singleLine="true"
                 android:text="@={viewModel.company}"
                 android:paddingLeft="20dp"
                 android:hint="@string/sign_info_company"

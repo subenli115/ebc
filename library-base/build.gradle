@@ -53,4 +53,6 @@ dependencies {
     api rootProject.ext.dependencies.PictureSelector
     api rootProject.ext.dependencies.citypickerview
     api rootProject.ext.dependencies.flowlayout
+
+
 }

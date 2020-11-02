@@ -36,4 +36,11 @@ public class HttpManager {
     public static PostRequest post(String url) {
         return new CustomPostRequest(url);
     }
+
+    /**
+     * put请求
+     */
+    public static PutRequest put(String url) {
+        return new CustomPutRequest(url);
+    }
 }

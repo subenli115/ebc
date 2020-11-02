@@ -87,6 +87,7 @@
                     android:layout_height="match_parent"
                     />
                 <ImageView
+                    android:id="@+id/iv_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -122,6 +123,7 @@
                 android:maxLength="11"
                 android:gravity="center"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:text="@={viewModel.name}"
                 android:hint="@string/sign_info_name"
                 android:textColorHint="@color/gray_9e"

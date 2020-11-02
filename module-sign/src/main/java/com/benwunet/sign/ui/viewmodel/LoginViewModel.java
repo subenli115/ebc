@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import com.benwunet.base.global.IConstants;
 import com.benwunet.sign.ui.activity.FaceDetectExpActivity;
 import com.benwunet.sign.ui.activity.ForgetPwdActivity;
-import com.benwunet.sign.ui.activity.InputInfoFirstActivity;
+import com.benwunet.sign.ui.activity.RegisterActivity;
 import com.benwunet.sign.ui.respository.SignRepository;
 import com.benwunet.sign.ui.source.local.LocalDataSourceImpl;
 
@@ -83,7 +83,7 @@ public class LoginViewModel extends BaseViewModel {
     public BindingCommand registerOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(InputInfoFirstActivity.class);
+            startActivity(RegisterActivity.class);
         }
     });
 
@@ -133,7 +133,7 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入密码！");
             return;
         }
-        signRepository.login(phone.getValue(), password.getValue());
+        signRepository.login(phone.getValue(), password.getValue(),this);
 
     }
 

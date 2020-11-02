@@ -1,2 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.benwunet.msg" />
+    package="com.benwunet.msg"
+
+
+    >
+
+    <application>
+        <!--在自己组件中注册Activity-->
+        <activity android:name="com.benwunet.msg.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            ></activity>
+    </application>
+</manifest>

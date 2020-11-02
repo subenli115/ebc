@@ -1,23 +1,20 @@
 package com.benwunet.user.ui.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterFragmentPath;
-import com.benwunet.user.R;
 import com.benwunet.user.BR;
+import com.benwunet.user.R;
 import com.benwunet.user.databinding.FragmentMeBinding;
 import com.benwunet.user.ui.viewmodel.MeViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
-import me.goldze.mvvmhabit.utils.KLog;
 
 
 /**

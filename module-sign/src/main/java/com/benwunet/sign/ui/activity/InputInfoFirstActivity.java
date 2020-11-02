@@ -1,6 +1,9 @@
 package com.benwunet.sign.ui.activity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.lifecycle.Observer;
 
@@ -31,6 +34,8 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 
 public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstBinding, InfoViewModel> {
 
+    private InputMethodManager imm;
+
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_input_info_first;
@@ -56,7 +61,10 @@ public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstB
                         .forResult(new OnResultCallbackListener<LocalMedia>() {
                             @Override
                             public void onResult(List<LocalMedia> result) {
-                                viewModel.imgUrl.setValue(result.get(0).getPath());
+                                viewModel.imgUrl.setValue(result.get(0).getCutPath());
+                                Log.e("getCutPath",""+result.get(0).getCutPath());
+                                binding.ivAdd.setVisibility(View.GONE);
+
                             }
 
                             @Override

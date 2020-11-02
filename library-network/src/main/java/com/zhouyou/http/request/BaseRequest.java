@@ -356,7 +356,7 @@ public abstract class BaseRequest<R extends BaseRequest> {
     }
 
     public R accessToken() {
-        this.headers.put("Authorization","Bearer f59eab2b-34c4-4d87-bd53-4cc69cac0196");
+        this.headers.put("Authorization","Bearer 3c1c04a2-d101-41e4-b01f-2c96280c405e");
         return (R) this;
     }
 

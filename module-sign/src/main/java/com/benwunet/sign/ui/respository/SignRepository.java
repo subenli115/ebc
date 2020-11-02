@@ -1,8 +1,6 @@
 package com.benwunet.sign.ui.respository;
 
 
-
-
 import androidx.annotation.NonNull;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,10 +10,13 @@ import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.utils.GsonUtils;
 import com.benwunet.base.utils.MapUtils;
 import com.benwunet.base.utils.RSAUtils;
+import com.benwunet.sign.ui.activity.InputInfoFirstActivity;
 import com.benwunet.sign.ui.bean.StringDataBean;
+import com.benwunet.sign.ui.bean.UserBean;
 import com.benwunet.sign.ui.bean.UserLoginBean;
 import com.benwunet.sign.ui.source.LocalDataSource;
 import com.benwunet.sign.ui.viewmodel.LoginViewModel;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.request.HttpManager;
@@ -31,12 +32,12 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * MVVM的Model层，统一模块的数据仓库，包含网络数据和本地数据（一个应用可以有多个Repositor）
  * Created by feng on 2020/10/21.
  */
-public class SignRepository extends BaseModel  implements  LocalDataSource {
+public class SignRepository extends BaseModel implements LocalDataSource {
     private volatile static SignRepository instance = null;
     private final LocalDataSource mLocalDataSource;
     private final LoginViewModel viewModel;
 
-    public SignRepository(@NonNull LocalDataSource localDataSource, LoginViewModel viewModel)  {
+    public SignRepository(@NonNull LocalDataSource localDataSource, LoginViewModel viewModel) {
         this.mLocalDataSource = localDataSource;
         this.viewModel = viewModel;
     }
@@ -45,7 +46,7 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
         if (instance == null) {
             synchronized (SignRepository.class) {
                 if (instance == null) {
-                    instance = new SignRepository(localDataSource,viewModel);
+                    instance = new SignRepository(localDataSource, viewModel);
 
                 }
             }
@@ -54,11 +55,10 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
     }
 
 
-
     public SingleLiveEvent<Boolean> getVerifyCode(String phone, final SingleLiveEvent<Boolean> verifyCode, String type) {
         HttpManager.get(ApiKey.NOTIFY_SMS)
                 .params("mobile", phone)
-                .params("type",type)
+                .params("type", type)
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<String>() {
                     @Override
@@ -69,9 +69,9 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
                     @Override
                     public void onSuccess(String result) {
                         StringDataBean bean = GsonUtils.fromLocalJson(result, StringDataBean.class);
-                        if(bean.getCode()==0){
+                        if (bean.getCode() == 0) {
                             verifyCode.setValue(true);
-                        }else {
+                        } else {
                             ToastUtils.showLong(bean.getMessage());
                         }
 
@@ -80,12 +80,13 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
         return verifyCode;
     }
 
-    public void login(final String phone, final String pwd) {
+    public void login(final String phone, final String pwd, final LoginViewModel viewModel) {
         HttpManager.post(ApiKey.OAUTH_PASS)
                 .cacheKey(this.getClass().getSimpleName())
-                .headers("client_id","app")
-                .headers("client_secret","123456")
-                .upJson(GsonUtils.toJson(MapUtils.getLoginMap(phone,pwd)))
+                .headers("client_id", "app")
+                .cacheMode(CacheMode.NO_CACHE)
+                .headers("client_secret", "123456")
+                .upJson(GsonUtils.toJson(MapUtils.getLoginMap(phone, pwd)))
                 .execute(new SimpleCallBack<UserLoginBean>() {
                     @Override
                     public void onError(ApiException e) {
@@ -94,9 +95,13 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
 
                     @Override
                     public void onSuccess(UserLoginBean result) {
-                        savePassword(pwd);
-                        saveUserName(phone);
-                        ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+                        if (result != null) {
+                            savePassword(pwd);
+                            saveUserName(phone);
+                            saveToken(result.getAccess_token());
+                            saveRefreshToken(result.getRefresh_token());
+                            getUserInfo(viewModel);
+                        }
                     }
 
                 });
@@ -105,10 +110,11 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
 
     public void codeLogin(String phone, String verifyCode) {
         HttpManager.post(ApiKey.OAUTH_SMS)
-                .headers("client_id","app")
-                .headers("client_secret","123456")
+                .headers("client_id", "app")
+                .headers("client_secret", "123456")
+                .cacheMode(CacheMode.NO_CACHE)
                 .accessToken()
-                .upJson(GsonUtils.toJson(MapUtils.getCodeMap(verifyCode,phone)))
+                .upJson(GsonUtils.toJson(MapUtils.getCodeMap(verifyCode, phone)))
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<UserLoginBean>() {
                     @Override
@@ -123,18 +129,42 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
                 });
     }
 
-    public void register(final String phone, final String password, String confirm, String verifyCode,String type) {
-        String url="";
-        if(StringUtils.equals(type,IConstants.REG)){
-            url=ApiKey.MEMBER_REG;
-        }else {
-            url=ApiKey.MEMBER_RES;
+
+    public void getUserInfo(final LoginViewModel viewModel) {
+        HttpManager.get(ApiKey.MEMBER_CURRENT)
+                .cacheMode(CacheMode.NO_CACHE)
+                .accessToken()
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<UserBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(UserBean result) {
+                        if(result.isIsFirstLogin()){
+                            viewModel.startActivity(InputInfoFirstActivity.class);
+                        }else {
+                            ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+                        }
+                    }
+
+                });
+    }
+
+    public void register(final String phone, final String password, String confirm, String verifyCode, String type) {
+        String url = "";
+        if (StringUtils.equals(type, IConstants.REG)) {
+            url = ApiKey.MEMBER_REG;
+        } else {
+            url = ApiKey.MEMBER_RES;
         }
         Map<String, String> defMap = MapUtils.getDefMap(false);
-        defMap.put("mobile",phone);
-        defMap.put("password",RSAUtils.encrypt(password));
-        defMap.put("confirm",RSAUtils.encrypt(confirm));
-        defMap.put("code",verifyCode);
+        defMap.put("mobile", phone);
+        defMap.put("password", RSAUtils.encrypt(password));
+        defMap.put("confirm", RSAUtils.encrypt(confirm));
+        defMap.put("code", verifyCode);
         HttpManager.post(url)
                 .cacheKey(this.getClass().getSimpleName())
                 .upJson(GsonUtils.toJson(defMap))
@@ -148,7 +178,7 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
                     public void onSuccess(String result) {
                         StringDataBean bean = GsonUtils.fromLocalJson(result, StringDataBean.class);
                         ToastUtils.showLong(bean.getMessage());
-                        if(bean.getCode()==0){
+                        if (bean.getCode() == 0) {
                             savePassword(password);
                             saveUserName(phone);
                             viewModel.finish();
@@ -156,7 +186,6 @@ public class SignRepository extends BaseModel  implements  LocalDataSource {
                     }
                 });
     }
-
 
 
     @Override

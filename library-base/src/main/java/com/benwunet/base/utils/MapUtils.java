@@ -2,7 +2,7 @@ package com.benwunet.base.utils;
 
 import android.text.TextUtils;
 
-
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +17,6 @@ import java.util.Map;
  */
 
 
-
 public class MapUtils {
 
     //登录需要的map数据
@@ -27,7 +26,8 @@ public class MapUtils {
         put("password", password, map);
         return map;
     }
-        //获取验证码需要的map数据
+
+    //获取验证码需要的map数据
     public static Map<String, String> getCodeMap(String code, String mobile) {
         Map<String, String> map = getDefMap(false);
         put("code", code, map);
@@ -55,5 +55,23 @@ public class MapUtils {
         return map;
     }
 
+    /**
+     * bean转map对象
+     */
+    public static Map<String, Object> transformBeanToMap(Object object) {
+        Map<String, Object> map = new HashMap<>();
+        Field[] declaredFields = object.getClass().getDeclaredFields();
+        for (Field field : declaredFields) {
+            field.setAccessible(true);
+            Object value = null;
+            try {
+                value = field.get(object);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            map.put(field.getName(), value);
+        }
+        return map;
+    }
 
 }

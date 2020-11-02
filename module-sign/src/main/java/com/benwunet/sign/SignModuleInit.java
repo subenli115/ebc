@@ -15,7 +15,9 @@ public class SignModuleInit implements IModuleInit {
     public boolean onInitAhead(Application application) {
         KLog.e("登录模块初始化 -- onInitAhead");
         return false;
+
     }
+
 
     @Override
     public boolean onInitLow(Application application) {

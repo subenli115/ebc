@@ -7,9 +7,12 @@ import android.widget.TextView;
 
 import androidx.lifecycle.Observer;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.ActivityInputInfoFourthBinding;
+import com.benwunet.sign.ui.bean.CompleteInfoBean;
 import com.benwunet.sign.ui.bean.TopicBean;
 import com.benwunet.sign.ui.viewmodel.InfoViewModel;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -29,6 +32,8 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 
 public class InputInfoFourthActivity extends BaseActivity<ActivityInputInfoFourthBinding, InfoViewModel> {
 
+    private CompleteInfoBean entity;
+
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_input_info_fourth;
@@ -43,10 +48,23 @@ public class InputInfoFourthActivity extends BaseActivity<ActivityInputInfoFourt
     public void initViewObservable() {
     }
 
+
+    @Override
+    public void initParam() {
+        //获取列表传入的实体
+        Bundle mBundle = getIntent().getExtras();
+        if (mBundle != null) {
+            entity = mBundle.getParcelable("entity");
+        }
+    }
+
+
+
     @Override
     public void initData() {
         binding.setLifecycleOwner(this);
         viewModel.initTagData();
+        viewModel.setInfoEntity(entity);
         viewModel.hotTag.observe(this, new Observer<TopicBean>() {
             @Override
             public void onChanged(TopicBean topicBean) {
@@ -84,5 +102,12 @@ public class InputInfoFourthActivity extends BaseActivity<ActivityInputInfoFourt
                 binding.tflNew.setAdapter(mAdapter);
             }
         });
+        viewModel.complete.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+            }
+        });
     }
+
 }

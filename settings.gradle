@@ -1,3 +1,5 @@
+include ':easeui'
+include ':player'
 include ':faceplatform-release'
 include ':faceplatform-ui'
 include ':library-network'

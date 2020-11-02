@@ -13,6 +13,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.ActivityInputInfoThirdBinding;
+import com.benwunet.sign.ui.bean.CompleteInfoBean;
 import com.benwunet.sign.ui.bean.IndustryListBean;
 import com.benwunet.sign.ui.bean.jobListBean;
 import com.benwunet.sign.ui.viewmodel.InfoViewModel;
@@ -49,6 +50,7 @@ public class InputInfoThirdActivity extends BaseActivity<ActivityInputInfoThirdB
     private List<jobListBean> jobListBeans1;
     private List<jobListBean> jobList;
     private List<IndustryListBean> industryList;
+    private CompleteInfoBean entity;
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -62,8 +64,18 @@ public class InputInfoThirdActivity extends BaseActivity<ActivityInputInfoThirdB
 
 
     @Override
+    public void initParam() {
+        //获取列表传入的实体
+        Bundle mBundle = getIntent().getExtras();
+        if (mBundle != null) {
+            entity = mBundle.getParcelable("entity");
+        }
+    }
+
+    @Override
     public void initViewObservable() {
         binding.setLifecycleOwner(this);
+        viewModel.setInfoEntity(entity);
         viewModel.initListData();
         viewModel.showJob.observe(this, new Observer<Boolean>() {
             @Override
@@ -138,12 +150,14 @@ public class InputInfoThirdActivity extends BaseActivity<ActivityInputInfoThirdB
                 }
                 Bundle bundle = data.getExtras();
 
-                CityInfoBean cityInfoBean = (CityInfoBean) bundle.getParcelable("cityinfo");
+                CityInfoBean cityInfoBean =  bundle.getParcelable("cityinfo");
+
 
                 if (null == cityInfoBean) {
                     return;
                 }
                 viewModel.city.setValue(cityInfoBean.getName());
+                viewModel.setCityId(cityInfoBean.getId());
             }
         }
     }
@@ -258,6 +272,7 @@ public class InputInfoThirdActivity extends BaseActivity<ActivityInputInfoThirdB
 
             if (null != location) {
                 viewModel.city.setValue(location.getCity());
+                viewModel.setCityId(location.getCityCode());
             }
         }
     };
