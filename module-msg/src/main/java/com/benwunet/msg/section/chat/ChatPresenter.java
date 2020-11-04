@@ -14,6 +14,7 @@ import androidx.annotation.StringRes;
 import com.benwunet.msg.DemoApplication;
 import com.benwunet.msg.DemoHelper;
 import com.benwunet.msg.MainActivity;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.constant.DemoConstant;
 import com.benwunet.msg.common.db.DemoDbHelper;
 import com.benwunet.msg.common.db.dao.InviteMessageDao;
@@ -41,7 +42,6 @@ import com.hyphenate.chat.EMMucSharedFile;
 import com.hyphenate.chat.EMStreamStatistics;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.chat.adapter.EMAChatRoomManagerListener;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.interfaces.EaseGroupListener;
 import com.hyphenate.easeui.manager.EaseAtMessageHelper;
 import com.hyphenate.easeui.manager.EaseChatPresenter;
@@ -128,7 +128,7 @@ public class ChatPresenter extends EaseChatPresenter {
                         if(obj instanceof EMMessage) {
                             startConference((EMMessage) obj);
                             // in background, do not refresh UI, notify it in notification bar
-                            if(!DemoApplication.getInstance().getLifecycleCallbacks().isFront()){
+                            if(!DemoApplication.getLifecycleCallbacks().isFront()){
                                 getNotifier().notify((EMMessage) obj);
                             }
                             //notify new message
@@ -178,7 +178,7 @@ public class ChatPresenter extends EaseChatPresenter {
                 startConference(message);
             }
             // in background, do not refresh UI, notify it in notification bar
-            if(!DemoApplication.getInstance().getLifecycleCallbacks().isFront()){
+            if(!DemoApplication.getLifecycleCallbacks().isFront()){
                 getNotifier().notify(message);
             }
             //notify new message
@@ -198,7 +198,7 @@ public class ChatPresenter extends EaseChatPresenter {
      * @return
      */
     private synchronized boolean isAppLaunchMain() {
-        List<Activity> activities = DemoApplication.getInstance().getLifecycleCallbacks().getActivityList();
+        List<Activity> activities = DemoApplication.getLifecycleCallbacks().getActivityList();
         if(activities != null && !activities.isEmpty()) {
             for(int i = activities.size() - 1; i >= 0 ; i--) {
                 if(activities.get(i) instanceof MainActivity) {

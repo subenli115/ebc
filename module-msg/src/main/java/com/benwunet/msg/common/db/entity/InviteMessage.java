@@ -4,8 +4,8 @@ import androidx.annotation.StringRes;
 import androidx.room.Entity;
 
 import com.benwunet.msg.DemoApplication;
-import com.benwunet.msg.common.db.DemoDbHelper;
 import com.benwunet.msg.R;
+import com.benwunet.msg.common.db.DemoDbHelper;
 
 import java.io.Serializable;
 

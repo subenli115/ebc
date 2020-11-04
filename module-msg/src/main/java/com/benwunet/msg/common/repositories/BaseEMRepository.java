@@ -1,12 +1,13 @@
 package com.benwunet.msg.common.repositories;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.benwunet.msg.DemoApplication;
 import com.benwunet.msg.DemoHelper;
+import com.benwunet.msg.DemoApplication;
 import com.benwunet.msg.common.db.DemoDbHelper;
 import com.benwunet.msg.common.db.dao.EmUserDao;
 import com.benwunet.msg.common.db.dao.InviteMessageDao;
@@ -106,9 +107,10 @@ public class BaseEMRepository {
 
     /**
      * init room
+     * @param application
      */
-    public void initDb() {
-        DemoDbHelper.getInstance(DemoApplication.getInstance()).initDb(getCurrentUser());
+    public void initDb(Application application) {
+        DemoDbHelper.getInstance(application).initDb(getCurrentUser());
     }
 
     /**

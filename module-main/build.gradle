@@ -5,12 +5,27 @@ android {
         if (isBuildModule.toBoolean()) {
             applicationId "com.benwunet.main"
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        AROUTER_MODULE_NAME: project.getName(),
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
     }
     //统一资源前缀，规范资源引用
     resourcePrefix "main_"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(path: ':module-msg')
     testImplementation rootProject.ext.support["junit"]
     //组件依赖基础库
     api project(':library-base')

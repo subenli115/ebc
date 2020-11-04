@@ -3,7 +3,6 @@ package com.benwunet.msg.section;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -13,7 +12,9 @@ import com.benwunet.msg.common.db.dao.InviteMessageDao;
 import com.benwunet.msg.common.livedatas.LiveDataBus;
 import com.benwunet.msg.common.livedatas.SingleSourceLiveData;
 
-public class MainViewModel extends AndroidViewModel {
+import me.goldze.mvvmhabit.base.BaseViewModel;
+
+public class MainViewModel extends BaseViewModel {
     private InviteMessageDao inviteMessageDao;
     private SingleSourceLiveData<Integer> switchObservable;
     private MutableLiveData<String> homeUnReadObservable;

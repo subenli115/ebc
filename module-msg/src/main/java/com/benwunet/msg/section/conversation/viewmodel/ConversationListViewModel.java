@@ -31,6 +31,7 @@ public class ConversationListViewModel extends AndroidViewModel {
         readConversationObservable = new SingleSourceLiveData<>();
     }
 
+
     /**
      * 获取聊天列表
      */

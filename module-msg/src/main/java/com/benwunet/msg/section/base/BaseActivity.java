@@ -29,6 +29,7 @@ import androidx.core.content.ContextCompat;
 
 import com.benwunet.msg.DemoApplication;
 import com.benwunet.msg.DemoHelper;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.constant.DemoConstant;
 import com.benwunet.msg.common.enums.Status;
 import com.benwunet.msg.common.interfaceOrImplement.OnResourceParseCallback;
@@ -39,7 +40,6 @@ import com.benwunet.msg.common.utils.ToastUtils;
 import com.benwunet.msg.common.widget.EaseProgressDialog;
 import com.benwunet.msg.section.login.activity.LoginActivity;
 import com.hyphenate.EMCallBack;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.model.EaseEvent;
 import com.hyphenate.easeui.utils.StatusBarCompat;
 import com.hyphenate.util.EMLog;
@@ -141,7 +141,7 @@ public class BaseActivity extends AppCompatActivity {
      * 结束除了当前Activity外的其他Activity
      */
     protected void finishOtherActivities() {
-        UserActivityLifecycleCallbacks lifecycleCallbacks = DemoApplication.getInstance().getLifecycleCallbacks();
+        UserActivityLifecycleCallbacks lifecycleCallbacks = DemoApplication.getLifecycleCallbacks();
         if(lifecycleCallbacks == null) {
             finish();
             return;

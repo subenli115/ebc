@@ -17,7 +17,7 @@ public class ModuleLifecycleReflexs {
     //名片夹业务模块
     private static final String CardsInit = "com.benwunet.cards.CardsModuleInit";
     //消息业务模块
-    private static final String MsgInit = "com.benwunet.msg.MsgModuleInit";
+    private static final String MsgInit = "com.benwunet.msg.DemoApplication";
     //个人中心业务模块
     private static final String UserInit = "com.benwunet.user.UserModuleInit";
     //发现业务模块

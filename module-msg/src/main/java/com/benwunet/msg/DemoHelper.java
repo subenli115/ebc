@@ -485,7 +485,7 @@ public class DemoHelper {
     public void initPush(Context context) {
         if(EaseUI.getInstance().isMainProcess(context)) {
             //OPPO SDK升级到2.1.0后需要进行初始化
-            HeytapPushManager.init(context, true);
+//            HeytapPushManager.init(context, true);
             //HMSPushHelper.getInstance().initHMSAgent(DemoApplication.getInstance());
             EMPushHelper.getInstance().setPushListener(new PushListener() {
                 @Override
@@ -543,7 +543,7 @@ public class DemoHelper {
      * 关闭当前进程
      */
     public void killApp() {
-        List<Activity> activities = DemoApplication.getInstance().getLifecycleCallbacks().getActivityList();
+        List<Activity> activities = DemoApplication.getLifecycleCallbacks().getActivityList();
         if(activities != null && !activities.isEmpty()) {
             for(Activity activity : activities) {
                 activity.finish();

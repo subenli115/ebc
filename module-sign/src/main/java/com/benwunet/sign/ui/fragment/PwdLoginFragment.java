@@ -36,5 +36,7 @@ public class PwdLoginFragment extends BaseFragment<FragmentSignPwdBinding, Login
 
     @Override
     public void initData() {
+
+
     }
 }

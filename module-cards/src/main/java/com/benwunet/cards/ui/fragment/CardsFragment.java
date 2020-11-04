@@ -1,15 +1,15 @@
 package com.benwunet.cards.ui.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterFragmentPath;
-import com.benwunet.cards.R;
 import com.benwunet.cards.BR;
+import com.benwunet.cards.R;
 import com.benwunet.cards.databinding.FragmentWorkBinding;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 

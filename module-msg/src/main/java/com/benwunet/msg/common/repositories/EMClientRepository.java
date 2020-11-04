@@ -1,5 +1,6 @@
 package com.benwunet.msg.common.repositories;
 
+import android.app.Application;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -28,25 +29,23 @@ public class EMClientRepository extends BaseEMRepository {
     /**
      * 登录过后需要加载的数据
      * @return
+     * @param mApplication
      */
-    public LiveData<Resource<Boolean>> loadAllInfoFromHX() {
+    public LiveData<Resource<Boolean>> loadAllInfoFromHX(Application mApplication) {
         return new NetworkOnlyResource<Boolean>() {
 
             @Override
             protected void createCall(ResultCallBack<LiveData<Boolean>> callBack) {
-                if(isAutoLogin()) {
                     runOnIOThread(() -> {
+                        Log.e("isLoggedIn",""+isLoggedIn());
                         if(isLoggedIn()) {
-                            loadAllConversationsAndGroups();
+                            loadAllConversationsAndGroups(mApplication);
                             callBack.onSuccess(createLiveData(true));
                         }else {
                             callBack.onError(ErrorCode.EM_NOT_LOGIN);
                         }
 
                     });
-                }else {
-                    callBack.onError(ErrorCode.EM_NOT_LOGIN);
-                }
 
             }
         }.asLiveData();
@@ -54,10 +53,11 @@ public class EMClientRepository extends BaseEMRepository {
 
     /**
      * 从本地数据库加载所有的对话及群组
+     * @param mApplication
      */
-    private void loadAllConversationsAndGroups() {
+    private void loadAllConversationsAndGroups(Application mApplication) {
         // 初始化数据库
-        initDb();
+        initDb(mApplication);
         // 从本地数据库加载所有的对话及群组
         getChatManager().loadAllConversations();
         getGroupManager().loadAllGroups();
@@ -191,7 +191,7 @@ public class EMClientRepository extends BaseEMRepository {
 
     private void successForCallBack(@NonNull ResultCallBack<LiveData<EaseUser>> callBack) {
         // ** manually load all local groups and conversation
-        loadAllConversationsAndGroups();
+//        loadAllConversationsAndGroups(mApplication);
         // get current user id
         String currentUser = EMClient.getInstance().getCurrentUser();
         EaseUser user = new EaseUser(currentUser);

@@ -1,17 +1,21 @@
 package com.benwunet.main.ui;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.global.SPKeyGlobal;
 import com.benwunet.base.router.RouterActivityPath;
+import com.benwunet.msg.common.interfaceOrImplement.OnResourceParseCallback;
+import com.benwunet.msg.section.base.BaseActivity;
+import com.benwunet.msg.section.login.viewmodels.SplashViewModel;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
+import com.hyphenate.util.EMLog;
 
 import java.util.List;
 
@@ -20,9 +24,10 @@ import java.util.List;
  * 冷启动
  */
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends BaseActivity {
 
     private boolean isFirstUse;
+    private SplashViewModel model;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +40,15 @@ public class SplashActivity extends Activity {
 //            startActivity(new Intent(SplashActivity.this, GuideActivity.class));
 //        }
 //        finish();
-        //实例化Editor对象
+        //实例化Editor对象、
+        model= ViewModelProviders.of(this).get(SplashViewModel.class);
         SharedPreferences.Editor editor = preferences.edit();
         //存入数据
         editor.putBoolean(SPKeyGlobal.USE_FIRST, false);
         //提交修改
         editor.commit();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                inMain();
-//            }
-//        }, 3 * 1000);
-        inMain();
+//        inMain();
+        loginSDK();
         XXPermissions.with(this)
                 .permission(Permission.RECORD_AUDIO)
                 .permission(Permission.READ_PHONE_STATE)
@@ -69,12 +70,41 @@ public class SplashActivity extends Activity {
                 });
     }
 
+
     /**
      * 进入主页面
      */
     private void inMain() {
         //采用ARouter+RxBus实现组件间通信
+        ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+        finish();
+    }
+
+    /**
+     * 进入登录页面
+     */
+    private void inLogin() {
+        //采用ARouter+RxBus实现组件间通信
         ARouter.getInstance().build(RouterActivityPath.Sign.PAGER_LOGIN).navigation();
         finish();
+    }
+
+    private void loginSDK() {
+        model.getLoginData().observe(this, response -> {
+            parseResource(response, new OnResourceParseCallback<Boolean>(true) {
+                @Override
+                public void onSuccess(Boolean data) {
+                    inMain();
+                }
+
+                @Override
+                public void onError(int code, String message) {
+                    super.onError(code, message);
+                    EMLog.i("TAG", "error message = "+response.getMessage());
+                    inLogin();
+                }
+            });
+
+        });
     }
 }

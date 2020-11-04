@@ -41,7 +41,9 @@ dependencies {
     //公用资源在base中依赖
     api project(':library-res')
     api project(':library-network')
-    api project(':faceplatform-ui')
+    // easeui
+    api project(path: ':library-other:easeui')
+    api project(':library-other:faceplatform-ui')
     //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
     api rootProject.ext.dependencies.MVVMHabit
     api rootProject.ext.dependencies.autosize
@@ -53,6 +55,5 @@ dependencies {
     api rootProject.ext.dependencies.PictureSelector
     api rootProject.ext.dependencies.citypickerview
     api rootProject.ext.dependencies.flowlayout
-
-
+    api rootProject.ext.dependencies["room-runtime"]
 }

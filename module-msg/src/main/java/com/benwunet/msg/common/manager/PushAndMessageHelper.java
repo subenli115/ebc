@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 import com.benwunet.msg.DemoApplication;
 import com.benwunet.msg.DemoHelper;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.constant.DemoConstant;
 import com.benwunet.msg.common.db.entity.InviteMessage;
 import com.benwunet.msg.common.db.entity.InviteMessage.InviteMessageStatus;
@@ -18,7 +19,6 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.constants.EaseConstant;
 import com.hyphenate.easeui.model.EaseEvent;
 import com.hyphenate.easeui.utils.EaseCommonUtils;
@@ -71,7 +71,7 @@ public class PushAndMessageHelper {
     }
 
     private static boolean isDuringMediaCommunication() {
-        UserActivityLifecycleCallbacks lifecycle = DemoApplication.getInstance().getLifecycleCallbacks();
+        UserActivityLifecycleCallbacks lifecycle = DemoApplication.getLifecycleCallbacks();
         String topClassName = lifecycle.current().getClass().getSimpleName();
         if (lifecycle.count() > 0 && (LiveActivity.class.getSimpleName().equals(topClassName) || ConferenceActivity.class.getSimpleName().equals(topClassName))) {
             return true;

@@ -18,17 +18,17 @@ ext {
     support = [
             "constraint-layout"       : "1.0.0-beta2",
             'support-v4'              : "com.android.support:support-v4:${versions["support-version"]}",
-            'appcompat-v7'            : 'androidx.appcompat:appcompat:1.1.0-rc01',
+            'appcompat-v7'            : 'androidx.appcompat:appcompat:1.2.0',
             'recyclerview-v7'         : "com.android.support:recyclerview-v7:${versions["support-version"]}",
             'support-v13'             : "com.android.support:support-v13:${versions["support-version"]}",
             'support-fragment'        : "com.android.support:support-fragment:${versions["support-version"]}",
-            'design'                  : 'com.google.android.material:material:1.0.0',
+            'design'                  : 'com.google.android.material:material:1.2.1',
             'animated-vector-drawable': "com.android.support:animated-vector-drawable:${versions["support-version"]}",
             'junit'                   : "junit:junit:${versions["junit-version"]}",
     ]
     //依赖第三方配置
     dependencies = [
-            "MVVMHabit"       : "com.github.goldze:MVVMHabit:3.1.0",
+            "MVVMHabit"       : "com.github.goldze:MVVMHabit:3.1.6",
             //阿里路由框架
             "arouter-api"     : "com.alibaba:arouter-api:1.4.1",
             "arouter-compiler": "com.alibaba:arouter-compiler:1.2.2",
@@ -43,8 +43,8 @@ ext {
             flowlayout        : 'com.hyman:flowlayout-lib:1.1.2',
             gms               : 'com.google.android.gms:play-services-base:11.4.0',
             firebase          : 'com.google.firebase:firebase-messaging:11.4.0',
-            hyphenate         :'com.hyphenate:hyphenate-sdk:3.6.8'
-
+            "room-runtime"    : 'androidx.room:room-runtime:2.2.5',
+            "room-compiler"    : 'androidx.room:room-compiler:2.2.5',
     ]
 }
 

@@ -3,7 +3,7 @@ package com.benwunet.msg.section.contact.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +50,7 @@ public class GroupPublicContactManageFragment extends BaseInitFragment implement
 
     @Override
     protected void initViewModel() {
-        viewModel = new ViewModelProvider(this).get(GroupContactViewModel.class);
+        viewModel = ViewModelProviders.of(mContext).get(GroupContactViewModel.class);
         viewModel.getPublicGroupObservable().observe(getViewLifecycleOwner(), response -> {
             parseResource(response, new OnResourceParseCallback<EMCursorResult<EMGroupInfo>>() {
                 @Override

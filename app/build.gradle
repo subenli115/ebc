@@ -16,6 +16,8 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+
+
     }
     signingConfigs {
         debug {

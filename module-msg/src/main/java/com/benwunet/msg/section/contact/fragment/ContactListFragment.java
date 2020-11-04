@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ConcatAdapter;
 
 import com.benwunet.msg.R;
@@ -120,7 +120,7 @@ public class ContactListFragment extends EaseContactListFragment implements View
 
     @Override
     public void initData() {
-        mViewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
+        mViewModel= ViewModelProviders.of(this).get(ContactsViewModel.class);
         mViewModel.getContactObservable().observe(this, response -> {
             parseResource(response, new OnResourceParseCallback<List<EaseUser>>() {
                 @Override

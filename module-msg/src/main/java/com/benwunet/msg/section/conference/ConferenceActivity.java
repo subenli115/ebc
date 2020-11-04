@@ -1126,7 +1126,7 @@ public class ConferenceActivity extends BaseActivity implements EMConferenceList
     protected void onStop() {
         super.onStop();
         // 用于判断app是否进入后台
-        if(!isFinishing() && !DemoApplication.getInstance().getLifecycleCallbacks().isOnForeground()) {
+        if(!isFinishing() && !DemoApplication.getLifecycleCallbacks().isOnForeground()) {
             showFloatWindow();
         }
     }
@@ -1134,7 +1134,7 @@ public class ConferenceActivity extends BaseActivity implements EMConferenceList
     @Override
     public void finish() {
         super.finish();
-        DemoApplication.getInstance().getLifecycleCallbacks().makeMainTaskToFront(this);
+        DemoApplication.getLifecycleCallbacks().makeMainTaskToFront(this);
     }
 
     @Override

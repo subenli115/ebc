@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.benwunet.msg.DemoApplication;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.interfaceOrImplement.UserActivityLifecycleCallbacks;
 import com.benwunet.msg.section.base.BaseInitActivity;
 import com.benwunet.msg.section.chat.fragment.VoiceCallFragment;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.widget.EaseTitleBar;
 
 public class ChatVoiceCallActivity extends BaseInitActivity {
@@ -68,7 +68,7 @@ public class ChatVoiceCallActivity extends BaseInitActivity {
     @Override
     public void finish() {
         super.finish();
-        DemoApplication.getInstance().getLifecycleCallbacks().makeMainTaskToFront(this);
+        DemoApplication.getLifecycleCallbacks().makeMainTaskToFront(this);
     }
 
     @Override

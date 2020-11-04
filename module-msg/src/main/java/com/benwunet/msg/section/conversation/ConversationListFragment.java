@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.msg.DemoHelper;
 import com.benwunet.msg.R;
 import com.benwunet.msg.common.constant.DemoConstant;
@@ -35,7 +33,7 @@ import com.hyphenate.easeui.widget.EaseSearchTextView;
 
 import java.util.List;
 
-@Route(path = RouterFragmentPath.Msg.PAGER_MSG)
+
 public class ConversationListFragment extends EaseConversationListFragment implements View.OnClickListener {
     private EaseSearchTextView tvSearch;
 
@@ -116,7 +114,8 @@ public class ConversationListFragment extends EaseConversationListFragment imple
     }
 
     private void initViewModel() {
-        mViewModel = new ViewModelProvider(this).get(ConversationListViewModel.class);
+//        mViewModel = new ViewModelProvider(this).get(ConversationListViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(ConversationListViewModel.class);
         mViewModel.getConversationObservable().observe(getViewLifecycleOwner(), response -> {
             parseResource(response, new OnResourceParseCallback<List<Object>>() {
                 @Override
@@ -153,7 +152,7 @@ public class ConversationListFragment extends EaseConversationListFragment imple
             });
         });
 
-        MessageViewModel messageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
+        MessageViewModel messageViewModel = ViewModelProviders.of(this).get(MessageViewModel.class);
         LiveDataBus messageChange = messageViewModel.getMessageChange();
         messageChange.with(DemoConstant.NOTIFY_CHANGE, EaseEvent.class).observe(getViewLifecycleOwner(), this::loadList);
         messageChange.with(DemoConstant.MESSAGE_CHANGE_CHANGE, EaseEvent.class).observe(getViewLifecycleOwner(), this::loadList);

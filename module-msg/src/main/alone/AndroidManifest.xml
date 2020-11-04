@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.benwunet.find">
+    package="com.benwunet.msg">
 
     <application
         android:name="com.benwunet.base.debug.DebugApplication"
@@ -8,7 +8,7 @@
         android:label="@string/msg_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.benwunet.msg.debug.DebugActivity">
+        <activity android:name=".debug.DebugActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

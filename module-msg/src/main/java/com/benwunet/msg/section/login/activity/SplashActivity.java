@@ -14,6 +14,10 @@ import com.benwunet.msg.section.base.BaseInitActivity;
 import com.benwunet.msg.section.login.viewmodels.SplashViewModel;
 import com.hyphenate.util.EMLog;
 
+
+
+
+
 public class SplashActivity extends BaseInitActivity {
     private ImageView ivSplash;
     private TextView tvProduct;

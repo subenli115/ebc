@@ -4,13 +4,17 @@ import android.app.Application;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
 import com.benwunet.base.global.IConstants;
+import com.benwunet.msg.common.net.Resource;
 import com.benwunet.sign.ui.activity.FaceDetectExpActivity;
 import com.benwunet.sign.ui.activity.ForgetPwdActivity;
 import com.benwunet.sign.ui.activity.RegisterActivity;
 import com.benwunet.sign.ui.respository.SignRepository;
 import com.benwunet.sign.ui.source.local.LocalDataSourceImpl;
+import com.hyphenate.easeui.domain.EaseUser;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -39,6 +43,7 @@ public class LoginViewModel extends BaseViewModel {
     public SingleLiveEvent<String> confirm = new SingleLiveEvent<>();
     public SingleLiveEvent<Boolean> isSend = new SingleLiveEvent<>();
     public SingleLiveEvent<String> phone = new SingleLiveEvent<>();
+    private MediatorLiveData<Resource<EaseUser>> loginObservable;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
@@ -133,10 +138,25 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入密码！");
             return;
         }
-        signRepository.login(phone.getValue(), password.getValue(),this);
+            signRepository.login(phone.getValue(), password.getValue(),this);
 
     }
 
+    /**
+     * 登录环信
+     * @param userName
+     * @param pwd
+     * @param isTokenFlag
+     */
+    public void login(String userName, String pwd, boolean isTokenFlag) {
+        loginObservable.addSource(signRepository.loginToServer(userName, pwd, isTokenFlag), response -> {
+            loginObservable.setValue(response);
+        });
+    }
+
+    public LiveData<Resource<EaseUser>> getLoginObservable() {
+        return loginObservable;
+    }
     /**
      * 验证码登录操作
      **/
@@ -178,12 +198,6 @@ public class LoginViewModel extends BaseViewModel {
         }
         signRepository.register(phoneValue, password.getValue(), confirm.getValue(), verifyCode.getValue(),type);
     }
-
-
-
-
-
-
 
 
 }

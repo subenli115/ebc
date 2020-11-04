@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.benwunet.msg.DemoApplication;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.constant.DemoConstant;
 import com.benwunet.msg.common.livedatas.LiveDataBus;
 import com.benwunet.msg.common.manager.FloatWindowManager;
@@ -39,7 +40,6 @@ import com.hyphenate.chat.EMMirror;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.chat.EMWaterMarkOption;
 import com.hyphenate.chat.EMWaterMarkPosition;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.constants.EaseConstant;
 import com.hyphenate.easeui.manager.EasePreferenceManager;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
@@ -238,7 +238,7 @@ public class EaseCallFragment extends BaseFragment {
     public void onStop() {
         super.onStop();
         // 用于判断app是否进入后台
-        if(mContext != null && !mContext.isFinishing() && !DemoApplication.getInstance().getLifecycleCallbacks().isOnForeground()) {
+        if(mContext != null && !mContext.isFinishing() && !DemoApplication.getLifecycleCallbacks().isOnForeground()) {
             showFloatWindow();
         }
     }

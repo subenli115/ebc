@@ -24,6 +24,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.benwunet.msg.DemoHelper;
 import com.benwunet.msg.MainActivity;
@@ -100,7 +101,7 @@ public class LoginFragment extends BaseInitFragment implements View.OnClickListe
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        mFragmentViewModel = new ViewModelProvider(this).get(LoginFragmentViewModel.class);
+        mFragmentViewModel= ViewModelProviders.of(this).get(LoginFragmentViewModel.class);
         mFragmentViewModel.getLoginObservable().observe(this, response -> {
             parseResource(response, new OnResourceParseCallback<EaseUser>(true) {
                 @Override

@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.benwunet.msg.DemoApplication;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.interfaceOrImplement.UserActivityLifecycleCallbacks;
 import com.benwunet.msg.section.base.BaseInitActivity;
 import com.benwunet.msg.section.chat.fragment.VideoCallFragment;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.widget.EaseTitleBar;
 
 public class ChatVideoCallActivity extends BaseInitActivity {
@@ -82,7 +82,7 @@ public class ChatVideoCallActivity extends BaseInitActivity {
     @Override
     public void finish() {
         super.finish();
-        DemoApplication.getInstance().getLifecycleCallbacks().makeMainTaskToFront(this);
+        DemoApplication.getLifecycleCallbacks().makeMainTaskToFront(this);
     }
 
     @Override

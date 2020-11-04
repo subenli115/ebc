@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.benwunet.msg.R;
 import com.benwunet.msg.section.base.BaseFragment;
@@ -13,6 +13,8 @@ import com.benwunet.msg.section.login.fragment.LoginFragment;
 import com.benwunet.msg.section.login.fragment.RegisterFragment;
 import com.benwunet.msg.section.login.fragment.ServerSetFragment;
 import com.benwunet.msg.section.login.viewmodels.LoginViewModel;
+
+
 
 public class LoginActivity extends BaseInitActivity {
 
@@ -43,7 +45,7 @@ public class LoginActivity extends BaseInitActivity {
     @Override
     protected void initData() {
         super.initData();
-        LoginViewModel viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        LoginViewModel viewModel = ViewModelProviders.of(mContext).get(LoginViewModel.class);
         viewModel.getPageSelect().observe(this, page -> {
             if(page == 0) {
                 return;

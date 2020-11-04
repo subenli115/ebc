@@ -5,15 +5,6 @@ android {
         if (isBuildModule.toBoolean()) {
             applicationId "com.benwunet.msg"
         }
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        AROUTER_MODULE_NAME: project.getName(),
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"]
-            }
-        }
 
 
     }
@@ -31,11 +22,10 @@ dependencies {
     provided fileTree(include: ['*.aar'], dir: 'libs')
     //组件依赖基础库
     api project(':library-base')
-    implementation project(path: ':easeui')
     //组件中依赖阿里路由编译框架
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation "androidx.fragment:fragment:1.2.0"
     //ViewModel and LiveData
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
@@ -54,11 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:11.4.0'
     // fresh and load more
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
-    // easeui
-    api project(path: ':easeui')
-    // room
-    implementation "androidx.room:room-runtime:2.2.5"
-    annotationProcessor "androidx.room:room-compiler:2.2.5"
     // parse
     implementation 'com.parse:parse-android:1.13.1'
+    annotationProcessor "androidx.room:room-compiler:2.2.5"
 }

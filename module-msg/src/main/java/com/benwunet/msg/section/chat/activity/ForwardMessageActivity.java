@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benwunet.msg.DemoApplication;
+import com.benwunet.msg.R;
 import com.benwunet.msg.common.interfaceOrImplement.OnResourceParseCallback;
 import com.benwunet.msg.common.manager.PushAndMessageHelper;
 import com.benwunet.msg.section.base.BaseInitActivity;
@@ -20,7 +21,6 @@ import com.benwunet.msg.section.chat.adapter.PickUserAdapter;
 import com.benwunet.msg.section.contact.viewmodels.ContactListViewModel;
 import com.benwunet.msg.section.dialog.DemoDialogFragment;
 import com.benwunet.msg.section.dialog.SimpleDialogFragment;
-import com.benwunet.msg.R;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.interfaces.OnItemClickListener;
 import com.hyphenate.easeui.utils.EaseCommonUtils;
@@ -125,7 +125,7 @@ public class ForwardMessageActivity extends BaseInitActivity implements OnRefres
     }
 
     private void finishChatActivity() {
-        DemoApplication.getInstance().getLifecycleCallbacks().finishTarget(ChatActivity.class);
+        DemoApplication.getLifecycleCallbacks().finishTarget(ChatActivity.class);
     }
 
     @Override

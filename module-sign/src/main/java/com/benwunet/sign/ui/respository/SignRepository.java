@@ -1,7 +1,10 @@
 package com.benwunet.sign.ui.respository;
 
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.global.ApiKey;
@@ -10,12 +13,22 @@ import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.utils.GsonUtils;
 import com.benwunet.base.utils.MapUtils;
 import com.benwunet.base.utils.RSAUtils;
+import com.benwunet.msg.DemoHelper;
+import com.benwunet.msg.common.interfaceOrImplement.DemoEmCallBack;
+import com.benwunet.msg.common.interfaceOrImplement.ResultCallBack;
+import com.benwunet.msg.common.net.ErrorCode;
+import com.benwunet.msg.common.net.Resource;
+import com.benwunet.msg.common.repositories.BaseEMRepository;
+import com.benwunet.msg.common.repositories.NetworkOnlyResource;
+import com.benwunet.sign.SignModuleInit;
 import com.benwunet.sign.ui.activity.InputInfoFirstActivity;
 import com.benwunet.sign.ui.bean.StringDataBean;
 import com.benwunet.sign.ui.bean.UserBean;
 import com.benwunet.sign.ui.bean.UserLoginBean;
 import com.benwunet.sign.ui.source.LocalDataSource;
 import com.benwunet.sign.ui.viewmodel.LoginViewModel;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -23,7 +36,6 @@ import com.zhouyou.http.request.HttpManager;
 
 import java.util.Map;
 
-import me.goldze.mvvmhabit.base.BaseModel;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.StringUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
@@ -32,7 +44,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * MVVM的Model层，统一模块的数据仓库，包含网络数据和本地数据（一个应用可以有多个Repositor）
  * Created by feng on 2020/10/21.
  */
-public class SignRepository extends BaseModel implements LocalDataSource {
+public class SignRepository extends BaseEMRepository implements LocalDataSource {
     private volatile static SignRepository instance = null;
     private final LocalDataSource mLocalDataSource;
     private final LoginViewModel viewModel;
@@ -80,6 +92,7 @@ public class SignRepository extends BaseModel implements LocalDataSource {
         return verifyCode;
     }
 
+
     public void login(final String phone, final String pwd, final LoginViewModel viewModel) {
         HttpManager.post(ApiKey.OAUTH_PASS)
                 .cacheKey(this.getClass().getSimpleName())
@@ -124,6 +137,8 @@ public class SignRepository extends BaseModel implements LocalDataSource {
 
                     @Override
                     public void onSuccess(UserLoginBean result) {
+
+
                     }
 
                 });
@@ -146,12 +161,24 @@ public class SignRepository extends BaseModel implements LocalDataSource {
                         if(result.isIsFirstLogin()){
                             viewModel.startActivity(InputInfoFirstActivity.class);
                         }else {
-                            ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+
+                            if(!result.getMemberId().equals(EMClient.getInstance().getCurrentUser())){
+                                loginToServer(result.getMemberId(),"123456",false);
+                                Log.e("getMemberId","false     "+EMClient.getInstance().isLoggedInBefore());
+
+                            }else {
+                                Log.e("getMemberId","true     "+EMClient.getInstance().isLoggedInBefore());
+                                successForCallBack();
+                                ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+                            }
                         }
                     }
 
                 });
     }
+
+
+
 
     public void register(final String phone, final String password, String confirm, String verifyCode, String type) {
         String url = "";
@@ -186,6 +213,109 @@ public class SignRepository extends BaseModel implements LocalDataSource {
                     }
                 });
     }
+
+    /**
+     * 登录过后需要加载的数据
+     * @return
+     */
+    public LiveData<Resource<Boolean>> loadAllInfoFromHX() {
+        return new NetworkOnlyResource<Boolean>() {
+
+            @Override
+            protected void createCall(ResultCallBack<LiveData<Boolean>> callBack) {
+                if(isAutoLogin()) {
+                    runOnIOThread(() -> {
+                        if(isLoggedIn()) {
+                            callBack.onSuccess(createLiveData(true));
+                        }else {
+                            callBack.onError(ErrorCode.EM_NOT_LOGIN);
+                        }
+
+                    });
+                }else {
+                    callBack.onError(ErrorCode.EM_NOT_LOGIN);
+                }
+
+            }
+        }.asLiveData();
+    }
+
+    /**
+     * 登录到服务器，可选择密码登录或者token登录
+     * @param userName
+     * @param pwd
+     * @param isTokenFlag
+     * @return
+     */
+    public LiveData<Resource<EaseUser>> loginToServer(String userName, String pwd, boolean isTokenFlag) {
+        return new NetworkOnlyResource<EaseUser>() {
+
+            @Override
+            protected void createCall(@NonNull ResultCallBack<LiveData<EaseUser>> callBack) {
+                DemoHelper.getInstance().init(SignModuleInit.getmApplication());
+                DemoHelper.getInstance().getModel().setCurrentUserName(userName);
+                DemoHelper.getInstance().getModel().setCurrentUserPwd(pwd);
+                if(isTokenFlag) {
+                    EMClient.getInstance().loginWithToken(userName, pwd, new DemoEmCallBack() {
+                        @Override
+                        public void onSuccess() {
+                            successForCallBack();
+                        }
+
+                        @Override
+                        public void onError(int code, String error) {
+                            callBack.onError(code, error);
+                        }
+                    });
+                }else {
+                    EMClient.getInstance().login(userName, pwd, new DemoEmCallBack() {
+                        @Override
+                        public void onSuccess() {
+                            successForCallBack();
+                            ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+                        }
+
+                        @Override
+                        public void onError(int code, String error) {
+                            ToastUtils.showLong(error);
+                        }
+                    });
+                }
+
+            }
+
+        }.asLiveData();
+    }
+
+
+    /**
+     * 从本地数据库加载所有的对话及群组
+     */
+    private void loadAllConversationsAndGroups() {
+        // 初始化数据库
+        initDb(SignModuleInit.getmApplication());
+        // 从本地数据库加载所有的对话及群组
+        getChatManager().loadAllConversations();
+        getGroupManager().loadAllGroups();
+    }
+
+
+    private void successForCallBack() {
+        // ** manually load all local groups and conversation
+        loadAllConversationsAndGroups();
+        // get current user id
+        String currentUser = EMClient.getInstance().getCurrentUser();
+        EaseUser user = new EaseUser(currentUser);
+//        callBack.onSuccess(new MutableLiveData<>(user));
+    }
+
+
+
+
+
+
+
+
 
 
     @Override

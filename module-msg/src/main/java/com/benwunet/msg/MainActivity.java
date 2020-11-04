@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterActivityPath;
@@ -68,13 +68,13 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if(mCurrentFragment != null) {
-            if(mCurrentFragment instanceof ContactListFragment) {
+        if (mCurrentFragment != null) {
+            if (mCurrentFragment instanceof ContactListFragment) {
                 menu.findItem(R.id.action_group).setVisible(false);
                 menu.findItem(R.id.action_friend).setVisible(false);
                 menu.findItem(R.id.action_search_friend).setVisible(true);
                 menu.findItem(R.id.action_search_group).setVisible(true);
-            }else {
+            } else {
                 menu.findItem(R.id.action_group).setVisible(true);
                 menu.findItem(R.id.action_friend).setVisible(true);
                 menu.findItem(R.id.action_search_friend).setVisible(false);
@@ -109,14 +109,15 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
 
     /**
      * 显示menu的icon，通过反射，设置menu的icon显示
+     *
      * @param featureId
      * @param menu
      * @return
      */
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
-        if(menu != null) {
-            if(menu.getClass().getSimpleName().equalsIgnoreCase("MenuBuilder")) {
+        if (menu != null) {
+            if (menu.getClass().getSimpleName().equalsIgnoreCase("MenuBuilder")) {
                 try {
                     Method method = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
                     method.setAccessible(true);
@@ -154,6 +155,8 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
         navView.setOnNavigationItemSelectedListener(this);
     }
 
+
+
     @Override
     protected void initData() {
         super.initData();
@@ -166,30 +169,30 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     }
 
     private void initViewModel() {
-        viewModel = new ViewModelProvider(mContext).get(MainViewModel.class);
+        viewModel = ViewModelProviders.of(mContext).get(MainViewModel.class);
         viewModel.getSwitchObservable().observe(this, response -> {
-            if(response == null || response == 0) {
+            if (response == null || response == 0) {
                 return;
             }
-            if(response == R.string.em_main_title_me) {
+            if (response == R.string.em_main_title_me) {
                 mTitleBar.setVisibility(View.GONE);
-            }else {
+            } else {
                 mTitleBar.setVisibility(View.VISIBLE);
                 mTitleBar.setTitle(getResources().getString(response));
             }
         });
 
         viewModel.homeUnReadObservable().observe(this, readCount -> {
-            if(!TextUtils.isEmpty(readCount)) {
+            if (!TextUtils.isEmpty(readCount)) {
                 mTvMainHomeMsg.setVisibility(View.VISIBLE);
                 mTvMainHomeMsg.setText(readCount);
-            }else {
+            } else {
                 mTvMainHomeMsg.setVisibility(View.GONE);
             }
         });
 
         //加载联系人
-        ContactsViewModel contactsViewModel = new ViewModelProvider(mContext).get(ContactsViewModel.class);
+        ContactsViewModel contactsViewModel = ViewModelProviders.of(mContext).get(ContactsViewModel.class);
         contactsViewModel.loadContactList();
 
         viewModel.messageChangeObservable().with(DemoConstant.GROUP_CHANGE, EaseEvent.class).observe(this, this::checkUnReadMsg);
@@ -202,7 +205,7 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     }
 
     private void checkUnReadMsg(EaseEvent event) {
-        if(event == null) {
+        if (event == null) {
             return;
         }
         viewModel.checkUnreadMsg();
@@ -214,22 +217,22 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     private void addTabBadge() {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) navView.getChildAt(0);
         int childCount = menuView.getChildCount();
-        Log.e("TAG", "bottom child count = "+childCount);
+        Log.e("TAG", "bottom child count = " + childCount);
         BottomNavigationItemView itemTab;
-        for(int i = 0; i < childCount; i++) {
+        for (int i = 0; i < childCount; i++) {
             itemTab = (BottomNavigationItemView) menuView.getChildAt(i);
             View badge = LayoutInflater.from(mContext).inflate(badgeIds[i], menuView, false);
             switch (i) {
-                case 0 :
+                case 0:
                     mTvMainHomeMsg = badge.findViewById(msgIds[0]);
                     break;
-                case 1 :
+                case 1:
                     mTvMainFriendsMsg = badge.findViewById(msgIds[1]);
                     break;
-                case 2 :
+                case 2:
                     mTvMainDiscoverMsg = badge.findViewById(msgIds[2]);
                     break;
-                case 3 :
+                case 3:
                     mTvMainAboutMeMsg = badge.findViewById(msgIds[3]);
                     break;
             }
@@ -239,14 +242,15 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
 
     /**
      * 用于展示是否已经存在的Fragment
+     *
      * @param savedInstanceState
      */
     private void checkIfShowSavedFragment(Bundle savedInstanceState) {
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             String tag = savedInstanceState.getString("tag");
-            if(!TextUtils.isEmpty(tag)) {
+            if (!TextUtils.isEmpty(tag)) {
                 Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
-                if(fragment instanceof EaseBaseFragment) {
+                if (fragment instanceof EaseBaseFragment) {
                     replace((EaseBaseFragment) fragment, tag);
                 }
             }
@@ -273,43 +277,43 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     }
 
     private void switchToHome() {
-        if(mConversationListFragment == null) {
+        if (mConversationListFragment == null) {
             mConversationListFragment = new ConversationListFragment();
         }
         replace(mConversationListFragment, "conversation");
     }
 
     private void switchToFriends() {
-        if(mFriendsFragment == null) {
+        if (mFriendsFragment == null) {
             mFriendsFragment = new ContactListFragment();
         }
         replace(mFriendsFragment, "contact");
     }
 
     private void switchToDiscover() {
-        if(mDiscoverFragment == null) {
+        if (mDiscoverFragment == null) {
             mDiscoverFragment = new DiscoverFragment();
         }
         replace(mDiscoverFragment, "discover");
     }
 
     private void switchToAboutMe() {
-        if(mAboutMeFragment == null) {
+        if (mAboutMeFragment == null) {
             mAboutMeFragment = new AboutMeFragment();
         }
         replace(mAboutMeFragment, "me");
     }
 
     private void replace(EaseBaseFragment fragment, String tag) {
-        if(mCurrentFragment != fragment) {
+        if (mCurrentFragment != fragment) {
             FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-            if(mCurrentFragment != null) {
+            if (mCurrentFragment != null) {
                 t.hide(mCurrentFragment);
             }
             mCurrentFragment = fragment;
-            if(!fragment.isAdded()) {
+            if (!fragment.isAdded()) {
                 t.add(R.id.fl_main_fragment, fragment, tag).show(fragment).commit();
-            }else {
+            } else {
                 t.show(fragment).commit();
             }
         }
@@ -357,7 +361,7 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(mCurrentFragment != null) {
+        if (mCurrentFragment != null) {
             outState.putString("tag", mCurrentFragment.getTag());
         }
     }
