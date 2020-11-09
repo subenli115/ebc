@@ -16,8 +16,10 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
-
-
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+        }
     }
     signingConfigs {
         debug {
@@ -50,9 +52,15 @@ android {
             jniDebuggable false
         }
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            jni.srcDirs = []
             if (isBuildModule.toBoolean()) {
                 //独立运行
                 manifest.srcFile 'src/main/alone/AndroidManifest.xml'

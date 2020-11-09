@@ -4,57 +4,52 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.benwunet.base.router.RouterActivityPath;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.router.RouterFragmentPath;
+import com.benwunet.base.view.ScrollControlViewPager;
+import com.benwunet.base.wdiget.NormalTitleBar;
 import com.benwunet.msg.common.constant.DemoConstant;
-import com.benwunet.msg.common.enums.SearchType;
 import com.benwunet.msg.common.manager.HMSPushHelper;
 import com.benwunet.msg.common.permission.PermissionsManager;
 import com.benwunet.msg.common.permission.PermissionsResultAction;
 import com.benwunet.msg.section.MainViewModel;
 import com.benwunet.msg.section.base.BaseInitActivity;
 import com.benwunet.msg.section.chat.ChatPresenter;
-import com.benwunet.msg.section.conference.ConferenceActivity;
-import com.benwunet.msg.section.contact.activity.AddContactActivity;
-import com.benwunet.msg.section.contact.activity.GroupContactManageActivity;
-import com.benwunet.msg.section.contact.fragment.ContactListFragment;
 import com.benwunet.msg.section.contact.viewmodels.ContactsViewModel;
 import com.benwunet.msg.section.conversation.ConversationListFragment;
-import com.benwunet.msg.section.discover.DiscoverFragment;
-import com.benwunet.msg.section.group.activity.GroupPrePickActivity;
-import com.benwunet.msg.section.me.AboutMeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hyphenate.easeui.model.EaseEvent;
 import com.hyphenate.easeui.ui.base.EaseBaseFragment;
-import com.hyphenate.easeui.widget.EaseTitleBar;
 
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
-@Route(path = RouterActivityPath.Main.PAGER_MAIN)
-public class MainActivity extends BaseInitActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private BottomNavigationView navView;
-    private EaseTitleBar mTitleBar;
-    private EaseBaseFragment mConversationListFragment, mFriendsFragment, mDiscoverFragment, mAboutMeFragment;
+public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+    private static final int CARD_ITEM = 0;
+    private static final int INFO_ITEM = 1;
+    private static final int MSG_ITEM = 2;
+    private static final int ME_ITEM = 3;
+    private static final int FIND_ITEM = 4;
+    private List<Fragment> mFragments;
+    private EaseBaseFragment mConversationListFragment;
     private EaseBaseFragment mCurrentFragment;
-    private TextView mTvMainHomeMsg, mTvMainFriendsMsg, mTvMainDiscoverMsg, mTvMainAboutMeMsg;
-    private int[] badgeIds = {R.layout.demo_badge_home, R.layout.demo_badge_friends, R.layout.demo_badge_discover, R.layout.demo_badge_about_me};
-    private int[] msgIds = {R.id.tv_main_home_msg, R.id.tv_main_friends_msg, R.id.tv_main_discover_msg, R.id.tv_main_about_me_msg};
     private MainViewModel viewModel;
-    private boolean showMenu = true;//是否显示菜单项
+    private NormalTitleBar ntb;
+    private int[] mBtnListID;
+    private Button[] mBtnList;
+    private TextView mTvMainHomeMsg;
+    private ImageView findBtn;
+    private ScrollControlViewPager mViewContainer;
 
     public static void startAction(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
@@ -63,72 +58,14 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.demo_activity_main;
+        return R.layout.msg_activity_main;
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if (mCurrentFragment != null) {
-            if (mCurrentFragment instanceof ContactListFragment) {
-                menu.findItem(R.id.action_group).setVisible(false);
-                menu.findItem(R.id.action_friend).setVisible(false);
-                menu.findItem(R.id.action_search_friend).setVisible(true);
-                menu.findItem(R.id.action_search_group).setVisible(true);
-            } else {
-                menu.findItem(R.id.action_group).setVisible(true);
-                menu.findItem(R.id.action_friend).setVisible(true);
-                menu.findItem(R.id.action_search_friend).setVisible(false);
-                menu.findItem(R.id.action_search_group).setVisible(false);
-            }
-        }
-        return showMenu;
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.demo_conversation_menu, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        if (itemId == R.id.action_video) {
-            ConferenceActivity.startConferenceCall(mContext, null);
-        } else if (itemId == R.id.action_group) {
-            GroupPrePickActivity.actionStart(mContext);
-        } else if (itemId == R.id.action_friend || itemId == R.id.action_search_friend) {
-            AddContactActivity.startAction(mContext, SearchType.CHAT);
-        } else if (itemId == R.id.action_search_group) {
-            GroupContactManageActivity.actionStart(mContext, true);
-        } else if (itemId == R.id.action_scan) {
-            showToast("扫一扫");
-        }
-        return true;
-    }
-
-    /**
-     * 显示menu的icon，通过反射，设置menu的icon显示
-     *
-     * @param featureId
-     * @param menu
-     * @return
-     */
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        if (menu != null) {
-            if (menu.getClass().getSimpleName().equalsIgnoreCase("MenuBuilder")) {
-                try {
-                    Method method = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
-                    method.setAccessible(true);
-                    method.invoke(menu, true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
-        return super.onMenuOpened(featureId, menu);
     }
 
     @Override
@@ -139,22 +76,29 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        navView = findViewById(R.id.nav_view);
-        mTitleBar = findViewById(R.id.title_bar_main);
-        navView.setItemIconTintList(null);
+        mViewContainer = (ScrollControlViewPager) findViewById(R.id.viewpager);
+        initFragment();
+        mTvMainHomeMsg = findViewById(R.id.all_unread_number);
+        mBtnListID = new int[]{
+                R.id.actionbar_info_btn, R.id.actionbar_card_btn,
+                R.id.actionbar_msg_btn, R.id.actionbar_me_btn};
+        mBtnList = new Button[mBtnListID.length];
+        for (int i = 0; i < mBtnListID.length; i++) {
+            mBtnList[i] = (Button) findViewById(mBtnListID[i]);
+        }
+        findBtn = (ImageView) findViewById(R.id.actionbar_find_btn);
+        setOnClickListener(this);
+        mBtnList[0].setTextColor(getResources().getColor(R.color.actionbar_pres_color));
+        mBtnList[0].setSelected(true);
+        ntb = findViewById(R.id.ntb);
         // 可以动态显示隐藏相应tab
-        //navView.getMenu().findItem(R.id.em_main_nav_me).setVisible(false);
-        switchToHome();
-        checkIfShowSavedFragment(savedInstanceState);
-        addTabBadge();
+//        checkIfShowSavedFragment(savedInstanceState);
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-        navView.setOnNavigationItemSelectedListener(this);
     }
-
 
 
     @Override
@@ -173,12 +117,6 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
         viewModel.getSwitchObservable().observe(this, response -> {
             if (response == null || response == 0) {
                 return;
-            }
-            if (response == R.string.em_main_title_me) {
-                mTitleBar.setVisibility(View.GONE);
-            } else {
-                mTitleBar.setVisibility(View.VISIBLE);
-                mTitleBar.setTitle(getResources().getString(response));
             }
         });
 
@@ -211,51 +149,23 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
         viewModel.checkUnreadMsg();
     }
 
-    /**
-     * 添加BottomNavigationView中每个item右上角的红点
-     */
-    private void addTabBadge() {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navView.getChildAt(0);
-        int childCount = menuView.getChildCount();
-        Log.e("TAG", "bottom child count = " + childCount);
-        BottomNavigationItemView itemTab;
-        for (int i = 0; i < childCount; i++) {
-            itemTab = (BottomNavigationItemView) menuView.getChildAt(i);
-            View badge = LayoutInflater.from(mContext).inflate(badgeIds[i], menuView, false);
-            switch (i) {
-                case 0:
-                    mTvMainHomeMsg = badge.findViewById(msgIds[0]);
-                    break;
-                case 1:
-                    mTvMainFriendsMsg = badge.findViewById(msgIds[1]);
-                    break;
-                case 2:
-                    mTvMainDiscoverMsg = badge.findViewById(msgIds[2]);
-                    break;
-                case 3:
-                    mTvMainAboutMeMsg = badge.findViewById(msgIds[3]);
-                    break;
-            }
-            itemTab.addView(badge);
-        }
-    }
 
-    /**
-     * 用于展示是否已经存在的Fragment
-     *
-     * @param savedInstanceState
-     */
-    private void checkIfShowSavedFragment(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            String tag = savedInstanceState.getString("tag");
-            if (!TextUtils.isEmpty(tag)) {
-                Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
-                if (fragment instanceof EaseBaseFragment) {
-                    replace((EaseBaseFragment) fragment, tag);
-                }
-            }
-        }
-    }
+//    /**
+//     * 用于展示是否已经存在的Fragment
+//     *
+//     * @param savedInstanceState
+//     */
+//    private void checkIfShowSavedFragment(Bundle savedInstanceState) {
+//        if (savedInstanceState != null) {
+//            String tag = savedInstanceState.getString("tag");
+//            if (!TextUtils.isEmpty(tag)) {
+//                Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+//                if (fragment instanceof EaseBaseFragment) {
+//                    replace((EaseBaseFragment) fragment, tag);
+//                }
+//            }
+//        }
+//    }
 
     /**
      * 申请权限
@@ -276,77 +186,36 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
                 });
     }
 
-    private void switchToHome() {
-        if (mConversationListFragment == null) {
-            mConversationListFragment = new ConversationListFragment();
-        }
-        replace(mConversationListFragment, "conversation");
-    }
 
-    private void switchToFriends() {
-        if (mFriendsFragment == null) {
-            mFriendsFragment = new ContactListFragment();
-        }
-        replace(mFriendsFragment, "contact");
-    }
+//    private void replace(EaseBaseFragment fragment, String tag) {
+//        if (mCurrentFragment != fragment) {
+//            FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+//            if (mCurrentFragment != null) {
+//                t.hide(mCurrentFragment);
+//            }
+//            mCurrentFragment = fragment;
+//            if (!fragment.isAdded()) {
+//                t.add(R.id.fl_main_fragment, fragment, tag).show(fragment).commit();
+//            } else {
+//                t.show(fragment).commit();
+//            }
+//
+//        }
+//    }
 
-    private void switchToDiscover() {
-        if (mDiscoverFragment == null) {
-            mDiscoverFragment = new DiscoverFragment();
-        }
-        replace(mDiscoverFragment, "discover");
-    }
 
-    private void switchToAboutMe() {
-        if (mAboutMeFragment == null) {
-            mAboutMeFragment = new AboutMeFragment();
-        }
-        replace(mAboutMeFragment, "me");
-    }
-
-    private void replace(EaseBaseFragment fragment, String tag) {
-        if (mCurrentFragment != fragment) {
-            FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-            if (mCurrentFragment != null) {
-                t.hide(mCurrentFragment);
-            }
-            mCurrentFragment = fragment;
-            if (!fragment.isAdded()) {
-                t.add(R.id.fl_main_fragment, fragment, tag).show(fragment).commit();
+    public void setButtonColor(int index) {
+        for (int i = 0; i < mBtnListID.length; i++) {
+            if (index != 4 && index == i) {
+                mBtnList[i].setSelected(true);
+                mBtnList[i].setTextColor(getResources().getColor(R.color.actionbar_pres_color));
             } else {
-                t.show(fragment).commit();
+                mBtnList[i].setSelected(false);
+                mBtnList[i].setTextColor(getResources().getColor(R.color.action_bar_txt_color));
             }
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        mTitleBar.setVisibility(View.VISIBLE);
-        showMenu = true;
-        boolean showNavigation = false;
-        int itemId = menuItem.getItemId();
-        if (itemId == R.id.em_main_nav_home) {
-            switchToHome();
-            mTitleBar.setTitle(getResources().getString(R.string.em_main_title_home));
-            showNavigation = true;
-        } else if (itemId == R.id.em_main_nav_friends) {
-            switchToFriends();
-            mTitleBar.setTitle(getResources().getString(R.string.em_main_title_friends));
-            showNavigation = true;
-            invalidateOptionsMenu();
-        } else if (itemId == R.id.em_main_nav_discover) {
-            switchToDiscover();
-            mTitleBar.setTitle(getResources().getString(R.string.em_main_title_discover));
-            showNavigation = true;
-        } else if (itemId == R.id.em_main_nav_me) {
-            switchToAboutMe();
-            mTitleBar.setTitle(getResources().getString(R.string.em_main_title_me));
-            showMenu = false;
-            showNavigation = true;
-        }
-        invalidateOptionsMenu();
-        return showNavigation;
-    }
 
     private void checkUnreadMsg() {
         viewModel.checkUnreadMsg();
@@ -355,7 +224,7 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
     @Override
     protected void onResume() {
         super.onResume();
-        DemoHelper.getInstance().showNotificationPermissionDialog();
+//        DemoHelper.getInstance().showNotificationPermissionDialog();
     }
 
     @Override
@@ -364,5 +233,76 @@ public class MainActivity extends BaseInitActivity implements BottomNavigationVi
         if (mCurrentFragment != null) {
             outState.putString("tag", mCurrentFragment.getTag());
         }
+    }
+
+
+    private void initFragment() {
+        //ARouter拿到多Fragment(这里需要通过ARouter获取，不能直接new,因为在组件独立运行时，宿主app是没有依赖其他组件，所以new不到其他组件的Fragment)
+        Fragment homeFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Home.PAGER_HOME).navigation();
+        Fragment cardFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Card.PAGER_CARD).navigation();
+        mConversationListFragment = new ConversationListFragment();
+        Fragment findFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Find.PAGER_FIND).navigation();
+        Fragment meFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.User.PAGER_ME).navigation();
+        mFragments = new ArrayList<>();
+        mFragments.add(homeFragment);
+        mFragments.add(cardFragment);
+        mFragments.add(mConversationListFragment);
+        mFragments.add(meFragment);
+        mFragments.add(findFragment);
+//        ViewPagerAdapter adapter = new ViewPagerAdapter(mContext.getSupportFragmentManager(),
+//                mFragments);
+//        mViewContainer.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.actionbar_info_btn) {
+            mViewContainer.setCurrentItem(CARD_ITEM, false);
+        } else if (id == R.id.actionbar_card_btn) {
+            mViewContainer.setCurrentItem(INFO_ITEM, false);
+        } else if (id == R.id.actionbar_msg_btn) {
+            mViewContainer.setCurrentItem(MSG_ITEM, false);
+        } else if (id == R.id.actionbar_me_btn) {
+            mViewContainer.setCurrentItem(ME_ITEM, false);
+        } else if (id == R.id.actionbar_find_btn) {
+            mViewContainer.setCurrentItem(FIND_ITEM, false);
+        }
+
+    }
+
+
+    public void setOnClickListener(View.OnClickListener onclickListener) {
+        for (int i = 0; i < mBtnListID.length; i++) {
+            mBtnList[i].setOnClickListener(onclickListener);
+        }
+        findBtn.setOnClickListener(onclickListener);
+        mViewContainer.addOnPageChangeListener(this);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        setButtonColor(position);
+        if (position == CARD_ITEM) {
+
+
+        } else if (position == INFO_ITEM) {
+
+        } else if (position == MSG_ITEM) {
+            ntb.setTitleText("消息");
+        } else if (position == ME_ITEM) {
+
+        } else if (position == FIND_ITEM) {
+
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

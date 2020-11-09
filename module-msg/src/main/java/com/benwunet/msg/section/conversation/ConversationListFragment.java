@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProviders;
@@ -43,12 +42,12 @@ public class ConversationListFragment extends EaseConversationListFragment imple
     public void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
         //添加搜索会话布局
-        viewStub.setLayoutResource(R.layout.demo_layout_search);
-        View view = viewStub.inflate();
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        tvSearch = view.findViewById(R.id.tv_search);
+//        viewStub.setLayoutResource(R.layout.demo_layout_search);
+//        View view = viewStub.inflate();
+//        ViewGroup.LayoutParams params = view.getLayoutParams();
+//        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+//        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+//        tvSearch = view.findViewById(R.id.tv_search);
 
         initViewModel();
     }
@@ -95,7 +94,7 @@ public class ConversationListFragment extends EaseConversationListFragment imple
     @Override
     public void initListener() {
         super.initListener();
-        tvSearch.setOnClickListener(this);
+//        tvSearch.setOnClickListener(this);
     }
 
     @Override

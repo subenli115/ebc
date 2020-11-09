@@ -6,15 +6,6 @@ android {
             applicationId "com.benwunet.main"
         }
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        AROUTER_MODULE_NAME: project.getName(),
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"]
-            }
-        }
     }
     //统一资源前缀，规范资源引用
     resourcePrefix "main_"
@@ -29,6 +20,7 @@ dependencies {
     testImplementation rootProject.ext.support["junit"]
     //组件依赖基础库
     api project(':library-base')
+
     //第三方底部Tabbar(这里要用api依赖, 不能用implementation，不然当宿主打包的时候自动生成的databinding无法编译该库的类
     api 'me.majiajie:pager-bottom-tab-strip:2.2.2'
     //组件中依赖阿里路由编译框架

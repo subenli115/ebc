@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+
 import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
@@ -485,7 +486,8 @@ public class DemoHelper {
     public void initPush(Context context) {
         if(EaseUI.getInstance().isMainProcess(context)) {
             //OPPO SDK升级到2.1.0后需要进行初始化
-//            HeytapPushManager.init(context, true);
+            HeytapPushManager.init(context, true);
+
             //HMSPushHelper.getInstance().initHMSAgent(DemoApplication.getInstance());
             EMPushHelper.getInstance().setPushListener(new PushListener() {
                 @Override

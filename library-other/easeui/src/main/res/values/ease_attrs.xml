@@ -4,6 +4,7 @@
     <declare-styleable name="EaseTitleBar">
         <attr name="titleBarTitle" format="reference|string"/>
         <attr name="titleBarLeftImage" format="reference"/>
+        <attr name="titleBarLeftText" format="reference|string"/>
         <attr name="titleBarRightImage" format="reference"/>
         <attr name="titleBarRightTitle" format="reference|string"/>
         <attr name="titleBarBackground" format="reference|color"/>

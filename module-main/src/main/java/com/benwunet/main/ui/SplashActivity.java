@@ -11,11 +11,9 @@ import com.benwunet.base.global.SPKeyGlobal;
 import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.msg.common.interfaceOrImplement.OnResourceParseCallback;
 import com.benwunet.msg.section.base.BaseActivity;
-import com.benwunet.msg.section.login.viewmodels.SplashViewModel;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
-import com.hyphenate.util.EMLog;
 
 import java.util.List;
 
@@ -48,7 +46,6 @@ public class SplashActivity extends BaseActivity {
         //提交修改
         editor.commit();
 //        inMain();
-        loginSDK();
         XXPermissions.with(this)
                 .permission(Permission.RECORD_AUDIO)
                 .permission(Permission.READ_PHONE_STATE)
@@ -68,6 +65,7 @@ public class SplashActivity extends BaseActivity {
                     public void noPermission(List<String> denied, boolean never) {
                     }
                 });
+        loginSDK();
     }
 
 
@@ -76,7 +74,7 @@ public class SplashActivity extends BaseActivity {
      */
     private void inMain() {
         //采用ARouter+RxBus实现组件间通信
-        ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+        MainActivity.startAction(mContext);
         finish();
     }
 
@@ -100,7 +98,6 @@ public class SplashActivity extends BaseActivity {
                 @Override
                 public void onError(int code, String message) {
                     super.onError(code, message);
-                    EMLog.i("TAG", "error message = "+response.getMessage());
                     inLogin();
                 }
             });

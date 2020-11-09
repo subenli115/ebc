@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -48,21 +49,20 @@ public class NormalTitleBar extends RelativeLayout {
         tvTitle = (TextView) findViewById(R.id.tv_title);
         tvTitleCenter = (TextView) findViewById(R.id.tv_title_center);
         mRightContainer = (LinearLayout) findViewById(R.id.rightContainer);
-
         rlCommonTitle = (RelativeLayout) findViewById(R.id.common_title);
 
-        defPadding =  getResources().getDimensionPixelSize(R.dimen.ntb_padding);
-        imgWidth =  getResources().getDimensionPixelSize(R.dimen.ntb_img_width);
+        defPadding = getResources().getDimensionPixelSize(R.dimen.ntb_padding);
+        imgWidth = getResources().getDimensionPixelSize(R.dimen.ntb_img_width);
 //        defPadding = (int) TypedValue.applyDimension(1, 12, getResources().getDisplayMetrics());
 //        imgWidth = (int) TypedValue.applyDimension(1, 48, getResources().getDisplayMetrics());
 
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.NormalTitleBar);
         if (array.hasValue(R.styleable.NormalTitleBar_ntb_bg)) {
-            rlCommonTitle.setBackgroundColor(array.getColor(R.styleable.NormalTitleBar_ntb_bg,Color.TRANSPARENT));
+            rlCommonTitle.setBackgroundColor(array.getColor(R.styleable.NormalTitleBar_ntb_bg, Color.TRANSPARENT));
         }
         if (array.hasValue(R.styleable.NormalTitleBar_ntb_img_padding)) {
-            defPadding = array.getDimensionPixelSize(R.styleable.NormalTitleBar_ntb_img_padding,defPadding);
+            defPadding = array.getDimensionPixelSize(R.styleable.NormalTitleBar_ntb_img_padding, defPadding);
 //            rlCommonTitle.setBackgroundColor(array.getColor(R.styleable.NormalTitleBar_ntb_bg,Color.TRANSPARENT));
         }
         if (array.hasValue(R.styleable.NormalTitleBar_ntb_title_text)) {
@@ -155,6 +155,7 @@ public class NormalTitleBar extends RelativeLayout {
             verLine.setVisibility(INVISIBLE);
         }
     }
+
     public void setVerLineVisiable(boolean visiable) {
         if (visiable) {
             verLine.setVisibility(VISIBLE);
@@ -162,17 +163,27 @@ public class NormalTitleBar extends RelativeLayout {
             verLine.setVisibility(INVISIBLE);
         }
     }
+
+
+
+
+
+
+
+
     /**
      * 设置标题栏左侧字符串
      *
      * @param visiable 是否显示
      */
     public void setTvLeftVisiable(boolean visiable, boolean isFinish) {
+        Log.e("setTvLeftVisiable",""+isFinish);
         setTvLeftVisiable(visiable);
         if (isFinish) {
             ivBack.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.e("setTvLeftVisiable","setTvLeftVisiable");
                     KeyBordUtil.hideSoftKeyboard(v);
                     if (getContext() instanceof Activity) {
                         ((Activity) getContext()).finish();
@@ -208,14 +219,16 @@ public class NormalTitleBar extends RelativeLayout {
     }
 
     public void setTitleText(String string) {
-            tvTitle.setText(string);
-        tvTitleCenter.setText(string);
+        tvTitle.setText(string);
+        tvTitleCenter.setVisibility(GONE);
     }
+
     public void setNewTitleText(String string) {
         tvTitleCenter.setText(string);
-        tvTitleCenter.setVisibility(View.VISIBLE);
+        tvTitleCenter.setVisibility(View.GONE);
         tvTitleCenter.setTextColor(getResources().getColor(R.color.black));
     }
+
     public void setTitleWeizhi() {
         tvTitle.setVisibility(View.GONE);
         tvTitleCenter.setVisibility(View.VISIBLE);
@@ -300,7 +313,7 @@ public class NormalTitleBar extends RelativeLayout {
      * @param id
      */
     public void setLeftImagSrc(int id) {
-        if (ivBack==null) return;
+        if (ivBack == null) return;
         ivBack.setVisibility(VISIBLE);
         ivBack.setCompoundDrawablesWithIntrinsicBounds(id, 0, 0, 0);
 
@@ -342,16 +355,19 @@ public class NormalTitleBar extends RelativeLayout {
     public void setOnBackListener(OnClickListener listener) {
         ivBack.setOnClickListener(listener);
     }
+
     /*
-        * 点击事件
-        */
+     * 点击事件
+     */
     public void setBackColor() {
         ivBack.setTextColor(Color.WHITE);
     }
+
     public void setOnivBackImagListener(OnClickListener listener) {
         if (ivBack == null) return;
         ivBack.setOnClickListener(listener);
     }
+
     public void setOnRightImagListener(OnClickListener listener) {
         if (ivRight == null) return;
         ivRight.setOnClickListener(listener);
@@ -380,6 +396,7 @@ public class NormalTitleBar extends RelativeLayout {
     public void setBackGroundColor(int color) {
         rlCommonTitle.setBackgroundColor(getResources().getColor(color));
     }
+
     public void setBackGroundDraw(int color) {
         rlCommonTitle.setBackgroundColor(color);
     }
@@ -429,23 +446,25 @@ public class NormalTitleBar extends RelativeLayout {
         switch (style) {
             case 2:
                 setBackGroundColor(R.color.transparent);
-                if (tvTitle!=null)
-                tvTitle.setTextColor(getResources().getColor(R.color.white));
-                if (tvRight!=null)
-                tvRight.setTextColor(getResources().getColor(R.color.white));
+                if (tvTitle != null)
+                    tvTitle.setTextColor(getResources().getColor(R.color.white));
+                if (tvRight != null)
+                    tvRight.setTextColor(getResources().getColor(R.color.white));
                 setLeftImagSrc(R.mipmap.back_white);
                 break;
 
         }
     }
 
-    public ImageView getIvRight(){
+    public ImageView getIvRight() {
         return ivRight;
     }
-    public ImageView getIvRight2(){
+
+    public ImageView getIvRight2() {
         return ivRight2;
     }
-    public ImageView getIvRight3(){
+
+    public ImageView getIvRight3() {
         return ivRight3;
     }
 }

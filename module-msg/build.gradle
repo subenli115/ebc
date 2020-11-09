@@ -5,7 +5,15 @@ android {
         if (isBuildModule.toBoolean()) {
             applicationId "com.benwunet.msg"
         }
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        AROUTER_MODULE_NAME: project.getName(),
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
 
     }
     //统一资源前缀，规范资源引用
@@ -14,19 +22,27 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = []
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    provided fileTree(include: ['*.aar'], dir: 'libs')
     //组件依赖基础库
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
     api project(':library-base')
+    implementation files('libs\\mi_push_v3.6.12.jar')
     //组件中依赖阿里路由编译框架
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation "androidx.fragment:fragment:1.2.0"
     //ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

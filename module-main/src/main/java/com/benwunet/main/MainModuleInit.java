@@ -8,6 +8,7 @@ import com.benwunet.base.base.loadsir.ErrorCallback;
 import com.benwunet.base.base.loadsir.LoadingCallback;
 import com.benwunet.base.base.loadsir.TimeoutCallback;
 import com.benwunet.base.global.SPKeyGlobal;
+import com.benwunet.msg.DemoHelper;
 import com.kingja.loadsir.core.LoadSir;
 import com.lljjcoder.style.citylist.utils.CityListLoader;
 import com.zhouyou.http.EasyHttp;
@@ -73,6 +74,7 @@ public class MainModuleInit implements IModuleInit {
     @Override
     public boolean onInitLow(Application application) {
         KLog.e("主业务模块初始化 -- onInitLow");
+        DemoHelper.getInstance().init(application);
         return false;
     }
 }

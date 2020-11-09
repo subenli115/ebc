@@ -26,7 +26,7 @@ import me.goldze.mvvmhabit.base.BaseFragment;
  */
 
 
-public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, LoginViewModel> {
+public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, LoginViewModel>  {
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_sign_face;
@@ -39,6 +39,7 @@ public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, Log
 
     @Override
     public void initData() {
+
         initLicense();
     }
     private void initLicense() {
@@ -69,6 +70,9 @@ public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, Log
 //            }
 //        });
     }
+
+
+
     /**
      * 参数配置方法
      */
@@ -113,4 +117,5 @@ public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, Log
         FaceSDKManager.getInstance().setFaceConfig(config);
 
     }
+
 }

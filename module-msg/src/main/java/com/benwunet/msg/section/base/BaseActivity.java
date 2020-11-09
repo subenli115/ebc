@@ -27,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.msg.DemoApplication;
 import com.benwunet.msg.DemoHelper;
 import com.benwunet.msg.R;
@@ -117,7 +119,7 @@ public class BaseActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finishOtherActivities();
-                        startActivity(new Intent(mContext, LoginActivity.class));
+                        ARouter.getInstance().build(RouterActivityPath.Sign.PAGER_LOGIN).navigation();
                         finish();
                     }
                 })

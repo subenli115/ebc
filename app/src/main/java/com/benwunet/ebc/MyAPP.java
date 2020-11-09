@@ -14,6 +14,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import me.goldze.mvvmhabit.base.BaseApplication;
+import me.jessyan.autosize.AutoSize;
+import me.jessyan.autosize.AutoSizeConfig;
 
 /**
  * Created by feng on 2020/10/15.
@@ -24,6 +26,8 @@ public class MyAPP extends BaseApplication implements Thread.UncaughtExceptionHa
     public void onCreate() {
         super.onCreate();
         //初始化组件(靠前)
+        AutoSize.initCompatMultiProcess(this);
+        AutoSizeConfig.getInstance().setCustomFragment(true);
         PreferenceManager.init(this);
         closeAndroidPDialog();
         ModuleLifecycleConfig.getInstance().initModuleAhead(this);
@@ -36,7 +40,6 @@ public class MyAPP extends BaseApplication implements Thread.UncaughtExceptionHa
     @Override
     public void uncaughtException(@NonNull Thread t, @NonNull Throwable e) {
         EMLog.e("demoApp", e.getMessage());
-
     }
 
 

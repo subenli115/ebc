@@ -24,7 +24,7 @@
             android:background="@mipmap/iv_sign_bg" />
         <com.benwunet.base.wdiget.NormalTitleBar
             android:id="@+id/ntb"
-            app:ntb_tv_left="showAndFinish"
+            binding:ntb_tv_left="showAndFinish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />

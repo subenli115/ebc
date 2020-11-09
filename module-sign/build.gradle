@@ -5,6 +5,16 @@ android {
         if (isBuildModule.toBoolean()) {
             applicationId "com.benwunet.sign"
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        AROUTER_MODULE_NAME: project.getName(),
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
     }
     //统一资源前缀，规范资源引用
     resourcePrefix "sign_"

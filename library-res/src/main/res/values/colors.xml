@@ -25,4 +25,12 @@
     <color name="gray_97">#979899</color>
     <color name="gray_b6">#B6BFD2</color>
     <color name="gray_66">#666871</color>
+    <color name="black_20">#202634</color>
+    <color name="action_bar_txt_color">#E8EAF3</color>
+    <color name="black_15">#15192C</color>
+    <color name="actionbar_pres_color">#FFE7A1</color>
+    <color name="black_8e">#8E94B0</color>
+    <color name="gray_bc">#BCBECC</color>
+    <color name="divider1">#F7F7F5</color>
+
 </resources>

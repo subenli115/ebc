@@ -18,6 +18,7 @@ import me.goldze.mvvmhabit.base.BaseFragment;
 
 
 /**
+ *
  * Created by feng on 2020/10/15.
  */
 @Route(path = RouterFragmentPath.User.PAGER_ME)
@@ -42,4 +43,5 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel> {
             }
         });
     }
+
 }

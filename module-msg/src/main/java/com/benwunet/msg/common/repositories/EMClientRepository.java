@@ -37,7 +37,6 @@ public class EMClientRepository extends BaseEMRepository {
             @Override
             protected void createCall(ResultCallBack<LiveData<Boolean>> callBack) {
                     runOnIOThread(() -> {
-                        Log.e("isLoggedIn",""+isLoggedIn());
                         if(isLoggedIn()) {
                             loadAllConversationsAndGroups(mApplication);
                             callBack.onSuccess(createLiveData(true));

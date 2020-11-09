@@ -1,11 +1,11 @@
 package com.benwunet.home.ui.fragment;
 
-import androidx.lifecycle.Observer;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterFragmentPath;
@@ -35,9 +35,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     @Override
     public void initData() {
         // 使用 TabLayout 和 ViewPager 相关联
-        binding.tabs.setupWithViewPager(binding.viewPager);
-        binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabs));
-        viewModel.addPage();
     }
 
     @Override

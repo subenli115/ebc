@@ -1,7 +1,7 @@
 package com.benwunet.sign.ui.respository;
 
 
-import android.util.Log;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -163,11 +163,8 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
                         }else {
 
                             if(!result.getMemberId().equals(EMClient.getInstance().getCurrentUser())){
-                                loginToServer(result.getMemberId(),"123456",false);
-                                Log.e("getMemberId","false     "+EMClient.getInstance().isLoggedInBefore());
-
+                                loginToServer(result.getMemberId(),result.getPassword().substring(0,32),false);
                             }else {
-                                Log.e("getMemberId","true     "+EMClient.getInstance().isLoggedInBefore());
                                 successForCallBack();
                                 ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
                             }
@@ -277,7 +274,9 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
 
                         @Override
                         public void onError(int code, String error) {
+                            Looper.prepare();
                             ToastUtils.showLong(error);
+                            Looper.loop();
                         }
                     });
                 }

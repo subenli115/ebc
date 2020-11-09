@@ -78,6 +78,7 @@ public class FaceDetectExpActivity extends FaceDetectActivity implements
                     @Override
                     public void onSuccess(UserLoginBean result) {
                         ARouter.getInstance().build(RouterActivityPath.Main.PAGER_MAIN).navigation();
+                        //创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
                     }
 
                 });

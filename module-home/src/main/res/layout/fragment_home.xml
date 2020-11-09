@@ -26,15 +26,15 @@
 
         <View style="@style/ViewLineStyle" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            binding:adapter="@{viewModel.adapter}"
-            binding:itemBinding="@{viewModel.itemBinding}"
-            binding:items="@{viewModel.items}"
-            binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}"
-            binding:pageTitles="@{viewModel.pageTitles}" />
+<!--        <androidx.viewpager.widget.ViewPager-->
+<!--            android:id="@+id/viewPager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            binding:adapter="@{viewModel.adapter}"-->
+<!--            binding:itemBinding="@{viewModel.itemBinding}"-->
+<!--            binding:items="@{viewModel.items}"-->
+<!--            binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}"-->
+<!--            binding:pageTitles="@{viewModel.pageTitles}" />-->
     </LinearLayout>
 </layout>

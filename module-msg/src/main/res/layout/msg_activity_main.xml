@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_15">
+
+    <com.benwunet.base.wdiget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_right_img2="@mipmap/ntb_more"
+        app:ntb_right_img1="@mipmap/ntb_search"
+         />
+
+    <com.benwunet.base.view.ScrollControlViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ntb"
+        android:layout_above="@+id/actionbar_layout_tmp"
+        >
+
+    </com.benwunet.base.view.ScrollControlViewPager>
+
+    <LinearLayout
+        android:id="@+id/actionbar_layout_tmp"
+        android:layout_width="match_parent"
+        android:background="@color/black_20"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/actionbar_info_btn"
+                style="@style/ActionBarItem"
+                android:drawablePadding="5px"
+                android:drawableTop="@drawable/actionbar_info_drawable_bg"
+                android:text="@string/actionbar_info" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/actionbar_card_btn"
+                style="@style/ActionBarItem"
+                android:drawablePadding="5px"
+                android:drawableTop="@drawable/actionbar_card_drawable_bg"
+                android:text="@string/actionbar_card" />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/actionbar_find_btn"
+                android:layout_width="40dp"
+                android:layout_gravity="center"
+                android:layout_height="40dp"
+                android:src="@mipmap/tab_release"
+                />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/actionbar_msg_btn"
+                style="@style/ActionBarItem"
+                android:drawablePadding="5px"
+                android:paddingTop="6.5dp"
+                android:drawableTop="@drawable/actionbar_msg_drawable_bg"
+                android:text="@string/actionbar_msg" />
+
+            <TextView
+                android:id="@+id/all_unread_number"
+                android:layout_width="15dp"
+                android:visibility="gone"
+                android:layout_height="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/unread_msg_red"
+                android:elevation="7dp"
+                android:gravity="center"
+                android:text="99+"
+                android:textColor="@android:color/white"
+                android:textSize="5sp"
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/actionbar_me_btn"
+                style="@style/ActionBarItem"
+                android:paddingTop="5.5dp"
+                android:drawablePadding="5px"
+                android:drawableTop="@drawable/actionbar_me_drawable_bg"
+                android:text="@string/actionbar_me" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

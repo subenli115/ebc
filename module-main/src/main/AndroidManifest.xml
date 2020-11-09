@@ -3,6 +3,8 @@
 
     <application>
         <!--在自己组件中注册Activity-->
-        <activity android:name="com.benwunet.main.ui.MainActivity"></activity>
+        <activity android:name="com.benwunet.main.ui.MainActivity"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 </manifest>

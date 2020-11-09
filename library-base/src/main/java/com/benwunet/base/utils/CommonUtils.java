@@ -119,7 +119,7 @@ public class CommonUtils {
     /**
      * dp转pixel
      */
-    public static float dpToPixel(float dp, Context context) {
+    public static float dp2px(Context context,float dp) {
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
         return dp * (metrics.densityDpi / 160f);

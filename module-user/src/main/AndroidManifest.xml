@@ -3,5 +3,6 @@
 
     <application>
         <activity android:name="com.benwunet.user.ui.activity.UserDetailActivity"></activity>
+
     </application>
 </manifest>

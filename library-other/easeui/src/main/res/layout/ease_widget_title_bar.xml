@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -15,7 +16,8 @@
 
     <RelativeLayout
         android:id="@+id/left_layout"
-        android:layout_width="50dip"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@drawable/ease_common_tab_bg" >
 
@@ -26,6 +28,14 @@
             android:layout_centerInParent="true"
             android:scaleType="centerInside" />
 
+        <TextView
+            android:id="@+id/left_text"
+            android:layout_width="wrap_content"
+            android:textColor="@color/em_toolbar_color_title"
+            android:textSize="@dimen/em_toolbar_title_size"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            />
     </RelativeLayout>
 
     <TextView
@@ -48,6 +58,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:foreground="@drawable/ease_ripple_click_gray">
+
 
         <ImageView
             android:id="@+id/right_image"

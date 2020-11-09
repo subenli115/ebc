@@ -26,4 +26,10 @@
     <string name="phone_code_intput">验证码</string>
     <string name="sign_get_code">获取验证码</string>
     <string name="name">姓名</string>
+
+    <string name="contacts">人脉</string>
+    <string name="follow">关注</string>
+    <string name="fans">粉丝</string>
+    <string name="praised">获赞</string>
+
 </resources>

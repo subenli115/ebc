@@ -18,6 +18,7 @@
 ├── gradle #构建
 ├── library-base #公共依赖库
 ├── library-res #公共资源库
+├── library-other #三方库
 ├── library-network #网络库
 ├── module-xx # 各个模块组件
 ├── .gitignore # 忽略文件

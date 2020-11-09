@@ -42,7 +42,7 @@ dependencies {
     api project(':library-res')
     api project(':library-network')
     // easeui
-    api project(path: ':library-other:easeui')
+    api project(':library-other:easeui')
     api project(':library-other:faceplatform-ui')
     //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
     api rootProject.ext.dependencies.MVVMHabit

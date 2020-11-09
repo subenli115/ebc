@@ -1,7 +1,6 @@
 package com.benwunet.msg.common.manager;
 
 import com.benwunet.msg.common.model.DemoServerSetBean;
-import com.benwunet.msg.common.utils.AppMetaDataHelper;
 import com.benwunet.msg.common.utils.PreferenceManager;
 
 public class OptionsHelper {
@@ -26,7 +25,7 @@ public class OptionsHelper {
     }
 
     private void getDefaultAppkey() {
-        DEF_APPKEY = AppMetaDataHelper.getInstance().getPlaceholderValue("EASEMOB_APPKEY");
+        DEF_APPKEY = "1102200519157968#ebc";
     }
 
 

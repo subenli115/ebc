@@ -1,6 +1,8 @@
 package com.benwunet.sign.ui.activity;
 
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.BaseViewModel;
 
 /**
- * 一个MVVM模式的登陆界面
+ *
  * 作为登录验证模块的路由页
  */
 @Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
@@ -46,6 +48,11 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewMo
     @Override
     public void initData() {
         mContext = this;
+        //当前手机版本为5.0及以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.BLACK);
+            return;
+        }
     }
 
     private void initTabFragment() {
