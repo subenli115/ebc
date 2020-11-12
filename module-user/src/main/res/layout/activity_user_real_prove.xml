@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_10"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/user_prove"
+            app:ntb_tv_left="showAndFinish" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@color/black_15">
+
+            <ImageView
+                android:id="@+id/iv_real"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="22.5dp"
+                android:src="@mipmap/user_icon_real_prove" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_real"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/iv_real"
+                android:text="@string/user_real_name"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_alignLeft="@+id/tv_title"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="15dp"
+                android:maxEms="13"
+                android:text="@string/user_real_prove_hint"
+                android:textColor="@color/black_8e"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/user_prove_bg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/normal_bg_yellow"
+                android:paddingLeft="2dp"
+                android:paddingTop="3dp"
+                android:paddingRight="2dp"
+                android:paddingBottom="4dp"
+                android:text="立即认证"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/black_15"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

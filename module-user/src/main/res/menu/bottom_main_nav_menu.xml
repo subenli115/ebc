@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/em_main_nav_discover"
+        android:icon="@mipmap/user_business"
+        android:title="@string/user_enterprise" />
+
+    <item
+        android:id="@+id/em_main_nav_home"
+        android:icon="@mipmap/user_dynamic"
+        android:title="@string/user_dynamic" />
+
+    <item
+        android:id="@+id/em_main_nav_friends"
+        android:icon="@mipmap/user_card"
+        android:title="@string/user_get_card"
+        />
+
+
+    <item
+        android:id="@+id/em_main_nav_me"
+        android:icon="@mipmap/user_visitor"
+        android:title="@string/user_visitor" />
+
+</menu>

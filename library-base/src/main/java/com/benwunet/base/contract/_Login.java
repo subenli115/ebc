@@ -2,7 +2,7 @@ package com.benwunet.base.contract;
 
 /**
  * 登录完成后，组件间通信的契约类
- * Created by goldze on 2018/6/21.
+ * Created by feng on 2018/6/21.
  */
 
 public class _Login {

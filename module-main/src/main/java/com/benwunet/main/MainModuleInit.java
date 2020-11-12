@@ -52,7 +52,7 @@ public class MainModuleInit implements IModuleInit {
             headers.put("Authorization", "Bearer " + getAccessToken());
         }
         EasyHttp.getInstance()
-                .setBaseUrl("http://10.10.0.111:8080/")
+                .setBaseUrl("http://10.10.0.128:8080/")
                 .setReadTimeOut(15 * 1000)
                 .setWriteTimeOut(15 * 1000)
                 .setConnectTimeout(15 * 1000)

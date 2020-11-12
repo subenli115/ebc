@@ -44,7 +44,8 @@ ext {
             gms               : 'com.google.android.gms:play-services-base:11.4.0',
             firebase          : 'com.google.firebase:firebase-messaging:11.4.0',
             "room-runtime"    : 'androidx.room:room-runtime:2.2.5',
-            "room-compiler"    : 'androidx.room:room-compiler:2.2.5',
+            "room-compiler"   : 'androidx.room:room-compiler:2.2.5',
+            PromptDialog      : 'com.github.limxing:Android-PromptDialog:1.1.3'
     ]
 }
 

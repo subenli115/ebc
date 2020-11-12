@@ -2,6 +2,7 @@ package com.benwunet.user.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
 import com.benwunet.user.databinding.FragmentMeBinding;
+import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.viewmodel.MeViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
@@ -36,12 +38,28 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel> {
     @Override
     public void initData() {
         super.initData();
-        viewModel.userInfoEvent.observe(this, new Observer<String>() {
+    }
+
+    @Override
+    public void initViewObservable() {
+        viewModel.homeBean.observe(this, new Observer<MeHomeBean>() {
             @Override
-            public void onChanged(String s) {
+            public void onChanged(MeHomeBean meHomeBean) {
+                if(meHomeBean.getReceiveCardNum()>0){
+                    binding.tvCardNum.setVisibility(View.VISIBLE);
+                }
+                if(meHomeBean.getRecentVisitorNum()>0){
+                    binding.tvVisitorNum.setVisibility(View.VISIBLE);
+                }
+                if(meHomeBean.isIsCreateCard()){
+                    binding.ivCode.setVisibility(View.VISIBLE);
+                    binding.rlInfo.setVisibility(View.VISIBLE);
+                }else {
+                    binding.tvCreateCard.setVisibility(View.VISIBLE);
+                }
+                viewModel.setHomeEntity(meHomeBean);
 
             }
         });
     }
-
 }

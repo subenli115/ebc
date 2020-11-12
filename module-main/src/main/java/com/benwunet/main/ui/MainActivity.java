@@ -82,7 +82,7 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        mViewContainer = (ScrollControlViewPager) findViewById(com.benwunet.msg.R.id.viewpager);
+        mViewContainer =  findViewById(com.benwunet.msg.R.id.viewpager);
         ntb = findViewById(com.benwunet.msg.R.id.ntb);
         mTvMainHomeMsg = findViewById(com.benwunet.msg.R.id.all_unread_number);
         initFragment();
@@ -91,15 +91,13 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
                 com.benwunet.msg.R.id.actionbar_msg_btn, com.benwunet.msg.R.id.actionbar_me_btn};
         mBtnList = new Button[mBtnListID.length];
         for (int i = 0; i < mBtnListID.length; i++) {
-            mBtnList[i] = (Button) findViewById(mBtnListID[i]);
+            mBtnList[i] =  findViewById(mBtnListID[i]);
         }
         mBtnList[0].setTextColor(getResources().getColor(R.color.actionbar_pres_color));
         mBtnList[0].setSelected(true);
         ntb.setTitleText("我的名片");
-        findBtn = (ImageView) findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
+        findBtn =  findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
         setOnClickListener(this);
-        // 可以动态显示隐藏相应tab
-//        checkIfShowSavedFragment(savedInstanceState);
     }
 
     @Override
@@ -135,7 +133,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
                 mTvMainHomeMsg.setVisibility(View.GONE);
             }
         });
-
         //加载联系人
         ContactsViewModel contactsViewModel = ViewModelProviders.of(mContext).get(ContactsViewModel.class);
         contactsViewModel.loadContactList();

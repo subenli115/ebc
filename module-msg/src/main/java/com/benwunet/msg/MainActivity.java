@@ -150,23 +150,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
     }
 
 
-//    /**
-//     * 用于展示是否已经存在的Fragment
-//     *
-//     * @param savedInstanceState
-//     */
-//    private void checkIfShowSavedFragment(Bundle savedInstanceState) {
-//        if (savedInstanceState != null) {
-//            String tag = savedInstanceState.getString("tag");
-//            if (!TextUtils.isEmpty(tag)) {
-//                Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
-//                if (fragment instanceof EaseBaseFragment) {
-//                    replace((EaseBaseFragment) fragment, tag);
-//                }
-//            }
-//        }
-//    }
-
     /**
      * 申请权限
      */
@@ -186,22 +169,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
                 });
     }
 
-
-//    private void replace(EaseBaseFragment fragment, String tag) {
-//        if (mCurrentFragment != fragment) {
-//            FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-//            if (mCurrentFragment != null) {
-//                t.hide(mCurrentFragment);
-//            }
-//            mCurrentFragment = fragment;
-//            if (!fragment.isAdded()) {
-//                t.add(R.id.fl_main_fragment, fragment, tag).show(fragment).commit();
-//            } else {
-//                t.show(fragment).commit();
-//            }
-//
-//        }
-//    }
 
 
     public void setButtonColor(int index) {
@@ -224,7 +191,7 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-//        DemoHelper.getInstance().showNotificationPermissionDialog();
+        DemoHelper.getInstance().showNotificationPermissionDialog();
     }
 
     @Override

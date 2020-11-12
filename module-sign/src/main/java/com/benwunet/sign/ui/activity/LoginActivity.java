@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.ActivityLoginBinding;
@@ -24,7 +22,7 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
  *
  * 作为登录验证模块的路由页
  */
-@Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
+//@Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
 public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewModel>{
     private LoginActivity mContext;
 

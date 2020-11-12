@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_10"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/user_third_party"
+            app:ntb_tv_left="showAndFinish" />
+
+        <com.benwunet.base.wdiget.ItemGroupView
+            android:id="@+id/igv_wechat"
+            android:layout_width="match_parent"
+            app:leftIcon="@mipmap/icon_wechat"
+            android:layout_height="60.5dp"
+            app:itemView_rightText="@string/user_bind"
+            android:background="@color/black_15"
+            app:itemView_rightText_color="@color/textColorYellow"
+            app:itemView_leftText="@string/base_wechat"
+            app:itemView_leftText_color="@color/white" />
+        <com.benwunet.base.wdiget.ItemGroupView
+            android:id="@+id/igv_weibo"
+            android:layout_width="match_parent"
+            app:leftIcon="@mipmap/icon_weibo"
+            android:layout_height="60.5dp"
+            app:itemView_rightText="@string/user_bind"
+            android:background="@color/black_15"
+            app:itemView_rightText_color="@color/textColorYellow"
+            app:itemView_leftText="@string/base_weibo"
+            app:itemView_leftText_color="@color/white" />
+        <com.benwunet.base.wdiget.ItemGroupView
+            android:id="@+id/igv_alipay"
+            android:layout_width="match_parent"
+            app:leftIcon="@mipmap/icon_alipay"
+            android:layout_height="60.5dp"
+            app:showBottomLine="false"
+            app:itemView_rightText="@string/user_bind"
+            android:background="@color/black_15"
+            app:itemView_rightText_color="@color/textColorYellow"
+            app:itemView_leftText="@string/base_alipay"
+            app:itemView_leftText_color="@color/white" />
+    </LinearLayout>
+</layout>

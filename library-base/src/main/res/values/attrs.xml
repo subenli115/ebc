@@ -61,6 +61,14 @@
         <attr name="sb_background" format="reference|color"/>
         <attr name="sb_enable_effect" format="reference|boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="rightIconDel" format="reference"/>
+        <attr name="rightIconShowPwd" format="reference"/>
+        <attr name="rightIconHidePwd" format="reference"/>
+        <attr name="type" format="integer"/>
+    </declare-styleable>
+
     <declare-styleable name="SmoothCheckBox">
         <attr name="duration" format="integer"/>
         <attr name="stroke_width" format="dimension"/>
@@ -73,6 +81,7 @@
     </declare-styleable>
     <declare-styleable name="ItemGroupView">
         <attr name="itemView_leftText" format="string"/>
+        <attr name="itemView_leftHintText" format="string"/>
         <attr name="itemView_rightText" format="string"/>
         <attr name="itemView_leftText_color" format="color"/>
         <attr name="itemView_rightText_color" format="color"/>

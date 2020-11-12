@@ -143,7 +143,6 @@ public class InfoViewModel extends BaseViewModel {
 
     public void setCityId(String id) {
         cityId = id;
-
     }
 
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+    </data>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_10"
+            android:orientation="vertical">
+
+            <com.benwunet.base.wdiget.NormalTitleBar
+                android:id="@+id/ntb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black_15"
+                app:ntb_title_text="@string/user_notice_open_info"
+                binding:ntb_tv_left="showAndFinish" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="9dp"
+                android:text="@string/user_select_open_info"
+                android:textColor="@color/black_8e"
+                android:textSize="12sp" />
+
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_name"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/name"
+                app:itemView_rightText="@string/base_display"
+                app:showRightArrow="false"
+                app:itemView_leftText_color="@color/white"
+                />
+
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/phone_code_intput"
+                app:itemView_leftText_color="@color/white"
+                app:showSlideSwitch="true" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_home_phone"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/base_home_phone"
+                app:itemView_leftText_color="@color/white"
+                app:showSlideSwitch="true" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_mail"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/base_mail"
+                app:itemView_leftText_color="@color/white"
+                app:showSlideSwitch="true" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_address"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/base_address"
+                app:itemView_leftText_color="@color/white"
+                app:showSlideSwitch="true" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_qq"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="QQ"
+                app:itemView_leftText_color="@color/white"
+                app:showSlideSwitch="true" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="60.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/base_wechat"
+                app:itemView_leftText_color="@color/white"
+                app:showSlideSwitch="true" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

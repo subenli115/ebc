@@ -65,7 +65,8 @@ public class SplashActivity extends BaseActivity {
                     public void noPermission(List<String> denied, boolean never) {
                     }
                 });
-        loginSDK();
+//        loginSDK();
+        inMain();
     }
 
 
@@ -74,7 +75,9 @@ public class SplashActivity extends BaseActivity {
      */
     private void inMain() {
         //采用ARouter+RxBus实现组件间通信
-        MainActivity.startAction(mContext);
+//        MainActivity.startAction(mContext);
+//        finish();
+        ARouter.getInstance().build(RouterActivityPath.Sign.PAGER_LOGIN).navigation();
         finish();
     }
 

@@ -84,5 +84,16 @@ public interface ApiKey {
      */
     String MEMBER_CURRENT = "member/current";
 
+    /**
+     *  个人中心首页
+     */
+    String MEMBER_HOME = "member/home";
+
+    /**
+     *  个人资料-查询修改
+     */
+    String MEMBER_SETTINGS_PERSONAL = "member/settings/personal";
+
+
 
 }

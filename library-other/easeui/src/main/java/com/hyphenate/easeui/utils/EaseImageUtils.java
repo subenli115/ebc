@@ -14,17 +14,12 @@
 package com.hyphenate.easeui.utils;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
@@ -173,7 +168,7 @@ public class EaseImageUtils extends com.hyphenate.util.ImageUtils{
 
 		//按原图展示的情况
 		if((maxHeight == 0 && maxWidth == 0) /*|| (width <= maxWidth && height <= maxHeight)*/) {
-			Glide.with(context).load(imageUri == null ? imageUrl : imageUri).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+			Glide.with(context).load(imageUri == null ? imageUrl : imageUri).into(imageView);
 			return imageView.getLayoutParams();
 		}
 		ViewGroup.LayoutParams params = imageView.getLayoutParams();
@@ -206,7 +201,6 @@ public class EaseImageUtils extends com.hyphenate.util.ImageUtils{
 				.apply(new RequestOptions()
 						.placeholder(R.drawable.ease_default_image)
 						.error(R.drawable.ease_default_image))
-				.diskCacheStrategy(DiskCacheStrategy.ALL)
 				.into(imageView);
 		return params;
 	}

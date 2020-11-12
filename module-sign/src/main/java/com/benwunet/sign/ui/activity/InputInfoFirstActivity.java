@@ -3,9 +3,6 @@ package com.benwunet.sign.ui.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-
-import androidx.lifecycle.Observer;
 
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
@@ -34,7 +31,6 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 
 public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstBinding, InfoViewModel> {
 
-    private InputMethodManager imm;
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -48,33 +44,27 @@ public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstB
 
     @Override
     public void initViewObservable() {
-        viewModel.isSelectPhoto.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                PictureSelector.create(InputInfoFirstActivity.this)
-                        .openGallery(PictureMimeType.ofImage())
-                        .loadImageEngine(GlideEngine.createGlideEngine())
-                        .maxSelectNum(1)
-                        .selectionMode(PictureConfig.SINGLE)
-                        .isEnableCrop(true)
-                        .withAspectRatio(1,1)
-                        .forResult(new OnResultCallbackListener<LocalMedia>() {
-                            @Override
-                            public void onResult(List<LocalMedia> result) {
-                                viewModel.imgUrl.setValue(result.get(0).getCutPath());
-                                Log.e("getCutPath",""+result.get(0).getCutPath());
-                                binding.ivAdd.setVisibility(View.GONE);
+        viewModel.isSelectPhoto.observe(this, aBoolean -> PictureSelector.create(InputInfoFirstActivity.this)
+                .openGallery(PictureMimeType.ofImage())
+                .loadImageEngine(GlideEngine.createGlideEngine())
+                .maxSelectNum(1)
+                .selectionMode(PictureConfig.SINGLE)
+                .isEnableCrop(true)
+                .withAspectRatio(1,1)
+                .forResult(new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        viewModel.imgUrl.setValue(result.get(0).getCutPath());
+                        Log.e("getCutPath",""+result.get(0).getCutPath());
+                        binding.ivAdd.setVisibility(View.GONE);
 
-                            }
+                    }
 
-                            @Override
-                            public void onCancel() {
+                    @Override
+                    public void onCancel() {
 
-                            }
-                        });
-
-            }
-        });
+                    }
+                }));
     }
 
     @Override

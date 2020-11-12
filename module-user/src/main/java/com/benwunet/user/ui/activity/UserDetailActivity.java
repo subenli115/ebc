@@ -14,7 +14,7 @@ import com.benwunet.user.ui.viewmodel.UserDetailViewModel;
 import me.goldze.mvvmhabit.base.BaseActivity;
 
 /**
- * Created by goldze on 2018/6/21.
+ * Created by feng on 2018/6/21.
  */
 @Route(path = RouterActivityPath.User.PAGER_USERDETAIL)
 public class UserDetailActivity extends BaseActivity<ActivityUserDetailBinding, UserDetailViewModel> {

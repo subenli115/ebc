@@ -49,6 +49,7 @@ import javax.net.ssl.HostnameVerifier;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
+import me.goldze.mvvmhabit.utils.SPUtils;
 import okhttp3.Cache;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
@@ -356,7 +357,7 @@ public abstract class BaseRequest<R extends BaseRequest> {
     }
 
     public R accessToken() {
-        this.headers.put("Authorization","Bearer 3c1c04a2-d101-41e4-b01f-2c96280c405e");
+        this.headers.put("Authorization","Bearer "+ SPUtils.getInstance().getString("accessToken"));
         return (R) this;
     }
 

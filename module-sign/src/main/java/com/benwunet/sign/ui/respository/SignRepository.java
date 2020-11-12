@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.bean.StringDataBean;
 import com.benwunet.base.global.ApiKey;
 import com.benwunet.base.global.IConstants;
 import com.benwunet.base.router.RouterActivityPath;
@@ -22,7 +23,6 @@ import com.benwunet.msg.common.repositories.BaseEMRepository;
 import com.benwunet.msg.common.repositories.NetworkOnlyResource;
 import com.benwunet.sign.SignModuleInit;
 import com.benwunet.sign.ui.activity.InputInfoFirstActivity;
-import com.benwunet.sign.ui.bean.StringDataBean;
 import com.benwunet.sign.ui.bean.UserBean;
 import com.benwunet.sign.ui.bean.UserLoginBean;
 import com.benwunet.sign.ui.source.LocalDataSource;
@@ -41,9 +41,14 @@ import me.goldze.mvvmhabit.utils.StringUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
- * MVVM的Model层，统一模块的数据仓库，包含网络数据和本地数据（一个应用可以有多个Repositor）
- * Created by feng on 2020/10/21.
+ * @Package: com.benwunet.sign.ui.respository
+ * @ClassName: SignRepository
+ * @Description: 登录模块仓库
+ * @Author: feng
+ * @CreateDate: 2020/10/28 0028 11:20
+ * @Version: 1.0
  */
+
 public class SignRepository extends BaseEMRepository implements LocalDataSource {
     private volatile static SignRepository instance = null;
     private final LocalDataSource mLocalDataSource;

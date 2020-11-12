@@ -47,7 +47,6 @@ public class InputInfoThirdActivity extends BaseActivity<ActivityInputInfoThirdB
     private AMapLocationClientOption locationOption = null;
     private OptionsPickerView<Object> mPickerView;
     private List<Object> mOptionsAgeItems;
-    private List<jobListBean> jobListBeans1;
     private List<jobListBean> jobList;
     private List<IndustryListBean> industryList;
     private CompleteInfoBean entity;
@@ -95,7 +94,6 @@ public class InputInfoThirdActivity extends BaseActivity<ActivityInputInfoThirdB
 
             }
         });
-
         viewModel.showIndustry.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {

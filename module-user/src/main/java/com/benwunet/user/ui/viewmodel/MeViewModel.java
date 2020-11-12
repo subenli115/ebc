@@ -1,27 +1,31 @@
 package com.benwunet.user.ui.viewmodel;
 
 import android.app.Application;
-import android.text.TextUtils;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableInt;
 
-import com.benwunet.base.global.SPKeyGlobal;
+import com.benwunet.user.ui.activity.UserSettingActivity;
+import com.benwunet.user.ui.bean.MeHomeBean;
+import com.benwunet.user.ui.respository.MeRepository;
 
-import io.reactivex.disposables.Disposable;
 import me.goldze.mvvmhabit.base.BaseViewModel;
+import me.goldze.mvvmhabit.binding.command.BindingAction;
+import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
-import me.goldze.mvvmhabit.utils.SPUtils;
 
 /**
+ *
+ * 个人中心vm
  * Created by feng on 2020/10/15.
  */
 
 public class MeViewModel extends BaseViewModel {
-    public ObservableInt loginBtnVisible = new ObservableInt();
-    public SingleLiveEvent<String> userInfoEvent = new SingleLiveEvent<>();
-    private Disposable subscribe;
+    public SingleLiveEvent<MeHomeBean> homeBean = new SingleLiveEvent<>();
+    public SingleLiveEvent<String> imgUrl = new SingleLiveEvent<>();
+
+    private MeRepository meRepository = MeRepository.getInstance(this);
+    public MeHomeBean homeEntity;
+
     public MeViewModel(@NonNull Application application) {
         super(application);
     }
@@ -29,15 +33,27 @@ public class MeViewModel extends BaseViewModel {
     public void onCreate() {
         initData();
     }
+    public void setHomeEntity(MeHomeBean entity) {
+        if (this.homeEntity == null) {
+            this.homeEntity = entity;
+        }
+        imgUrl.setValue(entity.getAvatar());
+
+    }
+
+
+    //设置页面
+    public BindingCommand settingOnClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startActivity(UserSettingActivity.class);
+        }
+    });
+
+
 
     public void initData() {
-        String userInfo = SPUtils.getInstance().getString(SPKeyGlobal.USER_INFO);
-        if (!TextUtils.isEmpty(userInfo)) {
-            userInfoEvent.setValue(userInfo);
-            loginBtnVisible.set(View.GONE);
-        } else {
-            loginBtnVisible.set(View.VISIBLE);
-        }
+        meRepository.getMemberHome(homeBean);
     }
 
 }

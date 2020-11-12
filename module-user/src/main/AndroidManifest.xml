@@ -2,7 +2,56 @@
     package="com.benwunet.user">
 
     <application>
-        <activity android:name="com.benwunet.user.ui.activity.UserDetailActivity"></activity>
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserNoticeActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserPrivacyActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserSettingActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserInfoActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserPublicInfoActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserSafeActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserPhoneActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserPwdActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserPlatformActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserRealResultActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserRealProveActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
 
     </application>
+
 </manifest>

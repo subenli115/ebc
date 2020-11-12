@@ -115,6 +115,8 @@ public class ItemGroupView extends RelativeLayout {
      * 右侧文本内间距
      */
     private int rightTextpaddRight;
+    private TextView tvLeftHintText;
+    private String leftHintText;
 
     public ItemGroupView(Context context) {
         this(context, null);
@@ -144,8 +146,9 @@ public class ItemGroupView extends RelativeLayout {
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.ItemGroupView);
         leftText = t.getString(R.styleable.ItemGroupView_itemView_leftText);
+        leftHintText = t.getString(R.styleable.ItemGroupView_itemView_leftHintText);
         rightText = t.getString(R.styleable.ItemGroupView_itemView_rightText);
-        showBottomLine = t.getBoolean(R.styleable.ItemGroupView_showBottomLine, false);
+        showBottomLine = t.getBoolean(R.styleable.ItemGroupView_showBottomLine, true);
         showRightAllow = t.getBoolean(R.styleable.ItemGroupView_showRightArrow, true);
         showivRight = t.getBoolean(R.styleable.ItemGroupView_showRightImage, false);
         showSlideSwitch = t.getBoolean(R.styleable.ItemGroupView_showSlideSwitch, false);
@@ -169,6 +172,7 @@ public class ItemGroupView extends RelativeLayout {
     private void initViews() {
         rootView = LayoutInflater.from(getContext()).inflate(getResourseLayoutId(), this, true);
         tvLeftText = (TextView) findViewById(R.id.tv_item_group_left_text);
+        tvLeftHintText = (TextView) findViewById(R.id.tv_item_group_left_hint);
         tvRightText = (TextView) findViewById(R.id.tv_item_group_right_text);
         viewBottomLine = findViewById(R.id.view_item_group_bottom_line);
         showivRight();
@@ -214,7 +218,6 @@ public class ItemGroupView extends RelativeLayout {
      * @param showBottomLine true 显示  FALSE 隐藏
      */
     public void showBottomLine(boolean showBottomLine) {
-        if (this.showBottomLine == showBottomLine) return;
         viewBottomLine.setVisibility(showBottomLine ? VISIBLE : GONE);
     }
 
@@ -240,9 +243,17 @@ public class ItemGroupView extends RelativeLayout {
      */
     private void initDatas() {
         setText(tvLeftText, leftText);
+        setText(tvLeftHintText,leftHintText);
         setText(tvRightText, rightText);
         tvLeftText.setTextColor(leftTextColor);
         tvRightText.setTextColor(rightTextColor);
+        if(leftHintText!=null&&leftHintText.length()>0){
+            RelativeLayout.LayoutParams layoutParams1 =(RelativeLayout.LayoutParams) tvLeftText.getLayoutParams();
+            layoutParams1.removeRule(RelativeLayout.CENTER_VERTICAL);
+            RelativeLayout.LayoutParams layoutParams2 =(RelativeLayout.LayoutParams) tvRightText.getLayoutParams();
+            layoutParams2.removeRule(RelativeLayout.CENTER_VERTICAL);
+        }
+
     }
 
     /**
@@ -331,9 +342,8 @@ public class ItemGroupView extends RelativeLayout {
     public void setLeftImage() {
         if (ivLeft != null) {
             LayoutParams params = (LayoutParams) ivLeft.getLayoutParams();
-            params.height = (int) CommonUtils.dp2px(getContext(), 17);
-            params.width = (int) CommonUtils.dp2px(getContext(), 14);
-            params.leftMargin=(int) CommonUtils.dp2px(getContext(), 25);
+            params.height = (int) CommonUtils.dp2px(getContext(), 30);
+            params.width = (int) CommonUtils.dp2px(getContext(), 30);
             ivLeft.setLayoutParams(params);
             ivLeft.setImageDrawable(leftDrawable);
         }

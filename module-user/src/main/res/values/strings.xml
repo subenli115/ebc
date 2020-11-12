@@ -3,9 +3,19 @@
     tools:ignore="ExtraTranslation"
     >
     <string name="user_name">用户组件</string>
-    <string name="user_info">用户：</string>
     <string name="user_vip">VIP会员</string>
 
+    <string name="user_enterprise">我的企业</string>
+    <string name="user_dynamic">我的动态</string>
+    <string name="user_get_card">收到的名片</string>
+    <string name="user_visitor">最近访客</string>
+
+
+    <string name="user_sex">性别</string>
+    <string name="user_birthday">生日</string>
+    <string name="user_city">所在城市</string>
+    <string name="user_sign">个人签名</string>
+    <string name="user_save">保存</string>
 
     <string name="user_collection">我的收藏</string>
     <string name="user_setting">设置</string>
@@ -15,4 +25,63 @@
     <string name="user_about">关注</string>
     <string name="user_fans">我的粉丝</string>
     <string name="user_card">我看过的卡片</string>
+
+
+    <string name="user_info">个人资料</string>
+    <string name="user_safe">账号安全</string>
+    <string name="user_prove">用户认证</string>
+    <string name="user_notice">新消息通知</string>
+    <string name="user_privacy">隐私</string>
+    <string name="user_cache">清理缓存</string>
+    <string name="user_agreement">用户协议</string>
+    <string name="user_creat_card">创建名片</string>
+
+    <string name="user_notice_hint">通知开关</string>
+    <string name="user_notice_is_search">是否可以搜索到我</string>
+    <string name="user_notice_is_change">准许陌生人向我发起名片交换</string>
+    <string name="user_notice_recommend_hint">准许将我推荐给他人</string>
+    <string name="user_select_new_notice">接受新消息通知</string>
+    <string name="user_notice_send_hint">谁可以给我发消息</string>
+    <string name="user_notice_open_info">名片公开信息</string>
+    <string name="user_select_open_info">选择对陌生人公开信息</string>
+    <string name="user_no_see">不看TA的动态</string>
+    <string name="user_no_let">不让TA看我的动态</string>
+    <string name="user_select_video_notice">接收语音和视频童话邀请通知</string>
+    <string name="user_dialog_content_clear_cache">您正在执行清理内存操作,请确认是否清理?</string>
+    <string name="user_search_hint">用户可以通过姓名/公司/产品信息找到我(联系方式不可见)</string>
+    <string name="user_dialog_warning">警告</string>
+
+    <string name="user_bind_phone">绑定手机</string>
+    <string name="user_real">身份认证</string>
+    <string name="user_pwd">登录密码</string>
+    <string name="user_mail">本无邮箱</string>
+    <string name="user_face_switch">人脸识别</string>
+    <string name="user_third_party">第三平台账号</string>
+
+    <string name="user_edit_phone">修改手机</string>
+    <string name="user_edit_pwd">修改密码</string>
+    <string name="user_input_phone">更换手机</string>
+    <string name="user_change_phone">更换手机</string>
+    <string name="user_edit_hint">已绑定手机</string>
+    <string name="user_new_pwd">新密码</string>
+    <string name="user_again_pwd">确认新密码</string>
+    <string name="user_bind">立即绑定</string>
+    <string name="user_no_set">未设置</string>
+    <string name="user_real_name">实名认证</string>
+
+    <string name="user_real_prove_hint">为获得更好的服务，请尽快完成实名认证，完成后并点亮认证标识。</string>
+
+
+
+    <string name="user_input_info">填写基础信息</string>
+    <string name="user_examineing">审核中</string>
+    <string name="user_examined">完成审核</string>
+
+
+
+    <string name="user_card_positive">上传身份证正面照</string>
+    <string name="user_card_back">上传身份证反面照</string>
+    <string name="user_card_hold">上传手持身份证照</string>
+
+    <string name="user_logout">退出登录</string>
 </resources>

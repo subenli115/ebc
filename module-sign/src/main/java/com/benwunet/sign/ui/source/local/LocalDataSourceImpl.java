@@ -8,7 +8,7 @@ import me.goldze.mvvmhabit.utils.SPUtils;
 
 /**
  * 本地数据源，可配合Room框架使用
- * Created by goldze on 2019/3/26.
+ * Created by feng on 2019/3/26.
  */
 public class LocalDataSourceImpl implements LocalDataSource {
     private volatile static LocalDataSourceImpl INSTANCE = null;
@@ -44,12 +44,12 @@ public class LocalDataSourceImpl implements LocalDataSource {
 
     @Override
     public void saveToken(String token) {
-        SPUtils.getInstance().put(SPKeyGlobal.PASSWORD, token);
+        SPUtils.getInstance().put(SPKeyGlobal.TOKEN, token);
     }
 
     @Override
     public void saveRefreshToken(String reToken) {
-        SPUtils.getInstance().put(SPKeyGlobal.PASSWORD, reToken);
+        SPUtils.getInstance().put(SPKeyGlobal.R_TOKEN, reToken);
     }
 
     @Override

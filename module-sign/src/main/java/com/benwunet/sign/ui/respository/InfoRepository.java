@@ -1,12 +1,12 @@
 package com.benwunet.sign.ui.respository;
 
+import com.benwunet.base.bean.StringDataBean;
 import com.benwunet.base.global.ApiKey;
 import com.benwunet.base.global.IConstants;
 import com.benwunet.base.utils.GsonUtils;
 import com.benwunet.base.utils.MapUtils;
 import com.benwunet.sign.ui.bean.CompleteInfoBean;
 import com.benwunet.sign.ui.bean.IndustryListBean;
-import com.benwunet.sign.ui.bean.StringDataBean;
 import com.benwunet.sign.ui.bean.TopicBean;
 import com.benwunet.sign.ui.bean.UploadFileBean;
 import com.benwunet.sign.ui.bean.jobListBean;
@@ -28,7 +28,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 /**
  * @Package: com.benwunet.sign.ui.respository
  * @ClassName: InfoRepository
- * @Description: 完善资料模块
+ * @Description: 完善资料仓库
  * @Author: feng
  * @CreateDate: 2020/10/28 0028 11:20
  * @Version: 1.0
