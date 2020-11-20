@@ -10,9 +10,12 @@ import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterFragmentPath;
+import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
 import com.benwunet.user.databinding.FragmentMeBinding;
+import com.benwunet.user.ui.activity.UserAboutActivity;
+import com.benwunet.user.ui.activity.UserCollectionActivity;
 import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.viewmodel.MeViewModel;
 
@@ -38,6 +41,19 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel> {
     @Override
     public void initData() {
         super.initData();
+        binding.igvCollection.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserCollectionActivity.class);
+            }
+        });
+
+        binding.igvAbout.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserAboutActivity.class);
+            }
+        });
     }
 
     @Override

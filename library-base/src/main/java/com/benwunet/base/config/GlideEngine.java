@@ -1,4 +1,4 @@
-package com.benwunet.sign.ui.config;
+package com.benwunet.base.config;
 
 /**
  * @Package: com.benwunet.sign.ui.config
@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
-import com.benwunet.sign.R;
+import com.benwunet.base.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;

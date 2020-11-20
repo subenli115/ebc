@@ -14,7 +14,7 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
 /**
  * @Package: com.benwunet.user.ui.activity
  * @ClassName: UserRealResultActivity
- * @Description: java类作用描述
+ * @Description: 实名认证结果
  * @Author: feng
  * @CreateDate: 2020/11/12 0012 17:08
  * @Version: 1.0
@@ -45,5 +45,6 @@ public class UserRealResultActivity extends BaseActivity<ActivityUserRealResultB
     @Override
     public void initData() {
         mContext = this;
+
     }
 }

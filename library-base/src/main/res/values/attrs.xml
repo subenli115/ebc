@@ -94,4 +94,18 @@
         <attr name="rightIcon" format="reference"/>
         <attr name="leftIcon" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="TwinklingRefreshLayout">
+        <attr name="tr_wave_height" format="dimension" />
+        <attr name="tr_head_height" format="dimension" />
+        <attr name="tr_bottom_height" format="dimension" />
+        <attr name="tr_overscroll_height" format="dimension" />
+        <attr name="tr_enable_loadmore" format="boolean" />
+        <attr name="tr_pureScrollMode_on" format="boolean" />
+        <attr name="tr_show_overlay_refreshview" format="boolean" />
+        <attr name="tr_headerView" format="dimension" />
+        <attr name="tr_bottomView" format="dimension" />
+        <attr name="onRefreshCommand" format="reference" />
+        <attr name="onLoadMoreCommand" format="reference" />
+    </declare-styleable>
+
 </resources>

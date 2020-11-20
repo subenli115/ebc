@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.ThemesItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_15">
+
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            app:corner_radius="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roun_type="round"
+            binding:url="@{viewModel.coverUrl}" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="20dp"
+            android:src="@mipmap/icon_item_more"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_name" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_cover"
+            app:layout_constraintTop_toTopOf="@+id/iv_cover">
+
+            <TextView
+                android:id="@+id/tv_cotent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:ellipsize="end"
+                android:maxEms="16"
+                android:maxLines="2"
+                android:text="@{viewModel.title}"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                tools:text="Angelababy11年前的走秀现场照片，洋娃娃造2222222222222222型混血感fffffffffffffffffffffffffffffffffffffffff满满。" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="张赞"
+            android:textColor="@color/black_8e"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/iv_cover"
+            app:layout_constraintTop_toBottomOf="@+id/iv_cover" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="2020年5月18日 10:24"
+            android:textColor="@color/black_8e"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/iv_cover"
+            app:layout_constraintTop_toTopOf="@+id/tv_name" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/divider1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

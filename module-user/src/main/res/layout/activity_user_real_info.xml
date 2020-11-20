@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data></data>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_10">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/user_icon_real_bg" />
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:ntb_title_text="@string/user_real_name"
+            binding:ntb_tv_left="showAndFinish" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tv_confirm"
+            android:layout_below="@+id/ntb">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/tv_confirm"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="62dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/normal_bg_white"
+                        android:orientation="vertical"
+                        android:paddingLeft="25dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="60dp"
+                            android:text="@string/user_card_info"
+                            android:textColor="@color/gray65"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="33.5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/name"
+                                android:textColor="@color/black_8e"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="58dp"
+                                android:background="@null"
+                                android:hint="@string/user_card_name_hint"
+                                android:maxLength="8"
+                                android:maxLines="1"
+                                android:textColor="@color/black_15"
+                                android:textColorHint="@color/textColorHint"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="37dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sex"
+                                android:textColor="@color/black_8e"
+                                android:textSize="16sp" />
+
+                            <com.benwunet.base.wdiget.SmoothCheckBox
+                                android:id="@+id/checkbox_man"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginLeft="58dp"
+                                app:color_checked="@color/textColorYellow"
+                                app:color_unchecked="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="8dp"
+                                android:layout_toRightOf="@+id/checkbox"
+                                android:text="男"
+                                android:textColor="@color/black_15"
+                                android:textSize="14sp" />
+
+
+                            <com.benwunet.base.wdiget.SmoothCheckBox
+                                android:id="@+id/checkbox_woman"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginLeft="21dp"
+                                app:color_checked="@color/textColorYellow"
+                                app:color_unchecked="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="8dp"
+                                android:layout_toRightOf="@+id/checkbox"
+                                android:text="女"
+                                android:textColor="@color/black_15"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="33.5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/birthday"
+                                android:textColor="@color/black_8e"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="24.5dp"
+                                android:background="@null"
+                                android:hint="@string/user_card_name_hint"
+                                android:maxLength="8"
+                                android:maxLines="1"
+                                android:textColor="@color/black_15"
+                                android:textColorHint="@color/textColorHint"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="33.5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/card_type"
+                                android:textColor="@color/black_8e"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="24.5dp"
+                                android:background="@null"
+                                android:maxLength="8"
+                                android:maxLines="1"
+                                android:text="@string/card"
+                                android:textColor="@color/black_15"
+                                android:textColorHint="@color/textColorHint"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="33.5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/card_num"
+                                android:textColor="@color/black_8e"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40dp"
+                                android:background="@null"
+                                android:hint="@string/user_card_num_hint"
+                                android:maxLength="8"
+                                android:maxLines="1"
+                                android:textColor="@color/black_15"
+                                android:textColorHint="@color/textColorHint"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="50dp"
+                            android:text="@string/user_card_check"
+                            android:textColor="@color/gray65"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="93dp"
+                                android:layout_height="58dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@mipmap/mouth_01" />
+
+                            <ImageView
+                                android:layout_width="93dp"
+                                android:layout_height="58dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@mipmap/mouth_01" />
+
+                            <ImageView
+                                android:layout_width="93dp"
+                                android:layout_height="58dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@mipmap/mouth_01" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="67dp"
+                        android:layout_height="76dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="26dp"
+                        android:src="@mipmap/user_icon_result_info" />
+
+                    <TextView
+                        android:id="@+id/tv_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll_content"
+                        android:layout_marginLeft="23dp"
+                        android:layout_marginTop="23dp"
+                        android:text="@string/prove_notes"
+                        android:textColor="@color/black_8e"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_hint"
+                        android:layout_marginLeft="23dp"
+                        android:layout_marginTop="18dp"
+                        android:paddingBottom="20dp"
+                        android:layout_marginRight="23dp"
+                        android:text="1、请确保身份证照片清晰可认，严禁PS,否则将由您本人承担相应的法律后果。\n2、实名认证成功后，将无法修改和删除实名信息，请谨慎填写。\n3、我们将尽快审核您提交的信息，处理完成后您将会收到系统通知。"
+                        android:textColor="@color/black_8e"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/textColorYellow"
+            android:gravity="center"
+            android:text="@string/base_confirm"
+            android:textColor="@color/black_15"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</layout>

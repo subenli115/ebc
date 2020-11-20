@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
+import com.benwunet.user.ui.activity.UserHomeActivity;
 import com.benwunet.user.ui.activity.UserSettingActivity;
 import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.respository.MeRepository;
@@ -15,7 +16,7 @@ import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 
 /**
  *
- * 个人中心vm
+ * 个人中心
  * Created by feng on 2020/10/15.
  */
 
@@ -38,8 +39,8 @@ public class MeViewModel extends BaseViewModel {
             this.homeEntity = entity;
         }
         imgUrl.setValue(entity.getAvatar());
-
     }
+
 
 
     //设置页面
@@ -50,7 +51,13 @@ public class MeViewModel extends BaseViewModel {
         }
     });
 
-
+    //动态页面
+    public BindingCommand dynamicOnClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startActivity(UserHomeActivity.class);
+        }
+    });
 
     public void initData() {
         meRepository.getMemberHome(homeBean);

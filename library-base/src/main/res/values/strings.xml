@@ -26,6 +26,15 @@
     <string name="phone_code_intput">验证码</string>
     <string name="sign_get_code">获取验证码</string>
     <string name="name">姓名</string>
+    <string name="sex">性别</string>
+    <string name="birthday">出生日期</string>
+    <string name="card_type">证件类型</string>
+    <string name="card_num">证件号</string>
+    <string name="card">身份证</string>
+    <string name="prove_notes">认证须知</string>
+
+
+    <string name="base_card">名片</string>
     <string name="base_phone">手机号码</string>
     <string name="base_home_phone">电话号码</string>
     <string name="base_mail">邮箱</string>
@@ -34,16 +43,20 @@
     <string name="base_alipay">支付宝</string>
     <string name="base_weibo">微博</string>
     <string name="base_display">默认显示</string>
-
+    <string name="base_next">下一步</string>
     <string name="base_confirm">确认</string>
 
 
+    <string name="base_create_group">发起群聊</string>
+    <string name="base_add_card">添加名片</string>
+    <string name="base_grouping">分组管理</string>
+    <string name="base_face">人脸识别</string>
+    <string name="base_scan">扫一扫</string>
 
-
-
-
-
-
+    <string name="base_manage">管理</string>
+    <string name="base_enterprise">企业</string>
+    <string name="base_company">公司</string>
+    <string name="base_job">职称</string>
 
     <string name="contacts">人脉</string>
     <string name="follow">关注</string>

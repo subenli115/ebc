@@ -14,7 +14,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import me.goldze.mvvmhabit.base.BaseApplication;
-import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 
 /**
@@ -26,7 +25,9 @@ public class MyAPP extends BaseApplication implements Thread.UncaughtExceptionHa
     public void onCreate() {
         super.onCreate();
         //初始化组件(靠前)
-        AutoSize.initCompatMultiProcess(this);
+        AutoSizeConfig.getInstance()
+                .setUseDeviceSize(false)
+                .setCustomFragment(true);
         AutoSizeConfig.getInstance().setCustomFragment(true);
         PreferenceManager.init(this);
         closeAndroidPDialog();

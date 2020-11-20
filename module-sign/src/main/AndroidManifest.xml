@@ -27,6 +27,7 @@
         <activity
             android:name="com.benwunet.sign.ui.activity.InputInfoFourthActivity"
             android:screenOrientation="portrait" />
+
         <service android:name="com.amap.api.location.APSService"/>
     </application>
 </manifest>

@@ -78,10 +78,29 @@
     <string name="user_examined">完成审核</string>
 
 
-
+    <string name="user_card_hint">认证须知：请确保身份证照片清晰可认，严禁PS，否则将由您本人承担相应的法律后果。</string>
     <string name="user_card_positive">上传身份证正面照</string>
     <string name="user_card_back">上传身份证反面照</string>
     <string name="user_card_hold">上传手持身份证照</string>
+    <string name="user_card_info">核对身份信息</string>
+
+    <string name="user_card_name_hint">请输入真实姓名</string>
+    <string name="user_card_time_hint">请输入出生日期</string>
+    <string name="user_card_num_hint">请输入证件号</string>
+    <string name="user_card_check">核对证件照</string>
+
+    <string name="user_business_manage">管理我的企业</string>
+    <string name="user_card_manage">名片管理</string>
+    <string name="user_enterprise_info">企业信息</string>
+    <string name="user_home_release">发布新动态</string>
+    <string name="user_card_upload_hint">请上传ipg, gif. png格式的图片，建议图片大小不超过2MB</string>
+
+    <string name="user_menu_edit">修改封面图</string>
+    <string name="user_menu_share">分享</string>
+
+    <string name="user_menu_change">交换名片</string>
+    <string name="user_menu_collection">取消收藏</string>
+    <string name="user_about_company">本无网络科技有限公司版权所有</string>
 
     <string name="user_logout">退出登录</string>
 </resources>

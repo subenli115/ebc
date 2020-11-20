@@ -22,7 +22,7 @@
             android:layout_marginLeft="17dp"
             android:background="@drawable/setting_actionlive_checkbox_button_selector"
             android:button="@null"
-            android:checked="false" />
+            android:checked="true" />
 
         <TextView
             android:layout_width="wrap_content"

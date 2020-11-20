@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="ResourceName">
 
-    <data></data>
+    <data>
 
-    <LinearLayout
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black_10"
@@ -21,32 +23,130 @@
             app:ntb_title_text="@string/user_real_name"
             app:ntb_tv_left="showAndFinish" />
 
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_below="@+id/ntb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:background="@drawable/normal_bg_orange"
+            android:textColor="@color/orange_fb"
+            android:padding="8dp"
+            android:text="@string/user_card_upload_hint"
+            />
+
         <LinearLayout
-            android:layout_width="210dp"
-            android:layout_height="130dp"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="41dp"
-            android:background="@drawable/normal_bg_black29">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ll_user_card_positive"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="38dp"
-                android:src="@mipmap/user_icon_card_back"
-            >
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/normal_bg_black29"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-            </ImageView>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:src="@mipmap/user_icon_card_back">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="38dp"
+                    android:text="@string/user_card_positive"
+                    android:textColor="@color/gray_bc"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="41dp"
+                android:background="@drawable/normal_bg_black29"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:src="@mipmap/user_icon_card_back">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="38dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/user_card_positive"
+                    android:textColor="@color/gray_bc"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="41dp"
+                android:background="@drawable/normal_bg_black29"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:src="@mipmap/user_icon_card_back">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="38dp"
+                    android:text="@string/user_card_positive"
+                    android:textColor="@color/gray_bc" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/gray_bc"
-                android:text="@string/user_card_positive"
-
-                />
+                android:layout_marginLeft="15.5dp"
+                android:layout_marginTop="28.5dp"
+                android:layout_marginRight="15.5dp"
+                android:text="@string/user_card_hint"
+                android:textColor="@color/black_8e" />
         </LinearLayout>
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/textColorYellow"
+            android:gravity="center"
+            android:text="@string/base_next"
+            android:textColor="@color/black_15"
+            android:textSize="18sp" />
+    </RelativeLayout>
 </layout>

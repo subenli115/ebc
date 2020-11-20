@@ -312,6 +312,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
+                    binding:onClickCommand="@{viewModel.dynamicOnClickCommand}"
                     android:drawableTop="@mipmap/user_dynamic"
                     android:drawablePadding="10dp"
                     android:gravity="center"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.HomeViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+    </data>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/twinklingRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            android:layout_below="@+id/iv_bg"
+            binding:tr_head_height="80dp"
+            binding:tr_wave_height="80dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    <com.benwunet.base.wdiget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/transparent"
+        binding:ntb_tv_left="showAndFinish" />
+</RelativeLayout>
+
+</layout>

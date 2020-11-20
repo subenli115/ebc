@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.ThemesItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/normal_bg_black29">
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/black"
+            app:leftBottom_corner_radius="10dp"
+            app:leftTop_corner_radius="10dp"
+            app:rightBottom_corner_radius="0dp"
+            app:rightTop_corner_radius="0dp"
+            app:roun_type="round"
+            binding:url="@{viewModel.coverUrl}" />
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/icon_item_more"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_cover"
+            app:layout_constraintStart_toEndOf="@+id/iv_cover"
+            app:layout_constraintTop_toTopOf="@+id/iv_cover">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.title}"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="#封面控" />
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@mipmap/user_icon_item_job"
+                android:drawablePadding="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.job}"
+                android:textColor="@color/gray_bc"
+                android:textSize="13sp"
+                tools:text="人靠脸面，书靠封面" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@mipmap/user_icon_item_phone"
+                android:drawablePadding="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.phone}"
+                android:textColor="@color/gray_bc"
+                android:textSize="13sp"
+                tools:text="人靠脸面，书靠封面" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/divider1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/iv_cover" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

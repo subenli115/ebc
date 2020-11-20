@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data></data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_tv_left="showAndFinish" />
+
+        <ImageView
+            android:id="@+id/iv_name"
+            android:layout_width="87dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@mipmap/icon_app_name" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="本无名片v1.0.0"
+            android:layout_below="@+id/iv_name"
+            android:textColor="@color/black_8e" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_below="@+id/tv_version"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/normal_bg_black_1f"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/gray_bc"
+                android:lineSpacingExtra = "3.5sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"
+                android:text="访问官网：ebc.benwunet.cn\n客服热线：400-8888-888\n官方邮箱：info@benwunet.cn"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/black_8e"
+            android:layout_centerHorizontal="true"
+            android:text="@string/user_about_company"
+            />
+    </RelativeLayout>
+
+</layout>

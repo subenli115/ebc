@@ -4,6 +4,9 @@ android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 //    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
+
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
         applicationId rootProject.ext.android.applicationId
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion

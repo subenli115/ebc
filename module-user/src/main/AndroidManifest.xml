@@ -51,7 +51,43 @@
             android:name="com.benwunet.user.ui.activity.UserRealProveActivity"
             android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserRealInfoActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserRealNameActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserHomeActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserSeePeopleActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserCollectionActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserAboutActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserFollowActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
 
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserBusinessActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserManageActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

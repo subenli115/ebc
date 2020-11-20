@@ -28,24 +28,33 @@ ext {
     ]
     //依赖第三方配置
     dependencies = [
-            "MVVMHabit"       : "com.github.goldze:MVVMHabit:3.1.6",
+            "MVVMHabit"                            : "com.github.goldze:MVVMHabit:3.1.6",
             //阿里路由框架
-            "arouter-api"     : "com.alibaba:arouter-api:1.4.1",
-            "arouter-compiler": "com.alibaba:arouter-compiler:1.2.2",
-            okhttp3logging    : 'com.squareup.okhttp3:logging-interceptor:3.12.2',
-            disklrucache      : 'com.jakewharton:disklrucache:2.0.2',
-            autosize          : 'me.jessyan:autosize:1.2.1',
-            "loadsir"         : "com.kingja.loadsir:loadsir:1.3.6",
-            xxpermissions     : 'com.hjq:xxpermissions:8.8',
-            AndroidPicker     : 'com.contrarywind:Android-PickerView:4.1.9',
-            PictureSelector   : 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9',
-            citypickerview    : 'liji.library.dev:citypickerview:5.2.2',
-            flowlayout        : 'com.hyman:flowlayout-lib:1.1.2',
-            gms               : 'com.google.android.gms:play-services-base:11.4.0',
-            firebase          : 'com.google.firebase:firebase-messaging:11.4.0',
-            "room-runtime"    : 'androidx.room:room-runtime:2.2.5',
-            "room-compiler"   : 'androidx.room:room-compiler:2.2.5',
-            PromptDialog      : 'com.github.limxing:Android-PromptDialog:1.1.3'
+            "arouter-api"                          : "com.alibaba:arouter-api:1.4.1",
+            "arouter-compiler"                     : "com.alibaba:arouter-compiler:1.2.2",
+            okhttp3logging                         : 'com.squareup.okhttp3:logging-interceptor:3.12.2',
+            disklrucache                           : 'com.jakewharton:disklrucache:2.0.2',
+            autosize                               : 'me.jessyan:autosize:1.2.1',
+            "loadsir"                              : "com.kingja.loadsir:loadsir:1.3.6",
+            xxpermissions                          : 'com.hjq:xxpermissions:8.8',
+            AndroidPicker                          : 'com.contrarywind:Android-PickerView:4.1.9',
+            PictureSelector                        : 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9',
+            citypickerview                         : 'liji.library.dev:citypickerview:5.2.2',
+            flowlayout                             : 'com.hyman:flowlayout-lib:1.1.2',
+            gms                                    : 'com.google.android.gms:play-services-base:11.4.0',
+            firebase                               : 'com.google.firebase:firebase-messaging:11.4.0',
+            "room-runtime"                         : 'androidx.room:room-runtime:2.2.5',
+            "room-compiler"                        : 'androidx.room:room-compiler:2.2.5',
+            PromptDialog                           : 'com.github.limxing:Android-PromptDialog:1.1.3',
+            tkrefreshlayout                        : 'com.lcodecorex:tkrefreshlayout:1.0.7',
+            legacy                                 : 'androidx.legacy:legacy-support-v4:1.0.0',
+            "bga-photopicker"                      : 'cn.bingoogolapple:bga-photopicker:2.0.2@aar',
+            "bga-baseadapter"                      : 'cn.bingoogolapple:bga-baseadapter:2.0.0@aar',
+            "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0",
+            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0",
+            "bga-baseadapter"                      : 'cn.bingoogolapple:bga-baseadapter:2.0.0@aar',
+            "BaseRecyclerViewAdapterHelper"        : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11",
+            kongdialog                             : 'com.kongzue.dialog:dialog:2.5.2'
     ]
 }
 

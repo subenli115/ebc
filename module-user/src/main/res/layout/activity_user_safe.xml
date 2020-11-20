@@ -34,6 +34,7 @@
             android:id="@+id/igv_real"
             android:layout_width="match_parent"
             android:layout_height="60.5dp"
+            android:visibility="gone"
             android:background="@color/black_15"
             app:itemView_rightText="去实名"
             app:itemView_leftText="@string/user_real"

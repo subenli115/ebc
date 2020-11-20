@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.benwunet.user.ui.bean.Story" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootView"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="457dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/user_home_bg" />
+
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_head"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/ntb"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="41dp"
+            android:layout_marginRight="23dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/mouth_01"
+            binding:border_color1="@color/white"
+            binding:border_width1="4dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_head"
+            android:layout_toRightOf="@+id/iv_head"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/normal_bg_yellow_tran"
+                android:padding="3dp"
+                android:text="@string/user_card_manage"
+                android:textColor="@color/textColorYellow"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/iv_take"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/user_home_photo" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_head"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="张赞"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="女"
+                android:textColor="@color/gray_bc"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="13.5dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/gray_bc" />
+
+            <TextView
+                android:id="@+id/tv_adrress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="重庆，沙坪坝区"
+                android:textColor="@color/gray_bc"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:padding="12dp"
+                android:src="@mipmap/user_home_edit" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_info"
+            android:layout_centerHorizontal="true"
+            android:text="隐约雷鸣，阴霾天空。但盼风雨来，能留你在此。"
+            android:textColor="@color/gray_bc"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_sign"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="232"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/follow"
+                    android:textColor="@color/gray_bc"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/fans"
+                    android:textColor="@color/gray_bc"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/praised"
+                    android:textColor="@color/gray_bc"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_num"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/normal_bg_yellow"
+            android:drawableLeft="@mipmap/user_home_add"
+            android:drawablePadding="3dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/user_home_release"
+            android:textColor="@color/black_15"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+</layout>

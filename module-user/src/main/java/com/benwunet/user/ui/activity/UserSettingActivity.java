@@ -1,7 +1,6 @@
 package com.benwunet.user.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -61,19 +60,19 @@ public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding
         binding.igvInfo.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserInfoActivity.class));
+                startActivity(UserInfoActivity.class);
             }
         });
         binding.igvNotice.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserNoticeActivity.class));
+                startActivity(UserNoticeActivity.class);
             }
         });
         binding.igvPrivacy.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserPrivacyActivity.class));
+                startActivity(UserPrivacyActivity.class);
             }
         });
         binding.igvCache.setOnClickListener(new OnNoDoubleClickListener() {
@@ -92,13 +91,14 @@ public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding
         binding.igvSafe.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserSafeActivity.class));
+                startActivity(UserSafeActivity.class);
             }
         });
         binding.igvProve.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserRealProveActivity.class));
+//                startActivity(UserRealProveActivity.class);
+                startActivity(UserBusinessActivity.class);
             }
         });
 

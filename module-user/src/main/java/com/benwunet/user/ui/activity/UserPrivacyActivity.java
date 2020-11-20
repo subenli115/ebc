@@ -76,7 +76,22 @@ public class UserPrivacyActivity extends BaseActivity<ActivityUserPrivacyBinding
         binding.igvOpenInfo.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserPublicInfoActivity.class));
+                startActivity(UserPublicInfoActivity.class);
+            }
+        });
+        binding.igvNoLet.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("title","see");
+                intent.setClass(mContext,UserSeePeopleActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.igvNoSee.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserSeePeopleActivity.class);
             }
         });
     }

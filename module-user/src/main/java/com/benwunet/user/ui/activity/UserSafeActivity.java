@@ -1,7 +1,6 @@
 package com.benwunet.user.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -51,20 +50,20 @@ public class UserSafeActivity extends BaseActivity<ActivityUserSafeBinding, Base
         binding.igvPhone.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext, UserPhoneActivity.class));
+                startActivity( UserPhoneActivity.class);
             }
         });
 
         binding.igvPwd.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserPwdActivity.class));
+                startActivity(UserPwdActivity.class);
             }
         });
         binding.igvThird.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(new Intent(mContext,UserPlatformActivity.class));
+                startActivity(UserPlatformActivity.class);
             }
         });
     }

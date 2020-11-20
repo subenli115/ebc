@@ -5,4 +5,9 @@
         <item>账户登录</item>
         <item>短信登录</item>
     </string-array>
+
+    <string-array name="user_collection">
+        <item>名片</item>
+        <item>动态</item>
+    </string-array>
 </resources>

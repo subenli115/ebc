@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <import type="com.benwunet.user.ui.viewmodel.ViewPagerViewModel" />
+
+        <import type="com.benwunet.user.ui.viewmodel.UserViewPagerItemViewModel" />
+
+        <variable
+            name="viewModel"
+            type="ViewPagerViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.benwunet.user.ui.adapter.UserViewPagerBindingAdapter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/user_collection"
+            app:ntb_tv_left="showAndFinish" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/transparent"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/textColorYellow"
+            app:tabTextAppearance="@style/user_tabLayoutTextSize"
+            app:tabTextColor="@color/gray_bc" />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            binding:adapter="@{adapter}"
+            binding:itemBinding="@{viewModel.itemBinding}"
+            binding:items="@{viewModel.items}"
+            binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}"
+            binding:pageTitles="@{viewModel.pageTitles}" />
+    </LinearLayout>
+</layout>

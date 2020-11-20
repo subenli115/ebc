@@ -2,8 +2,10 @@ package com.benwunet.user.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
 import com.benwunet.user.databinding.ActivityUserRealProveBinding;
@@ -45,5 +47,12 @@ public class UserRealProveActivity extends BaseActivity<ActivityUserRealProveBin
     @Override
     public void initData() {
         mContext = this;
+        binding.tvProve.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserRealNameActivity.class);
+
+            }
+        });
     }
 }

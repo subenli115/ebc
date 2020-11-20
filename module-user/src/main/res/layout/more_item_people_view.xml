@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.ThemesItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/black_15"
+        android:layout_height="70dp">
+
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_cover"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            binding:url="@{viewModel.coverUrl}"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:scaleType="fitXY" />
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="15dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@mipmap/user_icon_more_delete"
+            />
+        <LinearLayout
+            app:layout_constraintBottom_toBottomOf="@+id/iv_cover"
+            app:layout_constraintStart_toEndOf="@+id/iv_cover"
+            app:layout_constraintTop_toTopOf="@+id/iv_cover"
+            android:layout_width="0dp"
+            android:layout_marginLeft="14dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                tools:text="#封面控"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.title}"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                tools:text="人靠脸面，书靠封面"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:visibility="gone"
+                android:maxLines="1"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <View
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/iv_cover"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/divider1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

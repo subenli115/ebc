@@ -28,7 +28,6 @@ import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -180,7 +179,7 @@ public class SmoothCheckBox extends View implements Checkable {
         reset();
         invalidate();
         if (mListener != null) {
-            mListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
+            mListener.onCheckedChanged(mChecked);
         }
     }
 
@@ -200,7 +199,7 @@ public class SmoothCheckBox extends View implements Checkable {
                 startUnCheckedAnimation();
             }
             if (mListener != null) {
-                mListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
+                mListener.onCheckedChanged( mChecked);
             }
 
         } else {
@@ -446,6 +445,6 @@ public class SmoothCheckBox extends View implements Checkable {
     }
 
     public interface OnCheckedChangeListener {
-        void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked);
+        void onCheckedChanged( boolean isChecked);
     }
 }

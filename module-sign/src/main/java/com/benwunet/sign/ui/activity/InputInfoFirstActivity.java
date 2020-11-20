@@ -1,13 +1,12 @@
 package com.benwunet.sign.ui.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.benwunet.base.config.GlideEngine;
 import com.benwunet.sign.BR;
 import com.benwunet.sign.R;
 import com.benwunet.sign.databinding.ActivityInputInfoFirstBinding;
-import com.benwunet.sign.ui.config.GlideEngine;
 import com.benwunet.sign.ui.viewmodel.InfoViewModel;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -55,7 +54,6 @@ public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstB
                     @Override
                     public void onResult(List<LocalMedia> result) {
                         viewModel.imgUrl.setValue(result.get(0).getCutPath());
-                        Log.e("getCutPath",""+result.get(0).getCutPath());
                         binding.ivAdd.setVisibility(View.GONE);
 
                     }

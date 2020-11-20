@@ -28,13 +28,19 @@
     <color name="black_20">#202634</color>
     <color name="action_bar_txt_color">#E8EAF3</color>
     <color name="black_15">#15192C</color>
+    <color name="black_1f">#1F243B</color>
     <color name="actionbar_pres_color">#FFE7A1</color>
     <color name="black_8e">#8E94B0</color>
     <color name="gray_bc">#BCBECC</color>
+    <color name="gray_94">#9499AF</color>
     <color name="divider1">#202436</color>
     <color name="black_29">#292E47</color>
     <color name="black_10">#101320</color>
     <color name="black_03">#03081E</color>
     <color name="gray_e3">#E3E3E6</color>
-
+    <color name="orange_fb">#FB793F</color>
+    <color name="orange_ff">#FFECD1</color>
+    <color name="press">#e8e8e8</color>
+    <color name="menu_color">#343A57</color>
+    <color name="view_color">#585C76</color>
 </resources>
