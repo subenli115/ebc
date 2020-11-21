@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.ThemesItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_15">
+
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+            binding:url="@{viewModel.coverUrl}" />
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="70dp"
+            android:layout_height="29dp"
+            android:visibility="@{viewModel.isSelect ? View.VISIBLE : View.GONE }"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/normal_bg_gray_tran4"
+            android:gravity="center"
+            android:text="@string/user_send"
+            android:textColor="@color/black_8e"
+            android:layout_marginTop="26dp"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="70dp"
+            android:layout_height="29dp"
+            android:layout_marginRight="15dp"
+            android:visibility="@{viewModel.isSelect ? View.GONE : View.VISIBLE }"
+            android:background="@drawable/normal_bg_yellow_tran4"
+            android:gravity="center"
+            android:text="@string/user_menu_change"
+            android:textColor="@color/textColorYellow"
+            android:layout_marginTop="26dp"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/iv_cover"
+            app:layout_constraintTop_toTopOf="@+id/iv_cover">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.title}"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="#封面控" />
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:text="@{viewModel.job}"
+                android:maxLines="1"
+                android:textColor="@color/black_8e"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:text="人靠脸面，书靠封面" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@{viewModel.time+ `   访问了您的名片`}"
+                android:layout_marginBottom="15dp"
+                tools:text="3232"
+                android:textSize="14sp"
+                android:textColor="@color/black_8e"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/divider1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -88,6 +88,23 @@
             android:name="com.benwunet.user.ui.activity.UserManageActivity"
             android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserReceivedActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserVisitorActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserLookCardActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserbillActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

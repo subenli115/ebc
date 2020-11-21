@@ -98,7 +98,8 @@ public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding
             @Override
             protected void onNoDoubleClick(View v) {
 //                startActivity(UserRealProveActivity.class);
-                startActivity(UserBusinessActivity.class);
+//                startActivity(UserBusinessActivity.class);
+                startActivity(UserbillActivity.class);
             }
         });
 

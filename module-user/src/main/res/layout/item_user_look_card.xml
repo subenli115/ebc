@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.ThemesItemViewModel" />
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_15">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/normal_bg_black29">
+
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_cover"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:leftBottom_corner_radius="10dp"
+                app:leftTop_corner_radius="10dp"
+                app:rightBottom_corner_radius="0dp"
+                app:rightTop_corner_radius="0dp"
+                app:roun_type="round"
+                binding:url="@{viewModel.coverUrl}" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_cover"
+                app:layout_constraintStart_toEndOf="@+id/iv_cover"
+                app:layout_constraintTop_toTopOf="@+id/iv_cover">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{viewModel.title}"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="#封面控" />
+
+                <TextView
+                    android:id="@+id/tv_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@mipmap/user_icon_item_job"
+                    android:drawablePadding="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{viewModel.job}"
+                    android:textColor="@color/gray_bc"
+                    android:textSize="13sp"
+                    tools:text="人靠脸面，书靠封面" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@mipmap/user_icon_item_phone"
+                    android:drawablePadding="6dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{viewModel.phone}"
+                    android:textColor="@color/gray_bc"
+                    android:textSize="13sp"
+                    tools:text="222222222222222"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:background="@color/divider1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_cover" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cl"
+            android:layout_alignLeft="@+id/cl"
+            android:text="@string/user_look_time"
+            android:textColor="@color/black_8e" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_apply"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_apply"
+            android:text="@{viewModel.time}"
+            android:textColor="@color/black_8e" />
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="70dp"
+            android:layout_marginRight="15dp"
+            android:layout_height="29dp"
+            android:layout_below="@+id/cl"
+            android:layout_alignParentRight="true"
+            android:visibility="@{viewModel.isSelect ? View.GONE : View.VISIBLE }"
+            android:background="@drawable/normal_bg_yellow_tran4"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="@string/user_apply_change"
+            android:textColor="@color/textColorYellow" />
+
+        <TextView
+            android:id="@+id/tv_refuse"
+            android:layout_width="70dp"
+            android:layout_height="29dp"
+            android:layout_below="@+id/cl"
+            android:visibility="@{viewModel.isSelect ? View.VISIBLE : View.GONE }"
+            android:layout_marginRight="15dp"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/normal_bg_gray_tran4"
+            android:gravity="center"
+            android:text="@string/user_send"
+            android:textColor="@color/view_color" />
+    </RelativeLayout>
+</layout>

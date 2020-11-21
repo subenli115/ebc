@@ -24,7 +24,7 @@
     <string name="user_opinion">意见反馈</string>
     <string name="user_about">关注</string>
     <string name="user_fans">我的粉丝</string>
-    <string name="user_card">我看过的卡片</string>
+    <string name="user_look_card">我看过的卡片</string>
 
 
     <string name="user_info">个人资料</string>
@@ -98,6 +98,19 @@
     <string name="user_menu_edit">修改封面图</string>
     <string name="user_menu_share">分享</string>
 
+    <string name="user_scan_apply">扫码申请</string>
+    <string name="user_search_apply">搜索名片申请</string>
+    <string name="user_nearby_apply">来自附近的申请</string>
+    <string name="user_face_apply">通过人脸识别申请</string>
+    <string name="user_look_time">查看时间</string>
+
+    <string name="user_current_month">当前月份</string>
+    <string name="user_consume">累计消费:</string>
+    <string name="user_received_card">我收到的名片</string>
+
+
+    <string name="user_apply_change">申请交换</string>
+    <string name="user_send">发消息</string>
     <string name="user_menu_change">交换名片</string>
     <string name="user_menu_collection">取消收藏</string>
     <string name="user_about_company">本无网络科技有限公司版权所有</string>

@@ -31,9 +31,11 @@
     <color name="black_1f">#1F243B</color>
     <color name="actionbar_pres_color">#FFE7A1</color>
     <color name="black_8e">#8E94B0</color>
+    <color name="black_30">#303442</color>
     <color name="gray_bc">#BCBECC</color>
     <color name="gray_94">#9499AF</color>
     <color name="divider1">#202436</color>
+    <color name="divider2">#E8EAEB</color>
     <color name="black_29">#292E47</color>
     <color name="black_10">#101320</color>
     <color name="black_03">#03081E</color>

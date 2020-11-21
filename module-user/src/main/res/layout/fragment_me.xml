@@ -422,7 +422,7 @@
             android:layout_height="60.5dp"
             android:background="@color/black_15"
             app:leftIcon="@mipmap/user_item_card"
-            app:itemView_leftText="@string/user_card"
+            app:itemView_leftText="@string/user_look_card"
             app:itemView_leftText_color="@color/white"
             />
         <com.benwunet.base.wdiget.ItemGroupView

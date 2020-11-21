@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.benwunet.user.ui.viewmodel.BillItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white">
+
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="29dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@{viewModel.money}"
+            android:textStyle="bold"
+            android:textColor="@color/black_15"
+            android:layout_marginTop="26dp"
+            android:textSize="18sp"
+            android:drawableRight="@mipmap/user_icon_right_arrow"
+            android:drawablePadding="2dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_cover">
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="end"
+                android:text="@{viewModel.title}"
+                android:maxLines="1"
+                android:textColor="@color/black_15"
+                android:textSize="15sp"
+                tools:text="人靠脸面，书靠封面" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.time}"
+                android:layout_marginBottom="15dp"
+                tools:text="2020-08-28  15:39"
+                android:textSize="14sp"
+                android:textColor="@color/black_8e"
+                />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -31,7 +31,6 @@ import me.tatarka.bindingcollectionadapter2.BindingViewPagerAdapter;
 public class UserViewPagerBindingAdapter extends BindingViewPagerAdapter<UserViewPagerItemViewModel> {
 
     private final Context mContext;
-    private CollectionCardAdapter adapter;
 
     public UserViewPagerBindingAdapter(Context context) {
         mContext = context;
@@ -44,8 +43,8 @@ public class UserViewPagerBindingAdapter extends BindingViewPagerAdapter<UserVie
         UserItemViewpagerBinding _binding = (UserItemViewpagerBinding) binding;
         _binding.recyclerview.setHasFixedSize(true);
         _binding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));
-        if(position==0){
-            CollectionCardAdapter    adapter = new CollectionCardAdapter(R.layout.item_user_collection_card, mContext);
+        if (position == 0) {
+            CollectionCardAdapter adapter = new CollectionCardAdapter(R.layout.item_user_collection_card, mContext);
             List<BaseCustomViewModel> data = new ArrayList<>();
             ThemesItemViewModel themesItemViewModel = new ThemesItemViewModel();
             data.add(themesItemViewModel);
@@ -74,12 +73,12 @@ public class UserViewPagerBindingAdapter extends BindingViewPagerAdapter<UserVie
                 }
             });
             _binding.recyclerview.setAdapter(adapter);
-        }else {
+        } else {
             _binding.tvNum.setVisibility(View.GONE);
             CollectionDynamicAdapter adapter = new CollectionDynamicAdapter(R.layout.item_user_collection_dynamic, mContext);
             List<BaseCustomViewModel> data = new ArrayList<>();
             ThemesItemViewModel themesItemViewModel = new ThemesItemViewModel();
-            themesItemViewModel.title="想要完美的名片形象定制，还在犹豫什么？赶紧联系我！";
+            themesItemViewModel.title = "想要完美的名片形象定制，还在犹豫什么？赶紧联系我！";
             data.add(themesItemViewModel);
             data.add(themesItemViewModel);
             data.add(themesItemViewModel);

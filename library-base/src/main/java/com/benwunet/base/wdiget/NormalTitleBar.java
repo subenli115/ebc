@@ -225,8 +225,7 @@ public class NormalTitleBar extends RelativeLayout {
 
     public void setNewTitleText(String string) {
         tvTitleCenter.setText(string);
-        tvTitleCenter.setVisibility(View.GONE);
-        tvTitleCenter.setTextColor(getResources().getColor(R.color.black));
+        tvTitle.setVisibility(View.GONE);
     }
 
     public void setTitleWeizhi() {
