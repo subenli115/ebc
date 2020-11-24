@@ -17,6 +17,8 @@ import com.benwunet.user.ui.viewmodel.BillItemViewModel;
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,6 +79,12 @@ public class UserbillActivity extends BaseActivity<ActivityUserBillBinding, Base
         });
 
         adapter = new UserBillAdapter(R.layout.item_user_bill_view, mContext);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        startActivity(UserBillDetailsActivity.class);
+            }
+        });
         binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         final List<BaseCustomViewModel> data = new ArrayList<>();

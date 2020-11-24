@@ -62,5 +62,8 @@
     <string name="follow">关注</string>
     <string name="fans">粉丝</string>
     <string name="praised">获赞</string>
-
+    <string name="base_dynamic">动态</string>
+    <string name="base_topic">话题</string>
+    <string name="base_city">城市</string>
+    <string name="base_meeting">会议</string>
 </resources>

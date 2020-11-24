@@ -10,7 +10,11 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
  */
 
 public class FindViewModel extends BaseViewModel {
+
     public FindViewModel(@NonNull Application application) {
         super(application);
     }
+
+
+
 }

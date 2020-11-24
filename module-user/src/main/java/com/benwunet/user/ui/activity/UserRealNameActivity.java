@@ -70,7 +70,7 @@ public class UserRealNameActivity extends BaseActivity<ActivityUserRealNameBindi
         binding.llUserCardPositive.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                showPhotoDialog(mContext,v);
+                showPhotoDialog(mContext, v);
             }
         });
     }
@@ -93,7 +93,7 @@ public class UserRealNameActivity extends BaseActivity<ActivityUserRealNameBindi
                         .forResult(new OnResultCallbackListener<LocalMedia>() {
                             @Override
                             public void onResult(List<LocalMedia> result) {
-                                     Drawable drw1=Drawable.createFromPath(result.get(0).getCutPath());
+                                Drawable drw1 = Drawable.createFromPath(result.get(0).getCutPath());
                                 v.setBackground(drw1);
                             }
 
@@ -119,7 +119,7 @@ public class UserRealNameActivity extends BaseActivity<ActivityUserRealNameBindi
                         .forResult(new OnResultCallbackListener<LocalMedia>() {
                             @Override
                             public void onResult(List<LocalMedia> result) {
-                                Drawable drw1=Drawable.createFromPath(result.get(0).getCutPath());
+                                Drawable drw1 = Drawable.createFromPath(result.get(0).getCutPath());
                                 v.setBackground(drw1);
 
                             }

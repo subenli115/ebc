@@ -66,4 +66,5 @@ dependencies {
     api rootProject.ext.dependencies["bga-baseadapter"]
     api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
     api rootProject.ext.dependencies.kongdialog
+    api rootProject.ext.dependencies.bgaBanner
 }

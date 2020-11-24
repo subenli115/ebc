@@ -72,7 +72,7 @@ public class UserSeePeopleActivity extends BaseActivity<ActivityUserPeopleBindin
         binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         if(title!=null){
-            binding.ntb.setTitleText(getString(R.string.user_no_let));
+            binding.ntb.setNewTitleText(getString(R.string.user_no_let));
         }
         List<BaseCustomViewModel> data=new ArrayList<>();
         ThemesItemViewModel themesItemViewModel1 = new ThemesItemViewModel();
@@ -87,18 +87,14 @@ public class UserSeePeopleActivity extends BaseActivity<ActivityUserPeopleBindin
         adapter.addChildClickViewIds(R.id.iv_delete);
         adapter.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
-            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+            public void onItemChildClick(@NonNull final BaseQuickAdapter adapter, @NonNull View view, final int position) {
                 SelectDialog.build(mContext, "确定移除此人吗？", "", "确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(mContext, "您点击了确定按钮", Toast.LENGTH_SHORT).show();
+                        adapter.remove(position);
+
                     }
-                }, "取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(mContext, "您点击了取消按钮", Toast.LENGTH_SHORT).show();
-                    }
-                }).setDialogStyle(DialogSettings.STYLE_KONGZUE).showDialog();
+                },"取消",null).setDialogStyle(DialogSettings.STYLE_KONGZUE).showDialog();
             }
         });
         adapter.setNewData(data);

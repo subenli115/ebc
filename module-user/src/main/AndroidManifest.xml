@@ -104,6 +104,10 @@
             android:name="com.benwunet.user.ui.activity.UserbillActivity"
             android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserBillDetailsActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
 
     </application>
 

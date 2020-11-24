@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <com.benwunet.base.view.RoundImageView
+       android:id="@+id/imageView"
+       android:layout_width="match_parent"
+       android:scaleType="centerCrop"
+       app:roun_type="round"
+       app:corner_radius="5dp"
+       android:layout_height="match_parent"
+       />
+</RelativeLayout>

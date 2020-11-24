@@ -1,14 +1,13 @@
-package com.benwunet.user.ui.adapter;
+package com.benwunet.find.ui.adapter;
 
 import android.content.Context;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
-import com.benwunet.base.base.adapter.IntConsumer;
 import com.benwunet.base.contract.BaseCustomViewModel;
-import com.benwunet.user.databinding.ItemUserCollectionCardBinding;
-import com.benwunet.user.ui.viewmodel.ThemesItemViewModel;
+import com.benwunet.find.databinding.ItemFindDynamicBinding;
+import com.benwunet.find.ui.viewmodel.DynamicItemViewModel;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
@@ -23,12 +22,12 @@ import org.jetbrains.annotations.NotNull;
  * @author feng
  * @since 2020-02-23
  */
-public class CollectionCardAdapter
+public class FindRecommendAdapter
     extends BaseQuickAdapter<BaseCustomViewModel, BaseViewHolder>
 {
     private final Context context;
 
-    public CollectionCardAdapter(int layoutResId, Context mContext)
+    public FindRecommendAdapter(int layoutResId, Context mContext)
     {
         super(layoutResId);
         context=mContext;
@@ -49,10 +48,10 @@ public class CollectionCardAdapter
         {
             return;
         }
-        ItemUserCollectionCardBinding binding = baseViewHolder.getBinding();
+        ItemFindDynamicBinding binding = baseViewHolder.getBinding();
         if (binding != null)
         {
-            binding.setViewModel((ThemesItemViewModel) baseCustomViewModel);
+            binding.setViewModel((DynamicItemViewModel) baseCustomViewModel);
             binding.executePendingBindings();
         }
     }

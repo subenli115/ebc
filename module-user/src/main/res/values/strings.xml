@@ -115,5 +115,14 @@
     <string name="user_menu_collection">取消收藏</string>
     <string name="user_about_company">本无网络科技有限公司版权所有</string>
 
+    <string name="user_deal_name">交易名称</string>
+    <string name="user_payee">收款方</string>
+    <string name="user_payer">付款方</string>
+    <string name="user_del_time">交易时间</string>
+    <string name="user_del_num">交易号</string>
+    <string name="user_del_list">交易单</string>
+    <string name="user_del_address">交易地点</string>
+
+    <string name="user_success">交易成功</string>
     <string name="user_logout">退出登录</string>
 </resources>

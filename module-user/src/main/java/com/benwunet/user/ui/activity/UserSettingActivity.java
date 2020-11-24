@@ -1,6 +1,7 @@
 package com.benwunet.user.ui.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,14 +12,19 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.router.RouterActivityPath;
+import com.benwunet.base.utils.ToastUtil;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
 import com.benwunet.user.databinding.ActivityUserSettingBinding;
 import com.benwunet.user.ui.viewmodel.SettingViewModel;
+import com.kongzue.dialog.v2.DialogSettings;
+import com.kongzue.dialog.v2.SelectDialog;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
+import me.goldze.mvvmhabit.utils.ToastUtils;
+import me.jessyan.autosize.internal.CustomAdapt;
 
 /**
  * @Package: com.benwunet.user.ui.activity
@@ -30,7 +36,7 @@ import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
  */
 
 @Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
-public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding, SettingViewModel> {
+public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding, SettingViewModel> implements CustomAdapt {
     private Context mContext;
     //拿到路由过来的参数
 
@@ -79,13 +85,12 @@ public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding
 
             @Override
             protected void onNoDoubleClick(View v) {
-                MaterialDialogUtils.showBasicDialog(mContext,getString(R.string.user_dialog_warning),
-                        getString(R.string.user_dialog_content_clear_cache)).onPositive(new MaterialDialog.SingleButtonCallback() {
+                SelectDialog.build(mContext, "确定清理缓存吗？", "", "确定", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
+                    public void onClick(DialogInterface dialog, int which) {
+                        ToastUtils.showLong("清除成功");
                     }
-                });
+                },"取消",null).setDialogStyle(DialogSettings.STYLE_KONGZUE).showDialog();
             }
         });
         binding.igvSafe.setOnClickListener(new OnNoDoubleClickListener() {
@@ -98,11 +103,21 @@ public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding
             @Override
             protected void onNoDoubleClick(View v) {
 //                startActivity(UserRealProveActivity.class);
-//                startActivity(UserBusinessActivity.class);
-                startActivity(UserbillActivity.class);
+//                startActivity(UserRealNameActivity.class);
+                startActivity(UserReceivedActivity.class);
             }
         });
 
 
+    }
+
+    @Override
+    public boolean isBaseOnWidth() {
+        return false;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 863;
     }
 }

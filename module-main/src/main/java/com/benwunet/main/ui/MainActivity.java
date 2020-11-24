@@ -98,6 +98,7 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         ntb.setTitleText("我的名片");
         findBtn =  findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
         setOnClickListener(this);
+        mViewContainer.setCurrentItem(FIND_ITEM, false);
     }
 
     @Override
@@ -111,7 +112,7 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         super.initData();
         initViewModel();
         requestPermissions();
-        checkUnreadMsg();
+//        checkUnreadMsg();
         ChatPresenter.getInstance().init();
         // 获取华为 HMS 推送 token
         HMSPushHelper.getInstance().getHMSToken(this);
@@ -191,21 +192,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
     }
 
 
-//    private void replace(EaseBaseFragment fragment, String tag) {
-//        if (mCurrentFragment != fragment) {
-//            FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-//            if (mCurrentFragment != null) {
-//                t.hide(mCurrentFragment);
-//            }
-//            mCurrentFragment = fragment;
-//            if (!fragment.isAdded()) {
-//                t.add(R.id.fl_main_fragment, fragment, tag).show(fragment).commit();
-//            } else {
-//                t.show(fragment).commit();
-//            }
-//
-//        }
-//    }
 
 
     public void setButtonColor(int index) {

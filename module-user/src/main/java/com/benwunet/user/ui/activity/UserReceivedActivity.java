@@ -1,8 +1,10 @@
 package com.benwunet.user.ui.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,17 +16,22 @@ import com.benwunet.user.R;
 import com.benwunet.user.databinding.ActivityUserCommonBinding;
 import com.benwunet.user.ui.adapter.UserReceivedAdapter;
 import com.benwunet.user.ui.viewmodel.ThemesItemViewModel;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.kongzue.dialog.v2.DialogSettings;
+import com.kongzue.dialog.v2.SelectDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.BaseViewModel;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * @Package: com.benwunet.user.ui.activity
  * @ClassName: UserReceivedActivity
- * @Description: 我收到的名片
+ * @Description: 收到的名片
  * @Author: feng
  * @CreateDate: 2020/11/12 0012 14:58
  * @Version: 1.0
@@ -79,8 +86,23 @@ public class UserReceivedActivity extends BaseActivity<ActivityUserCommonBinding
         data.add(themesItemViewModel);
         data.add(themesItemViewModel2);
         adapter.setNewData(data);
+        adapter.addChildClickViewIds(R.id.tv_refuse);
+        adapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(final BaseQuickAdapter adapter, final View view, final int position) {
+                SelectDialog.build(mContext, "确定拒绝吗？", "", "确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.getViewByPosition(position,R.id.tv_change).setVisibility(View.GONE);
+                        view.setVisibility(View.GONE);
+                        adapter.getViewByPosition(position,R.id.tv_state).setVisibility(View.VISIBLE);
+
+
+                    }
+                },"取消",null).setDialogStyle(DialogSettings.STYLE_KONGZUE).showDialog();
+            }
+        });
         binding.recyclerview.setAdapter(adapter);
-        adapter.addChildClickViewIds(R.id.iv_delete);
 
     }
 

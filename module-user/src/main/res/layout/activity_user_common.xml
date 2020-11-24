@@ -24,7 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/black_15"
-                binding:ntb_tv_left="showAndFinish" />
+                binding:ntb_tv_left="showAndFinish"
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
