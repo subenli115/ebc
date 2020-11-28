@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_10"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_right_img1="@mipmap/icon_ntb_close"
+            app:ntb_title_text="@string/find_topic_focus"
+            app:ntb_tv_left="showAndFinish" />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="217dp">
+
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="217dp"
+                android:layout_below="@+id/ll"
+                android:scaleType="fitXY"
+                app:banner_indicatorGravity="bottom|right"
+                app:banner_pageChangeDuration="1000"
+                app:banner_pointAutoPlayAble="true"
+                app:banner_pointContainerBackground="@android:color/transparent"
+                app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+                app:banner_pointTopBottomMargin="15dp"
+                app:banner_transitionEffect="alpha" />
+
+            <LinearLayout
+                android:id="@+id/ll_banner_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#66000000"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:text="#创建属于我的专属名片#"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="2.8亿阅读  13.3万讨论"
+                    android:textColor="@color/gray_d2"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/base_hot_topic"
+                android:textColor="@color/gray_f7"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawableRight="@mipmap/find_icon_topic_arrow"
+                android:drawablePadding="5dp"
+                android:padding="15dp"
+                android:text="@string/base_look_topic"
+                android:textColor="@color/black_8e"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+</layout>

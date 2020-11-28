@@ -95,5 +95,8 @@ public interface ApiKey {
     String MEMBER_SETTINGS_PERSONAL = "member/settings/personal";
 
 
-
+    /**
+     *  名片收藏列表
+     */
+    String MEMBER_COLLECTION_CARD = "member/collection/card";
 }

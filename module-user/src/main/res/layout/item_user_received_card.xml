@@ -133,7 +133,7 @@
             android:layout_toLeftOf="@+id/tv_refuse"
             android:background="@drawable/normal_bg_yellow_tran4"
             android:gravity="center"
-            android:text="@string/user_menu_change"
+            android:text="@string/base_menu_change"
             android:textColor="@color/textColorYellow" />
 
         <TextView

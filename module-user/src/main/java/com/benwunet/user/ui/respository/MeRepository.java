@@ -4,6 +4,7 @@ import com.benwunet.base.bean.StringDataBean;
 import com.benwunet.base.global.ApiKey;
 import com.benwunet.base.utils.GsonUtils;
 import com.benwunet.base.utils.MapUtils;
+import com.benwunet.user.ui.bean.MeCardCollectionBean;
 import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.bean.MeInfoBean;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -101,6 +102,24 @@ public class MeRepository extends BaseModel {
                             complete.setValue(true);
                         }
                     }
+                });
+    }
+
+    public void getCollectionCardList(final SingleLiveEvent<MeCardCollectionBean> data) {
+        HttpManager.get(ApiKey.MEMBER_COLLECTION_CARD)
+                .accessToken()
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<MeCardCollectionBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(MeCardCollectionBean meCardCollectionBean) {
+
+                    }
+
                 });
     }
 

@@ -52,11 +52,11 @@ ext {
             "bga-baseadapter"                      : 'cn.bingoogolapple:bga-baseadapter:2.0.0@aar',
             "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0",
             "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0",
-            "bga-baseadapter"                      : 'cn.bingoogolapple:bga-baseadapter:2.0.0@aar',
             "BaseRecyclerViewAdapterHelper"        : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11",
             bgaBanner                              : 'cn.bingoogolapple:bga-banner:3.0.0@aar',
-            kongdialog                             : 'com.kongzue.dialog:dialog:2.5.2'
-
+            kongdialog                             : 'com.kongzue.dialog:dialog:2.5.2',
+            SmartRefreshLayout                     : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1',
+            scrolllayout                           : 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
     ]
 }
 

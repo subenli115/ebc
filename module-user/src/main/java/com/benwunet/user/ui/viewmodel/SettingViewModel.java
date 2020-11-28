@@ -3,6 +3,7 @@ package com.benwunet.user.ui.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableArrayList;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.router.RouterActivityPath;

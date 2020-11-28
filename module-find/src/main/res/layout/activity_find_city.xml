@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+        <variable
+            name="viewModel"
+            type="com.benwunet.find.ui.viewmodel.FindViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_right_img1="@mipmap/ntb_search"
+            app:ntb_title_text="@string/base_city"
+            app:ntb_tv_left="showAndFinish" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="match_parent"
+                        android:layout_height="187dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/user_home_bg" />
+
+                    <TextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="31dp"
+                        android:text="重庆"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_city"
+                        android:layout_alignLeft="@+id/tv_city"
+                        android:layout_marginTop="40dp"
+                        android:drawableLeft="@mipmap/find_icon_sun"
+                        android:drawablePadding="9dp"
+                        android:text="13ºC~18ºC"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_temperature"
+                        android:layout_alignLeft="@+id/tv_city"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="10dp"
+                        android:drawableLeft="@mipmap/find_icon_address"
+                        android:drawablePadding="9dp"
+                        android:text="当前位置"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/tv_address"
+                        android:layout_marginLeft="12dp"
+                        android:layout_toRightOf="@+id/tv_address"
+                        android:drawableLeft="@mipmap/find_icon_people"
+                        android:drawablePadding="4dp"
+                        android:text="5555"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_hot_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/base_hot_city"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    binding:items="@{viewModel.observableList}"
+                    binding:itemBinding="@{viewModel.itemBinding}"
+                    binding:layoutManager="@{LayoutManagers.grid(2)}" />
+
+                <TextView
+                    android:id="@+id/tv_where_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:text="重庆"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    binding:items="@{viewModel.observableList}"
+                    binding:itemBinding="@{viewModel.itemBinding}"
+                    binding:layoutManager="@{LayoutManagers.grid(2)}"
+                    binding:lineManager="@{LineManagers.both()}" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</layout>

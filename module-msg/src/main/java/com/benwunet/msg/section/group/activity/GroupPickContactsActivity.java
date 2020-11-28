@@ -117,10 +117,10 @@ public class GroupPickContactsActivity extends BaseInitActivity implements EaseT
             @Override
             public void afterTextChanged(Editable s) {
                 keyword = s.toString();
-                if(!TextUtils.isEmpty(keyword)) {
+                if (!TextUtils.isEmpty(keyword)) {
                     searchClear.setVisibility(View.VISIBLE);
                     viewModel.getSearchContacts(keyword);
-                }else {
+                } else {
                     searchClear.setVisibility(View.INVISIBLE);
                     adapter.setData(contacts);
                 }
@@ -145,10 +145,10 @@ public class GroupPickContactsActivity extends BaseInitActivity implements EaseT
                 public void onSuccess(List<EaseUser> data) {
                     contacts = data;
                     adapter.setData(data);
-                    if(!TextUtils.isEmpty(groupId)) {
+                    if (!TextUtils.isEmpty(groupId)) {
                         viewModel.getGroupMembers(groupId);
-                    }else {
-                        if(newmembers != null) {
+                    } else {
+                        if (newmembers != null) {
                             adapter.setExistMember(Arrays.asList(newmembers));
                         }
                     }
@@ -190,7 +190,7 @@ public class GroupPickContactsActivity extends BaseInitActivity implements EaseT
     }
 
     private void finishRefresh() {
-        if(srlRefresh != null) {
+        if (srlRefresh != null) {
             runOnUiThread(() -> srlRefresh.finishRefresh());
         }
     }
@@ -203,13 +203,13 @@ public class GroupPickContactsActivity extends BaseInitActivity implements EaseT
     @Override
     public void onRightClick(View view) {
         List<String> selectedMembers = adapter.getSelectedMembers();
-        if(selectedMembers == null || selectedMembers.isEmpty()) {
+        if (selectedMembers == null || selectedMembers.isEmpty()) {
             setResult(RESULT_OK);
             finish();
             return;
         }
         String[] newMembers = selectedMembers.toArray(new String[0]);
-        if(TextUtils.isEmpty(groupId)) {
+        if (TextUtils.isEmpty(groupId)) {
             Intent intent = getIntent().putExtra("newmembers", newMembers);
             setResult(RESULT_OK, intent);
             finish();
@@ -225,6 +225,6 @@ public class GroupPickContactsActivity extends BaseInitActivity implements EaseT
 
     @Override
     public void onSelected(View v, List<String> selectedMembers) {
-        titleBar.getRightText().setText(getString(R.string.finish) + "(" + selectedMembers.size() +")");
+        titleBar.getRightText().setText(getString(R.string.finish) + "(" + selectedMembers.size() + ")");
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.find.ui.viewmodel.DynamicItemViewModel" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_height="189dp">
+
+        <ImageView
+            android:src="@mipmap/user_home_bg"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="189dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55.5dp"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/find_icon_gradients_bg">
+
+            <TextView
+                android:id="@+id/tv_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="2.8亿阅读"
+                android:layout_below="@+id/tv_title"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="#创建属于我的专属名片#"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tv_read"
+                android:layout_marginLeft="10dp"
+                android:text="11讨论"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/tv_read" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

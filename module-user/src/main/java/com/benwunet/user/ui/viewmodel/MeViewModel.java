@@ -60,7 +60,7 @@ public class MeViewModel extends BaseViewModel {
     });
 
     public void initData() {
-        meRepository.getMemberHome(homeBean);
+//        meRepository.getMemberHome(homeBean);
     }
 
 }

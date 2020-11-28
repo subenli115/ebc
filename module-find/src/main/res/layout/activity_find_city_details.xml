@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.find.ui.viewmodel.FindViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ntb">
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="match_parent"
+                android:layout_height="282dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/user_home_bg" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="31dp"
+                android:text="重庆"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_city"
+                android:layout_alignLeft="@+id/tv_city"
+                android:layout_marginTop="10dp"
+                android:text="阴 13ºC~18ºC"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <com.yinglan.scrolllayout.ScrollLayout
+            android:id="@+id/scroll_down_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            app:allowHorizontalScroll="false"
+            app:isSupportExit="false"
+            app:maxOffset="400dp"
+            app:minOffset="20dp"
+            app:mode="open">
+
+
+            <com.yinglan.scrolllayout.content.ContentScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/normal_bg_black15_half"
+                android:fillViewport="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp">
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="21dp"
+                            android:text="重庆"
+                            android:textColor="@color/textColorYellow"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <com.benwunet.base.view.RoundImageView
+                            android:id="@+id/iv_cover"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/tv_title"
+                            android:layout_marginLeft="21dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="24dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/user_home_bg"
+                            app:corner_radius="2dp"
+                            app:roun_type="round"
+
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_toRightOf="@+id/iv_cover"
+                            android:text="重庆，简称“渝”，别称山城，是中华人民共和国省级行政区、中西部唯一直辖市、国家中心城市、超大城市，国务院批复确定的中国重要的中心城市之一、长江上游地区经济中心..."
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp">
+
+
+                        <TextView
+                            android:id="@+id/tv_hot_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="@string/find_city_contacts"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tv_contacts"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:drawableRight="@mipmap/find_icon_topic_arrow"
+                            android:text="@string/find_city_contacts_more"
+                            android:textColor="@color/black_8e" />
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="15dp"
+                        android:nestedScrollingEnabled="false"
+                        binding:itemBinding="@{viewModel.itemBinding2}"
+                        binding:items="@{viewModel.observableList}"
+                        binding:layoutManager="@{LayoutManagers.grid(3)}"
+                        binding:lineManager="@{LineManagers.both()}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:background="@color/black_15" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp">
+
+
+                        <TextView
+                            android:id="@+id/tv_city_dynamic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="@string/find_city_dynamic"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tv_dynamic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:drawableRight="@mipmap/find_icon_topic_arrow"
+                            android:text="@string/find_city_dynamic_more"
+                            android:textColor="@color/black_8e" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_second"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rv_first"
+                        android:layout_marginTop="20dp"
+                        android:nestedScrollingEnabled="false" />
+                </LinearLayout>
+            </com.yinglan.scrolllayout.content.ContentScrollView>
+
+
+        </com.yinglan.scrolllayout.ScrollLayout>
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/base_city_details"
+            app:ntb_tv_left="showAndFinish" />
+
+    </RelativeLayout>
+
+</layout>

@@ -17,4 +17,5 @@ public class BillItemViewModel extends BaseCustomViewModel {
     public String title = "开通VIP会员年卡";
     public String time = "2020-08-02  10:54";
     public String money = "-998";
+
 }

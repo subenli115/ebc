@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.find.ui.viewmodel.FindViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_10">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black_10"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="175dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/find_icon_topic_bg" />
+
+                    <com.benwunet.base.view.RoundImageView
+                        android:id="@+id/iv_cover"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/ntb"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginTop="22dp"
+                        android:src="@mipmap/mouth_01" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/iv_cover"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_cover"
+                        android:text="#高考成绩今日起公布#"
+                        android:textColor="@color/gray_e7"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_title"
+                        android:layout_alignLeft="@+id/tv_title"
+                        android:layout_marginTop="5dp"
+                        android:text="阅读3.1亿"
+                        android:textColor="@color/gray_e7"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_discuss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_title"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/tv_read"
+                        android:text="阅读3.1亿"
+                        android:textColor="@color/gray_e7"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_holder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_read"
+                        android:layout_alignLeft="@+id/tv_title"
+                        android:text="主持人:教育部"
+                        android:textColor="@color/gray_e7"
+                        android:textSize="12sp" />
+
+                    <com.benwunet.base.wdiget.NormalTitleBar
+                        android:id="@+id/ntb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        app:ntb_right_img1="@mipmap/icon_bar_more"
+                        app:ntb_title_text="@string/find_topic_details"
+                        app:ntb_tv_left="showAndFinish" />
+                </RelativeLayout>
+
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/banner"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    app:tabBackground="@color/transparent"
+                    app:tabGravity="fill"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorColor="@color/textColorYellow"
+                    app:tabMode="fixed" />
+
+                <TextView
+                    android:text="导读：从22日起，各地高考成绩将陆续公布。祝学子们高分高分高分"
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:background="@color/black_15"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_f7"
+                    android:layout_height="wrap_content" />
+
+
+                <com.benwunet.base.view.ScrollByViewpager
+                    android:id="@+id/vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tl"
+                    android:layout_marginTop="20dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

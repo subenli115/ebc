@@ -65,5 +65,15 @@
     <string name="base_dynamic">动态</string>
     <string name="base_topic">话题</string>
     <string name="base_city">城市</string>
+    <string name="base_city_details">城市详情</string>
     <string name="base_meeting">会议</string>
+    <string name="base_hot_topic">热门话题</string>
+    <string name="base_hot_city">热门城市</string>
+    <string name="base_look_topic">查看更多话题</string>
+
+    <string name="base_send">发消息</string>
+    <string name="base_menu_change">交换名片</string>
+
+    <string name="base_add_bg">添加封面图</string>
+    <string name="base_add_content">添加导读内容</string>
 </resources>

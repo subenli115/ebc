@@ -149,7 +149,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/normal_bg_gray_tran4"
             android:gravity="center"
-            android:text="@string/user_send"
+            android:text="@string/base_send"
             android:textColor="@color/view_color" />
     </RelativeLayout>
 </layout>

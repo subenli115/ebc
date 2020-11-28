@@ -46,4 +46,6 @@
     <color name="press">#e8e8e8</color>
     <color name="menu_color">#343A57</color>
     <color name="view_color">#585C76</color>
+    <color name="gray_d2">#D2D2D3</color>
+    <color name="gray_e7">#E7E8E9</color>
 </resources>

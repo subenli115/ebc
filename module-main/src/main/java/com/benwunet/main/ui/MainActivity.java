@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.view.ScrollControlViewPager;
 import com.benwunet.base.wdiget.NormalTitleBar;
+import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.main.R;
 import com.benwunet.main.adapter.ViewPagerAdapter;
 import com.benwunet.msg.DemoHelper;
@@ -76,14 +79,15 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
 
     @Override
     protected void initSystemFit() {
-        setFitSystemForTheme(true,R.color.transparent);
+        setFitSystemForTheme(true, R.color.transparent);
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        mViewContainer =  findViewById(com.benwunet.msg.R.id.viewpager);
+        mViewContainer = findViewById(com.benwunet.msg.R.id.viewpager);
         ntb = findViewById(com.benwunet.msg.R.id.ntb);
+        initMenuBar();
         mTvMainHomeMsg = findViewById(com.benwunet.msg.R.id.all_unread_number);
         initFragment();
         mBtnListID = new int[]{
@@ -91,14 +95,33 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
                 com.benwunet.msg.R.id.actionbar_msg_btn, com.benwunet.msg.R.id.actionbar_me_btn};
         mBtnList = new Button[mBtnListID.length];
         for (int i = 0; i < mBtnListID.length; i++) {
-            mBtnList[i] =  findViewById(mBtnListID[i]);
+            mBtnList[i] = findViewById(mBtnListID[i]);
         }
         mBtnList[0].setTextColor(getResources().getColor(R.color.actionbar_pres_color));
         mBtnList[0].setSelected(true);
         ntb.setTitleText("我的名片");
-        findBtn =  findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
+        findBtn = findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
         setOnClickListener(this);
         mViewContainer.setCurrentItem(FIND_ITEM, false);
+    }
+
+    private void initMenuBar() {
+        ntb.setOnRightImag2Listener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                View mMenuView = getLayoutInflater().inflate(R.layout.drop_down_menu, null);
+                PopupWindow pop = new PopupWindow(mMenuView, WindowManager.LayoutParams.WRAP_CONTENT,
+                        WindowManager.LayoutParams.WRAP_CONTENT, true);
+                mMenuView.setOnClickListener(new OnNoDoubleClickListener() {
+                    @Override
+                    protected void onNoDoubleClick(View v) {
+
+
+                    }
+                });
+                pop.showAsDropDown(v);
+            }
+        });
     }
 
     @Override
@@ -190,8 +213,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
                     }
                 });
     }
-
-
 
 
     public void setButtonColor(int index) {

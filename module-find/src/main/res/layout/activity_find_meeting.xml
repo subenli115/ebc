@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.find.ui.viewmodel.FindViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <com.benwunet.base.wdiget.NormalTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_15"
+        app:ntb_title_text="@string/base_meeting"
+        app:ntb_tv_left="showAndFinish" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_15"
+            android:orientation="vertical">
+
+
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_below="@+id/ll"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:scaleType="fitXY"
+                app:banner_pageChangeDuration="1000"
+                app:banner_pointAutoPlayAble="true"
+                app:banner_pointContainerBackground="@android:color/transparent"
+                app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+                app:banner_pointTopBottomMargin="15dp"
+                app:banner_transitionEffect="alpha" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/banner"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                app:tabBackground="@color/transparent"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/textColorYellow"
+                app:tabIndicatorFullWidth="false"
+                app:tabMode="fixed" />
+
+            <com.benwunet.base.view.ScrollByViewpager
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tl"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+</layout>

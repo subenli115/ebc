@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.find.ui.viewmodel.DynamicItemViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:background="@color/black_15">
+
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerCrop"
+            binding:url="@{viewModel.coverUrl}"
+            tools:corner_radius="2dp"
+            tools:roun_type="round" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_cover"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/iv_cover"
+            android:baselineAligned="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.title}"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_alignLeft="@+id/tv_title"
+            android:layout_marginTop="5dp"
+            android:text="4公里以内-沙坪坝区"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black_8e"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="70dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/normal_bg_gray_tran4"
+            android:gravity="center"
+            android:text="@string/base_send"
+            android:textColor="@color/black_8e"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="70dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="#会议"
+            android:textColor="@color/black_8e"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider1" />
+    </RelativeLayout>
+</layout>

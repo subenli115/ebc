@@ -183,7 +183,6 @@ public class NormalTitleBar extends RelativeLayout {
             ivBack.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.e("setTvLeftVisiable","setTvLeftVisiable");
                     KeyBordUtil.hideSoftKeyboard(v);
                     if (getContext() instanceof Activity) {
                         ((Activity) getContext()).finish();
@@ -274,6 +273,27 @@ public class NormalTitleBar extends RelativeLayout {
         ivRight2.setImageResource(id);
     }
 
+    public void setRightImagSrc(int id) {
+        if (ivRight == null) {
+            ivRight = createRightImage(getResources().getDrawable(id), R.id.id_right_img1);
+        }
+        ivRight.setVisibility(View.VISIBLE);
+        ivRight.setImageResource(id);
+    }
+
+    public void setRightClose(){
+        setRightImagSrc(R.mipmap.icon_ntb_close);
+        ivRight.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                if (getContext() instanceof Activity) {
+                    ((Activity) getContext()).finish();
+                } else {
+                    AppManager.getAppManager().currentActivity().finish();
+                }
+            }
+        });
+    }
 
     /**
      * 获取右按钮

@@ -2,6 +2,8 @@ package com.benwunet.base.contract;
 
 import androidx.annotation.NonNull;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 import java.io.Serializable;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
@@ -16,7 +18,6 @@ import me.goldze.mvvmhabit.base.ItemViewModel;
  * @author darryrzhoong
  * @since 2020-01-27
  */
-public class BaseCustomViewModel  implements Serializable
-{
+public class BaseCustomViewModel implements Serializable {
 
 }

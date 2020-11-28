@@ -107,5 +107,57 @@
         <attr name="onRefreshCommand" format="reference" />
         <attr name="onLoadMoreCommand" format="reference" />
     </declare-styleable>
-
+    <declare-styleable name="BaseItemView">
+        <attr name="biv_title" format="string"/>
+        <attr name="biv_title_size" format="float"/>
+        <attr name="biv_right_text" format="string"/>
+        <attr name="biv_title_width" format="dimension"/>
+        <attr name="biv_right_color" format="color"/>
+        <attr name="biv_title_color" format="color"/>
+        <attr name="biv_click_id" format="integer"/>
+        <attr name="biv_right_click_id" format="integer"/>
+        <attr name="biv_content_type" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="edit" value="1"/>
+            <enum name="image" value="2"/>
+            <enum name="sex" value="3"/>
+            <enum name="right_box" value="4"/>
+        </attr>
+        <attr name="biv_content_image_size" format="dimension"/>
+        <attr name="biv_content_image_res" format="reference|color"/>
+        <attr name="biv_content_hint" format="string"/>
+        <attr name="biv_content_max_line" format="integer"/>
+        <attr name="biv_forword_show" format="boolean"/>
+        <attr name="biv_divider_show" format="boolean"/>
+        <attr name="biv_content_must_need" format="boolean"/>
+        <attr name="biv_content_color" format="color"/>
+        <attr name="biv_content_size" format="float"/>
+        <attr name="biv_content_ime" format="enum">
+            <enum name="next" value="5" />
+            <enum name="send" value="4" />
+            <enum name="done" value="6" />
+        </attr>
+        <attr name="biv_content_input_type" format="enum">
+            <enum name="text" value="0" />
+            <enum name="phone" value="1" />
+            <enum name="number" value="2" />
+            <enum name="email" value="3" />
+        </attr>
+        <attr name="biv_right_text_size" format="float"/>
+        <attr name="biv_content_margin_left" format="dimension"/>
+        <attr name="biv_background" format="color|reference"/>
+    </declare-styleable>
+    <declare-styleable name="MyCheckBox">
+        <attr name="mcb_duration" format="integer"/>
+        <attr name="mcb_stroke_width" format="dimension"/>
+        <attr name="mcb_open_animation" format="boolean"/>
+        <attr name="mcb_color_tick" format="color"/>
+        <attr name="mcb_scb_checked" format="boolean"/>
+        <attr name="mcb_color_checked" format="color"/>
+        <attr name="mcb_color_unchecked" format="color"/>
+        <attr name="mcb_color_unchecked_stroke" format="color"/>
+        <attr name="mcb_extra_text" format="string" />
+        <attr name="mcb_extra_text_size" format="dimension" />
+        <attr name="mcb_extra_text_color" format="color" />
+    </declare-styleable>
 </resources>

@@ -4,4 +4,19 @@
     <style name="dialogFullscreen">
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="TranslucentDarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">#15192C</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:popupBackground">@color/menu_color</item>
+    </style>
+
+    <style name="OverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:popupBackground">@color/menu_color</item>
+    </style>
+
 </resources>
