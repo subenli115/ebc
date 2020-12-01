@@ -1,16 +1,15 @@
 package com.benwunet.find.ui.viewmodel;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
 
-import com.benwunet.base.base.viewmodel.BaseHttpViewModel;
 import com.benwunet.base.contract.BaseCustomViewModel;
+import com.benwunet.find.ui.activity.FindCityDetailsActivity;
 
 import java.util.List;
 
-import io.reactivex.Single;
 import me.goldze.mvvmhabit.base.BaseViewModel;
-import me.goldze.mvvmhabit.base.ItemViewModel;
+import me.goldze.mvvmhabit.binding.command.BindingAction;
+import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 
 /**
@@ -32,5 +31,14 @@ public class DynamicItemViewModel extends BaseCustomViewModel {
     public int type;
 
     public SingleLiveEvent<List<String>> list = new SingleLiveEvent<>();
+
+    //关闭页面按钮
+    public BindingCommand detailsOnClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+
+        }
+    });
+
 
 }

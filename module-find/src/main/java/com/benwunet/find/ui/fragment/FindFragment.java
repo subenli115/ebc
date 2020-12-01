@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.benwunet.base.base.fragment.BaseFragment;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.wdiget.GlideRoundTransform;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
@@ -35,7 +36,6 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Arrays;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
-import me.goldze.mvvmhabit.base.BaseFragment;
 
 
 /**

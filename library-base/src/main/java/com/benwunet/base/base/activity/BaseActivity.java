@@ -2,22 +2,28 @@ package com.benwunet.base.base.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.benwunet.base.model.BaseViewModel;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Map;
 
-import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.base.ContainerActivity;
 import me.goldze.mvvmhabit.base.IBaseView;
 import me.goldze.mvvmhabit.bus.Messenger;
+import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
 
 public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatActivity implements IBaseView {
@@ -34,13 +40,62 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding(savedInstanceState);
         //私有的ViewModel与View的契约事件回调逻辑
-//        registorUIChangeLiveDataCallBack();
+        registorUIChangeLiveDataCallBack();
         //页面数据初始化方法
         initData();
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable();
         //注册RxBus
         viewModel.registerRxBus();
+    }
+
+    private void registorUIChangeLiveDataCallBack() {
+        //加载对话框显示
+        viewModel.getUC().getShowDialogEvent().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String title) {
+                showDialog(title);
+            }
+        });
+        //加载对话框消失
+        viewModel.getUC().getDismissDialogEvent().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void v) {
+                dismissDialog();
+            }
+        });
+        //跳入新页面
+        viewModel.getUC().getStartActivityEvent().observe(this, new Observer<Map<String, Object>>() {
+            @Override
+            public void onChanged(@Nullable Map<String, Object> params) {
+                Class<?> clz = (Class<?>) params.get(me.goldze.mvvmhabit.base.BaseViewModel.ParameterField.CLASS);
+                Bundle bundle = (Bundle) params.get(me.goldze.mvvmhabit.base.BaseViewModel.ParameterField.BUNDLE);
+                startActivity(clz, bundle);
+            }
+        });
+        //跳入ContainerActivity
+        viewModel.getUC().getStartContainerActivityEvent().observe(this, new Observer<Map<String, Object>>() {
+            @Override
+            public void onChanged(@Nullable Map<String, Object> params) {
+                String canonicalName = (String) params.get(me.goldze.mvvmhabit.base.BaseViewModel.ParameterField.CANONICAL_NAME);
+                Bundle bundle = (Bundle) params.get(me.goldze.mvvmhabit.base.BaseViewModel.ParameterField.BUNDLE);
+                startContainerActivity(canonicalName, bundle);
+            }
+        });
+        //关闭界面
+        viewModel.getUC().getFinishEvent().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void v) {
+                finish();
+            }
+        });
+        //关闭上一层
+        viewModel.getUC().getOnBackPressedEvent().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -55,7 +110,6 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
             binding.unbind();
         }
     }
-
 
 
     /**

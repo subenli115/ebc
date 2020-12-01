@@ -9,15 +9,13 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.benwunet.base.R;
-import com.benwunet.base.base.activity.BaseActivity;
-import com.benwunet.base.databinding.ActivityBaseCommonBinding;
 import com.benwunet.base.databinding.FragmentBaseCommonBinding;
+import com.benwunet.base.model.BaseViewModel;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 
 import java.util.List;
 
-import me.goldze.mvvmhabit.base.BaseViewModel;
 
 public abstract class CommonFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment<V, VM> implements OnItemClickListener {
 

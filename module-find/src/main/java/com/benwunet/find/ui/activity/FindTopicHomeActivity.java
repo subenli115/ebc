@@ -1,14 +1,12 @@
 package com.benwunet.find.ui.activity;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 
-import androidx.lifecycle.Observer;
 import androidx.viewbinding.ViewBinding;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -20,7 +18,6 @@ import com.benwunet.find.BR;
 import com.benwunet.find.R;
 import com.benwunet.find.databinding.ItemFindTopicHeadViewBinding;
 import com.benwunet.find.ui.adapter.FindTopicHomeAdapter;
-import com.benwunet.find.ui.bean.MeCardCollectionBean;
 import com.benwunet.find.ui.viewmodel.DynamicItemViewModel;
 import com.benwunet.find.ui.viewmodel.FindViewModel;
 import com.bumptech.glide.Glide;

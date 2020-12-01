@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;

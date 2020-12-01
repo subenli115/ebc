@@ -1,7 +1,6 @@
 package com.benwunet.find.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.benwunet.base.base.fragment.MvvmLazyFragment;
+import com.benwunet.base.base.fragment.BaseFragment;
 import com.benwunet.base.contract.BaseCustomViewModel;
 import com.benwunet.find.BR;
 import com.benwunet.find.R;
@@ -24,8 +23,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.goldze.mvvmhabit.base.BaseFragment;
 
 
 /**

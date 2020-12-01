@@ -25,34 +25,29 @@ import java.util.ArrayList;
  * @since 2020-02-23
  */
 public class FindRecommendAdapter
-    extends BaseQuickAdapter<BaseCustomViewModel, BaseViewHolder>
-{
+        extends BaseQuickAdapter<BaseCustomViewModel, BaseViewHolder> {
     private final Context context;
-    private String url="http://zrwlmeiliao.oss-accelerate.aliyuncs.com/banner/xxx.png";
-    public FindRecommendAdapter(int layoutResId, Context mContext)
-    {
+    private String url = "http://zrwlmeiliao.oss-accelerate.aliyuncs.com/banner/xxx.png";
+
+    public FindRecommendAdapter(int layoutResId, Context mContext) {
         super(layoutResId);
-        context=mContext;
+        context = mContext;
     }
-    
+
     @Override
     protected void onItemViewHolderCreated(@NotNull BaseViewHolder viewHolder,
-        int viewType)
-    {
+                                           int viewType) {
         DataBindingUtil.bind(viewHolder.itemView);
     }
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder,
-        @Nullable final BaseCustomViewModel baseCustomViewModel)
-    {
-        if (baseCustomViewModel == null)
-        {
+                           @Nullable final BaseCustomViewModel baseCustomViewModel) {
+        if (baseCustomViewModel == null) {
             return;
         }
         ItemFindRecommendBinding binding = baseViewHolder.getBinding();
-        if (binding != null)
-        {
+        if (binding != null) {
             binding.setViewModel((DynamicItemViewModel) baseCustomViewModel);
             binding.executePendingBindings();
             ArrayList<String> list = new ArrayList<>();

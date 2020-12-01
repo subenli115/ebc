@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding;
 
 import com.benwunet.base.R;
 import com.benwunet.base.databinding.ActivityBaseCommonBinding;
+import com.benwunet.base.model.BaseViewModel;
 import com.benwunet.base.utils.EmptyUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -20,7 +21,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.List;
 
-import me.goldze.mvvmhabit.base.BaseViewModel;
 
 
 public abstract class CommHttpActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity<V, VM> implements OnRefreshLoadMoreListener , OnItemClickListener {

@@ -1,9 +1,7 @@
 package com.benwunet.find.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
@@ -17,8 +15,6 @@ import com.benwunet.find.databinding.FragmentFindCommonBinding;
 import com.benwunet.find.ui.adapter.FindRecommendAdapter;
 import com.benwunet.find.ui.viewmodel.DynamicItemViewModel;
 import com.benwunet.find.ui.viewmodel.FindViewModel;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

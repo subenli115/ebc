@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.base.activity.BaseActivity;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
@@ -22,8 +24,6 @@ import com.benwunet.find.ui.viewmodel.FindViewModel;
  * @Version: 1.0
  */
 public class FindCityHomeActivity extends BaseActivity<ActivityFindCityBinding, FindViewModel> {
-    private Context mContext;
-    //拿到路由过来的参数
 
     @Override
     public void initParam() {
@@ -43,7 +43,6 @@ public class FindCityHomeActivity extends BaseActivity<ActivityFindCityBinding, 
 
     @Override
     public void initData() {
-        mContext = this;
         binding.ntb.setOnRightImagListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
@@ -56,6 +55,7 @@ public class FindCityHomeActivity extends BaseActivity<ActivityFindCityBinding, 
                 startActivity(FindCityDetailsActivity.class);
             }
         });
+
     }
 
 

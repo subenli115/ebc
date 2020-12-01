@@ -8,7 +8,6 @@ import androidx.viewbinding.ViewBinding;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.base.activity.CommHttpActivity;
 import com.benwunet.base.contract.BaseCustomViewModel;
-import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.find.BR;
 import com.benwunet.find.R;
 import com.benwunet.find.databinding.ActivityFindTopicHomeBinding;

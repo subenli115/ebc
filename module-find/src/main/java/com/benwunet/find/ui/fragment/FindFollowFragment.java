@@ -13,7 +13,6 @@ import com.benwunet.base.contract.BaseCustomViewModel;
 import com.benwunet.find.BR;
 import com.benwunet.find.R;
 import com.benwunet.find.databinding.FragmentFindCommonBinding;
-import com.benwunet.find.ui.adapter.FindDynamicAdapter;
 import com.benwunet.find.ui.adapter.FindRecommendAdapter;
 import com.benwunet.find.ui.viewmodel.DynamicItemViewModel;
 import com.benwunet.find.ui.viewmodel.FindViewModel;

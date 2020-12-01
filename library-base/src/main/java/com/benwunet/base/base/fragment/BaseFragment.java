@@ -15,13 +15,14 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.baidu.platform.comapi.map.B;
+import com.benwunet.base.model.BaseViewModel;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.base.ContainerActivity;
 import me.goldze.mvvmhabit.base.IBaseView;
 import me.goldze.mvvmhabit.bus.Messenger;

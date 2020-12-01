@@ -1,25 +1,16 @@
 package com.benwunet.find.ui.fragment;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.benwunet.base.base.fragment.BaseFragment;
 import com.benwunet.base.base.fragment.CommonFragment;
 import com.benwunet.base.contract.BaseCustomViewModel;
 import com.benwunet.find.BR;
 import com.benwunet.find.R;
 import com.benwunet.find.databinding.FragmentFindCommonBinding;
 import com.benwunet.find.ui.adapter.FindMeetingAdapter;
-import com.benwunet.find.ui.adapter.FindRecommendAdapter;
 import com.benwunet.find.ui.viewmodel.DynamicItemViewModel;
 import com.benwunet.find.ui.viewmodel.FindViewModel;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

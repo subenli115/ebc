@@ -4,7 +4,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import me.goldze.mvvmhabit.base.BaseViewModel;
+import com.benwunet.base.model.BaseViewModel;
+
 
 /**
  * Created by feng on 2020/10/15.

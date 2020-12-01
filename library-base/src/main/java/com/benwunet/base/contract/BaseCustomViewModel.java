@@ -18,6 +18,6 @@ import me.goldze.mvvmhabit.base.ItemViewModel;
  * @author darryrzhoong
  * @since 2020-01-27
  */
-public class BaseCustomViewModel implements Serializable {
+public class BaseCustomViewModel  implements Serializable {
 
 }
