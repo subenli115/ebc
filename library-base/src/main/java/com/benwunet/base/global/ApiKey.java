@@ -99,4 +99,10 @@ public interface ApiKey {
      *  名片收藏列表
      */
     String MEMBER_COLLECTION_CARD = "member/collection/card";
+
+    /**
+     *  账号安全
+     */
+    String MEMBER_SETTINGS_SECURITY = "member/settings/security";
+
 }

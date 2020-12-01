@@ -35,8 +35,8 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * @Version: 1.0
  */
 
-@Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
-public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding, SettingViewModel> implements CustomAdapt {
+//@Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
+public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding, SettingViewModel>  {
     private Context mContext;
     //拿到路由过来的参数
 
@@ -102,22 +102,14 @@ public class UserSettingActivity extends BaseActivity<ActivityUserSettingBinding
         binding.igvProve.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-//                startActivity(UserRealProveActivity.class);
-//                startActivity(UserRealNameActivity.class);
-                startActivity(UserReceivedActivity.class);
+                startActivity(UserRealProveActivity.class);
             }
         });
 
 
+
+
+
     }
 
-    @Override
-    public boolean isBaseOnWidth() {
-        return false;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 863;
-    }
 }

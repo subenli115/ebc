@@ -31,12 +31,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/black_15"
-                android:paddingTop="30dp">
+                >
 
                 <RelativeLayout
+                    android:layout_marginTop="30dp"
                     android:id="@+id/rl_head"
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
+
                     android:layout_marginLeft="15dp">
 
                     <com.benwunet.base.view.RoundImageView
@@ -45,7 +47,7 @@
                         android:layout_height="55dp"
                         android:scaleType="centerCrop"
                         binding:placeholderRes="@{R.mipmap.user_iv_head}"
-                        binding:url="@{viewModel.homeEntity.avatar}" />
+                        binding:url="@{viewModel.homeBean.avatar}" />
 
                     <ImageView
                         android:layout_width="15dp"
@@ -60,6 +62,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="14dp"
+                        android:visibility="gone"
                         android:layout_marginTop="19dp"
                         android:layout_toRightOf="@+id/iv_head"
                         android:drawableRight="@mipmap/ic_arrow_gray"
@@ -79,14 +82,14 @@
                     android:layout_marginLeft="17dp"
                     android:layout_marginTop="9dp"
                     android:layout_toRightOf="@+id/rl_head"
-                    android:visibility="gone">
+                    >
 
 
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.homeEntity.realName}"
+                        android:text="@{viewModel.homeBean.realName}"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -115,7 +118,7 @@
                         android:layout_below="@+id/tv_name"
                         android:layout_alignLeft="@+id/tv_name"
                         android:layout_marginTop="6.5dp"
-                        android:text="@{viewModel.homeEntity.positionName}"
+                        android:text="@{viewModel.homeBean.positionName}"
                         android:textColor="@color/black_8e" />
                 </RelativeLayout>
 
@@ -134,8 +137,9 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
+
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="39dp"
                     android:layout_marginRight="15dp"
                     android:src="@mipmap/user_main_setting"
                     binding:onClickCommand="@{viewModel.settingOnClickCommand}" />
@@ -160,7 +164,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{""+viewModel.homeEntity.contactsTotal}'
+                            android:text='@{""+viewModel.homeBean.contactsTotal}'
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -233,7 +237,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{""+viewModel.homeEntity.thumbTotal}'
+                            android:text='@{viewModel.homeEntity.thumbTotal??"0"}'
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 

@@ -56,7 +56,8 @@ public class MainModuleInit implements IModuleInit {
                 .setReadTimeOut(15 * 1000)
                 .setWriteTimeOut(15 * 1000)
                 .setConnectTimeout(15 * 1000)
-                .setRetryCount(3)
+                .setRetryCount(1)
+                .setRetryDelay(500)
                 .addCommonHeaders(headers)
                 .setCacheDiskConverter(new GsonDiskConverter())
                 .setCacheMode(CacheMode.FIRSTREMOTE);

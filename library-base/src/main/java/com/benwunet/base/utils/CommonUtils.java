@@ -180,4 +180,15 @@ public class CommonUtils {
         return (context.getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
+
+    /**
+     * 显示**
+     */
+    public static String setMobileText(String text) {
+        if(text!=null&&text.length()==11){
+            return text.substring(0, 3) + "****" + text.substring(7, 11);
+        }else {
+            return "";
+        }
+    }
 }

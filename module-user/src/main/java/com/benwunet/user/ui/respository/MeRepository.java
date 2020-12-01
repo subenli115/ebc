@@ -1,5 +1,8 @@
 package com.benwunet.user.ui.respository;
 
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.MutableLiveData;
+
 import com.benwunet.base.bean.StringDataBean;
 import com.benwunet.base.global.ApiKey;
 import com.benwunet.base.utils.GsonUtils;
@@ -7,6 +10,8 @@ import com.benwunet.base.utils.MapUtils;
 import com.benwunet.user.ui.bean.MeCardCollectionBean;
 import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.bean.MeInfoBean;
+import com.benwunet.user.ui.bean.MeSafeBean;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.request.HttpManager;
@@ -48,9 +53,10 @@ public class MeRepository extends BaseModel {
     }
 
 
-    public SingleLiveEvent<MeHomeBean> getMemberHome(final SingleLiveEvent<MeHomeBean> bean) {
+    public void getMemberHome(final MutableLiveData<MeHomeBean> bean) {
         HttpManager.get(ApiKey.MEMBER_HOME)
                 .accessToken()
+                .cacheMode(CacheMode.FIRSTCACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<MeHomeBean>() {
                     @Override
@@ -63,7 +69,6 @@ public class MeRepository extends BaseModel {
                         bean.setValue(result);
                     }
                 });
-        return bean;
     }
 
     public void getMemberInfo(final SingleLiveEvent<MeInfoBean> info) {
@@ -123,4 +128,45 @@ public class MeRepository extends BaseModel {
                 });
     }
 
+    public void getMemberSafeInfo(final MutableLiveData<MeSafeBean> data) {
+        HttpManager.get(ApiKey.MEMBER_SETTINGS_SECURITY)
+                .accessToken()
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<MeSafeBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(MeSafeBean bean) {
+                        data.setValue(bean);
+                    }
+
+                });
+    }
+
+    public void getVerifyCode(String phone, final SingleLiveEvent<Boolean> isSend, String type) {
+        HttpManager.get(ApiKey.NOTIFY_SMS)
+                .params("mobile", phone)
+                .params("type", type)
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String result) {
+                        StringDataBean bean = GsonUtils.fromLocalJson(result, StringDataBean.class);
+                        if (bean.getCode() == 0) {
+                            isSend.setValue(true);
+                        } else {
+                            ToastUtils.showLong(bean.getMessage());
+                        }
+
+                    }
+                });
+    }
 }

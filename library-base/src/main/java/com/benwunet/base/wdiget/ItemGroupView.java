@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.benwunet.base.R;
 import com.benwunet.base.utils.CommonUtils;
+import com.benwunet.base.utils.EmptyUtils;
 import com.bumptech.glide.Glide;
 
 
@@ -243,14 +244,14 @@ public class ItemGroupView extends RelativeLayout {
      */
     private void initDatas() {
         setText(tvLeftText, leftText);
-        setText(tvLeftHintText,leftHintText);
+        setText(tvLeftHintText, leftHintText);
         setText(tvRightText, rightText);
         tvLeftText.setTextColor(leftTextColor);
         tvRightText.setTextColor(rightTextColor);
-        if(leftHintText!=null&&leftHintText.length()>0){
-            RelativeLayout.LayoutParams layoutParams1 =(RelativeLayout.LayoutParams) tvLeftText.getLayoutParams();
+        if (leftHintText != null && leftHintText.length() > 0) {
+            RelativeLayout.LayoutParams layoutParams1 = (RelativeLayout.LayoutParams) tvLeftText.getLayoutParams();
             layoutParams1.removeRule(RelativeLayout.CENTER_VERTICAL);
-            RelativeLayout.LayoutParams layoutParams2 =(RelativeLayout.LayoutParams) tvRightText.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) tvRightText.getLayoutParams();
             layoutParams2.removeRule(RelativeLayout.CENTER_VERTICAL);
         }
 
@@ -284,14 +285,27 @@ public class ItemGroupView extends RelativeLayout {
     public void setRigthText(String text) {
         tvRightText.setText(text);
     }
+
+    /**
+     * 设置右侧电话显示的文本
+     *
+     * @param text 要显示的内容
+     */
+
+    public void setMobileRigthText(String text) {
+        if (EmptyUtils.isNotEmpty(text)&&text.length()==11) {
+            tvRightText.setText(text.substring(0, 3) + "****" + text.substring(7, 11));
+        }
+    }
+
     public static void setText(TextView textView, CharSequence text) {
         if (textView != null && !TextUtils.isEmpty(text)) {
             textView.setText(text);
         }
     }
+
     /**
      * 设置右侧显示的文本
-     *
      */
 
     public void setRigthTextSize() {
@@ -349,6 +363,16 @@ public class ItemGroupView extends RelativeLayout {
         }
     }
 
+    public void setRightImage() {
+        if (ivRight != null) {
+            LayoutParams params = (LayoutParams) ivLeft.getLayoutParams();
+            params.height = (int) CommonUtils.dp2px(getContext(), 30);
+            params.width = (int) CommonUtils.dp2px(getContext(), 30);
+            ivLeft.setLayoutParams(params);
+            ivLeft.setImageDrawable(leftDrawable);
+        }
+    }
+
     private void updateDraw() {
         tvLeftText.setCompoundDrawablesWithIntrinsicBounds(null, null, rightDrawable, null);
         tvLeftText.setCompoundDrawablePadding(8);
@@ -375,10 +399,12 @@ public class ItemGroupView extends RelativeLayout {
             ((EditText) tvRightText).setSelection(tvRightText.length());
         }
     }
+
     public static void reqFocus(View view) {
         view.requestFocus();
         view.setFocusableInTouchMode(true);
     }
+
     public void setState(boolean isOpen) {
         if (mSwitchButton != null) {
             mSwitchButton.setChecked(isOpen);

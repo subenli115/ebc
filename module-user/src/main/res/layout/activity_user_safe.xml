@@ -5,6 +5,7 @@
     tools:ignore="ResourceName">
 
     <data>
+
     </data>
 
     <LinearLayout
@@ -61,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="60.5dp"
             app:showBottomLine="false"
-            app:itemView_rightText="@string/user_no_set"
+            app:itemView_rightText="safe"
             android:background="@color/black_15"
             app:itemView_leftText="@string/user_face_switch"
             app:itemView_leftText_color="@color/white" />

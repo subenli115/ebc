@@ -210,7 +210,7 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
                         if (bean.getCode() == 0) {
                             savePassword(password);
                             saveUserName(phone);
-                            viewModel.finish();
+                            viewModel.closeOnClickCommand.execute();
                         }
                     }
                 });

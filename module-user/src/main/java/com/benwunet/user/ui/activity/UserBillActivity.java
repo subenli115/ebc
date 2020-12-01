@@ -38,7 +38,7 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
  */
 
 
-public class UserbillActivity extends BaseActivity<ActivityUserBillBinding, BaseViewModel> {
+public class UserBillActivity extends BaseActivity<ActivityUserBillBinding, BaseViewModel> {
     private Context mContext;
     private UserBillAdapter adapter;
 
@@ -66,7 +66,7 @@ public class UserbillActivity extends BaseActivity<ActivityUserBillBinding, Base
         binding.tvMonth.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                TimePickerView pvTime = new TimePickerBuilder(UserbillActivity.this, new OnTimeSelectListener() {
+                TimePickerView pvTime = new TimePickerBuilder(UserBillActivity.this, new OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date, View v) {
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月");

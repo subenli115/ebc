@@ -27,7 +27,7 @@ import com.benwunet.base.wdiget.SimpleTextWatcher;
 import java.util.Map;
 
 /**
- * author 吴祖清
+ * author feng
  * create  2017/3/31 10
  * des     验证码组合控件
  * <p>
@@ -174,7 +174,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
          * 初始化控件
          */
     private void initView() {
-        rootView = LayoutInflater.from(getContext()).inflate(R.layout.include_sms_code, this, true);
+        rootView = LayoutInflater.from(getContext()).inflate(R.layout.include_sms_code_user, this, true);
         etSmsCode = (EditText) findViewById(R.id.et_sms_code);
         tvSmsGetCode = (TextView) findViewById(R.id.tv_sms_getcode);
         tvSmsGetCode.setOnClickListener(new OnNoDoubleClickListener() {

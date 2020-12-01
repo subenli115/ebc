@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.benwunet.base.utils.ArrayUtils;
 import com.benwunet.find.R;
+import com.benwunet.find.ui.fragment.FindFollowFragment;
 import com.benwunet.find.ui.fragment.FindNearbyFragment;
+import com.benwunet.find.ui.fragment.FindRecommendFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,8 @@ public class FindTabPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        fragmentList.add(new FindNearbyFragment());
-        fragmentList.add(new FindNearbyFragment());
+        fragmentList.add(new FindRecommendFragment());
+        fragmentList.add(new FindFollowFragment());
         fragmentList.add(new FindNearbyFragment());
         return fragmentList.get(position);
     }

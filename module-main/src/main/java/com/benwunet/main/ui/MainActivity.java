@@ -269,9 +269,9 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
     public void onClick(View v) {
         int id = v.getId();
         if (id == com.benwunet.msg.R.id.actionbar_info_btn) {
-            mViewContainer.setCurrentItem(CARD_ITEM, false);
-        } else if (id == com.benwunet.msg.R.id.actionbar_card_btn) {
             mViewContainer.setCurrentItem(INFO_ITEM, false);
+        } else if (id == com.benwunet.msg.R.id.actionbar_card_btn) {
+            mViewContainer.setCurrentItem(CARD_ITEM, false);
         } else if (id == com.benwunet.msg.R.id.actionbar_msg_btn) {
             mViewContainer.setCurrentItem(MSG_ITEM, false);
         } else if (id == com.benwunet.msg.R.id.actionbar_me_btn) {

@@ -52,6 +52,7 @@ public class UserRealProveActivity extends BaseActivity<ActivityUserRealProveBin
             protected void onNoDoubleClick(View v) {
                 startActivity(UserRealNameActivity.class);
 
+
             }
         });
     }

@@ -2,12 +2,15 @@ package com.benwunet.cards.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterFragmentPath;
+import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.cards.BR;
 import com.benwunet.cards.R;
 import com.benwunet.cards.databinding.FragmentWorkBinding;
@@ -33,5 +36,8 @@ public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewMo
 
     @Override
     public void initData() {
+        super.initData();
     }
+
+
 }

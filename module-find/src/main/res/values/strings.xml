@@ -1,3 +1,12 @@
 <resources>
     <string name="find_name">发现组件</string>
+    <string name="find_topic_history">历史焦点话题</string>
+    <string name="find_topic_focus">焦点话题</string>
+    <string name="find_topic_list">话题列表</string>
+    <string name="find_topic_me">我的话题</string>
+    <string name="find_topic_details">话题详情</string>
+    <string name="find_city_dynamic">城市动态</string>
+    <string name="find_city_contacts">城市人脉</string>
+    <string name="find_city_dynamic_more">查看更多动态</string>
+    <string name="find_city_contacts_more">查看更多人脉</string>
 </resources>

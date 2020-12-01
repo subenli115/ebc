@@ -53,7 +53,6 @@ public class HomeViewModel extends BaseViewModel {
     public BindingCommand<Integer> onPageSelectedCommand = new BindingCommand<>(new BindingConsumer<Integer>() {
         @Override
         public void call(Integer index) {
-            ToastUtils.showShort("ViewPager切换：" + index);
         }
     });
 }

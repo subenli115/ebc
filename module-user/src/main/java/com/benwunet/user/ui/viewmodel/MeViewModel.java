@@ -1,18 +1,23 @@
 package com.benwunet.user.ui.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.MutableLiveData;
 
 import com.benwunet.user.ui.activity.UserHomeActivity;
 import com.benwunet.user.ui.activity.UserSettingActivity;
 import com.benwunet.user.ui.bean.MeHomeBean;
+import com.benwunet.user.ui.bean.MeSafeBean;
 import com.benwunet.user.ui.respository.MeRepository;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  *
@@ -21,9 +26,11 @@ import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
  */
 
 public class MeViewModel extends BaseViewModel {
-    public SingleLiveEvent<MeHomeBean> homeBean = new SingleLiveEvent<>();
-    public SingleLiveEvent<String> imgUrl = new SingleLiveEvent<>();
-
+    public MutableLiveData<MeHomeBean> homeBean = new MutableLiveData<>();
+    public MutableLiveData<MeSafeBean> safeBean = new MutableLiveData<>();
+    public MutableLiveData<String> mobile = new MutableLiveData<>();
+    public SingleLiveEvent<Boolean> isSend = new SingleLiveEvent<>();
+    //用户名的绑定
     private MeRepository meRepository = MeRepository.getInstance(this);
     public MeHomeBean homeEntity;
 
@@ -33,12 +40,6 @@ public class MeViewModel extends BaseViewModel {
     @Override
     public void onCreate() {
         initData();
-    }
-    public void setHomeEntity(MeHomeBean entity) {
-        if (this.homeEntity == null) {
-            this.homeEntity = entity;
-        }
-        imgUrl.setValue(entity.getAvatar());
     }
 
 
@@ -59,8 +60,20 @@ public class MeViewModel extends BaseViewModel {
         }
     });
 
+
+    //获取验证码
+    public SingleLiveEvent<Boolean> getCode(String phone, String type) {
+        if (phone != null && phone.length() == 0) {
+            ToastUtils.showLong("请输入手机号");
+        } else {
+             meRepository.getVerifyCode(phone, isSend, type);
+        }
+        return isSend;
+    }
+
     public void initData() {
-//        meRepository.getMemberHome(homeBean);
+        meRepository.getMemberHome(homeBean);
+        meRepository.getMemberSafeInfo(safeBean);
     }
 
 }

@@ -4,11 +4,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.lifecycle.Observer;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
 import com.benwunet.user.databinding.ActivityUserSafeBinding;
+import com.benwunet.user.ui.bean.MeSafeBean;
+import com.benwunet.user.ui.viewmodel.MeViewModel;
+
+import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.BaseViewModel;
@@ -23,8 +29,9 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
  */
 
 
-public class UserSafeActivity extends BaseActivity<ActivityUserSafeBinding, BaseViewModel> {
+public class UserSafeActivity extends BaseActivity<ActivityUserSafeBinding, MeViewModel> {
     private Context mContext;
+    private String mobile;
 
     //拿到路由过来的参数
 
@@ -46,24 +53,38 @@ public class UserSafeActivity extends BaseActivity<ActivityUserSafeBinding, Base
 
     @Override
     public void initData() {
-        mContext=this;
+        mContext = this;
         binding.igvPhone.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity( UserPhoneActivity.class);
+                UserPhoneActivity.startAction(mobile);
             }
         });
 
         binding.igvPwd.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(UserPwdActivity.class);
+                UserPwdActivity.startAction(mobile);
             }
         });
         binding.igvThird.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
                 startActivity(UserPlatformActivity.class);
+            }
+        });
+    }
+
+    @Override
+    public void initViewObservable() {
+        viewModel.safeBean.observe(this, new Observer<MeSafeBean>() {
+            @Override
+            public void onChanged(MeSafeBean bean) {
+                mobile = bean.getMobile();
+                binding.igvPhone.setMobileRigthText(bean.getMobile());
+                binding.igvMail.setRigthText(bean.getEmail());
+                binding.igvFace.setRigthText(bean.isIsAuth() ? "已设置" : "未设置");
+                viewModel.mobile.setValue(mobile);
             }
         });
     }

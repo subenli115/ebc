@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,13 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.wdiget.GlideRoundTransform;
+import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.find.R;
 import com.benwunet.find.BR;
 import com.benwunet.find.databinding.FragmentFindBinding;
+import com.benwunet.find.ui.activity.FindCityHomeActivity;
+import com.benwunet.find.ui.activity.FindMettingActivity;
+import com.benwunet.find.ui.activity.FindTopicHomeActivity;
 import com.benwunet.find.ui.adapter.FindTabPagerAdapter;
 import com.benwunet.find.ui.viewmodel.FindViewModel;
 import com.bumptech.glide.Glide;
@@ -39,7 +44,8 @@ import me.goldze.mvvmhabit.base.BaseFragment;
 @Route(path = RouterFragmentPath.Find.PAGER_FIND)
 public class FindFragment extends BaseFragment<FragmentFindBinding, FindViewModel> {
     private Context mContext;
-    private String url="http://zrwlmeiliao.oss-accelerate.aliyuncs.com/banner/xxx.png";
+    private String url = "http://zrwlmeiliao.oss-accelerate.aliyuncs.com/banner/xxx.png";
+    private FindTabPagerAdapter adapter;
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,7 +63,8 @@ public class FindFragment extends BaseFragment<FragmentFindBinding, FindViewMode
         setBinnerData();
     }
 
-    public  void setBinnerData(){
+
+    public void setBinnerData() {
         binding.banner.setAdapter(new BGABanner.Adapter<ImageView, String>() {
             @Override
             public void fillBannerItem(BGABanner banner, ImageView itemView, String model, int position) {
@@ -74,9 +81,27 @@ public class FindFragment extends BaseFragment<FragmentFindBinding, FindViewMode
 
     private void initTabFragment() {
         mContext = getContext();
-        FindTabPagerAdapter adapter = new FindTabPagerAdapter(getActivity().getSupportFragmentManager(), mContext);
-        binding.vp.setAdapter(adapter);
-        binding.tl.setupWithViewPager(binding.vp);
+        binding.llTopic.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(FindTopicHomeActivity.class);
+            }
+        });
+        binding.llCity.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(FindCityHomeActivity.class);
+            }
+        });
+        binding.llMeeting.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(FindMettingActivity.class);
+            }
+        });
+            adapter = new FindTabPagerAdapter(getChildFragmentManager(), mContext);
+            binding.vp.setAdapter(adapter);
+            binding.tl.setupWithViewPager(binding.vp);
         for (int i = 0; i < adapter.getCount(); i++) {
             TabLayout.Tab tab = binding.tl.getTabAt(i);
             tab.setCustomView(R.layout.tab_title);

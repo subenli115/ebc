@@ -65,8 +65,8 @@ public class SplashActivity extends BaseActivity {
                     public void noPermission(List<String> denied, boolean never) {
                     }
                 });
-//        loginSDK();
-        inMain();
+        loginSDK();
+//        inMain();
     }
 
 

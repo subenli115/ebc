@@ -101,13 +101,18 @@
             android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.benwunet.user.ui.activity.UserbillActivity"
+            android:name="com.benwunet.user.ui.activity.UserBillActivity"
             android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.benwunet.user.ui.activity.UserBillDetailsActivity"
             android:theme="@style/TranslucentTheme"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.benwunet.user.ui.activity.UserFansActivity"
+            android:theme="@style/TranslucentTheme"
+            android:screenOrientation="portrait" />
+
 
     </application>
 

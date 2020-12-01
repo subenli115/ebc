@@ -1,2 +1,49 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.benwunet.find" />
+    package="com.benwunet.find">
+
+    <application>
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindTopicHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindFocusTopicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindTopicListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindTopicMyListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindTopicDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindCityHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindCityDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindCityContactsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindCityDynamicListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindMettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+
+    </application>
+</manifest>

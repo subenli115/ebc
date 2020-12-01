@@ -32,7 +32,7 @@
         android:layout_width="105dp"
         android:layout_height="48dp"
         android:layout_alignParentRight="true"
-        android:background="@drawable/normal_half_yellow"
+        android:background="@drawable/normal_half_yellow24"
         android:gravity="center"
 
         android:layout_centerVertical="true"
