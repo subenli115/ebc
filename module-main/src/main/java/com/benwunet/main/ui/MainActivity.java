@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
@@ -42,8 +43,11 @@ import com.hyphenate.easeui.ui.base.EaseBaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.jessyan.autosize.internal.CancelAdapt;
+import me.jessyan.autosize.internal.CustomAdapt;
+
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
-public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener  {
     private static final int INFO_ITEM = 0;
     private static final int CARD_ITEM = 1;
     private static final int MSG_ITEM = 2;
@@ -194,7 +198,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
 //            }
 //        }
 //    }
-
     /**
      * 申请权限
      */
@@ -227,7 +230,11 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+    }
     private void checkUnreadMsg() {
         viewModel.checkUnreadMsg();
     }
@@ -316,4 +323,5 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }

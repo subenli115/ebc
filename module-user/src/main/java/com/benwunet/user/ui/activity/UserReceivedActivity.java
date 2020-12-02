@@ -40,7 +40,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 
 public class UserReceivedActivity extends BaseActivity<ActivityUserCommonBinding, BaseViewModel> {
 
-    private static final int REQUEST_CODE_INVITE =1001 ;
+    private static final int REQUEST_CODE_INVITE = 1001;
     private Context mContext;
     private UserReceivedAdapter adapter;
 
@@ -93,13 +93,13 @@ public class UserReceivedActivity extends BaseActivity<ActivityUserCommonBinding
                 SelectDialog.build(mContext, "确定拒绝吗？", "", "确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        adapter.getViewByPosition(position,R.id.tv_change).setVisibility(View.GONE);
+                        adapter.getViewByPosition(position, R.id.tv_change).setVisibility(View.GONE);
                         view.setVisibility(View.GONE);
-                        adapter.getViewByPosition(position,R.id.tv_state).setVisibility(View.VISIBLE);
+                        adapter.getViewByPosition(position, R.id.tv_state).setVisibility(View.VISIBLE);
 
 
                     }
-                },"取消",null).setDialogStyle(DialogSettings.STYLE_KONGZUE).showDialog();
+                }, "取消", null).setDialogStyle(DialogSettings.STYLE_KONGZUE).showDialog();
             }
         });
         binding.recyclerview.setAdapter(adapter);
@@ -109,7 +109,7 @@ public class UserReceivedActivity extends BaseActivity<ActivityUserCommonBinding
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK ) {
+        if (resultCode == RESULT_OK) {
             if (data != null) {
                 List<BaseCustomViewModel> data1 = (List<BaseCustomViewModel>) data.getSerializableExtra("data");
                 adapter.setNewData(data1);

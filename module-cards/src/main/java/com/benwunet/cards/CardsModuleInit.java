@@ -5,6 +5,7 @@ import android.app.Application;
 import com.benwunet.base.base.IModuleInit;
 
 import me.goldze.mvvmhabit.utils.KLog;
+import me.jessyan.autosize.AutoSizeConfig;
 
 /**
  * Created by feng on 2020/10/15.

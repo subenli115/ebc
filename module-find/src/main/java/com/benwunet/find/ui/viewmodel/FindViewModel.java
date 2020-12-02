@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
+import androidx.lifecycle.MutableLiveData;
 
 import com.benwunet.base.base.viewmodel.BaseHttpViewModel;
 import com.benwunet.find.BR;
@@ -30,8 +31,7 @@ public class FindViewModel extends BaseHttpViewModel {
         super(application);
     }
 
-    public SingleLiveEvent<MeCardCollectionBean> data = new SingleLiveEvent<>();
-
+    public MutableLiveData<MeCardCollectionBean> data = new MutableLiveData<>();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -39,6 +39,7 @@ public class FindViewModel extends BaseHttpViewModel {
             observableList.add(new DynamicItemViewModel());
         }
         itemBinding.bindExtra(BR.onDemoListener,onDemoListener);
+
     }
 
 

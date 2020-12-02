@@ -105,4 +105,9 @@ public interface ApiKey {
      */
     String MEMBER_SETTINGS_SECURITY = "member/settings/security";
 
+    /**
+     *  名片详情
+     */
+    String MEMBER_CARD_MINE = "member/card/mine";
+
 }

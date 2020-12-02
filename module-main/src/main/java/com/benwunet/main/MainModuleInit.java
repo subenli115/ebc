@@ -2,6 +2,8 @@ package com.benwunet.main;
 
 import android.app.Application;
 
+import androidx.core.widget.AutoSizeableTextView;
+
 import com.benwunet.base.base.IModuleInit;
 import com.benwunet.base.base.loadsir.EmptyCallback;
 import com.benwunet.base.base.loadsir.ErrorCallback;
@@ -19,6 +21,8 @@ import com.zhouyou.http.model.HttpHeaders;
 import me.goldze.mvvmhabit.utils.KLog;
 import me.goldze.mvvmhabit.utils.SPUtils;
 import me.goldze.mvvmhabit.utils.StringUtils;
+import me.jessyan.autosize.AutoSizeConfig;
+import me.jessyan.autosize.utils.AutoSizeUtils;
 
 /**
  * Created by feng on 2020/10/15.

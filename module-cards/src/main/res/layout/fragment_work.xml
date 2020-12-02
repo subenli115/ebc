@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="ResourceName">
 
     <data>
@@ -18,19 +18,211 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/appBackColor"
+        android:background="@color/black_15"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.benwunet.base.wdiget.ItemGroupView
+            android:id="@+id/igv_card"
+            android:layout_width="match_parent"
+            android:layout_height="60.5dp"
+            android:background="@color/black_15"
+            app:itemView_leftText="纸质名片(1)"
+            app:itemView_leftText_color="@color/white"
+            app:leftIcon="@mipmap/actionbar_info_sel" />
+
+
+        <com.benwunet.base.wdiget.ItemGroupView
+            android:id="@+id/igv_collection"
+            android:layout_width="match_parent"
+            android:layout_height="60.5dp"
+            android:background="@color/black_15"
+            app:itemView_leftText="收藏的名片(1)"
+            app:itemView_leftText_color="@color/white"
+            app:leftIcon="@mipmap/actionbar_info_vollection" />
+
+        <com.benwunet.base.wdiget.ItemGroupView
+            android:id="@+id/igv_ground"
+            android:layout_width="match_parent"
+            android:layout_height="60.5dp"
+            android:background="@color/black_15"
+            app:itemView_leftText="@string/base_mind_ground"
+            app:itemView_leftText_color="@color/white"
+            app:leftIcon="@mipmap/actionbar_info_ground"
+            app:showBottomLine="false" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="好友(12)"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dip"
-            binding:itemBinding="@{viewModel.itemBinding}"
-            binding:items="@{viewModel.observableList}"
-            binding:layoutManager="@{LayoutManagers.grid(4)}"
-            binding:lineManager="@{LineManagers.both()}" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp">
 
-        <View style="@style/ViewLineStyle" />
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_ground1"
+                android:layout_width="138dp"
+                android:layout_height="138dp"
+                android:layout_marginRight="1.5dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg"
+                app:leftBottom_corner_radius="4dp"
+                app:leftTop_corner_radius="4dp"
+                app:roun_type="round" />
+
+            <ImageView
+                android:id="@+id/iv_ground2"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_marginBottom="1.5dp"
+                android:layout_toRightOf="@+id/iv_ground1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <ImageView
+                android:id="@+id/iv_ground5"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_below="@+id/iv_ground2"
+                android:layout_toRightOf="@+id/iv_ground1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <ImageView
+                android:id="@+id/iv_ground3"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_ground2"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <ImageView
+                android:id="@+id/iv_ground6"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_below="@+id/iv_ground2"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_ground5"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_ground4"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_ground3"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg"
+                app:rightTop_corner_radius="4dp"
+                app:roun_type="round" />
+
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_ground7"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_below="@+id/iv_ground2"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_ground6"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg"
+                app:rightBottom_corner_radius="4dp"
+                app:roun_type="round" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="同事(5)"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp">
+
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_friend_ground1"
+                android:layout_width="138dp"
+                android:layout_height="138dp"
+                android:layout_marginRight="1.5dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg"
+                app:leftBottom_corner_radius="4dp"
+                app:leftTop_corner_radius="4dp"
+                app:roun_type="round" />
+
+            <ImageView
+                android:id="@+id/iv_friend_ground2"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_marginBottom="1.5dp"
+                android:layout_toRightOf="@+id/iv_friend_ground1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <ImageView
+                android:id="@+id/iv_friend_ground5"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_below="@+id/iv_friend_ground2"
+                android:layout_toRightOf="@+id/iv_friend_ground1"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <ImageView
+                android:id="@+id/iv_friend_ground3"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_friend_ground2"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <ImageView
+                android:id="@+id/iv_friend_ground6"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_below="@+id/iv_friend_ground2"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_friend_ground5"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg" />
+
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_friend_ground4"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_friend_ground3"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg"
+                app:rightTop_corner_radius="4dp"
+                app:roun_type="round" />
+
+            <com.benwunet.base.view.RoundImageView
+                android:id="@+id/iv_friend_ground7"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_below="@+id/iv_friend_ground2"
+                android:layout_marginLeft="1.5dp"
+                android:layout_toRightOf="@+id/iv_friend_ground6"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_card_bg"
+                app:rightBottom_corner_radius="4dp"
+                app:roun_type="round" />
+        </RelativeLayout>
     </LinearLayout>
 </layout>

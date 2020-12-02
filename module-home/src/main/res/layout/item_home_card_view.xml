@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="235dp"
@@ -8,7 +9,7 @@
     android:layout_height="370dp"
     app:cardElevation="11dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/normal_bg_black29"
@@ -24,35 +25,41 @@
             app:leftTop_corner_radius="11dp"
             app:rightTop_corner_radius="11dp"
             app:roun_type="round" />
-
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:textSize="28sp"
+            android:text="创建新名片"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:layout_below="@+id/tv_title"
+            android:layout_centerHorizontal="true"
+            android:text="让需要的人看到你"
+            android:textColor="@color/gray_97"
+            />
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="44dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="28dp"
-            android:background="@color/black_29"
-            android:text="佳音"
-            android:textColor="@color/white"
-            android:textSize="24sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:background="@drawable/normal_bg_yellow4"
+            android:layout_marginBottom="43dp"
+            android:text="@string/base_create_card"
+            android:textColor="@color/black_15"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="本无网络科技有限公司"
-
-            android:textColor="@color/black_8e"
-            android:textSize="13sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:text="经理"
-            android:textColor="@color/black_8e"
-            android:textSize="13sp" />
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

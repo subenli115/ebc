@@ -35,9 +35,12 @@
 
 
     <string name="base_card">名片</string>
+    <string name="base_phone_num">手机</string>
+    <string name="base_telephone">电话</string>
     <string name="base_phone">手机号码</string>
     <string name="base_home_phone">电话号码</string>
     <string name="base_mail">邮箱</string>
+    <string name="base_qq">QQ</string>
     <string name="base_address">地址</string>
     <string name="base_wechat">微信</string>
     <string name="base_alipay">支付宝</string>
@@ -77,6 +80,7 @@
     <string name="base_create_card">创建名片</string>
     <string name="base_send">发消息</string>
     <string name="base_menu_change">交换名片</string>
+    <string name="base_mind_ground">智能分组</string>
 
     <string name="base_add_bg">添加封面图</string>
     <string name="base_add_content">添加导读内容</string>

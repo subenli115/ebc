@@ -25,6 +25,8 @@ import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.viewmodel.MeViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.jessyan.autosize.internal.CancelAdapt;
+import me.jessyan.autosize.internal.CustomAdapt;
 
 
 /**
@@ -112,4 +114,5 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel> {
             }
         });
     }
+
 }

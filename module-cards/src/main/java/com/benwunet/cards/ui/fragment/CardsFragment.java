@@ -17,13 +17,15 @@ import com.benwunet.cards.databinding.FragmentWorkBinding;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.jessyan.autosize.internal.CancelAdapt;
+import me.jessyan.autosize.internal.CustomAdapt;
 
 
 /**
  * Created by feng on 2020/10/15.
  */
 @Route(path = RouterFragmentPath.Card.PAGER_CARD)
-public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewModel> {
+public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewModel> implements CustomAdapt{
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_work;
@@ -40,4 +42,13 @@ public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewMo
     }
 
 
+    @Override
+    public boolean isBaseOnWidth() {
+        return true;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 0;
+    }
 }
