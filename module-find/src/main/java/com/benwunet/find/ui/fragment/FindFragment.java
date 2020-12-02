@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.MutableLiveData;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  */
 @Route(path = RouterFragmentPath.Find.PAGER_FIND)
 public class FindFragment extends BaseFragment<FragmentFindBinding, FindViewModel> {
+
     private Context mContext;
     private String url = "http://zrwlmeiliao.oss-accelerate.aliyuncs.com/banner/xxx.png";
     private FindTabPagerAdapter adapter;

@@ -44,8 +44,8 @@ import java.util.List;
 
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
 public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
-    private static final int CARD_ITEM = 0;
-    private static final int INFO_ITEM = 1;
+    private static final int INFO_ITEM = 0;
+    private static final int CARD_ITEM = 1;
     private static final int MSG_ITEM = 2;
     private static final int ME_ITEM = 3;
     private static final int FIND_ITEM = 4;

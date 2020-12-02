@@ -1,8 +1,11 @@
+include ':library-other:gallery'
 include ':library-other:easeui'
 include ':library-other'
 include ':library-other:player'
+
+
 include ':library-other:faceplatform-release'
 include ':library-other:faceplatform-ui'
 include ':library-network'
-include ':app', ':library-base', ':library-network', ':module-main',':module-sign', ':module-home', ':module-user', ':library-res', ':module-cards', ':module-msg', ':module-find'
+include ':app', ':library-base', ':library-network', ':module-main', ':module-sign', ':module-home', ':module-user', ':library-res', ':module-cards', ':module-msg', ':module-find'
 

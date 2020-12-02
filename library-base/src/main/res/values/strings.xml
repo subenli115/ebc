@@ -70,7 +70,11 @@
     <string name="base_hot_topic">热门话题</string>
     <string name="base_hot_city">热门城市</string>
     <string name="base_look_topic">查看更多话题</string>
+    <string name="base_look">查看</string>
 
+    <string name="base_send_card">递名片</string>
+    <string name="base_edit_card">编辑名片</string>
+    <string name="base_create_card">创建名片</string>
     <string name="base_send">发消息</string>
     <string name="base_menu_change">交换名片</string>
 

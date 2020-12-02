@@ -47,7 +47,6 @@ public class MyAPP extends BaseApplication implements Thread.UncaughtExceptionHa
         AutoSizeConfig.getInstance()
                 .setUseDeviceSize(false)
                 .setCustomFragment(true);
-        AutoSizeConfig.getInstance().setCustomFragment(true);
         PreferenceManager.init(this);
         closeAndroidPDialog();
         ModuleLifecycleConfig.getInstance().initModuleAhead(this);
