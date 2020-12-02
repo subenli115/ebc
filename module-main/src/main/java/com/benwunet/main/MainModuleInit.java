@@ -47,10 +47,6 @@ public class MainModuleInit implements IModuleInit {
         if (BuildConfig.DEBUG) {
             EasyHttp.getInstance().debug("easyhttp", true);
         }
-        if (!StringUtils.isEmpty(getAccessToken())) {
-            headers = new HttpHeaders();
-            headers.put("Authorization", "Bearer " + getAccessToken());
-        }
         EasyHttp.getInstance()
                 .setBaseUrl("http://10.10.0.128:8080/")
                 .setReadTimeOut(15 * 1000)
