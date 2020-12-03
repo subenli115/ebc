@@ -32,6 +32,8 @@ import java.lang.reflect.Method;
 import cn.bingoogolapple.baseadapter.BGABaseAdapterUtil;
 import cn.bingoogolapple.photopicker.imageloader.BGAImage;
 import cn.bingoogolapple.photopicker.imageloader.BGAImageLoader;
+import io.reactivex.functions.Consumer;
+import io.reactivex.plugins.RxJavaPlugins;
 import me.goldze.mvvmhabit.base.BaseApplication;
 import me.jessyan.autosize.AutoSizeConfig;
 
@@ -43,6 +45,12 @@ public class MyAPP extends BaseApplication implements Thread.UncaughtExceptionHa
     @Override
     public void onCreate() {
         super.onCreate();
+//        RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
+//            @Override
+//            public void accept(Throwable throwable) throws Exception {
+//                throwable.printStackTrace();//这里处理所有的Rxjava异常
+//            }
+//        });
         //初始化组件(靠前)
         AutoSizeConfig.getInstance()
                 .setUseDeviceSize(false);

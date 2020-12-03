@@ -73,6 +73,7 @@ dependencies {
     api rootProject.ext.dependencies.bgaBanner
     api rootProject.ext.dependencies.SmartRefreshLayout
     api rootProject.ext.dependencies.scrolllayout
+    api rootProject.ext.dependencies.Picasso
     api rootProject.ext.dependencies["okhttp3 - integration"]
     api rootProject.ext.dependencies["annotations"]
 

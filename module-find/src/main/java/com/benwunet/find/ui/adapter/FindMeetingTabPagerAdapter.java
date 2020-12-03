@@ -9,10 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.benwunet.base.utils.ArrayUtils;
 import com.benwunet.find.R;
-import com.benwunet.find.ui.fragment.FindFollowFragment;
 import com.benwunet.find.ui.fragment.FindMeetingFragment;
-import com.benwunet.find.ui.fragment.FindNearbyFragment;
-import com.benwunet.find.ui.fragment.FindRecommendFragment;
 
 import java.util.ArrayList;
 import java.util.List;

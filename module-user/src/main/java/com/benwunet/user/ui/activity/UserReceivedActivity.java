@@ -65,6 +65,7 @@ public class UserReceivedActivity extends BaseActivity<ActivityUserCommonBinding
     @Override
     public void initData() {
         mContext = this;
+        binding.ntb.setNewTitleText(getString(R.string.user_get_card));
         adapter = new UserReceivedAdapter(R.layout.item_user_received_card, mContext);
         binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));

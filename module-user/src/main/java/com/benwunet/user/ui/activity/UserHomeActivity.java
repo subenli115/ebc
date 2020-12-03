@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.base.adapter.IntConsumer;
-import com.benwunet.base.config.GlideEngine;
+import com.benwunet.base.contract.AppConstans;
+import com.benwunet.base.livedatas.LiveDataBus;
+import com.benwunet.base.wdiget.BottomDialog;
 import com.benwunet.base.wdiget.BottomMenuDialog;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.user.BR;
@@ -27,12 +29,6 @@ import com.benwunet.user.ui.bean.Story;
 import com.benwunet.user.ui.viewmodel.HomeViewModel;
 import com.benwunet.user.ui.wdiget.MenuItemController;
 import com.benwunet.user.ui.wdiget.MenuItemView;
-import com.bumptech.glide.Glide;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.listener.OnResultCallbackListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +47,7 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 
 public class UserHomeActivity extends BaseActivity<ActivityUserHomeBinding, HomeViewModel> {
     private Context mContext;
-    private BottomMenuDialog mDialog;
+    private BottomDialog mDialog;
     private View mMenuView;
     private PopupWindow mMenuPopWindow;
     private MenuItemView mMenuItemView;
@@ -94,7 +90,14 @@ public class UserHomeActivity extends BaseActivity<ActivityUserHomeBinding, Home
         headBinding.ivTake.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                showPhotoDialog(mContext);
+                showPhotoDialog();
+            }
+        });
+        headBinding.tvCard.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                LiveDataBus.get().with(AppConstans.BusTag.CLOSE).setValue("");
+                finish();
             }
         });
         headBinding.ivEdit.setOnClickListener(new OnNoDoubleClickListener() {
@@ -156,71 +159,12 @@ public class UserHomeActivity extends BaseActivity<ActivityUserHomeBinding, Home
         }
     }
 
-    public void showPhotoDialog(final Context context) {
-        if (mDialog != null && mDialog.isShowing()) {
-            mDialog.dismiss();
-        }
-
-        mDialog = new BottomMenuDialog(context);
-        mDialog.setConfirmListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                //拍照
-                PictureSelector.create(UserHomeActivity.this)
-                        .openCamera(PictureMimeType.ofImage())
-                        .loadImageEngine(GlideEngine.createGlideEngine())
-                        .isEnableCrop(true)
-                        .withAspectRatio(1, 1)
-                        .forResult(new OnResultCallbackListener<LocalMedia>() {
-                            @Override
-                            public void onResult(List<LocalMedia> result) {
-//                                viewModel.imgUrl.setValue(result.get(0).getCutPath());
-                                Glide.with(mContext).load(result.get(0).getCutPath()).into(headBinding.ivHead);
-                            }
-
-                            @Override
-                            public void onCancel() {
-
-                            }
-                        });
-
-            }
-
-        });
-        mDialog.setMiddleListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                //相册
-                PictureSelector.create(UserHomeActivity.this)
-                        .openGallery(PictureMimeType.ofImage())
-                        .maxSelectNum(1)
-                        .isEnableCrop(true)
-                        .withAspectRatio(1, 1)
-                        .selectionMode(PictureConfig.MULTIPLE)
-                        .forResult(new OnResultCallbackListener<LocalMedia>() {
-                            @Override
-                            public void onResult(List<LocalMedia> result) {
-//                                viewModel.imgUrl.setValue(result.get(0).getCutPath());
-                                Glide.with(mContext).load(result.get(0).getCutPath()).into(headBinding.ivHead);
-
-                            }
-
-                            @Override
-                            public void onCancel() {
-
-                            }
-                        });
-
-            }
-        });
+    public void showPhotoDialog() {
+        mDialog = new BottomDialog(this,headBinding.ivHead);
         mDialog.show();
     }
 
     public void showDialog(final Context context) {
-        if (mItemDialog != null && mItemDialog.isShowing()) {
-            mItemDialog.dismiss();
-        }
-
         mItemDialog = new BottomMenuDialog(context, "删除", "置顶");
         mItemDialog.setConfirmListener(new View.OnClickListener() {
             @Override

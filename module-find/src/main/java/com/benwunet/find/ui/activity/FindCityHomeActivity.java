@@ -43,6 +43,7 @@ public class FindCityHomeActivity extends BaseActivity<ActivityFindCityBinding, 
 
     @Override
     public void initData() {
+        super.initData();
         binding.ntb.setOnRightImagListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {

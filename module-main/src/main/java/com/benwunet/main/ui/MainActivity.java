@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,11 +16,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.contract.AppConstans;
+import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.view.ScrollControlViewPager;
@@ -107,6 +111,9 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         findBtn = findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
         setOnClickListener(this);
         mViewContainer.setCurrentItem(FIND_ITEM, false);
+        LiveDataBus.get().with(AppConstans.BusTag.CLOSE).observe(this, o -> {
+            mViewContainer.setCurrentItem(INFO_ITEM, false);
+        });
     }
 
     private void initMenuBar() {

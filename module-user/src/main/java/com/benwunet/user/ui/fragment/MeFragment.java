@@ -19,8 +19,10 @@ import com.benwunet.user.ui.activity.UserCollectionActivity;
 import com.benwunet.user.ui.activity.UserFansActivity;
 import com.benwunet.user.ui.activity.UserFollowActivity;
 import com.benwunet.user.ui.activity.UserLookCardActivity;
+import com.benwunet.user.ui.activity.UserReceivedActivity;
 import com.benwunet.user.ui.activity.UserSettingActivity;
 import com.benwunet.user.ui.activity.UserBillActivity;
+import com.benwunet.user.ui.activity.UserVisitorActivity;
 import com.benwunet.user.ui.bean.MeHomeBean;
 import com.benwunet.user.ui.viewmodel.MeViewModel;
 
@@ -87,6 +89,18 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel> {
             @Override
             protected void onNoDoubleClick(View v) {
                 startActivity(UserFansActivity.class);
+            }
+        });
+        binding.tvVisitor.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserVisitorActivity.class);
+            }
+        });
+        binding.tvCard.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserReceivedActivity.class);
             }
         });
 

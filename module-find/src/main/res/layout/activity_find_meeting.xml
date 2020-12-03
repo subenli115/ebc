@@ -22,6 +22,7 @@
         app:ntb_tv_left="showAndFinish" />
     <ScrollView
         android:layout_width="match_parent"
+        android:background="@color/black_15"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -64,6 +65,7 @@
             <com.benwunet.base.view.ScrollByViewpager
                 android:id="@+id/vp"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tl"
                 android:layout_marginTop="20dp" />

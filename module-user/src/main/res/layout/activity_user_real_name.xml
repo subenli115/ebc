@@ -25,17 +25,16 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_below="@+id/ntb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/ntb"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:background="@drawable/normal_bg_orange"
-            android:textColor="@color/orange_fb"
+            android:gravity="center"
             android:padding="8dp"
             android:text="@string/user_card_upload_hint"
-            />
+            android:textColor="@color/orange_fb" />
 
         <LinearLayout
 
@@ -45,88 +44,133 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-
-            <LinearLayout
-                android:id="@+id/ll_user_card_positive"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:background="@drawable/normal_bg_black29"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="38dp"
-                    android:src="@mipmap/user_icon_card_back">
-
-                </ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="38dp"
-                    android:text="@string/user_card_positive"
-                    android:textColor="@color/gray_bc"
-
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="41dp"
+                android:layout_height="wrap_content">
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll_user_card_positive"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="38dp"
+                        android:src="@mipmap/user_icon_card_positive">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/user_card_positive"
+                        android:textColor="@color/gray_bc"
+
+                        />
+                </LinearLayout>
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_positive"
+                    android:layout_width="210dp"
+                    android:scaleType="centerCrop"
+                    android:layout_height="130dp"
+                    app:corner_radius="12dp"
+                    app:roun_type="round" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/normal_bg_black29"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="38dp"
-                    android:src="@mipmap/user_icon_card_back">
-
-                </ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="38dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/user_card_positive"
-                    android:textColor="@color/gray_bc"
-
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="41dp"
+                android:layout_height="wrap_content">
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll_user_card_back"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="38dp"
+                        android:src="@mipmap/user_icon_card_back">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/user_card_back"
+                        android:textColor="@color/gray_bc"
+
+                        />
+                </LinearLayout>
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="210dp"
+                    android:layout_height="130dp"
+                    app:corner_radius="12dp"
+                    app:roun_type="round" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/normal_bg_black29"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+
+
+                <LinearLayout
+                    android:id="@+id/ll_user_card_hold"
+                    android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="38dp"
-                    android:src="@mipmap/user_icon_card_back">
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                </ImageView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:src="@mipmap/user_icon_card_hold">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="38dp"
-                    android:text="@string/user_card_positive"
-                    android:textColor="@color/gray_bc" />
-            </LinearLayout>
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/user_card_hold"
+                        android:textColor="@color/gray_bc"
+
+                        />
+
+                </LinearLayout>
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_hold"
+                    android:layout_width="210dp"
+                    android:layout_height="130dp"
+                    app:corner_radius="12dp"
+                    app:roun_type="round" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"

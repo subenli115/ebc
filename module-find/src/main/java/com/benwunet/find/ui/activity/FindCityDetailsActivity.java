@@ -61,7 +61,6 @@ public class FindCityDetailsActivity extends BaseActivity<ActivityFindCityDetail
         DynamicItemViewModel themesItemViewModel = new DynamicItemViewModel();
         data.add(themesItemViewModel);
         data.add(themesItemViewModel);
-        data.add(themesItemViewModel);
         adapter.setNewData(data);
         binding.tvContacts.setOnClickListener(new OnNoDoubleClickListener() {
             @Override

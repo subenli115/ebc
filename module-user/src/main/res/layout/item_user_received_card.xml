@@ -23,7 +23,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="24dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/normal_bg_black29">
 
             <com.benwunet.base.view.RoundImageView
@@ -108,13 +107,16 @@
             android:id="@+id/tv_apply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_below="@+id/cl"
+            android:textSize="12sp"
             android:layout_alignLeft="@+id/cl"
             android:text="@string/user_face_apply"
             android:textColor="@color/black_8e" />
 
         <TextView
             android:id="@+id/tv_time"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/tv_apply"
@@ -127,9 +129,11 @@
             android:id="@+id/tv_change"
             android:layout_width="70dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
             android:layout_height="29dp"
             android:visibility="gone"
             android:layout_below="@+id/cl"
+            android:textSize="12sp"
             android:layout_toLeftOf="@+id/tv_refuse"
             android:background="@drawable/normal_bg_yellow_tran4"
             android:gravity="center"
@@ -139,6 +143,7 @@
         <TextView
             android:id="@+id/tv_refuse"
             android:layout_width="50dp"
+            android:layout_marginTop="10dp"
             android:visibility="gone"
             android:layout_height="29dp"
             android:layout_below="@+id/cl"
@@ -146,6 +151,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/normal_bg_gray_tran4"
             android:gravity="center"
+            android:textSize="12sp"
             android:text="拒绝"
             android:textColor="@color/view_color" />
         <TextView
@@ -154,6 +160,7 @@
             android:layout_alignTop="@+id/tv_apply"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
+            android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:text="@{viewModel.stateText}"
             android:textColor="@color/textColorYellow"

@@ -71,11 +71,10 @@
             android:layout_below="@id/tv_content"
             android:layout_alignLeft="@+id/iv_head"
             android:layout_marginTop="8dp"
-            app:bga_npl_itemCornerRadius="0dp"
             app:bga_npl_itemSpanCount="3"
             app:bga_npl_itemWhiteSpacing="4dp"
             app:bga_npl_itemWidth="0dp"
-            app:bga_npl_otherWhiteSpacing="64dp"
+            app:bga_npl_otherWhiteSpacing="30dp"
             app:bga_npl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
             app:bga_npl_showAsLargeWhenOnlyOne="true" />
 

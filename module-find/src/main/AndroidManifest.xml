@@ -44,6 +44,12 @@
             android:name="com.benwunet.find.ui.activity.FindMettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.find.ui.activity.FindWebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+
+
 
     </application>
 </manifest>

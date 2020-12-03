@@ -108,6 +108,7 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
                 .execute(new SimpleCallBack<UserLoginBean>() {
                     @Override
                     public void onError(ApiException e) {
+
                         ToastUtils.showLong(e.getMessage());
                     }
 

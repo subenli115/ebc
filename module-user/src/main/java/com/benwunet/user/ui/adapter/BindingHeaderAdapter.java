@@ -12,7 +12,10 @@ import com.benwunet.base.base.adapter.RecyclerHolder;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import cn.bingoogolapple.photopicker.widget.BGANinePhotoLayout;
 
 /**
  * @Package: com.benwunet.user.ui.activity
@@ -26,6 +29,8 @@ import java.util.List;
 
 public class BindingHeaderAdapter<T> extends RecyclerHeaderFooterAdapter<T, ViewDataBinding>  {
     private IntConsumer onItemClickListener;
+
+    private String url = "http://zrwlmeiliao.oss-accelerate.aliyuncs.com/banner/xxx.png";
 
     public BindingHeaderAdapter(Context context, List<T> list, @LayoutRes int layoutId) {
         super(context, list, layoutId);
@@ -47,6 +52,12 @@ public class BindingHeaderAdapter<T> extends RecyclerHeaderFooterAdapter<T, View
                     onItemClickListener.accept(position);
                 }
             });
+            BGANinePhotoLayout layout = holder.itemView.findViewById(R.id.npl_item_moment_photos);
+            ArrayList<String> objects = new ArrayList<>();
+            objects.add(url);
+            objects.add(url);
+            objects.add(url);
+            layout.setData(objects);
         }
 
     }

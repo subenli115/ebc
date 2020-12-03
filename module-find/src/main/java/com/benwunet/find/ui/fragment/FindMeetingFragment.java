@@ -1,16 +1,26 @@
 package com.benwunet.find.ui.fragment;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.benwunet.base.base.fragment.BaseFragment;
 import com.benwunet.base.base.fragment.CommonFragment;
 import com.benwunet.base.contract.BaseCustomViewModel;
 import com.benwunet.find.BR;
 import com.benwunet.find.R;
 import com.benwunet.find.databinding.FragmentFindCommonBinding;
+import com.benwunet.find.ui.activity.FindWebActivity;
 import com.benwunet.find.ui.adapter.FindMeetingAdapter;
+import com.benwunet.find.ui.adapter.FindRecommendAdapter;
 import com.benwunet.find.ui.viewmodel.DynamicItemViewModel;
 import com.benwunet.find.ui.viewmodel.FindViewModel;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +36,13 @@ import java.util.List;
  */
 
 
-public class FindMeetingFragment extends CommonFragment<FragmentFindCommonBinding, FindViewModel> {
+public class FindMeetingFragment extends BaseFragment<FragmentFindCommonBinding, FindViewModel> {
 
+
+    @Override
+    public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return R.layout.fragment_find_common;
+    }
 
     @Override
     public int initVariableId() {
@@ -36,27 +51,24 @@ public class FindMeetingFragment extends CommonFragment<FragmentFindCommonBindin
 
     @Override
     public void initData() {
-        super.initData();
-        final List<BaseCustomViewModel> data = new ArrayList<>();
+        binding.recyclerview.setHasFixedSize(true);
+        binding.recyclerview.setNestedScrollingEnabled(false);
+        binding.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        FindMeetingAdapter adapter = new FindMeetingAdapter(R.layout.item_find_meeting, getContext());
+        List<BaseCustomViewModel> data = new ArrayList<>();
         DynamicItemViewModel themesItemViewModel = new DynamicItemViewModel();
         data.add(themesItemViewModel);
         data.add(themesItemViewModel);
         data.add(themesItemViewModel);
-        updateData(data);
-    }
-
-    @Override
-    protected void loadData() {
-
-    }
-
-    @Override
-    public BaseQuickAdapter getAdapter() {
-        return  new FindMeetingAdapter(R.layout.item_find_meeting, getContext());
-    }
-
-    @Override
-    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        data.add(themesItemViewModel);
+        data.add(themesItemViewModel);
+        adapter.setNewData(data);
+        adapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            }
+        });
+        binding.recyclerview.setAdapter(adapter);
 
     }
 }

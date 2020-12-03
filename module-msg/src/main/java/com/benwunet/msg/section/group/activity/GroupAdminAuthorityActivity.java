@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.benwunet.msg.R;
 import com.benwunet.msg.common.constant.DemoConstant;
 import com.benwunet.msg.common.db.entity.EmUserEntity;
@@ -46,6 +48,7 @@ public class GroupAdminAuthorityActivity extends GroupMemberAuthorityActivity {
                 public void onSuccess(String message) {
                     refreshData();
                     LiveDataBus.get().with(DemoConstant.GROUP_CHANGE).postValue(EaseEvent.create(DemoConstant.GROUP_CHANGE, EaseEvent.TYPE.GROUP));
+
                 }
             });
         });
