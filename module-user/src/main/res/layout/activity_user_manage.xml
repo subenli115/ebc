@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/black_15"
         android:orientation="vertical">
 
@@ -21,28 +21,130 @@
             app:ntb_title_text="@string/user_business_manage"
             app:ntb_tv_left="showAndFinish" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/ntb"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/normal_bg_white8">
+
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:layout_below="@+id/ntb"
-                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/user_enterprise_info"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/tv_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="24dp"
+                android:baselineAligned="false"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@string/base_enterprise"
+                android:textColor="@color/gray_bc"
+                android:textSize="15sp"
+                />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_below="@+id/tv_title"
-            android:layout_above="@+id/tv_save"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="18dp"
+                android:layout_below="@+id/tv_company"
+                android:layout_height="0.5dp"
+                />
+            <ImageView
+                android:id="@+id/iv_must"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:layout_alignTop="@+id/tv_company"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/tv_company"
+                android:src="@mipmap/user_icon_item_must" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tv_company"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/iv_must"
+                android:background="@null"
+                android:maxLines="1"
+                android:hint="请添加企业"
+                android:maxLength="10"
+                android:ellipsize="end"
+                android:textSize="14sp" />
 
 
+            <ImageView
+                android:layout_width="7dp"
+                android:layout_height="12dp"
+                android:layout_alignTop="@+id/tv_company"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="1dp"
+
+                android:layout_marginRight="16dp"
+
+                android:src="@mipmap/ic_arrow_gray" />
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_company"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:baselineAligned="false"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@string/base_job"
+                android:textColor="@color/gray_bc"
+                android:textSize="15sp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_must2"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:layout_alignTop="@+id/tv_job"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/tv_job"
+                android:src="@mipmap/user_icon_item_must" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tv_job"
+                android:layout_marginLeft="20dp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:hint="请添加职位"
+                android:ellipsize="end"
+                android:layout_toRightOf="@+id/iv_must"
+                android:background="@null"
+                android:textSize="14sp" />
+
+
+            <ImageView
+                android:layout_width="7dp"
+                android:layout_height="12dp"
+                android:layout_alignTop="@+id/tv_job"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="16dp"
+
+                android:src="@mipmap/ic_arrow_gray" />
+        </RelativeLayout>
         <TextView
             android:id="@+id/tv_save"
             android:layout_width="match_parent"
@@ -50,10 +152,12 @@
             android:layout_alignParentBottom="true"
             android:background="@color/textColorYellow"
             android:gravity="center"
-            android:text="@string/user_save"
+            android:text="@string/user_add"
             android:textColor="@color/black_15"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
+
     </RelativeLayout>
 
-</layout>
+
+    </layout>

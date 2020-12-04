@@ -36,7 +36,6 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
 public class UserManageActivity extends BaseActivity<ActivityUserManageBinding, BaseViewModel> {
 
     private Context mContext;
-    private UserBusinessManageAdapter adapter;
 
     //拿到路由过来的参数
 
@@ -59,29 +58,6 @@ public class UserManageActivity extends BaseActivity<ActivityUserManageBinding, 
     @Override
     public void initData() {
         mContext = this;
-        adapter = new UserBusinessManageAdapter(R.layout.item_user_manage_view,mContext);
-        binding.recyclerview.setHasFixedSize(true);
-        binding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));
-        List<BaseCustomViewModel> data = (List<BaseCustomViewModel>) getIntent().getSerializableExtra("data");
-        adapter.setNewData(data);
-        adapter.addChildClickViewIds(R.id.iv_delete);
-        adapter.setOnItemChildClickListener(new OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                        adapter.remove(position);
-
-            }
-        });
-        binding.recyclerview.setAdapter(adapter);
-        binding.tvSave.setOnClickListener(new OnNoDoubleClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                Intent intent = getIntent();
-                intent.putExtra("data", (Serializable) adapter.getData());
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-        });
     }
 
 }

@@ -25,12 +25,14 @@ import me.goldze.mvvmhabit.base.IBaseView;
 import me.goldze.mvvmhabit.bus.Messenger;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
+import me.leefeng.promptlibrary.PromptDialog;
 
 public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatActivity implements IBaseView {
     protected V binding;
     protected VM viewModel;
     private int viewModelId;
     private MaterialDialog dialog;
+    private PromptDialog promptDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +108,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         if (viewModel != null) {
             viewModel.removeRxBus();
         }
-        if(binding != null){
+        if (binding != null) {
             binding.unbind();
         }
     }
@@ -149,20 +151,20 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     }
 
 
-
     public void showDialog(String title) {
-        if (dialog != null) {
-            dialog = dialog.getBuilder().title(title).build();
-            dialog.show();
+        if (promptDialog != null) {
+            promptDialog.showLoading(title);
         } else {
-            MaterialDialog.Builder builder = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, true);
-            dialog = builder.show();
+            promptDialog = new PromptDialog(this);
+            promptDialog.showLoading(title);
+//            MaterialDialog.Builder builder = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, false);
+//            dialog = builder.show();
         }
     }
 
     public void dismissDialog() {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
+        if (promptDialog != null ) {
+            promptDialog.dismiss();
         }
     }
 

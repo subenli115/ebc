@@ -1,6 +1,7 @@
+include ':ocr_ui'
 include ':library-other:gallery'
 include ':library-other:easeui'
-include ':library-other'
+include ':library-other:ocr_ui'
 include ':library-other:player'
 
 

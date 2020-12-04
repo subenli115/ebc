@@ -1,6 +1,7 @@
 <resources>
     <string name="home_name">首页组件</string>
     <string name="home_add_bg">添加个人形象照</string>
+    <string name="home_add_video">添加个人短视频</string>
     <string name="home_form">所属组织</string>
     <string name="home_custom">自定义</string>
     <string name="home_vip">VIP版</string>

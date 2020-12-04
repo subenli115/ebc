@@ -1,3 +1,5 @@
 <resources>
     <string name="cards_name">名片夹组件</string>
+    <string name="cards_pager">纸质卡片</string>
+    <string name="cards_edit_pager">编辑纸质名片</string>
 </resources>

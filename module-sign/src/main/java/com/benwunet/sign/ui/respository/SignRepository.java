@@ -132,7 +132,6 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
                 .headers("client_id", "app")
                 .headers("client_secret", "123456")
                 .cacheMode(CacheMode.NO_CACHE)
-                .accessToken()
                 .upJson(GsonUtils.toJson(MapUtils.getCodeMap(verifyCode, phone)))
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<UserLoginBean>() {
@@ -167,7 +166,6 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
                         if(result.isIsFirstLogin()){
                             viewModel.startActivity(InputInfoFirstActivity.class);
                         }else {
-
                             if(!result.getMemberId().equals(EMClient.getInstance().getCurrentUser())){
                                 loginToServer(result.getMemberId(),result.getPassword().substring(0,32),false);
                             }else {

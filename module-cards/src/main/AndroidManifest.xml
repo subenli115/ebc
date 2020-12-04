@@ -2,6 +2,14 @@
     package="com.benwunet.cards" >
 
     <application>
+        <activity
+            android:name="com.benwunet.cards.ui.activity.CardsPaperActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.cards.ui.activity.CardsPagerEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
 
 
     </application>

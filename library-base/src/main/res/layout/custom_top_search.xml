@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_weight="1"
-        android:background="@mipmap/index_bg_search"
         android:gravity="center_vertical"
         android:hint="搜索"
         android:maxLines="1"

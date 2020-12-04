@@ -15,6 +15,7 @@ import com.benwunet.user.BR;
 import com.benwunet.user.R;
 import com.benwunet.user.databinding.FragmentMeBinding;
 import com.benwunet.user.ui.activity.UserAboutActivity;
+import com.benwunet.user.ui.activity.UserBusinessActivity;
 import com.benwunet.user.ui.activity.UserCollectionActivity;
 import com.benwunet.user.ui.activity.UserFansActivity;
 import com.benwunet.user.ui.activity.UserFollowActivity;
@@ -101,6 +102,12 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel> {
             @Override
             protected void onNoDoubleClick(View v) {
                 startActivity(UserReceivedActivity.class);
+            }
+        });
+        binding.tvBuinss.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(UserBusinessActivity.class);
             }
         });
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.cards.ui.viewmodel.CardsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/cards_pager"
+            app:ntb_tv_left="showAndFinish" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.benwunet.base.view.ClearEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black_29"
+                    android:drawableLeft="@mipmap/icon_search"
+                    android:drawablePadding="10dp"
+                    android:hint="姓名/手机号"
+                    android:padding="18dp"
+                    android:textColorHint="@color/black_8e"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_add"
+                android:layout_width="167dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/normal_bg_black_1f"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginBottom="31dp"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/cards_icon_add"
+                    />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

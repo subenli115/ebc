@@ -8,6 +8,7 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:statusBarColor">#15192C</item>
 
+
     </style>
 
     <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">

@@ -20,9 +20,10 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="70dp"
-            android:layout_height="370dp"
+            android:layout_marginLeft="50dp"
+
+            android:layout_marginRight="50dp"
+            android:layout_height="410dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
@@ -41,7 +42,7 @@
                 <com.benwunet.base.view.RoundImageView
                     android:id="@+id/iv_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="270dp"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/user_home_bg"
                     app:leftTop_corner_radius="11dp"

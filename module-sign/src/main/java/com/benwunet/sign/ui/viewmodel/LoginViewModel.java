@@ -81,6 +81,7 @@ public class LoginViewModel extends BaseViewModel {
     public BindingCommand loginOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
+            showDialog("正在登录");
             login();
         }
     });

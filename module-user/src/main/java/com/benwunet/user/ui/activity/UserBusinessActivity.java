@@ -61,6 +61,14 @@ public class UserBusinessActivity extends BaseActivity<ActivityUserBusinessBindi
     @Override
     public void initData() {
         mContext = this;
+        binding.ntb.setOnRightTextListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                Intent intent = new Intent(mContext, UserManageActivity.class);
+                intent.putExtra("data", (Serializable) adapter.getData());
+                startActivityForResult(intent, REQUEST_CODE_INVITE);
+            }
+        });
         adapter = new UserBusinessAdapter(R.layout.item_user_business_view, mContext);
         binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));
@@ -84,14 +92,6 @@ public class UserBusinessActivity extends BaseActivity<ActivityUserBusinessBindi
         binding.tvNum.setText("(共" + data.size() + "家)");
         adapter.setNewData(data);
         binding.recyclerview.setAdapter(adapter);
-        binding.tvManage.setOnClickListener(new OnNoDoubleClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                Intent intent = new Intent(mContext, UserManageActivity.class);
-                intent.putExtra("data", (Serializable) adapter.getData());
-                startActivityForResult(intent, REQUEST_CODE_INVITE);
-            }
-        });
 
     }
 

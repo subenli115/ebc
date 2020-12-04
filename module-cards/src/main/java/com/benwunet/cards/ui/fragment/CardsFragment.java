@@ -14,6 +14,7 @@ import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.cards.BR;
 import com.benwunet.cards.R;
 import com.benwunet.cards.databinding.FragmentWorkBinding;
+import com.benwunet.cards.ui.activity.CardsPaperActivity;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
@@ -38,7 +39,12 @@ public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewMo
 
     @Override
     public void initData() {
-        super.initData();
+        binding.igvCard.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                    startActivity(CardsPaperActivity.class);
+            }
+        });
     }
 
 

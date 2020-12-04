@@ -16,6 +16,7 @@
     <string name="user_city">所在城市</string>
     <string name="user_sign">个人签名</string>
     <string name="user_save">保存</string>
+    <string name="user_add">添加</string>
 
     <string name="user_collection">我的收藏</string>
     <string name="user_setting">设置</string>

@@ -17,6 +17,8 @@
         <com.benwunet.base.wdiget.NormalTitleBar
             android:id="@+id/ntb"
             android:layout_width="match_parent"
+            app:ntb_right_text="添加"
+            app:ntb_right_text_color="@color/white"
             android:layout_height="wrap_content"
             android:background="@color/black_15"
             app:ntb_title_text="@string/user_enterprise"
@@ -26,6 +28,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:visibility="gone"
             android:background="@color/black_15">
 
             <TextView
