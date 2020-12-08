@@ -7,5 +7,6 @@ public interface AppConstans {
         String DELETE = "delete";
         String CLOSE = "close";
         String UPDATE = "update";
+        String ADDBEAN = "addbean";
     }
 }

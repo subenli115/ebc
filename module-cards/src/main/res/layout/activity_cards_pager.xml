@@ -40,30 +40,17 @@
 
                 <com.benwunet.base.view.ClearEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="51dp"
                     android:background="@color/black_29"
                     android:drawableLeft="@mipmap/icon_search"
                     android:drawablePadding="10dp"
+                    android:textColor="@color/white"
                     android:hint="姓名/手机号"
-                    android:padding="18dp"
+                    android:paddingStart="10dp"
+                    android:singleLine="true"
+                    android:imeOptions="actionSearch"
                     android:textColorHint="@color/black_8e"
                     android:textSize="16sp" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/rl_add"
-                android:layout_width="167dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/normal_bg_black_1f"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="31dp"
-                    android:layout_marginBottom="31dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/cards_icon_add"
-                    />
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView

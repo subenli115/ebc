@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.benwunet.base.view.ClearEditText
+        android:id="@+id/search_cet"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/shape_corner_18dp_grey"
+        android:drawableLeft="@mipmap/icon_search"
+        android:drawablePadding="5dp"
+        android:hint="搜索"
+        android:imeOptions="actionSearch"
+        android:paddingStart="12dp"
+        android:singleLine="true"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorHint"
+        android:textSize="14sp" />
+</FrameLayout>

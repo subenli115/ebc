@@ -11,7 +11,6 @@ public class CardInfoBean implements Serializable {
      * log_id : 1334769828904304640
      * words_result_num : 10
      */
-    private String path;
     private WordsResultBean words_result;
     private long log_id;
     private int words_result_num;
@@ -40,15 +39,16 @@ public class CardInfoBean implements Serializable {
         this.words_result_num = words_result_num;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     public static class WordsResultBean implements Serializable{
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+        private String path;
         private List<String> PC;
         private List<String> TEL;
         private List<String> TITLE;

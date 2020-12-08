@@ -15,6 +15,7 @@ import com.benwunet.sign.databinding.FragmentSignFaceBinding;
 import com.benwunet.sign.ui.viewmodel.LoginViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.jessyan.autosize.internal.CustomAdapt;
 
 /**
  * @Package: com.benwunet.sign.ui.fragment
@@ -26,7 +27,7 @@ import me.goldze.mvvmhabit.base.BaseFragment;
  */
 
 
-public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, LoginViewModel>  {
+public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, LoginViewModel> implements CustomAdapt {
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_sign_face;
@@ -118,4 +119,13 @@ public class FaceLoginFragment extends BaseFragment<FragmentSignFaceBinding, Log
 
     }
 
+    @Override
+    public boolean isBaseOnWidth() {
+        return true;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 0;
+    }
 }

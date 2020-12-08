@@ -1,6 +1,8 @@
 package com.benwunet.cards.ui.adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -49,11 +51,15 @@ public class CardsPagerAdapter
         {
             return;
         }
+        DynamicItemViewModel item = (DynamicItemViewModel) baseCustomViewModel;
         ItemCardsPagerBinding binding = baseViewHolder.getBinding();
         if (binding != null)
         {
             binding.setViewModel((DynamicItemViewModel) baseCustomViewModel);
             binding.executePendingBindings();
+               binding.rlAdd.setVisibility(item.isVisible ? View.VISIBLE : View.GONE);
+               binding.ivCard.setVisibility(item.isVisible ? View.GONE : View.VISIBLE);
+               binding.ivCard.setImageBitmap(BitmapFactory.decodeFile(item.coverUrl));
         }
     }
 }

@@ -74,10 +74,10 @@ dependencies {
     api rootProject.ext.dependencies.bgaBanner
     api rootProject.ext.dependencies.SmartRefreshLayout
     api rootProject.ext.dependencies.scrolllayout
-    api rootProject.ext.dependencies.Picasso
 
     api rootProject.ext.dependencies.autolayout
     api rootProject.ext.dependencies["okhttp3 - integration"]
     api rootProject.ext.dependencies["annotations"]
+    implementation files('libs\\umeng-common-9.3.2.jar')
 
 }

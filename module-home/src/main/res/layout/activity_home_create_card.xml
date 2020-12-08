@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:binding="http://schemas.android.com/apk/res-auto"
     tools:ignore="ResourceName">
 
     <data>
@@ -26,9 +25,9 @@
             app:ntb_tv_left="showAndFinish" />
 
         <ScrollView
-            android:layout_below="@+id/ntb"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ntb">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -44,25 +43,32 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="375dp"
                         android:background="@color/black_20">
 
+
                         <ImageView
-                            android:id="@+id/iv_bg"
+                            android:id="@+id/iv_person"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_above="@+id/ll_bottom_container"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="83dp"
+                            android:layout_marginTop="43dp"
                             android:src="@mipmap/home_icon_create_card" />
-
+                        <ImageView
+                            android:id="@+id/iv_bg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="44dp"
-                            android:layout_below="@+id/iv_bg"
+                            android:layout_alignParentBottom="true"
                             android:weightSum="2">
 
                             <LinearLayout
+                                android:id="@+id/ll_photo"
                                 android:layout_width="0dp"
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
@@ -85,9 +91,9 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/ll_video"
                                 android:layout_width="0dp"
                                 android:layout_height="44dp"
-
                                 android:layout_weight="1"
                                 android:background="#CCFFE7A1"
                                 android:gravity="center">
@@ -189,8 +195,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
-                                    android:src="@mipmap/home_icon_select"
-                                    />
+                                    android:src="@mipmap/home_icon_select" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -342,8 +347,9 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:hint="请输入姓名"
+                            android:text="@={viewModel.createBean.realName}"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -375,16 +381,18 @@
 
                         </LinearLayout>
 
-                        <EditText
+                        <TextView
+                            android:id="@+id/tv_industry"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title"
                             android:layout_weight="1"
                             android:background="@null"
+                            android:text="@{viewModel.createBean.industry}"
                             android:ellipsize="end"
-                            android:hint="请输入行业"
+                            android:hint="请选择行业"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -428,9 +436,10 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:ellipsize="end"
+                            android:text="@={viewModel.createBean.mobile}"
                             android:hint="请输入手机"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -468,10 +477,11 @@
                             android:layout_below="@+id/title"
                             android:layout_weight="1"
                             android:background="@null"
+                            android:text="@={viewModel.createBean.phone}"
                             android:ellipsize="end"
                             android:hint="请输入电话"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -502,13 +512,14 @@
 
                         </LinearLayout>
 
-                        <TextView
+                        <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title"
                             android:layout_weight="1"
                             android:background="@null"
                             android:ellipsize="end"
+                            android:text="@={viewModel.createBean.email}"
                             android:hint="abc123@benwunet.com"
                             android:singleLine="true"
                             android:textColor="#ff00030f"
@@ -550,9 +561,10 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:ellipsize="end"
+                            android:text="@={viewModel.createBean.qq}"
                             android:hint="请输入QQ"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -590,10 +602,12 @@
                             android:layout_below="@+id/title"
                             android:layout_weight="1"
                             android:background="@null"
+
+                            android:text="@={viewModel.createBean.weChat}"
                             android:ellipsize="end"
                             android:hint="请输入微信"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -638,24 +652,25 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:hint="请输入地址"
+                            android:text="@={viewModel.createBean.addressInfo}"
                             android:singleLine="true"
-                            android:textColor="#ff00030f"
+                            android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
+
                         <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/home_icon_address"
-                        />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:src="@mipmap/home_icon_address" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:paddingBottom="50dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/black_15"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingBottom="50dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -677,6 +692,7 @@
                             android:background="@color/black_29"
                             android:gravity="start"
                             android:hint="请输入个人简介"
+                            android:text="@={viewModel.createBean.memberProfile}"
                             android:imeOptions="actionNext"
                             android:padding="12dp"
                             android:paddingLeft="22dp"
@@ -687,33 +703,34 @@
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>
+
         <LinearLayout
-            android:weightSum="2"
             android:layout_width="match_parent"
+            android:layout_height="47dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:layout_height="47dp">
+            android:weightSum="2">
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textSize="18sp"
-                android:background="@drawable/normal_bg_black4d"
                 android:layout_height="match_parent"
-                android:text="@string/home_card_preview"
+                android:layout_weight="1"
+                android:background="@drawable/normal_bg_black4d"
                 android:gravity="center"
+                android:text="@string/home_card_preview"
                 android:textColor="@color/textColorYellow"
-                />
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tv_create"
                 android:layout_width="0dp"
-                android:gravity="center"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/normal_bg_yellow0"
-                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="@string/home_create"
-                android:textSize="18sp"
                 android:textColor="@color/black_15"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

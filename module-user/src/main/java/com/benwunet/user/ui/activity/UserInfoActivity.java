@@ -111,7 +111,7 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, Sett
             public void onChanged(MeInfoBean meInfoBean) {
                 binding.igvBirthday.setRigthText(meInfoBean.getBirthday());
                 binding.igvSex.setRigthText(meInfoBean.getGender() == 1 ? "男" : "女");
-                binding.igvCity.setRigthText(meInfoBean.getAreaCityName()+"");
+                binding.igvCity.setRigthText(meInfoBean.getAreaCityName()==null?"":meInfoBean.getAreaCityName());
                 binding.editSign.setText(meInfoBean.getMemberSign());
             }
         });

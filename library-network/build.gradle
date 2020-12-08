@@ -51,5 +51,6 @@ dependencies {
     api  rootProject.ext.dependencies.MVVMHabit
     api  rootProject.ext.dependencies.disklrucache
     api  rootProject.ext.dependencies.okhttp3logging
+    implementation "com.alibaba:arouter-api:1.4.1"
 }
 

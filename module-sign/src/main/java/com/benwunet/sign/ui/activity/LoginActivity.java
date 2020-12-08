@@ -19,13 +19,15 @@ import com.google.android.material.tabs.TabLayout;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.BaseViewModel;
+import me.jessyan.autosize.internal.CancelAdapt;
+import me.jessyan.autosize.internal.CustomAdapt;
 
 /**
  *
  * 作为登录验证模块的路由页
  */
 @Route(path = RouterActivityPath.Sign.PAGER_LOGIN)
-public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewModel>{
+public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewModel> implements CustomAdapt {
     private LoginActivity mContext;
 
     //ActivityLoginBinding类是databinding框架自定生成的,对应activity_login.xml
@@ -96,5 +98,15 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewMo
 
             }
         });
+    }
+
+    @Override
+    public boolean isBaseOnWidth() {
+        return false;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 0;
     }
 }

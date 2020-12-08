@@ -6,7 +6,7 @@
     <color name="transparent">@android:color/transparent</color>
     <color name="gray">#ffe9e9e9</color>
     <color name="blue">#FF5A5DD0</color>
-    <color name="common_bg">#fcfcfc</color>
+    <color name="common_bg">#1F243B</color>
     <color name="btn_gray_normal">#c0c0c0</color>
     <color name="top_bar_normal_bg">#00acff</color>
     <color name="error_item_color">#F6EBE6</color>

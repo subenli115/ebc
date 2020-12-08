@@ -6,7 +6,9 @@ import android.widget.LinearLayout;
 
 import androidx.core.content.ContextCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.utils.CommonUtils;
 import com.benwunet.user.BR;
 import com.benwunet.user.R;
@@ -26,7 +28,7 @@ import me.goldze.mvvmhabit.base.BaseActivity;
  * @Version: 1.0
  */
 
-
+@Route(path = RouterActivityPath.Collection.PAGER_COLLECTION)
 public class UserCollectionActivity extends BaseActivity<ActivityUserCollectionBinding, ViewPagerViewModel> {
     private Context mContext;
     //拿到路由过来的参数

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.cards.BR;
 import com.benwunet.cards.R;
+import com.benwunet.cards.databinding.ActivityCardsDetailsPagerBinding;
 import com.benwunet.cards.databinding.ActivityCardsEditPagerBinding;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 
@@ -18,7 +19,7 @@ import me.goldze.mvvmhabit.base.BaseActivity;
  * @CreateDate: 2020/10/20 0020 11:14
  * @Version: 1.0
  */
-public class CardsPagerDetailsActivity extends BaseActivity<ActivityCardsEditPagerBinding, CardsViewModel> {
+public class CardsPagerDetailsActivity extends BaseActivity<ActivityCardsDetailsPagerBinding, CardsViewModel> {
 
     @Override
     public void initParam() {
@@ -28,7 +29,7 @@ public class CardsPagerDetailsActivity extends BaseActivity<ActivityCardsEditPag
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_cards_edit_pager;
+        return R.layout.activity_cards_details_pager;
     }
 
     @Override

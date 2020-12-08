@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.benwunet.cards.R;
 import com.benwunet.cards.BR;
+import com.benwunet.cards.respository.CardsRepository;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
@@ -16,6 +17,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  */
 
 public class CardsViewModel extends BaseViewModel {
+    private CardsRepository cardsRepository = CardsRepository.getInstance(this);
     public CardsViewModel(@NonNull Application application) {
         super(application);
     }
@@ -31,4 +33,5 @@ public class CardsViewModel extends BaseViewModel {
     public ObservableList<CardsItemViewModel> observableList = new ObservableArrayList<>();
     //给RecyclerView添加ItemBinding
     public ItemBinding<CardsItemViewModel> itemBinding = ItemBinding.of(BR.viewModel, R.layout.grid_work);
+
 }

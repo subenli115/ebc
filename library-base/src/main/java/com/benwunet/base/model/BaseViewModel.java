@@ -26,6 +26,7 @@ import me.goldze.mvvmhabit.base.IBaseViewModel;
  */
 public class BaseViewModel<M extends BaseModel> extends AndroidViewModel implements IBaseViewModel, Consumer<Disposable> {
     protected M model;
+    public BaseSingleLiveEvent<Void> dismissDialogEvent=new BaseSingleLiveEvent<>();
     private UIChangeLiveData uc;
     //弱引用持有
     private WeakReference<LifecycleProvider> lifecycle;

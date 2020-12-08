@@ -11,6 +11,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/TranslucentTheme" />
 
+        <activity
+            android:name="com.benwunet.cards.ui.activity.CardsPagerDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
 
     </application>
 </manifest>

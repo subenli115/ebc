@@ -40,9 +40,11 @@
     <string name="base_phone">手机号码</string>
     <string name="base_home_phone">电话号码</string>
     <string name="base_mail">邮箱</string>
+    <string name="base_save">保存</string>
     <string name="base_qq">QQ</string>
     <string name="base_address">地址</string>
     <string name="base_wechat">微信</string>
+    <string name="base_moments">朋友圈</string>
     <string name="base_alipay">支付宝</string>
     <string name="base_weibo">微博</string>
     <string name="base_display">默认显示</string>

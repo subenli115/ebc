@@ -11,7 +11,9 @@
             name="viewModel"
             type="com.benwunet.cards.ui.viewmodel.CardsViewModel" />
     </data>
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -573,4 +575,17 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/normal_bg_yellow0"
+        android:layout_height="47dp"
+        android:text="@string/base_save"
+        android:textSize="18sp"
+        android:textColor="@color/black_15"
+        />
+</RelativeLayout>
 </layout>

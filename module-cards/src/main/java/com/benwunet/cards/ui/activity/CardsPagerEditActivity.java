@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.lifecycle.LiveData;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
+import com.benwunet.base.contract.AppConstans;
+import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.utils.FileUtils;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.cards.BR;
@@ -53,9 +57,10 @@ public class CardsPagerEditActivity extends BaseActivity<ActivityCardsEditPagerB
     }
 
     private void initCardInfo() {
-        CardInfoBean result = (CardInfoBean) getIntent().getSerializableExtra("result");
-        CardInfoBean.WordsResultBean bean = result.getWords_result();
-        Bitmap bitmap= BitmapFactory.decodeFile(result.getPath());
+         CardInfoBean result = (CardInfoBean) getIntent().getSerializableExtra("result");
+        final CardInfoBean.WordsResultBean bean = result.getWords_result();
+        Bitmap bitmap= BitmapFactory.decodeFile(bean.getPath());
+
         binding.ivCard.setImageBitmap(bitmap);
         binding.etAddress.setText(bean.getADDR().get(0));
         binding.etCompany.setText(bean.getCOMPANY().get(0));
@@ -63,6 +68,13 @@ public class CardsPagerEditActivity extends BaseActivity<ActivityCardsEditPagerB
         binding.etUrl.setText(bean.getURL().get(0));
         binding.etPhone.setText(bean.getMOBILE().get(0));
         binding.etMail.setText(bean.getEMAIL().get(0));
+        binding.tvSave.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                finish();
+                LiveDataBus.get().with(AppConstans.BusTag.ADDBEAN).setValue(bean);
+            }
+        });
     }
 
 

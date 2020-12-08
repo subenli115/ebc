@@ -1,4 +1,4 @@
-package com.benwunet.sign.ui.bean;
+package com.benwunet.base.bean;
 
 /**
  * @Package: com.benwunet.sign.ui.bean

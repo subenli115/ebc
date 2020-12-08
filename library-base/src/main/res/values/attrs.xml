@@ -38,6 +38,17 @@
             <enum name="circle" value="0"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="MoreImageView">
+        <attr name="moreImageView_itemWidth" format="dimension"/>
+        <attr name="moreImageView_itemHeight" format="dimension"/>
+        <attr name="moreImageView_count" format="integer"/>
+        <attr name="moreImageView_default_data" format="enum">
+            <enum name="share_white" value="1"/>
+            <enum name="share" value="2"/>
+            <enum name="share_new" value="3"/>
+            <enum name="share_4" value="4"/>
+        </attr>
+    </declare-styleable>
 
     <declare-styleable name="SwitchButton">
         <attr name="sb_shadow_radius" format="reference|dimension"/>

@@ -1,12 +1,12 @@
 package com.benwunet.home.ui.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -15,25 +15,23 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.base.fragment.BaseFragment;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
+import com.benwunet.base.wdiget.SharePopupWindow;
 import com.benwunet.home.BR;
 import com.benwunet.home.R;
 import com.benwunet.home.databinding.FragmentHomeBinding;
 import com.benwunet.home.ui.Activity.HomeCreateCardActivity;
 import com.benwunet.home.ui.bean.CardDetailsBean;
 import com.benwunet.home.ui.viewmodel.HomeViewModel;
-import com.lzj.gallery.library.views.BannerViewPager;
-
-import java.util.ArrayList;
-
-import me.goldze.mvvmhabit.utils.ToastUtils;
-import me.jessyan.autosize.AutoSizeConfig;
-import me.jessyan.autosize.internal.CancelAdapt;
-import me.jessyan.autosize.internal.CustomAdapt;
 
 import static android.app.Activity.RESULT_OK;
 
 /**
- * Created by feng on 2020/10/15.
+ * @Package: com.benwunet.home.ui.fragment
+ * @ClassName: HomeFragment
+ * @Description: 我的名片
+ * @Author: feng
+ * @CreateDate: 2020/11/12 0012 14:58
+ * @Version: 1.0
  */
 @Route(path = RouterFragmentPath.Home.PAGER_HOME)
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> {
@@ -67,6 +65,15 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 startActivityForResult(intent, CREATE_CODE);
             }
         });
+        binding.llSend.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                SharePopupWindow popupWindow = new SharePopupWindow(getContext());
+                popupWindow.show();
+            }
+        });
+        viewModel.getHomeData();
+        refreshLayout();
     }
 
 
@@ -75,6 +82,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         viewModel.cardDetailsBeanMutableLiveData.observe(this, new Observer<CardDetailsBean>() {
             @Override
             public void onChanged(CardDetailsBean cardDetailsBean) {
+                showCard();
             }
         });
     }
@@ -83,12 +91,17 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            binding.tvCreate.setVisibility(View.GONE);
-            binding.tvTitle.setVisibility(View.GONE);
-            binding.tvHint.setVisibility(View.GONE);
-            binding.llBottomContainer.setVisibility(View.VISIBLE);
-            binding.llInfo.setVisibility(View.VISIBLE);
+            showCard();
+            viewModel.getHomeData();
         }
 
+    }
+
+    private void showCard() {
+        binding.tvCreate.setVisibility(View.GONE);
+        binding.tvTitle.setVisibility(View.GONE);
+        binding.tvHint.setVisibility(View.GONE);
+        binding.llBottomContainer.setVisibility(View.VISIBLE);
+        binding.llInfo.setVisibility(View.VISIBLE);
     }
 }

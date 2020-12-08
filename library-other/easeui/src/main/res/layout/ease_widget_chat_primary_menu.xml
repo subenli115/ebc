@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="52dp"
-        android:background="@color/white"
+        android:background="@color/common_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingTop="4dp"

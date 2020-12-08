@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -18,8 +19,11 @@ import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
+import com.benwunet.base.contract.AppConstans;
 import com.benwunet.base.contract.BaseCustomViewModel;
+import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.utils.FileUtils;
+import com.benwunet.base.utils.ToastUtil;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.cards.BR;
 import com.benwunet.cards.R;
@@ -29,6 +33,9 @@ import com.benwunet.cards.ui.adapter.CardsPagerAdapter;
 import com.benwunet.cards.ui.bean.CardInfoBean;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 import com.benwunet.cards.ui.viewmodel.DynamicItemViewModel;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -37,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 
 /**
@@ -53,6 +61,7 @@ public class CardsPaperActivity extends BaseActivity<ActivityCardsPagerBinding, 
     private boolean hasGotToken;
     private Context mContext;
     private static final int REQUEST_CODE_BUSINESSCARD = 128;
+    private CardsPagerAdapter adapter;
 
     @Override
     public void initParam() {
@@ -75,20 +84,18 @@ public class CardsPaperActivity extends BaseActivity<ActivityCardsPagerBinding, 
         super.initData();
         mContext = this;
         initAccessTokenWithAkSk();
-        binding.rlAdd.setOnClickListener(new OnNoDoubleClickListener() {
+        initAdapter();
+        LiveDataBus.get().with(AppConstans.BusTag.ADDBEAN).observe(this, new Observer<Object>() {
             @Override
-            protected void onNoDoubleClick(View v) {
-                Intent intent = new Intent(mContext, CameraActivity.class);
-                intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                        FileUtils.getSaveFile(getApplication(), CameraActivity.CONTENT_TYPE_GENERAL).getAbsolutePath());
-                intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
-                        CameraActivity.CONTENT_TYPE_BANK_CARD);
-                startActivityForResult(intent, REQUEST_CODE_BUSINESSCARD);
+            public void onChanged(Object wordsResultBean) {
+                CardInfoBean.WordsResultBean wordsResultBean1 = (CardInfoBean.WordsResultBean) wordsResultBean;
+                DynamicItemViewModel themesItemViewModel1 = new DynamicItemViewModel();
+                themesItemViewModel1.isVisible=false;
+                themesItemViewModel1.coverUrl=wordsResultBean1.getPath();
+                adapter.addData(themesItemViewModel1);
 
             }
         });
-        initAdapter();
-
     }
 
     private void initAdapter() {
@@ -96,14 +103,29 @@ public class CardsPaperActivity extends BaseActivity<ActivityCardsPagerBinding, 
         binding.recyclerview.setNestedScrollingEnabled(false);
         binding.recyclerview.setLayoutManager(new GridLayoutManager(mContext,2));
         List<BaseCustomViewModel> data = new ArrayList<>();
-        DynamicItemViewModel themesItemViewModel = new DynamicItemViewModel();
-        data.add(themesItemViewModel);
-        data.add(themesItemViewModel);
-        data.add(themesItemViewModel);
-        CardsPagerAdapter adapter = new CardsPagerAdapter(R.layout.item_cards_pager,mContext);
-        View headView = LayoutInflater.from(mContext).inflate(R.layout.item_cards_head_view, null);
-        adapter.setHeaderView(headView);
+        DynamicItemViewModel themesItemViewModel1 = new DynamicItemViewModel();
+        themesItemViewModel1.isVisible=true;
+        data.add(themesItemViewModel1);
+         adapter = new CardsPagerAdapter(R.layout.item_cards_pager,mContext);
+        adapter.addChildClickViewIds(R.id.rl_add);
+        adapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(mContext, CameraActivity.class);
+                intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
+                        FileUtils.getSaveFile(getApplication(), CameraActivity.CONTENT_TYPE_GENERAL).getAbsolutePath());
+                intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
+                        CameraActivity.CONTENT_TYPE_BANK_CARD);
+                startActivityForResult(intent, REQUEST_CODE_BUSINESSCARD);
+            }
+        });
         adapter.setNewData(data);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(CardsPagerDetailsActivity.class);
+            }
+        });
         binding.recyclerview.setAdapter(adapter);
 
     }
@@ -135,13 +157,17 @@ public class CardsPaperActivity extends BaseActivity<ActivityCardsPagerBinding, 
                     new RecognizeService.ServiceListener() {
                         @Override
                         public void onResult(String result) {
-                            Gson gson = new Gson();
-                            Type type = new TypeToken<CardInfoBean>() {}.getType();
-                            CardInfoBean cardInfoBean = gson.fromJson(result, type);
-                            cardInfoBean.setPath(FileUtils.getSaveFile(getApplication(), CameraActivity.CONTENT_TYPE_GENERAL).getAbsolutePath());
-                            Intent intent = new Intent(mContext,CardsPagerEditActivity.class);
-                            intent.putExtra("result",cardInfoBean);
-                            startActivity(intent);
+                            try {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<CardInfoBean>() {}.getType();
+                                CardInfoBean cardInfoBean = gson.fromJson(result, type);
+                                cardInfoBean.getWords_result().setPath(FileUtils.getSaveFile(getApplication(), CameraActivity.CONTENT_TYPE_GENERAL).getAbsolutePath());
+                                Intent intent = new Intent(mContext,CardsPagerEditActivity.class);
+                                intent.putExtra("result",cardInfoBean);
+                                startActivity(intent);
+                            }catch (Exception e){
+                                ToastUtils.showLong("不能解析的图片");
+                            }
                         }
                     });
         }

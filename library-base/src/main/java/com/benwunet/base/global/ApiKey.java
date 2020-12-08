@@ -80,6 +80,11 @@ public interface ApiKey {
     String OSS_FILE_ANON = "oss/file-anon";
 
     /**
+     *  上传多文件
+     */
+    String OSS_FILE_ANON_MORE = "oss/file-anon/more";
+
+    /**
      *  获取用户信息
      */
     String MEMBER_CURRENT = "member/current";
@@ -109,5 +114,21 @@ public interface ApiKey {
      *  名片详情
      */
     String MEMBER_CARD_MINE = "member/card/mine";
+
+    /**
+     *  纸质名片列表
+     */
+    String MEMBER_CARD_PAPER= "member/card/paper";
+
+    /**
+     *  创建/编辑名片
+     */
+    String MEMBER_CARD= "member/card";
+
+    /**
+     *  名片样式
+     */
+    String MEMBER_CARD_STYLE= "member/card/style";
+
 
 }

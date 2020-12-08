@@ -49,6 +49,7 @@ public class InputInfoFirstActivity extends BaseActivity<ActivityInputInfoFirstB
                 .maxSelectNum(1)
                 .selectionMode(PictureConfig.SINGLE)
                 .isEnableCrop(true)
+                .cropImageWideHigh(750,750)
                 .withAspectRatio(1,1)
                 .forResult(new OnResultCallbackListener<LocalMedia>() {
                     @Override

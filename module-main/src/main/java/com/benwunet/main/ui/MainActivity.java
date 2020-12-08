@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.baidu.platform.comapi.map.C;
 import com.benwunet.base.contract.AppConstans;
 import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.router.RouterActivityPath;
@@ -41,6 +42,7 @@ import com.benwunet.msg.section.base.BaseInitActivity;
 import com.benwunet.msg.section.chat.ChatPresenter;
 import com.benwunet.msg.section.contact.viewmodels.ContactsViewModel;
 import com.benwunet.msg.section.conversation.ConversationListFragment;
+import com.benwunet.msg.section.search.SearchPublicGroupActivity;
 import com.hyphenate.easeui.model.EaseEvent;
 import com.hyphenate.easeui.ui.base.EaseBaseFragment;
 
@@ -51,7 +53,7 @@ import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
-public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener  {
+public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
     private static final int INFO_ITEM = 0;
     private static final int CARD_ITEM = 1;
     private static final int MSG_ITEM = 2;
@@ -95,6 +97,13 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         super.initView(savedInstanceState);
         mViewContainer = findViewById(com.benwunet.msg.R.id.viewpager);
         ntb = findViewById(com.benwunet.msg.R.id.ntb);
+        ntb.setOnRightImagListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                Intent starter = new Intent(mContext, CommSearchActivity.class);
+                startActivity(starter);
+            }
+        });
         initMenuBar();
         mTvMainHomeMsg = findViewById(com.benwunet.msg.R.id.all_unread_number);
         initFragment();
@@ -110,7 +119,6 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         ntb.setTitleText("我的名片");
         findBtn = findViewById(com.benwunet.msg.R.id.actionbar_find_btn);
         setOnClickListener(this);
-        mViewContainer.setCurrentItem(FIND_ITEM, false);
         LiveDataBus.get().with(AppConstans.BusTag.CLOSE).observe(this, o -> {
             mViewContainer.setCurrentItem(INFO_ITEM, false);
         });

@@ -273,7 +273,7 @@ public class CardDetailsBean {
          * authStatus : 1
          * companyId : 0001201
          * companyName : 本无网络科技有限公司
-         * companyPosition : 技术总监
+         * positionName : 技术总监
          * id : 0001201
          * isMainCompany : true
          * memberId : 000020
@@ -282,7 +282,16 @@ public class CardDetailsBean {
         private int authStatus;
         private String companyId;
         private String companyName;
-        private String companyPosition;
+
+        public String getPositionName() {
+            return positionName;
+        }
+
+        public void setPositionName(String positionName) {
+            this.positionName = positionName;
+        }
+
+        private String positionName;
         private String id;
         private boolean isMainCompany;
         private String memberId;
@@ -311,13 +320,6 @@ public class CardDetailsBean {
             this.companyName = companyName;
         }
 
-        public String getCompanyPosition() {
-            return companyPosition;
-        }
-
-        public void setCompanyPosition(String companyPosition) {
-            this.companyPosition = companyPosition;
-        }
 
         public String getId() {
             return id;

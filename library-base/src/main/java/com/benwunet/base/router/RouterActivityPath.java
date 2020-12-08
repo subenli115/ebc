@@ -33,4 +33,13 @@ public class RouterActivityPath {
         /*用户详情*/
         public static final String PAGER_USERDETAIL = USER + "/UserDetail";
     }
+
+    /**
+     * 我的收藏
+     */
+    public static class Collection {
+        private static final String COLLECTION = "/Collection";
+        /*用户详情*/
+        public static final String PAGER_COLLECTION = COLLECTION + "/Collection";
+    }
 }

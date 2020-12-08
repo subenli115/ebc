@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.cards.BR;
@@ -26,7 +28,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * Created by feng on 2020/10/15.
  */
 @Route(path = RouterFragmentPath.Card.PAGER_CARD)
-public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewModel> implements CustomAdapt{
+public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewModel> implements CancelAdapt{
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_work;
@@ -45,16 +47,13 @@ public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewMo
                     startActivity(CardsPaperActivity.class);
             }
         });
+        binding.igvCollection.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                ARouter.getInstance().build(RouterActivityPath.Collection.PAGER_COLLECTION).navigation();
+            }
+        });
     }
 
 
-    @Override
-    public boolean isBaseOnWidth() {
-        return true;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 0;
-    }
 }

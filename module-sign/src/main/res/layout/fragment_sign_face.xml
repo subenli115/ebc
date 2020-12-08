@@ -24,6 +24,7 @@
             android:background="@mipmap/iv_sign_bg" />
 
         <TextView
+            android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -33,28 +34,29 @@
             android:textColor="@color/textColorYellow" />
 
 
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="66dp"
+            android:layout_below="@+id/tv_register"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="33dp"
+            android:src="@mipmap/iv_sign_app_name" />
+        <ImageView
+            android:id="@+id/iv_face"
+            android:layout_width="119dp"
+            android:layout_height="119dp"
+            binding:onClickCommand="@{viewModel.faceOnClickCommand}"
+            android:layout_marginTop="116dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/iv_sign_face" />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_centerHorizontal="true"
             android:paddingLeft="48dp"
+            android:layout_below="@+id/iv_face"
             android:paddingRight="48dp">
-
-            <ImageView
-                android:layout_width="128dp"
-                android:layout_height="66dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="93dp"
-                android:src="@mipmap/iv_sign_app_name" />
-
-            <ImageView
-                android:layout_width="119dp"
-                android:layout_height="119dp"
-                binding:onClickCommand="@{viewModel.faceOnClickCommand}"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="116dp"
-                android:src="@mipmap/iv_sign_face" />
-
 
             <TextView
                 android:layout_width="wrap_content"

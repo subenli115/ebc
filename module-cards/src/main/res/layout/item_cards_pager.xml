@@ -11,15 +11,40 @@
             name="viewModel"
             type="com.benwunet.cards.ui.viewmodel.DynamicItemViewModel" />
     </data>
-<com.benwunet.base.view.RoundImageView
-    app:roun_type="round"
-    android:scaleType="centerCrop"
-    binding:url="@{viewModel.coverUrl}"
-    app:corner_radius="4dp"
-    android:layout_width="167dp"
-    android:layout_height="103dp"
-    tools:ignore="ResourceName">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content">
 
-</com.benwunet.base.view.RoundImageView>
+        <com.benwunet.base.view.RoundImageView
+            android:id="@+id/iv_card"
+            app:roun_type="round"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            app:corner_radius="4dp"
+            android:layout_width="167dp"
+            android:layout_height="103dp"
+            tools:ignore="ResourceName">
+
+        </com.benwunet.base.view.RoundImageView>
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/rl_add"
+            android:layout_width="167dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:background="@drawable/normal_bg_black_1f"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="31dp"
+                android:layout_marginBottom="31dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/cards_icon_add"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
 
 </layout>

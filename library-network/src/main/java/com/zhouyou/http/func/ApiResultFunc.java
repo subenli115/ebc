@@ -17,10 +17,13 @@
 package com.zhouyou.http.func;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zhouyou.http.model.ApiResult;
+import com.zhouyou.http.utils.JsonUtils;
 import com.zhouyou.http.utils.Utils;
 
 import org.json.JSONException;
@@ -47,6 +50,7 @@ import okhttp3.ResponseBody;
 public class ApiResultFunc<T> implements Function<ResponseBody, ApiResult<T>> {
     protected Type type;
     protected Gson gson;
+    private ApiResult errorResult;
 
     public ApiResultFunc(Type type) {
         gson = new GsonBuilder()
@@ -81,15 +85,21 @@ public class ApiResultFunc<T> implements Function<ResponseBody, ApiResult<T>> {
                             apiResult.setMsg("json is null");
                         }*/
                     } else {
-                        ApiResult result = gson.fromJson(json, type);
+                        ApiResult result = JsonUtils.fromJsonToType(json, type);
                         if (result != null) {
                             apiResult = result;
                         } else {
-                            apiResult.setMsg("json is null");
+                            ApiResult errorResult = JsonUtils.fromJsonToType(json, ApiResult.class);
+                            if (errorResult.getCode() == 401006) {
+                                ARouter.getInstance().build("/sign/Login").navigation();
+                            }else {
+                                apiResult = errorResult;
+                            }
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+
                     apiResult.setMsg(e.getMessage());
                 } finally {
                     responseBody.close();
