@@ -128,6 +128,7 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
     }
 
     public void codeLogin(String phone, String verifyCode) {
+
         HttpManager.post(ApiKey.OAUTH_SMS)
                 .headers("client_id", "app")
                 .headers("client_secret", "123456")
@@ -137,12 +138,18 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
                 .execute(new SimpleCallBack<UserLoginBean>() {
                     @Override
                     public void onError(ApiException e) {
+                        viewModel.dismissDialog();
                         ToastUtils.showLong(e.getMessage());
                     }
 
                     @Override
                     public void onSuccess(UserLoginBean result) {
-
+                        if (result != null) {
+                            saveUserName(phone);
+                            saveToken(result.getAccess_token());
+                            saveRefreshToken(result.getRefresh_token());
+                            getUserInfo(viewModel);
+                        }
 
                     }
 
@@ -163,6 +170,7 @@ public class SignRepository extends BaseEMRepository implements LocalDataSource 
 
                     @Override
                     public void onSuccess(UserBean result) {
+                        viewModel.dismissDialog();
                         if(result.isIsFirstLogin()){
                             viewModel.startActivity(InputInfoFirstActivity.class);
                         }else {

@@ -81,7 +81,6 @@ public class LoginViewModel extends BaseViewModel {
     public BindingCommand loginOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            showDialog("正在登录");
             login();
         }
     });
@@ -126,7 +125,6 @@ public class LoginViewModel extends BaseViewModel {
     });
 
 
-
     /**
      * 登录操作
      **/
@@ -139,12 +137,14 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入密码！");
             return;
         }
-            signRepository.login(phone.getValue(), password.getValue(),this);
+        showDialog("正在登录");
+        signRepository.login(phone.getValue(), password.getValue(), this);
 
     }
 
     /**
      * 登录环信
+     *
      * @param userName
      * @param pwd
      * @param isTokenFlag
@@ -158,6 +158,7 @@ public class LoginViewModel extends BaseViewModel {
     public LiveData<Resource<EaseUser>> getLoginObservable() {
         return loginObservable;
     }
+
     /**
      * 验证码登录操作
      **/
@@ -170,6 +171,7 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showShort("请输入验证码！");
             return;
         }
+        showDialog("正在登录");
         signRepository.codeLogin(phone.getValue(), verifyCode.getValue());
     }
 
@@ -177,8 +179,7 @@ public class LoginViewModel extends BaseViewModel {
      * 注册或找回操作
      *
      * @param type 类型
-     *
-     * */
+     */
     private void register(String type) {
         String phoneValue = phone.getValue();
         if (StringUtils.isEmpty(phoneValue) || phoneValue.length() != 11) {
@@ -197,7 +198,7 @@ public class LoginViewModel extends BaseViewModel {
             ToastUtils.showLong("密码不一致");
             return;
         }
-        signRepository.register(phoneValue, password.getValue(), confirm.getValue(), verifyCode.getValue(),type);
+        signRepository.register(phoneValue, password.getValue(), confirm.getValue(), verifyCode.getValue(), type);
     }
 
 

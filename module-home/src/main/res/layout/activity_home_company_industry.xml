@@ -19,7 +19,6 @@
         android:layout_height="match_parent"
         android:background="@color/black_15"
         android:orientation="vertical">
-
         <com.benwunet.base.wdiget.NormalSearchBar
             android:id="@+id/ntb"
             android:layout_width="match_parent"

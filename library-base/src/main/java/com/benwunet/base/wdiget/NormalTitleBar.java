@@ -26,6 +26,7 @@ import me.goldze.mvvmhabit.base.AppManager;
 public class NormalTitleBar extends RelativeLayout {
 
     private final TextView tvTitleCenter;
+    private final TextView tvTypeTitle;
     private LinearLayout mRightContainer;
     private ImageView ivRight, ivRight2, ivRight3;
     private TextView ivBack, tvTitle, tvRight;
@@ -46,6 +47,7 @@ public class NormalTitleBar extends RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.bar_normal, this, true);
         ivBack = (TextView) findViewById(R.id.tv_back);
         verLine = findViewById(R.id.verLine);
+        tvTypeTitle = (TextView) findViewById(R.id.tv_type_center);
         tvTitle = (TextView) findViewById(R.id.tv_title);
         tvTitleCenter = (TextView) findViewById(R.id.tv_title_center);
         mRightContainer = (LinearLayout) findViewById(R.id.rightContainer);
@@ -225,6 +227,10 @@ public class NormalTitleBar extends RelativeLayout {
     public void setNewTitleText(String string) {
         tvTitleCenter.setText(string);
         tvTitle.setVisibility(View.GONE);
+    }
+    public void setTypeTitleText(String string) {
+        tvTypeTitle.setText(string);
+        tvTypeTitle.setVisibility(VISIBLE);
     }
 
     public void setTitleWeizhi() {

@@ -19,6 +19,7 @@ import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
+import com.benwunet.base.base.activity.BaseActivity;
 import com.benwunet.base.contract.AppConstans;
 import com.benwunet.base.contract.BaseCustomViewModel;
 import com.benwunet.base.livedatas.LiveDataBus;
@@ -43,7 +44,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 
@@ -55,6 +55,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * @CreateDate: 2020/10/20 0020 11:14
  * @Version: 1.0
  */
+
 public class CardsPaperActivity extends BaseActivity<ActivityCardsPagerBinding, CardsViewModel> {
     private static final String API_KEY = "di2ablb8RruQB6VX93B3RKr0";//替换成自己的api_key
     private static final String SECRET_KEY = "Gxu0pYGaWijcH3RO1aaTqc6rh8fCXp6S";//请替换成你的Secret key

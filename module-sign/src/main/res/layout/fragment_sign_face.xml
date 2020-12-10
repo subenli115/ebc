@@ -49,20 +49,21 @@
             android:layout_marginTop="116dp"
             android:layout_centerInParent="true"
             android:src="@mipmap/iv_sign_face" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginBottom="100dp"
             android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:paddingLeft="48dp"
-            android:layout_below="@+id/iv_face"
             android:paddingRight="48dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="98dp"
                 android:text="第三平台账号登录"
                 android:textColor="#BCBECC"
                 android:textSize="12sp" />

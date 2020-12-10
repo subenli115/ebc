@@ -3,13 +3,12 @@ package com.benwunet.cards.ui.activity;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.base.activity.BaseActivity;
 import com.benwunet.cards.BR;
 import com.benwunet.cards.R;
 import com.benwunet.cards.databinding.ActivityCardsDetailsPagerBinding;
 import com.benwunet.cards.databinding.ActivityCardsEditPagerBinding;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
-
-import me.goldze.mvvmhabit.base.BaseActivity;
 
 /**
  * @Package: com.benwunet.cards.ui.activity

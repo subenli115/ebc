@@ -1,13 +1,16 @@
 <resources>
     <string name="home_name">首页组件</string>
-    <string name="home_add_bg">添加个人形象照</string>
-    <string name="home_add_video">添加个人短视频</string>
+    <string name="home_add_bg">我的形象照</string>
+    <string name="home_add_video">我的短视频</string>
     <string name="home_form">所属组织</string>
-    <string name="home_custom">自定义</string>
-    <string name="home_vip">VIP版</string>
+    <string name="home_video">视频版</string>
+    <string name="home_tradition">传统名片</string>
     <string name="home_brief">个人简介</string>
     <string name="home_create">创建</string>
+    <string name="home_card_code">本无名片二维码</string>
     <string name="home_card_preview">名片预览</string>
-
+    <string name="home_save_code">保存到相册</string>
+    <string name="home_share_card">分享群名片</string>
+    <string name="home_select_group">选择群聊递名片</string>
 
 </resources>

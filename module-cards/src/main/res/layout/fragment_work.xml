@@ -15,214 +15,247 @@
         <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black_15"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.benwunet.base.wdiget.ItemGroupView
-            android:id="@+id/igv_card"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60.5dp"
+            android:layout_height="wrap_content"
             android:background="@color/black_15"
-            app:itemView_leftText="纸质名片(1)"
-            app:itemView_leftText_color="@color/white"
-            app:leftIcon="@mipmap/actionbar_info_sel" />
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_card"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="纸质名片(1)"
+                app:itemView_leftText_color="@color/white"
+                app:leftIcon="@mipmap/actionbar_info_sel" />
 
 
-        <com.benwunet.base.wdiget.ItemGroupView
-            android:id="@+id/igv_collection"
-            android:layout_width="match_parent"
-            android:layout_height="60.5dp"
-            android:background="@color/black_15"
-            app:itemView_leftText="收藏的名片(1)"
-            app:itemView_leftText_color="@color/white"
-            app:leftIcon="@mipmap/actionbar_info_vollection" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_collection"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="收藏的名片(1)"
+                app:itemView_leftText_color="@color/white"
+                app:leftIcon="@mipmap/actionbar_info_vollection" />
 
-        <com.benwunet.base.wdiget.ItemGroupView
-            android:id="@+id/igv_ground"
-            android:layout_width="match_parent"
-            android:layout_height="60.5dp"
-            android:background="@color/black_15"
-            app:itemView_leftText="@string/base_mind_ground"
-            app:itemView_leftText_color="@color/white"
-            app:leftIcon="@mipmap/actionbar_info_ground"
-            app:showBottomLine="false" />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_ground"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/base_mind_ground"
+                app:itemView_leftText_color="@color/white"
+                app:leftIcon="@mipmap/actionbar_info_ground"
+                app:showBottomLine="false" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:text="好友(12)"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="好友"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="(12)"
+                    android:textColor="@color/black_8e"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <com.benwunet.base.view.RoundImageView
-                android:id="@+id/iv_ground1"
-                android:layout_width="138dp"
-                android:layout_height="138dp"
-                android:layout_marginRight="1.5dp"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg"
-                app:leftBottom_corner_radius="4dp"
-                app:leftTop_corner_radius="4dp"
-                app:roun_type="round" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
 
-            <ImageView
-                android:id="@+id/iv_ground2"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginBottom="1.5dp"
-                android:layout_toRightOf="@+id/iv_ground1"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_ground1"
+                    android:layout_width="138dp"
+                    android:layout_height="138dp"
+                    android:layout_marginRight="1.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg"
+                    app:leftBottom_corner_radius="4dp"
+                    app:leftTop_corner_radius="4dp"
+                    app:roun_type="round" />
 
-            <ImageView
-                android:id="@+id/iv_ground5"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_below="@+id/iv_ground2"
-                android:layout_toRightOf="@+id/iv_ground1"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <ImageView
+                    android:id="@+id/iv_ground2"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginBottom="1.5dp"
+                    android:layout_toRightOf="@+id/iv_ground1"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
 
-            <ImageView
-                android:id="@+id/iv_ground3"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_ground2"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <ImageView
+                    android:id="@+id/iv_ground5"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_below="@+id/iv_ground2"
+                    android:layout_toRightOf="@+id/iv_ground1"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
 
-            <ImageView
-                android:id="@+id/iv_ground6"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_below="@+id/iv_ground2"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_ground5"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <ImageView
+                    android:id="@+id/iv_ground3"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_ground2"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
 
-            <com.benwunet.base.view.RoundImageView
-                android:id="@+id/iv_ground4"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_ground3"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg"
-                app:rightTop_corner_radius="4dp"
-                app:roun_type="round" />
+                <ImageView
+                    android:id="@+id/iv_ground6"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_below="@+id/iv_ground2"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_ground5"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
 
-            <com.benwunet.base.view.RoundImageView
-                android:id="@+id/iv_ground7"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_below="@+id/iv_ground2"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_ground6"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg"
-                app:rightBottom_corner_radius="4dp"
-                app:roun_type="round" />
-        </RelativeLayout>
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_ground4"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_ground3"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg"
+                    app:rightTop_corner_radius="4dp"
+                    app:roun_type="round" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:text="同事(5)"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_ground7"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_below="@+id/iv_ground2"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_ground6"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg"
+                    app:rightBottom_corner_radius="4dp"
+                    app:roun_type="round" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <com.benwunet.base.view.RoundImageView
-                android:id="@+id/iv_friend_ground1"
-                android:layout_width="138dp"
-                android:layout_height="138dp"
-                android:layout_marginRight="1.5dp"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg"
-                app:leftBottom_corner_radius="4dp"
-                app:leftTop_corner_radius="4dp"
-                app:roun_type="round" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="好友"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/iv_friend_ground2"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginBottom="1.5dp"
-                android:layout_toRightOf="@+id/iv_friend_ground1"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="(12)"
+                    android:textColor="@color/black_8e"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/iv_friend_ground5"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_below="@+id/iv_friend_ground2"
-                android:layout_toRightOf="@+id/iv_friend_ground1"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
 
-            <ImageView
-                android:id="@+id/iv_friend_ground3"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_friend_ground2"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_friend_ground1"
+                    android:layout_width="138dp"
+                    android:layout_height="138dp"
+                    android:layout_marginRight="1.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg"
+                    app:leftBottom_corner_radius="4dp"
+                    app:leftTop_corner_radius="4dp"
+                    app:roun_type="round" />
 
-            <ImageView
-                android:id="@+id/iv_friend_ground6"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_below="@+id/iv_friend_ground2"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_friend_ground5"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg" />
+                <ImageView
+                    android:id="@+id/iv_friend_ground2"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginBottom="1.5dp"
+                    android:layout_toRightOf="@+id/iv_friend_ground1"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
 
-            <com.benwunet.base.view.RoundImageView
-                android:id="@+id/iv_friend_ground4"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_friend_ground3"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg"
-                app:rightTop_corner_radius="4dp"
-                app:roun_type="round" />
+                <ImageView
+                    android:id="@+id/iv_friend_ground5"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_below="@+id/iv_friend_ground2"
+                    android:layout_toRightOf="@+id/iv_friend_ground1"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
 
-            <com.benwunet.base.view.RoundImageView
-                android:id="@+id/iv_friend_ground7"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_below="@+id/iv_friend_ground2"
-                android:layout_marginLeft="1.5dp"
-                android:layout_toRightOf="@+id/iv_friend_ground6"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/icon_card_bg"
-                app:rightBottom_corner_radius="4dp"
-                app:roun_type="round" />
-        </RelativeLayout>
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_friend_ground3"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_friend_ground2"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
+
+                <ImageView
+                    android:id="@+id/iv_friend_ground6"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_below="@+id/iv_friend_ground2"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_friend_ground5"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg" />
+
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_friend_ground4"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_friend_ground3"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg"
+                    app:rightTop_corner_radius="4dp"
+                    app:roun_type="round" />
+
+                <com.benwunet.base.view.RoundImageView
+                    android:id="@+id/iv_friend_ground7"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_below="@+id/iv_friend_ground2"
+                    android:layout_marginLeft="1.5dp"
+                    android:layout_toRightOf="@+id/iv_friend_ground6"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_card_bg"
+                    app:rightBottom_corner_radius="4dp"
+                    app:roun_type="round" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

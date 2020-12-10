@@ -1,16 +1,16 @@
 package com.benwunet.home.ui.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.benwunet.base.model.BaseViewModel;
-import com.benwunet.base.utils.ToastUtil;
 import com.benwunet.home.ui.bean.CardCreateBean;
 import com.benwunet.home.ui.bean.CardDetailsBean;
 import com.benwunet.home.ui.bean.CardStyleBean;
+import com.benwunet.home.ui.bean.HomeGroupListBean;
+import com.benwunet.home.ui.bean.RepresentativeBean;
 import com.benwunet.home.ui.respository.MyCardRepository;
 
 import java.util.List;
@@ -31,6 +31,7 @@ public class HomeViewModel extends BaseViewModel {
     public MutableLiveData<String> imgUrl = new MutableLiveData<>();
     public SingleLiveEvent<String> complete = new SingleLiveEvent<>();
     public MutableLiveData<String> videoUrl = new MutableLiveData<>();
+    public MutableLiveData<RepresentativeBean> representativeBean = new MutableLiveData<>();
     private MyCardRepository repository = MyCardRepository.getInstance(this);
     private boolean mIsVideo;
 
@@ -47,7 +48,6 @@ public class HomeViewModel extends BaseViewModel {
     public void getHomeData() {
         repository.getCardDetails(cardDetailsBeanMutableLiveData, companyListBean);
     }
-
 
     public void editAndCreateCard(boolean isEdit) {
         if (imgUrl.getValue() != null || videoUrl.getValue() != null) {
@@ -71,14 +71,18 @@ public class HomeViewModel extends BaseViewModel {
         repository.getCardStyle(styleList);
     }
 
+    /**
+     * 存放styleId
+     */
     public void setSelectNum(int position) {
         CardCreateBean bean = createBean.getValue();
         String styleId = styleList.getValue().get(position).getStyleId();
         bean.setStyleId(styleId);
     }
-
+    /**
+     * 存放styleId
+     */
     public void setPath(String path, boolean isVideo) {
-       showDialog();
         mIsVideo = isVideo;
         if (isVideo) {
             videoUrl.setValue(path);
@@ -94,7 +98,12 @@ public class HomeViewModel extends BaseViewModel {
         bean.setMobile(cardDetailsBean.getMobile());
         bean.setPhone(cardDetailsBean.getPhone());
         bean.setImagePhoto(cardDetailsBean.getImagePhoto());
+        bean.setIndustry(cardDetailsBean.getIndustry());
         bean.setAddressInfo(cardDetailsBean.getAddressInfo());
         createBean.setValue(bean);
+    }
+
+    public void getRepresentative(String cardId) {
+        repository.getRepresentativeInfo(cardId,representativeBean);
     }
 }

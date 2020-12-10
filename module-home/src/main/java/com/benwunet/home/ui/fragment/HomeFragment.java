@@ -13,15 +13,22 @@ import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.benwunet.base.base.fragment.BaseFragment;
+import com.benwunet.base.contract.AppConstans;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.base.wdiget.SharePopupWindow;
 import com.benwunet.home.BR;
 import com.benwunet.home.R;
+import com.benwunet.home.databinding.FragmentHome1Binding;
 import com.benwunet.home.databinding.FragmentHomeBinding;
+import com.benwunet.home.ui.Activity.HomeCodeActivity;
 import com.benwunet.home.ui.Activity.HomeCreateCardActivity;
+import com.benwunet.home.ui.Activity.HomeGroupListActivity;
 import com.benwunet.home.ui.bean.CardDetailsBean;
+import com.benwunet.home.ui.bean.RepresentativeBean;
 import com.benwunet.home.ui.viewmodel.HomeViewModel;
+
+import me.jessyan.autosize.internal.CustomAdapt;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -34,13 +41,16 @@ import static android.app.Activity.RESULT_OK;
  * @Version: 1.0
  */
 @Route(path = RouterFragmentPath.Home.PAGER_HOME)
-public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> {
+public class HomeFragment extends BaseFragment<FragmentHome1Binding, HomeViewModel> {
 
     private static final int CREATE_CODE = 0;
+    private String realName;
+    private boolean isRepresentative;
+    private String cardId;
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return R.layout.fragment_home;
+        return R.layout.fragment_home1;
     }
 
     @Override
@@ -61,19 +71,41 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             @Override
             protected void onNoDoubleClick(View v) {
                 Intent intent = new Intent(getContext(), HomeCreateCardActivity.class);
-                intent.putExtra("type","edit");
+                intent.putExtra("type", "edit");
                 startActivityForResult(intent, CREATE_CODE);
             }
         });
         binding.llSend.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                SharePopupWindow popupWindow = new SharePopupWindow(getContext());
+                final SharePopupWindow popupWindow = new SharePopupWindow(getContext());
+                popupWindow.getRlCode().setOnClickListener(new OnNoDoubleClickListener() {
+                    @Override
+                    protected void onNoDoubleClick(View v) {
+                        /**
+                         * 是商务代表并且是主企业
+                         */
+                        CardDetailsBean.CompanyListBean bean = viewModel.companyListBean.getValue();
+                        if(bean!=null&&bean.isIsMainCompany()&&isRepresentative){
+                            HomeCodeActivity.startAction(realName, cardId, true,bean.getCompanyName());
+                        }else {
+                            HomeCodeActivity.startAction(realName, cardId, false,"");
+                        }
+                        popupWindow.dismiss();
+                    }
+                });
+                popupWindow.getRlGroup().setOnClickListener(new OnNoDoubleClickListener() {
+                    @Override
+                    protected void onNoDoubleClick(View v) {
+                        startActivity(HomeGroupListActivity.class);
+                        popupWindow.dismiss();
+                    }
+                });
+                popupWindow.setCopyText(AppConstans.cardDetailURL+cardId);
                 popupWindow.show();
             }
         });
         viewModel.getHomeData();
-        refreshLayout();
     }
 
 
@@ -82,7 +114,16 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         viewModel.cardDetailsBeanMutableLiveData.observe(this, new Observer<CardDetailsBean>() {
             @Override
             public void onChanged(CardDetailsBean cardDetailsBean) {
+                realName = cardDetailsBean.getRealName();
+                cardId = cardDetailsBean.getCardId();
+                viewModel.getRepresentative(cardId);
                 showCard();
+            }
+        });
+        viewModel.representativeBean.observe(this, new Observer<RepresentativeBean>() {
+            @Override
+            public void onChanged(RepresentativeBean representativeBean) {
+                isRepresentative = representativeBean.isFlag();
             }
         });
     }
@@ -104,4 +145,5 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         binding.llBottomContainer.setVisibility(View.VISIBLE);
         binding.llInfo.setVisibility(View.VISIBLE);
     }
+
 }

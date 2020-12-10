@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.benwunet.base.base.activity.BaseActivity;
 import com.benwunet.base.config.GlideEngine;
+import com.benwunet.base.contract.AppConstans;
+import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
 import com.benwunet.home.BR;
 import com.benwunet.home.R;
@@ -25,6 +27,7 @@ import com.luck.picture.lib.listener.OnResultCallbackListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * @Package: com.benwunet.home.ui.activity
  * @ClassName: HomeCompanyIndustryActivity
@@ -38,7 +41,8 @@ public class HomeCreateCardActivity extends BaseActivity<ActivityHomeCreateCardB
     private List<View> viewList;
     private List<View> bgViewList;
     private String type;
-    private String path;
+    private int selectType=1;
+    private String selectString="";
 
     //拿到路由过来的参数
 
@@ -64,7 +68,10 @@ public class HomeCreateCardActivity extends BaseActivity<ActivityHomeCreateCardB
             @Override
             public void onChanged(CardDetailsBean cardDetailsBean) {
                 viewModel.initViewData(cardDetailsBean);
+                selectString=cardDetailsBean.getIndustry();
+                binding.tvIndustry.setText(selectString);
                 Glide.with(mContext).load(cardDetailsBean.getImagePhoto()).into(binding.ivBg);
+                Glide.with(mContext).load(cardDetailsBean.getShortVideo()).into(binding.ivVideoBg);
             }
         });
         binding.tvCreate.setOnClickListener(new OnNoDoubleClickListener() {
@@ -86,16 +93,12 @@ public class HomeCreateCardActivity extends BaseActivity<ActivityHomeCreateCardB
                 finish();
             }
         });
-        binding.llPhoto.setOnClickListener(new OnNoDoubleClickListener() {
+
+        LiveDataBus.get().with(AppConstans.BusTag.UPDATE,String.class).observe(this, new Observer<String>() {
             @Override
-            protected void onNoDoubleClick(View v) {
-                selectBg(PictureMimeType.ofImage());
-            }
-        });
-        binding.llVideo.setOnClickListener(new OnNoDoubleClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                selectBg(PictureMimeType.ofVideo());
+            public void onChanged(String s) {
+                selectString=s;
+                binding.tvIndustry.setText(s);
             }
         });
     }
@@ -106,7 +109,7 @@ public class HomeCreateCardActivity extends BaseActivity<ActivityHomeCreateCardB
                 .loadImageEngine(GlideEngine.createGlideEngine())
                 .maxSelectNum(1)
                 .isEnableCrop(true)
-                .cropImageWideHigh(750,750)
+                .cropImageWideHigh(750, 750)
                 .selectionMode(PictureConfig.SINGLE)
                 .withAspectRatio(1, 1)
                 .forResult(new OnResultCallbackListener<LocalMedia>() {
@@ -114,8 +117,10 @@ public class HomeCreateCardActivity extends BaseActivity<ActivityHomeCreateCardB
                     public void onResult(List<LocalMedia> result) {
                         if (type == PictureMimeType.ofImage()) {
                             Glide.with(mContext).load(result.get(0).getCutPath()).into(binding.ivBg);
+                        }else {
+                            Glide.with(mContext).load(result.get(0).getRealPath()).into(binding.ivVideoBg);
                         }
-                        viewModel.setPath(type == PictureMimeType.ofVideo()?result.get(0).getRealPath():result.get(0).getCutPath(), type == PictureMimeType.ofVideo());
+                        viewModel.setPath(type == PictureMimeType.ofVideo() ? result.get(0).getRealPath() : result.get(0).getCutPath(), type == PictureMimeType.ofVideo());
                     }
 
                     @Override
@@ -174,7 +179,36 @@ public class HomeCreateCardActivity extends BaseActivity<ActivityHomeCreateCardB
         binding.tvIndustry.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                startActivity(HomeCompanyIndustryActivity.class);
+                Intent intent=new Intent(mContext,HomeCompanyIndustryActivity.class);
+                intent.putExtra("industry",selectString);
+                startActivity(intent);
+            }
+        });
+        binding.llPhoto.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                selectType = PictureMimeType.ofImage();
+                binding.ivPhotoShape.setVisibility(View.VISIBLE);
+                binding.ivVideoShape.setVisibility(View.INVISIBLE);
+                binding.ivVideoBg.setVisibility(View.GONE);
+                binding.ivBg.setVisibility(View.VISIBLE);
+
+            }
+        });
+        binding.llVideo.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                selectType = PictureMimeType.ofVideo();
+                binding.ivPhotoShape.setVisibility(View.INVISIBLE);
+                binding.ivVideoShape.setVisibility(View.VISIBLE);
+                binding.ivVideoBg.setVisibility(View.VISIBLE);
+                binding.ivBg.setVisibility(View.GONE);
+            }
+        });
+        binding.ivSelect.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                selectBg(selectType);
             }
         });
     }

@@ -131,4 +131,23 @@ public interface ApiKey {
     String MEMBER_CARD_STYLE= "member/card/style";
 
 
+    /**
+     *  根据cardId判断是否是商务代表
+     */
+    String SYS_CARD_REPRESENTATIVE= "sys/card/representative";
+
+    /**
+     *  我的群列表
+     */
+    String MEMBER_MEMBERCHATGROUP_MYGROUP= "member/memberChatGroup/my-group";
+
+    /**
+     *  名片夹
+     */
+    String MEMBER_GROUP_HOLDER= "member/group/holder";
+
+    /**
+     *  智能分组(type)
+     */
+    String MEMBER_GROUP= "member/group/";
 }

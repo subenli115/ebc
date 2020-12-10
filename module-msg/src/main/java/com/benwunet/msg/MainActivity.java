@@ -34,6 +34,8 @@ import com.hyphenate.easeui.ui.base.EaseBaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.jessyan.autosize.internal.CustomAdapt;
+
 public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
     private static final int CARD_ITEM = 0;
     private static final int INFO_ITEM = 1;

@@ -16,5 +16,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/TranslucentTheme" />
 
+        <activity
+            android:name="com.benwunet.cards.ui.activity.IntelligentGroupingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name="com.benwunet.cards.ui.activity.CardsCommonGroupingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+
     </application>
 </manifest>

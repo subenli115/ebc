@@ -12,6 +12,7 @@
     </data>
 <LinearLayout
     android:layout_width="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:layout_height="match_parent">
     <com.benwunet.base.wdiget.NormalTitleBar

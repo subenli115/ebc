@@ -32,8 +32,6 @@ import java.lang.reflect.Method;
 import cn.bingoogolapple.baseadapter.BGABaseAdapterUtil;
 import cn.bingoogolapple.photopicker.imageloader.BGAImage;
 import cn.bingoogolapple.photopicker.imageloader.BGAImageLoader;
-import io.reactivex.functions.Consumer;
-import io.reactivex.plugins.RxJavaPlugins;
 import me.goldze.mvvmhabit.base.BaseApplication;
 import me.jessyan.autosize.AutoSizeConfig;
 
@@ -53,8 +51,7 @@ public class MyAPP extends BaseApplication implements Thread.UncaughtExceptionHa
 //        });
         //初始化组件(靠前)
         AutoSizeConfig.getInstance()
-                .setCustomFragment(true)
-                .setUseDeviceSize(false);
+                .setUseDeviceSize(true);
 
 
         PreferenceManager.init(this);

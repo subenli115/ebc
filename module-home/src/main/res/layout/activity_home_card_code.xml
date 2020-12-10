@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/home_card_code"
+            app:ntb_tv_left="showAndFinish" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="422dp"
+                android:layout_margin="37dp"
+                android:background="@drawable/normal_bg_white8"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.benwunet.base.view.RoundImageView
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/mouth_02"
+                    app:border_color1="@color/gray_bc"
+                    app:border_width1="4dp"
+                    app:roun_type="circle" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="123123"
+                    android:textColor="@color/black_27"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_code"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="29dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="使用本无电子名片扫一扫，保存我的名片"
+                    android:textColor="@color/gray_97"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_business"
+                android:layout_width="match_parent"
+                android:layout_height="422dp"
+                android:layout_margin="37dp"
+
+                android:background="@drawable/normal_bg_white8"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="请加我的商务名片"
+                    android:textColor="@color/black_27"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="180dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/iv_business_code"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="29dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_business_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black_27"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_company"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:text="本无网络科技有限公司"
+                        android:textColor="@color/gray_97"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/normal_half_yellow10"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="57dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+
+                        android:src="@mipmap/home_icon_logo"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/home_icon_code_down"
+                android:src="@mipmap/home_icon_code_down"
+                android:text="@string/home_save_code"
+                android:layout_marginRight="70dp"
+                android:textColor="@color/black_8e"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/home_icon_code_down"
+                android:src="@mipmap/home_icon_code_down"
+                android:text="@string/home_share_card"
+                android:textColor="@color/black_8e"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

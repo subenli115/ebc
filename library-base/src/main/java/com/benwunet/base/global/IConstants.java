@@ -15,4 +15,7 @@ public interface IConstants {
 	String FORGET = "FORGET";
 	String HOTTOPIC = "HOTTOPIC";
 	String NEWTOPIC = "NEWTOPIC";
+	String LOCATION	= "location";
+	String POSITION	= "position";
+	String INDUSTRY = "industry";
 }

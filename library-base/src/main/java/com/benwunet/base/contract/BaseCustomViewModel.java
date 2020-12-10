@@ -1,13 +1,6 @@
 package com.benwunet.base.contract;
 
-import androidx.annotation.NonNull;
-
-import com.chad.library.adapter.base.entity.MultiItemEntity;
-
 import java.io.Serializable;
-
-import me.goldze.mvvmhabit.base.BaseViewModel;
-import me.goldze.mvvmhabit.base.ItemViewModel;
 
 /**
  * 应用模块: common

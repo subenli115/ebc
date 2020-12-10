@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:ignore="ResourceName">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_15"
+        android:orientation="vertical">
+
+
+        <com.benwunet.base.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_15"
+            app:ntb_title_text="@string/base_mind_ground"
+            app:ntb_tv_left="showAndFinish" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_job"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                android:background="@color/black_15"
+                app:leftIcon="@mipmap/cards_icon_job"
+                app:itemView_leftText="@string/base_job2"
+                app:itemView_leftText_color="@color/white"
+                />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_industry"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                android:background="@color/black_15"
+                app:leftIcon="@mipmap/cards_icon_industry"
+                app:itemView_leftText="@string/base_industry"
+                app:itemView_leftText_color="@color/white"
+                />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_location"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                android:background="@color/black_15"
+                app:leftIcon="@mipmap/cards_icon_location"
+                app:itemView_leftText="@string/base_location"
+                app:itemView_leftText_color="@color/white"
+                />
+            <com.benwunet.base.wdiget.ItemGroupView
+                android:id="@+id/igv_lately_time"
+                android:layout_width="match_parent"
+                android:layout_height="54.5dp"
+                app:leftIcon="@mipmap/cards_icon_lately_time"
+                android:background="@color/black_15"
+                app:itemView_leftText="@string/base_lately_time"
+                app:itemView_leftText_color="@color/white"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -10,15 +10,16 @@
 
         <variable
             name="viewModel"
-            type="com.benwunet.home.ui.viewmodel.CompanyIndustryItemViewModel" />
+            type="com.benwunet.home.ui.bean.IndustryListBean" />
     </data>
 
     <LinearLayout
+
+        android:id="@+id/ll_item"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@color/black_15"
         android:gravity="center_vertical"
-
         android:orientation="horizontal"
         android:paddingStart="16dp">
 
@@ -61,11 +62,10 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
                         android:drawablePadding="4dp"
-                        android:ellipsize="end"
                         android:gravity="center_vertical|start"
                         android:maxLength="18"
                         android:maxLines="1"
-                        android:text="@{viewModel.name}"
+                        android:text="@{viewModel.industryName}"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         tools:ignore="NestedWeights"
@@ -75,12 +75,12 @@
                 </LinearLayout>
                 <include layout="@layout/space" />
 
-                <CheckBox
+                <TextView
+                    android:id="@+id/check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:button="@drawable/check_bg"
-                    android:checked="@{viewModel.checked}" />
+                    />
 
             </LinearLayout>
 

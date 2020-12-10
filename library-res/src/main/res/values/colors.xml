@@ -49,8 +49,9 @@
     <color name="gray_d2">#D2D2D3</color>
     <color name="gray_e7">#E7E8E9</color>
     <color name="gray_20">#202540</color>
-    <color name="bule_3c">#3C4782</color>
+    <color name="bule_3c">#CC3C4782</color>
     <color name="gray_a1">#A1A7C4</color>
+    <color name="black_27">#272727</color>
     <color name="black_2a">#2A2E44</color>
     <color name="transparent30">#28000000</color>
 </resources>

@@ -13,6 +13,7 @@ import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
+import com.benwunet.base.base.activity.BaseActivity;
 import com.benwunet.base.contract.AppConstans;
 import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.utils.FileUtils;
@@ -23,7 +24,6 @@ import com.benwunet.cards.databinding.ActivityCardsEditPagerBinding;
 import com.benwunet.cards.ui.bean.CardInfoBean;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 
-import me.goldze.mvvmhabit.base.BaseActivity;
 /**
  * @Package: com.benwunet.cards.ui.activity
  * @ClassName: CardsPagerEditActivity

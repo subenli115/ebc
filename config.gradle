@@ -59,7 +59,10 @@ ext {
             kongdialog                             : 'com.kongzue.dialog:dialog:2.5.2',
             SmartRefreshLayout                     : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1',
             scrolllayout                           : 'com.yinglan.scrolllayout:scrolllayout:1.0.2',
-            autolayout                             : 'com.zhy:autolayout:1.4.5'
+            autolayout                             : 'com.zhy:autolayout:1.4.5',
+            zxing                                  :  'com.github.yuzhiqiang1993:zxing:2.2.5'
+
+
 
 
     ]

@@ -3,7 +3,10 @@ package com.benwunet.cards.respository;
 import androidx.lifecycle.MutableLiveData;
 
 import com.benwunet.base.global.ApiKey;
+import com.benwunet.base.model.BaseViewModel;
 import com.benwunet.cards.ui.bean.CardPaperBean;
+import com.benwunet.cards.ui.bean.CardsHomeBean;
+import com.benwunet.cards.ui.bean.CardsMindGroupListBean;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -12,8 +15,6 @@ import com.zhouyou.http.request.HttpManager;
 import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseModel;
-import me.goldze.mvvmhabit.base.BaseViewModel;
-import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
@@ -48,10 +49,9 @@ public class CardsRepository extends BaseModel {
     }
 
 
-    public void getMemberCardPaper(final MutableLiveData<List<CardPaperBean>> bean) {
+    public void getMemberCardPaper(final MutableLiveData<List<CardPaperBean>> listMutableLiveData) {
         HttpManager.get(ApiKey.MEMBER_CARD_PAPER)
                 .accessToken()
-                .cacheMode(CacheMode.FIRSTCACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<List<CardPaperBean>>() {
                     @Override
@@ -61,7 +61,42 @@ public class CardsRepository extends BaseModel {
 
                     @Override
                     public void onSuccess(List<CardPaperBean> result) {
+                        listMutableLiveData.setValue(result);
+                    }
+                });
+    }
+    public void getHomeData(final MutableLiveData<CardsHomeBean> listMutableLiveData, final MutableLiveData<List<CardsHomeBean.GroupsBean>> groups) {
+        HttpManager.get(ApiKey.MEMBER_GROUP_HOLDER)
+                .accessToken()
+                .cacheMode(CacheMode.FIRSTCACHE)
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<CardsHomeBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
 
+                    @Override
+                    public void onSuccess(CardsHomeBean result) {
+                        listMutableLiveData.setValue(result);
+                        groups.setValue(result.getGroups());
+                    }
+                });
+    }
+    public void getTypeGroupList(final MutableLiveData<CardsMindGroupListBean> data, String type) {
+        HttpManager.get(ApiKey.MEMBER_GROUP+type)
+                .accessToken()
+                .cacheMode(CacheMode.FIRSTCACHE)
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<CardsMindGroupListBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(CardsMindGroupListBean result) {
+                        data.setValue(result);
                     }
                 });
     }

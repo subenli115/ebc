@@ -55,46 +55,86 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="43dp"
                             android:src="@mipmap/home_icon_create_card" />
+
                         <ImageView
                             android:id="@+id/iv_bg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            />
+                            android:scaleType="centerCrop" />
+                        <ImageView
+                            android:id="@+id/iv_video_bg"
+                            android:layout_width="match_parent"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+                        <ImageView
+                            android:id="@+id/iv_select"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/home_icon_select_bg" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="44dp"
+                            android:layout_height="54dp"
                             android:layout_alignParentBottom="true"
                             android:weightSum="2">
-
                             <LinearLayout
-                                android:id="@+id/ll_photo"
+                                android:orientation="vertical"
+
                                 android:layout_width="0dp"
-                                android:layout_height="44dp"
                                 android:layout_weight="1"
-                                android:background="@color/bule_3c"
-                                android:gravity="center">
-
+                                android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/iv_photo_shape"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@mipmap/home_icon_photo" />
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_height="9dp"
+                                    android:src="@drawable/shape_triangle_up_bule"
+                                    />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="@string/home_add_bg"
-                                    android:textColor="@color/textColorYellow"
-                                    android:textSize="15sp" />
+                                <LinearLayout
+                                    android:id="@+id/ll_photo"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_height="54dp"
+                                    android:background="@color/bule_3c"
+                                    android:gravity="center">
 
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@mipmap/home_icon_photo" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="@string/home_add_bg"
+                                        android:textColor="@color/textColorYellow"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
                             </LinearLayout>
+                        <LinearLayout
+                            android:orientation="vertical"
 
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="54dp">
+                            <ImageView
+                                android:id="@+id/iv_video_shape"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:visibility="invisible"
+                                android:layout_height="9dp"
+                                android:src="@drawable/shape_triangle_up_yellow"
+                                />
                             <LinearLayout
                                 android:id="@+id/ll_video"
-                                android:layout_width="0dp"
-                                android:layout_height="44dp"
-                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:background="#CCFFE7A1"
                                 android:gravity="center">
 
@@ -112,6 +152,7 @@
                                     android:textSize="15sp" />
 
                             </LinearLayout>
+                        </LinearLayout>
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -251,7 +292,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="13dp"
-                                    android:src="@mipmap/home_icon_style_vip" />
+                                    android:src="@mipmap/home_icon_style_tradition" />
 
                                 <ImageView
                                     android:id="@+id/iv_vip_select"
@@ -267,7 +308,7 @@
                                     android:layout_below="@+id/iv_vip"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="5dp"
-                                    android:text="@string/home_vip"
+                                    android:text="@string/home_tradition"
                                     android:textColor="@color/textColorYellow"
                                     android:textSize="14sp" />
                             </RelativeLayout>
@@ -283,7 +324,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="13dp"
-                                    android:src="@mipmap/home_icon_style_custom" />
+                                    android:src="@mipmap/home_icon_style_video" />
 
                                 <ImageView
                                     android:id="@+id/iv_custom_select"
@@ -299,7 +340,7 @@
                                     android:layout_below="@+id/iv_custom"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="5dp"
-                                    android:text="@string/home_custom"
+                                    android:text="@string/home_video"
                                     android:textColor="@color/textColorYellow"
                                     android:textSize="14sp" />
                             </RelativeLayout>
@@ -347,8 +388,8 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:hint="请输入姓名"
-                            android:text="@={viewModel.createBean.realName}"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.realName}"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -365,7 +406,7 @@
                         android:paddingLeft="20.5dp">
 
                         <LinearLayout
-                            android:layout_width="66dp"
+                            android:layout_width="61dp"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
@@ -388,13 +429,18 @@
                             android:layout_below="@+id/title"
                             android:layout_weight="1"
                             android:background="@null"
-                            android:text="@{viewModel.createBean.industry}"
+                            android:padding="5dp"
                             android:ellipsize="end"
                             android:hint="请选择行业"
                             android:singleLine="true"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:src="@mipmap/ic_arrow_gray" />
                     </LinearLayout>
 
                     <View style="@style/ViewLineStyle" />
@@ -436,9 +482,9 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:ellipsize="end"
-                            android:text="@={viewModel.createBean.mobile}"
                             android:hint="请输入手机"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.mobile}"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -477,10 +523,10 @@
                             android:layout_below="@+id/title"
                             android:layout_weight="1"
                             android:background="@null"
-                            android:text="@={viewModel.createBean.phone}"
                             android:ellipsize="end"
                             android:hint="请输入电话"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.phone}"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -519,9 +565,9 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:ellipsize="end"
-                            android:text="@={viewModel.createBean.email}"
                             android:hint="abc123@benwunet.com"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.email}"
                             android:textColor="#ff00030f"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -561,9 +607,9 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:ellipsize="end"
-                            android:text="@={viewModel.createBean.qq}"
                             android:hint="请输入QQ"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.qq}"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -603,10 +649,10 @@
                             android:layout_weight="1"
                             android:background="@null"
 
-                            android:text="@={viewModel.createBean.weChat}"
                             android:ellipsize="end"
                             android:hint="请输入微信"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.weChat}"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -652,8 +698,8 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:hint="请输入地址"
-                            android:text="@={viewModel.createBean.addressInfo}"
                             android:singleLine="true"
+                            android:text="@={viewModel.createBean.addressInfo}"
                             android:textColor="@color/black_8e"
                             android:textColorHint="#585C76"
                             android:textSize="14sp" />
@@ -692,10 +738,10 @@
                             android:background="@color/black_29"
                             android:gravity="start"
                             android:hint="请输入个人简介"
-                            android:text="@={viewModel.createBean.memberProfile}"
                             android:imeOptions="actionNext"
                             android:padding="12dp"
                             android:paddingLeft="22dp"
+                            android:text="@={viewModel.createBean.memberProfile}"
                             android:textColor="@color/white"
                             android:textColorHint="@color/black_8e"
                             android:textSize="14sp" />

@@ -62,6 +62,7 @@
     <string name="base_enterprise">企业</string>
     <string name="base_company">公司</string>
     <string name="base_job">职称</string>
+    <string name="base_job2">职位</string>
 
     <string name="contacts">人脉</string>
     <string name="follow">关注</string>
@@ -84,6 +85,10 @@
     <string name="base_send">发消息</string>
     <string name="base_menu_change">交换名片</string>
     <string name="base_mind_ground">智能分组</string>
+
+    <string name="base_lately_time">最近联系时间</string>
+    <string name="base_location">所在地</string>
+    <string name="base_industry">行业</string>
 
     <string name="base_add_bg">添加封面图</string>
     <string name="base_add_content">添加导读内容</string>

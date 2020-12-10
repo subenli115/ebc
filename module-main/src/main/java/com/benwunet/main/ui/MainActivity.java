@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,13 +16,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.baidu.platform.comapi.map.C;
 import com.benwunet.base.contract.AppConstans;
 import com.benwunet.base.livedatas.LiveDataBus;
 import com.benwunet.base.router.RouterActivityPath;
@@ -42,23 +40,23 @@ import com.benwunet.msg.section.base.BaseInitActivity;
 import com.benwunet.msg.section.chat.ChatPresenter;
 import com.benwunet.msg.section.contact.viewmodels.ContactsViewModel;
 import com.benwunet.msg.section.conversation.ConversationListFragment;
-import com.benwunet.msg.section.search.SearchPublicGroupActivity;
 import com.hyphenate.easeui.model.EaseEvent;
 import com.hyphenate.easeui.ui.base.EaseBaseFragment;
+import com.yzq.zxinglibrary.android.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
-public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseInitActivity implements View.OnClickListener, ViewPager.OnPageChangeListener,CustomAdapt {
     private static final int INFO_ITEM = 0;
     private static final int CARD_ITEM = 1;
     private static final int MSG_ITEM = 2;
     private static final int ME_ITEM = 3;
     private static final int FIND_ITEM = 4;
+    private static final int QR_CODE = 1;
     private List<Fragment> mFragments;
     private EaseBaseFragment mConversationListFragment;
     private EaseBaseFragment mCurrentFragment;
@@ -122,6 +120,7 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         LiveDataBus.get().with(AppConstans.BusTag.CLOSE).observe(this, o -> {
             mViewContainer.setCurrentItem(INFO_ITEM, false);
         });
+        mViewContainer.setCurrentItem(CARD_ITEM, false);
     }
 
     private void initMenuBar() {
@@ -134,8 +133,8 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
                 mMenuView.setOnClickListener(new OnNoDoubleClickListener() {
                     @Override
                     protected void onNoDoubleClick(View v) {
-
-
+                            Intent intent1 = new Intent(MainActivity.this, CaptureActivity.class);
+                            startActivityForResult(intent1, QR_CODE);
                     }
                 });
                 pop.showAsDropDown(v);
@@ -279,7 +278,7 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
         mFragments = new ArrayList<>();
         mFragments.add(homeFragment);
         mFragments.add(cardFragment);
-        mFragments.add(mConversationListFragment);
+//        mFragments.add(mConversationListFragment);
         mFragments.add(meFragment);
         mFragments.add(findFragment);
         ViewPagerAdapter adapter = new ViewPagerAdapter(mContext.getSupportFragmentManager(),
@@ -339,4 +338,23 @@ public class MainActivity extends BaseInitActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public boolean isBaseOnWidth() {
+        return true;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 0;
+    }
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+            return true;
+        }
+        //继续执行父类其他点击事件
+        return super.onKeyUp(keyCode, event);
+    }
 }

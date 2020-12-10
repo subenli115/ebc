@@ -31,7 +31,7 @@ import me.leefeng.promptlibrary.PromptDialog;
 /**
  * @Package: com.benwunet.user.ui.activity
  * @ClassName: UserSeePeopleActivity
- * @Description: java类作用描述
+ * @Description: 看Ta动态界面
  * @Author: feng
  * @CreateDate: 2020/11/17 0017 16:51
  * @Version: 1.0

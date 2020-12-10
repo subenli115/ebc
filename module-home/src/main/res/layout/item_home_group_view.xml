@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.benwunet.home.ui.bean.HomeGroupListBean" />
+    </data>
+
+    <LinearLayout
+
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/black_15"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp">
+
+        <!--binding:imageUrl="@{viewModel.url}"-->
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/black_15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:ignore="NestedWeights">
+
+                    <com.benwunet.base.view.RoundImageView
+                        binding:url="@{viewModel.groupAvatar}"
+                        app:roun_type="round"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/mouth_02" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="4dp"
+                        android:gravity="center_vertical|start"
+                        android:maxLength="18"
+                        android:maxLines="1"
+                        android:text="@{viewModel.groupName}"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        tools:ignore="NestedWeights"
+                        tools:text="公司名称" />
+
+
+                </LinearLayout>
+
+                <include layout="@layout/space" />
+
+                <TextView
+                    android:id="@+id/check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+            </LinearLayout>
+
+            <View style="@style/ViewLineStyle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

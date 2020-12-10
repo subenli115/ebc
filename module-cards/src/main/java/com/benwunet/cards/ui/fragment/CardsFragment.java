@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.benwunet.base.base.fragment.BaseFragment;
 import com.benwunet.base.router.RouterActivityPath;
 import com.benwunet.base.router.RouterFragmentPath;
 import com.benwunet.base.wdiget.OnNoDoubleClickListener;
@@ -17,9 +18,12 @@ import com.benwunet.cards.BR;
 import com.benwunet.cards.R;
 import com.benwunet.cards.databinding.FragmentWorkBinding;
 import com.benwunet.cards.ui.activity.CardsPaperActivity;
+import com.benwunet.cards.ui.activity.IntelligentGroupingActivity;
+import com.benwunet.cards.ui.bean.CardsHomeBean;
 import com.benwunet.cards.ui.viewmodel.CardsViewModel;
 
-import me.goldze.mvvmhabit.base.BaseFragment;
+import java.util.List;
+
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 
@@ -41,6 +45,7 @@ public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewMo
 
     @Override
     public void initData() {
+        viewModel.initHomeData();
         binding.igvCard.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
@@ -53,7 +58,30 @@ public class CardsFragment extends BaseFragment<FragmentWorkBinding, CardsViewMo
                 ARouter.getInstance().build(RouterActivityPath.Collection.PAGER_COLLECTION).navigation();
             }
         });
+        binding.igvGround.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                startActivity(IntelligentGroupingActivity.class);
+            }
+        });
     }
 
+    @Override
+    public void initViewObservable() {
+        viewModel.cardsHomebean.observe(this, new Observer<CardsHomeBean>() {
+            @Override
+            public void onChanged(CardsHomeBean cardsHomeBean) {
+                binding.igvCard.setLeftText("纸质名片"+"("+cardsHomeBean.getPaperCardNum()+")");
+                binding.igvCollection.setLeftText("收藏的名片"+"("+cardsHomeBean.getCardCollectNum()+")");
 
+            }
+        });
+        viewModel.groups.observe(this, new Observer<List<CardsHomeBean.GroupsBean>>() {
+            @Override
+            public void onChanged(List<CardsHomeBean.GroupsBean> groupsBeans) {
+            }
+        });
+
+
+    }
 }

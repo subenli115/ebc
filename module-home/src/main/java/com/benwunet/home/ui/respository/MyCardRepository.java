@@ -6,12 +6,17 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.benwunet.base.bean.UploadFileBean;
 import com.benwunet.base.global.ApiKey;
+import com.benwunet.base.model.BaseViewModel;
 import com.benwunet.base.utils.GsonUtils;
 import com.benwunet.home.ui.bean.CardCreateBean;
 import com.benwunet.home.ui.bean.CardDetailsBean;
 import com.benwunet.home.ui.bean.CardStyleBean;
+import com.benwunet.home.ui.bean.HomeGroupListBean;
+import com.benwunet.home.ui.bean.IndustryListBean;
+import com.benwunet.home.ui.bean.RepresentativeBean;
 import com.benwunet.home.ui.viewmodel.HomeViewModel;
 import com.zhouyou.http.body.UIProgressResponseCallBack;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.request.HttpManager;
@@ -37,13 +42,13 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class MyCardRepository extends BaseModel {
 
     private volatile static MyCardRepository instance = null;
-    private final HomeViewModel viewModel;
+    private final BaseViewModel viewModel;
 
-    public MyCardRepository(HomeViewModel viewModel) {
+    public MyCardRepository(BaseViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
-    public static MyCardRepository getInstance(HomeViewModel viewModel) {
+    public static MyCardRepository getInstance(BaseViewModel viewModel) {
         if (instance == null) {
             synchronized (MyCardRepository.class) {
                 if (instance == null) {
@@ -177,5 +182,57 @@ public class MyCardRepository extends BaseModel {
                 });
     }
 
+
+    public void getIndustry(final MutableLiveData<List<IndustryListBean>> industry) {
+        HttpManager.get(ApiKey.SYS_INDUSTRY)
+                .accessToken()
+                .cacheMode(CacheMode.FIRSTCACHE)
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<List<IndustryListBean>>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(List<IndustryListBean> result) {
+                        industry.setValue(result);
+                    }
+                });
+    }
+
+    public void getRepresentativeInfo(String cardId , final MutableLiveData<RepresentativeBean> representativeBean) {
+        HttpManager.get(ApiKey.SYS_CARD_REPRESENTATIVE+"/"+cardId)
+                .accessToken()
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<RepresentativeBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(RepresentativeBean result) {
+                        representativeBean.setValue(result);
+                    }
+                });
+    }
+
+    public void getGroupList(final MutableLiveData<List<HomeGroupListBean>> representativeBean) {
+        HttpManager.get(ApiKey.MEMBER_MEMBERCHATGROUP_MYGROUP)
+                .accessToken()
+                .cacheKey(this.getClass().getSimpleName())
+                .execute(new SimpleCallBack<List<HomeGroupListBean>>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToastUtils.showLong(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(List<HomeGroupListBean> result) {
+                        representativeBean.setValue(result);
+                    }
+                });
+    }
 
 }

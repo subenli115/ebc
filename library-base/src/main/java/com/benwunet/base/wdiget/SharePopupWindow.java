@@ -1,7 +1,11 @@
 package com.benwunet.base.wdiget;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -11,9 +15,11 @@ import com.benwunet.base.R;
 import com.benwunet.base.utils.EmptyUtils;
 import com.benwunet.base.utils.ViewUtil;
 
+import me.goldze.mvvmhabit.utils.ToastUtils;
+
 
 /**
- * @author 吴祖清
+ * @author feng
  * @version $Rev$
  * @createTime 2017/6/7 11:33
  * @des ${TODO}
@@ -27,6 +33,19 @@ public class SharePopupWindow extends BasePopupWindow {
 
     private View contentViewPop;
     private View background;
+    private View rlCode;
+    private View rlLink;
+    private String copyText;
+    private View rlGroup;
+
+
+    public View getRlGroup() {
+        return rlGroup;
+    }
+
+    public void setRlGroup(View rlGroup) {
+        this.rlGroup = rlGroup;
+    }
 
     public SharePopupWindow(Context context) {
         super(context);
@@ -37,20 +56,52 @@ public class SharePopupWindow extends BasePopupWindow {
         return R.layout.popupw_share;
     }
 
+    public View getRlCode() {
+        return rlCode;
+    }
+
+    public void setRlCode(View rlCode) {
+        this.rlCode = rlCode;
+    }
+
     @Override
     protected void initViews(View contentView) {
         touchDismiss(R.id.background);
         setOnClickListener(R.id.btn_cancel);
         animView = getView(R.id.layout_custom_container);
+        rlCode = getView(R.id.rl_code);
+        rlGroup = getView(R.id.rl_group);
+        rlLink = getView(R.id.rl_link);
+        rlLink.setOnClickListener(this);
         background = getView(R.id.background);
         animView.setClickable(false);
         setDurtion(400);
     }
+
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.rl_link) {
+            copyLink();
+        }
         dismiss();
     }
+    public  void setCopyText(String text){
+        copyText=text;
+    }
 
+
+
+    public void copyLink() {
+        // 获取系统剪贴板
+        ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+
+        // 创建一个剪贴数据集，包含一个普通文本数据条目（需要复制的数据）
+                ClipData clipData = ClipData.newPlainText(null, copyText);
+
+        // 把数据集设置（复制）到剪贴板
+                clipboard.setPrimaryClip(clipData);
+                ToastUtils.showLong("复制成功");
+    }
 
 
     private String shareTitle;
@@ -63,7 +114,7 @@ public class SharePopupWindow extends BasePopupWindow {
 //    }
 
 
-    private ViewUtil.BaseCallBack mCallBack ;
+    private ViewUtil.BaseCallBack mCallBack;
 
     public void setCallBack(ViewUtil.BaseCallBack callBack) {
         mCallBack = callBack;
@@ -71,7 +122,7 @@ public class SharePopupWindow extends BasePopupWindow {
 
     @NonNull
     private String getRealUrl() {
-        if (!isNeedRealUrl()){
+        if (!isNeedRealUrl()) {
             return getShareUrl();
         }
         if (getShareUrl().contains("?")) {
@@ -99,6 +150,7 @@ public class SharePopupWindow extends BasePopupWindow {
     public String getShareUrl() {
         return shareUrl;
     }
+
     private boolean needRealUrl = true;
 
     public boolean isNeedRealUrl() {

@@ -176,13 +176,11 @@ public class NormalSearchBar extends RelativeLayout {
      * @param visiable 是否显示
      */
     public void setTvLeftVisiable(boolean visiable, boolean isFinish) {
-        Log.e("setTvLeftVisiable", "" + isFinish);
         setTvLeftVisiable(visiable);
         if (isFinish) {
             ivBack.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.e("setTvLeftVisiable", "setTvLeftVisiable");
                     KeyBordUtil.hideSoftKeyboard(v);
                     if (getContext() instanceof Activity) {
                         ((Activity) getContext()).finish();
